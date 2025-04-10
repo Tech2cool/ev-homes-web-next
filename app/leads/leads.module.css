@@ -1,0 +1,26 @@
+.filleadlistContainer {
+    display: flex;
+    gap: 10px; 
+    align-items: flex-start; 
+  }
+  
+  .filterWrapper {
+    width: 250px; 
+    flex-shrink: 0; 
+  }
+
+  .listDetailsContainer{
+    display: flex;
+  }
+  .listContainer{
+    width: 320px;
+  }
+
+  .fullContainer{
+    background-color: #333;
+  }
+
+  .listHistoryContainer{
+  display: flex;
+  flex-direction: column;
+  }

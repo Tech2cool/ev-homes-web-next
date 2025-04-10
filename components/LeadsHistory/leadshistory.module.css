@@ -1,0 +1,135 @@
+.container {
+  width: fit-content;
+  top: 0;
+  padding: 10px;
+  color: #ffffff;
+  max-height: 300px;
+  overflow-y: auto;
+  scrollbar-width: none;
+  -ms-overflow-style: none;
+}
+
+.heading {
+  font-size: 15px;
+  font-weight: 400;
+  margin-bottom: 2rem;
+  color: #ffffff;
+  margin-bottom: 5px;
+    margin-top: 10px;
+}
+
+.heading2 {
+    text-align: right;
+    font-size: 15px;
+    font-weight: 400;
+    margin-bottom: 5px;
+    margin-top: 10px;
+    color: #ffffff;
+    margin-right: 20px;
+  }
+
+.timeline {
+  position: relative;
+  margin-left: 20px;
+  padding-left: 20px;
+  border-left: 2px solid #ffffff33;
+}
+
+.timelineItem {
+  position: relative;
+  margin-bottom: 10px;
+  display: flex;
+  align-items: flex-start;
+}
+
+.timelineDot {
+  position: absolute;
+  left: -30px;
+  top: 5px;
+  width: 20px;
+  height: 20px;
+  background-color: #ffffff;
+  border-radius: 50%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.timelineDot::after {
+  content: "";
+  color: #121212;
+  font-size: 12px;
+  font-weight: bold;
+}
+
+.timelineCard {
+  background-color: rgba(255, 255, 255, 0.1);
+  border: 2px solid rgba(0, 0, 0, 0.3);
+  border-radius: 12px;
+  padding: 10px 10px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+  width: 320px;
+}
+
+.name {
+  font-weight: 600;
+  font-size: 15px;
+  margin-bottom: 4px;
+}
+
+.subtext {
+  font-size: 12px;
+  color: #cccccc;
+  margin-bottom: 6px;
+}
+
+.date {
+  font-size: 12px;
+  color: #bbbbbb;
+}
+
+.twoContainers {
+    display: flex;
+    gap: 20px; 
+    justify-content: space-between;
+    flex-wrap: wrap; 
+  }
+  
+
+  .timelineRight {
+    position: relative;
+    margin-right: 20px;
+    padding-right: 20px;
+    border-right: 2px solid #ffffff33;
+  }
+  
+  .timelineRightItem {
+    position: relative;
+    margin-bottom: 10px;
+    display: flex;
+    flex-direction: row-reverse;
+    align-items: flex-start;
+  }
+  
+  .timelineDotRight {
+    position: absolute;
+    right: -30px;
+    top: 5px;
+    width: 20px;
+    height: 20px;
+    background-color: #ffffff;
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+
+  .timelineCardRight {
+    background-color: rgba(255, 255, 255, 0.1);
+    border: 2px solid rgba(0, 0, 0, 0.3);
+    border-radius: 12px;
+    padding: 10px 10px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+    width: 320px;
+  }
+  

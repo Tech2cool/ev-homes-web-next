@@ -1,0 +1,84 @@
+
+
+  .timePickerWrapper {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 1rem;
+    margin-top: 50px;
+  }
+  
+  .timePickerWrapper select,
+  .timePickerWrapper input[type="date"] ,
+  .timePickerWrapper input[type="checkbox"]{
+    padding: 10px;
+    font-size: 1rem;
+    margin-bottom: 10px;
+  }
+
+  
+  .timePickerWrapper h3 {
+    font-size: 2rem;
+    color: #444;
+  }
+  
+  .timePickerWrapper button {
+    padding: 10px 20px;
+    background-color: #4b6cb7;
+    color: white;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+  }
+
+  .timeContainer{
+    display: flex;
+    align-items: center;
+  }
+  
+
+  .wheelWrapper {
+    height: 100px;
+    width: 60px;
+    overflow-y: scroll;
+    scroll-snap-type: y mandatory;
+    border-radius: 10px;
+    background-color: #f4f4f4;
+    margin: 0 10px;
+    overflow-y: auto;
+    scrollbar-width: none;
+  }
+  
+  .wheel {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+  
+  .wheelItem {
+    height: 40px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    scroll-snap-align: center;
+    font-size: 1.2rem;
+    color: #666;
+    transition: all 0.2s;
+  }
+  
+  .wheelItem.active {
+    font-weight: bold;
+    color: #4b6cb7;
+    font-size: 1.5rem;
+  }
+  
+  .ampmDropdown {
+    height: 100px;
+    width: 60px;
+    font-size: 1.2rem;
+    border-radius: 10px;
+    background-color: #f4f4f4;
+    margin: 0 10px;
+    text-align: center;
+  }
+  

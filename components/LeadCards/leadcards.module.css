@@ -1,0 +1,75 @@
+.container {
+    padding: 10px 10px;
+    display: flex;
+    justify-content: space-between;
+    gap: 20px;
+    position: relative;
+    background:#333;
+    height: 80px;
+  }
+  
+  .card {
+    background: white;
+    padding: 20px;
+    border-radius: 12px;
+    box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.3);
+    text-align: left;
+    min-width: 100px;
+    display: flex;
+    justify-content: space-between;
+    flex: 1;
+    position: relative;
+    top: 20px;
+    height: 70px;
+    text-decoration: none;
+    color: inherit;
+  }
+  
+  .card h4 {
+    font-size: 14px;
+    color: #666;
+  }
+  
+  .card h2 {
+    font-size: 24px;
+    font-weight: bold;
+  }
+  
+  .icon {
+    width: 27px;
+    height: 27px;
+    filter: drop-shadow(0 0 5px currentColor);
+    transition: transform 0.3s ease;
+  }
+  
+  .icon:hover {
+    transform: scale(1.1);
+  }
+  
+  .blue {
+    color: #007bff;
+    filter: drop-shadow(0 0 5px #007bff);
+  }
+  
+  .orange {
+    color: #fd7e14;
+    filter: drop-shadow(0 0 5px #fd7e14);
+  }
+  
+  .purple {
+    color: #6f42c1;
+    filter: drop-shadow(0 0 5px #6f42c1);
+  }
+  
+  .green {
+    color: #28a745;
+    filter: drop-shadow(0 0 5px #28a745);
+  }
+  
+  .red {
+    color: #dc3545;
+    filter: drop-shadow(0 0 3px #dc3545);
+  }
+  
+
+  

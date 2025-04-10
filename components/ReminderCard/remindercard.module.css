@@ -1,0 +1,20 @@
+.reminderCard {
+  background-color: #333;
+  color: white;
+  padding: 20px;
+  border-radius: 0 25px 25px 0;
+  width: 300px;
+}
+
+.reminderList {
+  padding: 10px;
+}
+
+.reminderList li {
+  margin-bottom: 10px;
+}
+.title {
+  font-size: 18px;
+  font-weight: bold;
+  margin-bottom: 10px;
+}

@@ -1,0 +1,45 @@
+
+.Button {
+  padding: 10px 20px;
+  border: none;
+  border-radius: 6px;
+  font-size: 14px;
+  cursor: pointer;
+  background-color: blue;
+  color: white;
+}
+
+.attachLabel {
+  display: inline-block;
+  padding: 6px 12px;
+  background-color: #f0f0f0;
+  border-radius: 20px;
+  cursor: pointer;
+  font-weight: 500;
+}
+
+.hiddenFileInput {
+  display: none;
+}
+
+.fileText {
+  font-size: 14px;
+  color: #666;
+  margin-top: 6px;
+}
+
+.buttonContainer{
+  align-items: center;
+  display: flex;
+  gap: 20px;
+}
+
+.eyeContainer {
+  height: 150px;
+  margin-top: 20px;
+  background-color: #fff;
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  padding: 10px;
+  box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
+}

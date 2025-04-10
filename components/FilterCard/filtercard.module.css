@@ -1,0 +1,42 @@
+.filterCard {
+    width: 200px;
+    padding: 16px;
+    background: white;
+    border-radius: 0px 70px 70px 0px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 3);
+    max-height: 650px;
+overflow-y: auto;
+scrollbar-width: none;
+  }
+  
+  .title {
+    font-size: 18px;
+    font-weight: bold;
+    margin-bottom: 12px;
+  }
+  
+  .filterCategory {
+    margin-bottom: 16px;
+  }
+  
+  .categoryTitle {
+    font-size: 16px;
+    font-weight: 600;
+    margin-bottom: 8px;
+  }
+  
+  .checkboxLabel {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    font-size: 14px;
+    cursor: pointer;
+  }
+  
+  .checkbox {
+    width: 16px;
+    height: 16px;
+    accent-color: #007bff; 
+    border-radius: 2px;
+  }
+  

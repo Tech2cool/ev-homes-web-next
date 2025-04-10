@@ -1,0 +1,54 @@
+.attendanceContainer {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    background-color: #333;
+    /* padding: 20px; */
+  }
+  
+  .attendanceCard {
+    background: #505050;
+    color: #ffffff;
+    padding: 10px;
+    margin: 10px 0;
+    border-radius: 0px 10px 10px 0px;
+    width: 100%;
+    max-width: 270px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.3);
+  }
+  
+  .date {
+    font-size: 15px;
+    font-weight: bold;
+    color: #dad6d6;
+  }
+  
+  .details {
+    margin-top: 5px;
+  }
+  
+  .time {
+    font-size: 13px;
+  }
+  
+  .status {
+    font-size: 14px;
+    margin-top: 5px;
+  }
+  
+  .status span {
+    color: #3bf341;
+  }
+  
+  .images {
+    display: flex;
+    margin-top: 10px;
+  }
+  
+  .image {
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    margin-right: 5px;
+  }
+  
