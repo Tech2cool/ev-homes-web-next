@@ -1,7 +1,8 @@
 "use client";
 import React, { useState, useRef, useEffect } from "react";
 import styles from "./leaddetailspage.module.css";
-import { FaTasks, FaBell, FaCalendarAlt, FaRocket } from "react-icons/fa";
+import { FaTasks, FaBell, FaCalendarAlt, FaRocket ,FaRupeeSign  } from "react-icons/fa";
+import { IoIosAlarm } from "react-icons/io";
 import Sendnotificationdialog from "../Dialogs/Sendnotificationdialog";
 import Schedulemeetingdialog from "../Dialogs/Schedulemeetingdialog";
 import Leadrunningstatusdialog from "../Dialogs/Leadrunningstatusdialog";
@@ -27,7 +28,7 @@ const Leaddetailspage = () => {
     showScheduleMeetingDialog ||
     showLeadRunningStatusDialog;
   useBodyScrollLock(isAnyDialogOpen);
-  
+
   useEffect(() => {
     const handleClickOutside = (event) => {
       if (dropdownRef.current && !dropdownRef.current.contains(event.target)) {
@@ -202,6 +203,28 @@ const Leaddetailspage = () => {
         >
           <FaRocket className={styles.icon} />
           Lead Running Status
+        </button>
+        {showLeadRunningStatusDialog && (
+          <Leadrunningstatusdialog onClose={closeLeadRunningStatusDialog} />
+        )}
+
+        <button
+          className={styles.actionButton}
+          onClick={handleLeadRunningStatusClick}
+        >
+          <FaRupeeSign  className={styles.icon} />
+          Estimate Generator
+        </button>
+        {showLeadRunningStatusDialog && (
+          <Leadrunningstatusdialog onClose={closeLeadRunningStatusDialog} />
+        )}
+
+        <button
+          className={styles.actionButton}
+          onClick={handleLeadRunningStatusClick}
+        >
+          <IoIosAlarm  className={styles.icon} />
+          Add Reminder
         </button>
         {showLeadRunningStatusDialog && (
           <Leadrunningstatusdialog onClose={closeLeadRunningStatusDialog} />
