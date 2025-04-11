@@ -1,0 +1,66 @@
+.delete-container {
+  min-height: 100vh;
+  background-color: #000;
+  color: #fff;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 2rem;
+}
+
+.delete-card {
+  background-color: #111;
+  padding: 2rem;
+  border-radius: 12px;
+  max-width: 400px;
+  width: 100%;
+  box-shadow: 0 0 10px rgba(255, 0, 0, 0.2);
+}
+
+.delete-card h2 {
+  text-align: center;
+  margin-bottom: 1.5rem;
+  font-size: 1.5rem;
+}
+
+form {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+input,
+textarea {
+  background-color: #222;
+  color: #fff;
+  border: 1px solid #444;
+  padding: 0.75rem;
+  border-radius: 6px;
+  font-size: 0.95rem;
+}
+
+button {
+  background-color: #e11d48;
+  color: #fff;
+  border: none;
+  padding: 0.75rem;
+  border-radius: 6px;
+  cursor: pointer;
+  font-weight: bold;
+  transition: background 0.3s;
+}
+
+button:hover {
+  background-color: #be123c;
+}
+
+button:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+}
+
+.delete-message {
+  margin-top: 1rem;
+  text-align: center;
+  font-size: 0.9rem;
+}
