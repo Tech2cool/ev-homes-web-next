@@ -140,8 +140,12 @@
   color: black !important;
 }
 
-
-
-
-
-
+.sectionHeader {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  color: #007bff;
+  font-size: 1.1rem;
+  font-weight: 600;
+  margin: 16px 0;
+}

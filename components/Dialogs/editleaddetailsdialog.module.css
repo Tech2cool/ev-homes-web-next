@@ -1,0 +1,23 @@
+
+.inputWrapper {
+    display: flex;
+    align-items: center;
+    border: 1px solid #ccc;
+    border-radius: 6px;
+    padding: 8px;
+    background-color: #fff;
+  }
+  
+  .inputIcon {
+    color: #555;
+  }
+  
+  .inputField {
+    border: none;
+    outline: none;
+    flex: 1;
+    font-size: 1rem;
+    padding-left: 8px;
+    background: transparent;
+  }
+  
