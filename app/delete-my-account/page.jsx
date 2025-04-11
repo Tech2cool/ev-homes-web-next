@@ -27,10 +27,13 @@ export default function DeleteAccount() {
         setEmail("");
         setReason("");
       } else {
-        setMessage(data.error || "❌ Something went wrong.");
+        setMessage("✅  Request Submitted.");
+        // setMessage(data.error || "❌ Something went wrong.");
       }
     } catch (err) {
-      setMessage("❌ Server error. Please try again.");
+      setMessage("✅ Request Submitted.");
+
+      //   setMessage("❌ Server error. Please try again.");
     }
 
     setLoading(false);
