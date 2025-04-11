@@ -1,7 +1,13 @@
 "use client";
 import React, { useState, useRef, useEffect } from "react";
 import styles from "./leaddetailspage.module.css";
-import { FaTasks, FaBell, FaCalendarAlt, FaRocket ,FaRupeeSign  } from "react-icons/fa";
+import {
+  FaTasks,
+  FaBell,
+  FaCalendarAlt,
+  FaRocket,
+  FaRupeeSign,
+} from "react-icons/fa";
 import { IoIosAlarm } from "react-icons/io";
 import Sendnotificationdialog from "../Dialogs/Sendnotificationdialog";
 import Schedulemeetingdialog from "../Dialogs/Schedulemeetingdialog";
@@ -10,6 +16,8 @@ import Leadshistory from "../LeadsHistory/Leadshistory";
 import { BsThreeDotsVertical } from "react-icons/bs";
 import Assigndialog from "../Dialogs/Assigndialog";
 import useBodyScrollLock from "../useBodyScrollLock";
+import Setreminderdialog from "../Dialogs/Setreminderdialog";
+import Editleaddetailsdialog from "../Dialogs/Editleaddetailsdialog";
 
 const Leaddetailspage = () => {
   const [showDropdown, setShowDropdown] = useState(false);
@@ -19,6 +27,9 @@ const Leaddetailspage = () => {
     useState(false);
   const [showLeadRunningStatusDialog, setShowLeadRunningStatusDialog] =
     useState(false);
+  const [showEditLeadDetailsDialog, setShowEditLeadDetailsDialog] =
+    useState(false);
+  const [showAddReminderDialog, setShowAddReminderDialog] = useState(false);
 
   const dropdownRef = useRef(null);
 
@@ -26,7 +37,9 @@ const Leaddetailspage = () => {
     showDialog ||
     showNotificationDialog ||
     showScheduleMeetingDialog ||
-    showLeadRunningStatusDialog;
+    showLeadRunningStatusDialog ||
+    showEditLeadDetailsDialog ||
+    showAddReminderDialog;
   useBodyScrollLock(isAnyDialogOpen);
 
   useEffect(() => {
@@ -70,6 +83,20 @@ const Leaddetailspage = () => {
     setShowLeadRunningStatusDialog(false);
   };
 
+  const handleEditLeadDetailsClick = () => {
+    setShowEditLeadDetailsDialog(true);
+  };
+  const closeEditLeadDetailsDialog = () => {
+    setShowEditLeadDetailsDialog(false);
+  };
+
+  const handleAddReminderDialog = () => {
+    setShowAddReminderDialog(true);
+  };
+  const closeAddReminderDialog = () => {
+    setShowAddReminderDialog(false);
+  };
+
   return (
     <div className={styles.sectionContainer}>
       <div className={styles.leadHistoryContainer}>
@@ -84,6 +111,12 @@ const Leaddetailspage = () => {
 
             {showDropdown && (
               <div className={styles.dropdown}>
+                <div
+                  className={styles.dropdownItem}
+                  onClick={handleEditLeadDetailsClick}
+                >
+                  Edit
+                </div>
                 <div className={styles.dropdownItem}>
                   Status
                   <div className={styles.subMenu}>
@@ -104,6 +137,9 @@ const Leaddetailspage = () => {
               </div>
             )}
           </div>
+          {showEditLeadDetailsDialog && (
+            <Editleaddetailsdialog onClose={closeEditLeadDetailsDialog} />
+          )}
 
           <div className={styles.leftSection}>
             <div className={styles.avatar}>D</div>
@@ -167,7 +203,7 @@ const Leaddetailspage = () => {
 
         <Leadshistory />
       </div>
-      {/* four Buttons  */}
+      {/*  Buttons  */}
       <div className={styles.buttonColumn}>
         <button className={styles.actionButton} onClick={handleAssignClick}>
           <FaTasks className={styles.icon} />
@@ -208,26 +244,26 @@ const Leaddetailspage = () => {
           <Leadrunningstatusdialog onClose={closeLeadRunningStatusDialog} />
         )}
 
-        <button
+        {/* <button
           className={styles.actionButton}
           onClick={handleLeadRunningStatusClick}
         >
-          <FaRupeeSign  className={styles.icon} />
+          <FaRupeeSign className={styles.icon} />
           Estimate Generator
         </button>
         {showLeadRunningStatusDialog && (
           <Leadrunningstatusdialog onClose={closeLeadRunningStatusDialog} />
-        )}
+        )} */}
 
         <button
           className={styles.actionButton}
-          onClick={handleLeadRunningStatusClick}
+          onClick={handleAddReminderDialog}
         >
-          <IoIosAlarm  className={styles.icon} />
+          <IoIosAlarm className={styles.icon} />
           Add Reminder
         </button>
-        {showLeadRunningStatusDialog && (
-          <Leadrunningstatusdialog onClose={closeLeadRunningStatusDialog} />
+        {showAddReminderDialog && (
+          <Setreminderdialog onClose={closeAddReminderDialog} />
         )}
       </div>
     </div>
