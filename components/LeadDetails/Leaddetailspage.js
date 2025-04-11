@@ -244,16 +244,10 @@ const Leaddetailspage = () => {
           <Leadrunningstatusdialog onClose={closeLeadRunningStatusDialog} />
         )}
 
-        {/* <button
-          className={styles.actionButton}
-          onClick={handleLeadRunningStatusClick}
-        >
+        <button className={styles.actionButton}>
           <FaRupeeSign className={styles.icon} />
           Estimate Generator
         </button>
-        {showLeadRunningStatusDialog && (
-          <Leadrunningstatusdialog onClose={closeLeadRunningStatusDialog} />
-        )} */}
 
         <button
           className={styles.actionButton}
