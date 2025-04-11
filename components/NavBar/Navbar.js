@@ -59,10 +59,10 @@ const Navbar = () => {
               Tasks
             </li>
             <li
-              className={pathname === "/visits" ? styles.active : ""}
-              onClick={() => navigateTo("/visits")}
+              className={pathname === "/follow-up" ? styles.active : ""}
+              onClick={() => navigateTo("/follow-up")}
             >
-              Visits
+              Follow Up
             </li>
             <li
               className={pathname === "/attendance" ? styles.active : ""}

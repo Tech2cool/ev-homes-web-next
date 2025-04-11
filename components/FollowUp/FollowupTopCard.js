@@ -1,11 +1,11 @@
 "use client";
 import React, { useState, useRef, useEffect } from "react";
 import { FiSearch, FiMenu, FiX } from "react-icons/fi";
-import styles from "./leadsdashboardcards.module.css";
+import styles from "../LeadsDashboardCards/leadsdashboardcards.module.css";
 import { FilterCard } from "../FilterCard/Filtercard";
 import useBodyScrollLock from "../useBodyScrollLock";
 
-const Leaddashboardcards = () => {
+const FollowupTopCard = () => {
   const [menuOpen, setMenuOpen] = useState(false);
   const [showFilter, setShowFilter] = useState(false);
   const containerRef = useRef(null);
@@ -55,8 +55,8 @@ const Leaddashboardcards = () => {
             <div className={styles.menuItem} onClick={toggleFilter}>
               Filter
             </div>
-         
-            <div className={styles.menuItem}>Multiselect</div>
+            <div className={styles.menuItem}>Reminders</div>
+            
           </div>
         )}
       </div>
@@ -73,4 +73,4 @@ const Leaddashboardcards = () => {
   );
 };
 
-export default Leaddashboardcards;
+export default FollowupTopCard;
