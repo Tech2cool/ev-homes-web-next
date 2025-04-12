@@ -95,3 +95,62 @@
   color: #1a1a1a;
   box-shadow: 0 0 8px rgba(244, 162, 97, 0.5);
 }
+
+.hamburger {
+  display: none;
+  font-size: 24px;
+  color: white;
+  cursor: pointer;
+  margin-left: 15px;
+}
+
+.mobileMenu {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 220px;
+  height: 100vh;
+  background-color: #333;
+  border-radius: 0px 30px 30px 0px;
+  padding-top: 40px;
+  z-index: 1000;
+  transition: transform 0.3s ease;
+  box-shadow: 2px 0 8px rgba(0, 0, 0, 0.4);
+}
+
+.mobileNavLinks {
+  list-style: none;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  padding-left: 20px;
+  color: white;
+  font-size: 18px;
+}
+
+.mobileNavLinks li {
+  cursor: pointer;
+  transition: color 0.3s;
+}
+
+.mobileNavLinks li:hover {
+  color: #f4a261;
+}
+
+@media screen and (max-width: 768px) {
+  .navLinks {
+    display: none;
+  }
+
+ .navbar{
+  height:5vh;
+ }
+  .hamburger {
+    display: block;
+  }
+
+  .logo {
+    display: none;
+  }
+}
