@@ -2,6 +2,10 @@
 import React, { useEffect, useRef, useState } from "react";
 import styles from "./navbar.module.css";
 import { FaBell, FaUserCircle, FaBars } from "react-icons/fa";
+import {
+  BsLayoutSidebarInset,
+  BsLayoutSidebarInsetReverse,
+} from "react-icons/bs";
 import { usePathname, useRouter } from "next/navigation";
 import Image from "next/image";
 import Profiledialog from "../ProfilePage/Profiledialog";
@@ -15,6 +19,15 @@ const Navbar = () => {
 
   const [isProfileOpen, setIsProfileOpen] = useState(false);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
+  const [isAnimatingOut, setIsAnimatingOut] = useState(false);
+
+  const handleClose = () => {
+    setIsAnimatingOut(true);
+    setTimeout(() => {
+      setIsAnimatingOut(false);
+      setIsMobileMenuOpen(false);
+    }, 400);
+  };
 
   const customNavStyle = {
     ...(pathname === "/" ? { backgroundColor: "#3333336d" } : {}),
@@ -96,30 +109,55 @@ const Navbar = () => {
     );
   };
 
-   useEffect(() => {
-      const handleClickOutside = (event) => {
-        if(isMobileMenuOpen && mobileMenuRef.current && !mobileMenuRef.current.contains(event.target)) {
-          setIsMobileMenuOpen(false);
-        }
-      };
-  
-      document.addEventListener("mousedown", handleClickOutside);
-      return () => {
-        document.removeEventListener("mousedown", handleClickOutside);
-      };
-    }, [isMobileMenuOpen]);
+  useEffect(() => {
+    const handleClickOutside = (event) => {
+      if (
+        isMobileMenuOpen &&
+        mobileMenuRef.current &&
+        !mobileMenuRef.current.contains(event.target)
+      ) {
+        setIsMobileMenuOpen(false);
+      }
+    };
+
+    document.addEventListener("mousedown", handleClickOutside);
+    return () => {
+      document.removeEventListener("mousedown", handleClickOutside);
+    };
+  }, [isMobileMenuOpen]);
 
   return (
     <nav className={styles.navbar} style={customNavStyle}>
       <div
         className={styles.hamburger}
-        onClick={() => setIsMobileMenuOpen(true)}
+        onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
       >
-        <FaBars />
+        {isMobileMenuOpen ? (
+          <BsLayoutSidebarInset />
+        ) : (
+          <BsLayoutSidebarInsetReverse />
+        )}
       </div>
 
       {isMobileMenuOpen && (
-        <div className={styles.mobileMenu} ref={mobileMenuRef}>
+        <div
+          className={`${styles.mobileMenu} ${
+            isAnimatingOut ? styles.slideOut : styles.slideIn
+          }`}
+          ref={mobileMenuRef}
+        >
+          <div className={styles.closeIcon} onClick={handleClose}>
+            <BsLayoutSidebarInset />
+          </div>
+          <div className={styles.logoMobile} onClick={() => navigateTo("/")}>
+            <Image
+              src="/images/evhomeslogo.png"
+              alt="EV Homes Logo"
+              width={150}
+              height={30}
+            />
+          </div>
+
           <ul className={styles.mobileNavLinks}>
             <li
               onClick={() => {
