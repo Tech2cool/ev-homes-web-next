@@ -34,10 +34,10 @@ const Piegraphcard = ({Healine, percentage, status, lableone, labletwo,valueone,
               <circle cx="50%" cy="50%"  r="28%" fill="#333" />
               <text x="50%"    y="32%"   textAnchor="middle"  dominantBaseline="middle"    fill="white" fontSize={14}  >
                <tspan fontSize={10}>{status} </tspan>
-               <tspan  x="50%" dy="1.0em"  fontSize={20} fill="#ccc"  >{percentage}</tspan>
+               <tspan  x="50%" dy="1.0em"  fontSize={20} fill={colors[1]}  >{percentage}</tspan>
                <tspan dy="1.6em" fill="grey" fontSize={12}   x="50%">Total</tspan>
-               <tspan dy="2.0em" fill="#4F959D" fontSize={10}   x="50%">{lableone} : {valueone}</tspan>
-               <tspan dy="1.2em" fill="#98D2C0" fontSize={10}   x="50%">{labletwo} : {valuetwo}</tspan>
+               <tspan dy="2.0em" fill={colors[0]} fontSize={10}   x="50%">{lableone} : {valueone}</tspan>
+               <tspan dy="1.2em" fill={colors[1]} fontSize={10}   x="50%">{labletwo} : {valuetwo}</tspan>
                
            
             </text>
