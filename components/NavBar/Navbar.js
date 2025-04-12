@@ -1,7 +1,7 @@
 "use client";
-import React, { useState } from "react";
+import React, { useEffect, useRef, useState } from "react";
 import styles from "./navbar.module.css";
-import { FaBell, FaUserCircle } from "react-icons/fa";
+import { FaBell, FaUserCircle, FaBars } from "react-icons/fa";
 import { usePathname, useRouter } from "next/navigation";
 import Image from "next/image";
 import Profiledialog from "../ProfilePage/Profiledialog";
@@ -11,8 +11,11 @@ const Navbar = () => {
   const pathname = usePathname();
   const router = useRouter();
   const { user } = useUser();
+  const mobileMenuRef = useRef(null);
 
   const [isProfileOpen, setIsProfileOpen] = useState(false);
+  const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
+
   const customNavStyle = {
     ...(pathname === "/" ? { backgroundColor: "#3333336d" } : {}),
   };
@@ -20,8 +23,117 @@ const Navbar = () => {
     router.push(path);
   };
 
+  const renderNavLinks = (handleClick = () => {}) => {
+    return user ? (
+      <>
+        <li
+          className={pathname === "/dashboard" ? styles.active : ""}
+          onClick={() => {
+            navigateTo("/dashboard");
+            handleClick();
+          }}
+        >
+          Dashboard
+        </li>
+        <li
+          className={pathname === "/leads" ? styles.active : ""}
+          onClick={() => {
+            navigateTo("/leads");
+            handleClick();
+          }}
+        >
+          Leads
+        </li>
+        <li
+          className={pathname === "/tasks" ? styles.active : ""}
+          onClick={() => {
+            navigateTo("/tasks");
+            handleClick();
+          }}
+        >
+          Tasks
+        </li>
+        <li
+          className={pathname === "/follow-up" ? styles.active : ""}
+          onClick={() => {
+            navigateTo("/follow-up");
+            handleClick();
+          }}
+        >
+          Follow Up
+        </li>
+        <li
+          className={pathname === "/attendance" ? styles.active : ""}
+          onClick={() => {
+            navigateTo("/attendance");
+            handleClick();
+          }}
+        >
+          Attendance
+        </li>
+      </>
+    ) : (
+      <>
+        <li
+          className={pathname === "/projects" ? styles.active : ""}
+          onClick={() => {
+            navigateTo("/projects");
+            handleClick();
+          }}
+        >
+          Projects
+        </li>
+        <li
+          className={pathname === "/contact-us" ? styles.active : ""}
+          onClick={() => {
+            navigateTo("/contact-us");
+            handleClick();
+          }}
+        >
+          About Us
+        </li>
+      </>
+    );
+  };
+
+   useEffect(() => {
+      const handleClickOutside = (event) => {
+        if(isMobileMenuOpen && mobileMenuRef.current && !mobileMenuRef.current.contains(event.target)) {
+          setIsMobileMenuOpen(false);
+        }
+      };
+  
+      document.addEventListener("mousedown", handleClickOutside);
+      return () => {
+        document.removeEventListener("mousedown", handleClickOutside);
+      };
+    }, [isMobileMenuOpen]);
+
   return (
     <nav className={styles.navbar} style={customNavStyle}>
+      <div
+        className={styles.hamburger}
+        onClick={() => setIsMobileMenuOpen(true)}
+      >
+        <FaBars />
+      </div>
+
+      {isMobileMenuOpen && (
+        <div className={styles.mobileMenu} ref={mobileMenuRef}>
+          <ul className={styles.mobileNavLinks}>
+            <li
+              onClick={() => {
+                navigateTo("/");
+                setIsMobileMenuOpen(false);
+              }}
+            >
+              Home
+            </li>
+            {renderNavLinks(() => setIsMobileMenuOpen(false))}
+          </ul>
+        </div>
+      )}
+
       <div className={styles.logo} onClick={() => navigateTo("/")}>
         <Image
           src="/images/evhomeslogo.png"
@@ -30,6 +142,7 @@ const Navbar = () => {
           height={50}
         />
       </div>
+
       <ul className={styles.navLinks}>
         <li
           className={pathname === "/" ? styles.active : ""}
@@ -37,63 +150,12 @@ const Navbar = () => {
         >
           Home
         </li>
-        {user ? (
-          <>
-            <li
-              className={pathname === "/dashboard" ? styles.active : ""}
-              onClick={() => navigateTo("/dashboard")}
-            >
-              Dashboard
-            </li>
-            <li
-              className={pathname === "/leads" ? styles.active : ""}
-              onClick={() => navigateTo("/leads")}
-            >
-              Leads
-            </li>
-
-            <li
-              className={pathname === "/tasks" ? styles.active : ""}
-              onClick={() => navigateTo("/tasks")}
-            >
-              Tasks
-            </li>
-            <li
-              className={pathname === "/follow-up" ? styles.active : ""}
-              onClick={() => navigateTo("/follow-up")}
-            >
-              Follow Up
-            </li>
-            <li
-              className={pathname === "/attendance" ? styles.active : ""}
-              onClick={() => navigateTo("/attendance")}
-            >
-              Attendance
-            </li>
-          </>
-        ) : (
-          <>
-            <li
-              className={pathname === "/projects" ? styles.active : ""}
-              onClick={() => navigateTo("/projects")}
-            >
-              Projects
-            </li>
-            <li
-              className={pathname === "/contact-us" ? styles.active : ""}
-              onClick={() => navigateTo("/contact-us")}
-            >
-              About Us
-            </li>
-          </>
-        )}
+        {renderNavLinks()}
       </ul>
+
       <div className={styles.icons}>
         {user ? (
           <>
-            {/* <button className={styles.moreButton}>
-              More<span className={styles.plus}>+</span>
-            </button> */}
             <FaBell className={styles.icon} />
             <FaUserCircle
               className={styles.icon}
@@ -101,14 +163,12 @@ const Navbar = () => {
             />
           </>
         ) : (
-          <>
-            <button
-              className={styles.loginBtn}
-              onClick={() => navigateTo("/login")}
-            >
-              Login
-            </button>
-          </>
+          <button
+            className={styles.loginBtn}
+            onClick={() => navigateTo("/login")}
+          >
+            Login
+          </button>
         )}
       </div>
 
@@ -119,5 +179,4 @@ const Navbar = () => {
     </nav>
   );
 };
-
 export default Navbar;

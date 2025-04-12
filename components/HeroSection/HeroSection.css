@@ -80,3 +80,42 @@
 .carousel-button:hover {
   background: rgba(0, 0, 0, 0.7);
 }
+
+@media screen and (max-width: 768px) {
+  .hero-section {
+    background-position: center top;
+    height: 100vh;
+    padding: 1rem;
+  }
+
+  .hero-content {
+    width: 85%;
+    bottom: 15px;
+    padding: 10px;
+    left: 50%;
+    transform: translateX(-50%);
+    text-align: center;
+  }
+
+  .hero-title {
+    font-size: 1.5rem;
+    margin-bottom: 5px;
+  }
+
+  .hero-description {
+    font-size: 0.8rem;
+    margin-bottom: 20px;
+  }
+
+  .hero-button {
+    padding: 5px 10px;
+  }
+
+  .carousel-button.left {
+    left: 40px;
+  }
+  
+  .carousel-button.right {
+    right: 40px;
+  }
+}

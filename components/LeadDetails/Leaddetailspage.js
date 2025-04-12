@@ -18,6 +18,7 @@ import Assigndialog from "../Dialogs/Assigndialog";
 import useBodyScrollLock from "../useBodyScrollLock";
 import Setreminderdialog from "../Dialogs/Setreminderdialog";
 import Editleaddetailsdialog from "../Dialogs/Editleaddetailsdialog";
+import { useRouter } from "next/navigation";
 
 const Leaddetailspage = () => {
   const [showDropdown, setShowDropdown] = useState(false);
@@ -30,6 +31,8 @@ const Leaddetailspage = () => {
   const [showEditLeadDetailsDialog, setShowEditLeadDetailsDialog] =
     useState(false);
   const [showAddReminderDialog, setShowAddReminderDialog] = useState(false);
+
+const router = useRouter();
 
   const dropdownRef = useRef(null);
 
@@ -244,7 +247,7 @@ const Leaddetailspage = () => {
           <Leadrunningstatusdialog onClose={closeLeadRunningStatusDialog} />
         )}
 
-        <button className={styles.actionButton}>
+        <button className={styles.actionButton} onClick={()=>router.push("./leads/estimate-generator")}>
           <FaRupeeSign className={styles.icon} />
           Estimate Generator
         </button>

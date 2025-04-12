@@ -53,6 +53,7 @@ const HeroSection = () => {
         }") no-repeat center center/cover`,
         position: "relative",
         transition: "background 0.5s ease-in-out",
+        
       }}
     >
       <div className="hero-content">
