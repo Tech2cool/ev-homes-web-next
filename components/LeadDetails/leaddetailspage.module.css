@@ -226,7 +226,7 @@
   justify-content: space-between;
   gap: 16px;
 }
-@media screen and (max-width: 616px) {
+@media screen and (max-width: 615px) {
   .sectionContainer,
   .leadHistoryContainer,
   .detailsContainer,
@@ -304,7 +304,6 @@
   }
 
   .options {
-    
     font-size: 15px;
     width: 8vw;
     height: 5vh;
@@ -313,4 +312,56 @@
   .icon {
     font-size: 5vw;
   }
+}
+
+@media screen and (max-width: 1024px) and (min-width: 616px) {
+  .detailsContainer {
+    width: 55vw;
+    max-height: 100vh;
+    margin: 0vw;
+    padding: 0.5vw;
+  }
+
+  .name {
+    font-size: 1.4vw;
+  }
+
+  .phone {
+    font-size: 1.2vw;
+  }
+  .label {
+    font-size: 1.3vw;
+  }
+
+  .value {
+    font-size: 1.2vw;
+  }
+
+  .options {
+    top: 1vh;
+    right: 1vh;
+    font-size: 12px;
+    width: 3vw;
+    height: 4vh;
+  }
+
+  /* .buttonColumn {
+    display: flex;
+    flex-direction: column;
+    position: absolute;
+    right: 10;
+    justify-content: flex-start;
+    gap: 15px;
+    margin-top: 15px;
+  } */
+  
+  .actionButton {
+    width: 12vw;
+    height: 10vh;
+    padding: 5px;
+    font-size: 1.3vw;
+    text-align: center;
+    justify-content: center;
+  }
+  
 }
