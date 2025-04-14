@@ -29,31 +29,33 @@
 }
 
 .clientIcon {
-  width: 40px;
-  height: 40px;
+  /* width: 40px;
+  height: 40px; */
+  width:3vw;
+  height:3vw;
   border-radius: 50%;
   background-color: #007bff;
   display: flex;
   align-items: center;
   justify-content: center;
-  font-size: 18px;
+  font-size: 1.2rem;
   font-weight: bold;
   color: white;
 }
 
 .clientDetails h4 {
   margin: 0;
-  font-size: 15px;
+  font-size: 1vw;
   color: white;
 }
 
 .phone {
-  font-size: 14px;
+  font-size: 1vw;
   color: #bbb;
 }
 
 .leadMeta p {
-  font-size: 14px;
+  font-size: 1.1vw;
   color: white;
   margin: 5px 0;
 }
@@ -61,8 +63,67 @@
 .clientStatus {
   padding: 5px 10px;
   border-radius: 15px;
-  font-size: 12px;
+  font-size: 0.5vw;
   background: rgb(244, 192, 96);
   color: white;
   display: inline-block;
+}
+
+@media screen and (max-width: 615px) {
+  .clientIcon {
+    width: 7vw;
+    height: 7vw;
+    font-size: 2.5vh;
+  }
+
+  .clientDetails h4 {
+    font-size: 1rem;
+  }
+
+  .phone {
+    font-size: 14px;
+  }
+
+  .leadMeta p {
+    font-size: 13px;
+  }
+}
+
+@media screen and (max-width: 1024px) and (min-width: 616px) {
+  .leadListContainer {
+    padding: 10px;
+  }
+
+  .leadCard {
+    padding: 10px;
+  }
+
+  .leadInfo {
+    gap: 5px;
+    margin-bottom: 5px;
+  }
+
+  .clientIcon {
+    width: 4vw;
+    height: 4vw;
+    font-size: 2vh;
+  }
+
+  .clientDetails h4 {
+    font-size: 1.5vh;
+  }
+
+  .phone {
+    font-size: 1.5vh;
+  }
+
+  .leadMeta p {
+    font-size: 1.5vh;
+    margin: 1px 0;
+  }
+
+  .clientStatus {
+    padding: 2.5px 5px;
+    font-size: 1.5vh;
+  }
 }

@@ -1,17 +1,14 @@
 .detailsContainer {
-  width: 800px;
-  /* border-radius: 20px; */
-  max-height: 250px;
+  width: 60vw;
+  max-height: 100vh;
   background-color: #1a1a1aa8;
-  margin: 10px;
-  padding: 10px;
+  margin: 1vw;
+  padding: 1vw;
   display: flex;
   color: white;
-  font-size: 13px;
-  font-weight: 400;
+  flex-direction: row;
+  justify-content: space-between;
   position: relative;
-
-  /* clip-path: path("M 0 20 Q 0 0 20 0 H 620 Q 660 0 690 20 Q 750 50 770 90 Q 790 130 790 160 Q 790 180 770 200 Q 750 220 700 230 Q 690 230 620 230 H 20 Q 0 230 0 210 Z"); */
 }
 
 .leftSection {
@@ -26,10 +23,10 @@
   background-color: #00e1ff;
   color: black;
   font-weight: bold;
-  width: 60px;
-  height: 60px;
+  width: 5vw;
+  height: 5vw;
   border-radius: 50%;
-  font-size: 24px;
+  font-size: 2vw;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -39,11 +36,11 @@
 .name {
   font-weight: bold;
   margin-bottom: 5px;
-  font-size: 14px;
+  font-size: 1.2vw;
 }
 
 .phone {
-  font-size: 14px;
+  font-size: 1vw;
   color: #ccc;
 }
 
@@ -61,13 +58,13 @@
 .rightSection p {
   margin: 2px 0;
   line-height: 1.4;
-  font-size: 13px;
+  font-size: 1vw;
   font-weight: 400;
 }
 
 .label {
   color: #bbbbbb;
-  font-size: 15px;
+  font-size: 1vw;
   font-weight: 700;
   margin-right: 5px;
 }
@@ -95,6 +92,8 @@
 .buttonColumn {
   display: flex;
   flex-direction: column;
+  position: absolute;
+  right: 10;
   justify-content: flex-start;
   gap: 15px;
   margin-top: 15px;
@@ -113,8 +112,8 @@
   cursor: pointer;
   transition: all 0.3s ease;
   box-shadow: 0 0 5px #00e1ff44;
-  width: 130px;
-  height: 69px;
+  width: 10vw;
+  height: 10vh;
   border: 1.5px solid #2a2a2a;
 }
 
@@ -127,7 +126,7 @@
 
 .icon {
   margin-right: 8px;
-  font-size: 25px;
+  font-size: 1.5vw;
   color: #00e1ff;
 }
 
@@ -219,4 +218,99 @@
 
 .dropdownItem:hover .subMenu {
   display: block;
+}
+
+.topContent {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  gap: 16px;
+}
+@media screen and (max-width: 616px) {
+  .sectionContainer,
+  .leadHistoryContainer,
+  .detailsContainer,
+  .leftSection,
+  .middleSection,
+  .rightSection {
+    width: 100%;
+    max-width: 100%;
+    box-sizing: border-box;
+    height: fit-content;
+  }
+
+  .detailsContainer {
+    margin-right: 10px;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 13px;
+    padding: 0 16px;
+    padding-bottom: 10px;
+  }
+
+  .leftSection {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+  }
+
+  .name {
+    font-size: 3vw;
+    word-break: break-word;
+  }
+
+  .phone {
+    font-size: 3vw;
+  }
+
+  .label {
+    font-size: 4vw;
+  }
+
+  .value {
+    font-size: 3.5vw;
+  }
+
+  .sectionContainer {
+    padding-left: 16px;
+    padding-right: 16px;
+    box-sizing: border-box;
+  }
+  .buttonColumn {
+    position: static;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 10px;
+    margin-top: 1rem;
+    margin-bottom: 1rem;
+  }
+
+  .actionButton {
+    width: 27vw;
+    height: 15vh;
+    padding: 5px;
+    font-size: 3.5vw;
+    text-align: center;
+    justify-content: center;
+  }
+
+  .avatar {
+    width: 10vw;
+    height: 10vw;
+    font-size: 4vw;
+  }
+
+  .options {
+    
+    font-size: 15px;
+    width: 8vw;
+    height: 5vh;
+  }
+
+  .icon {
+    font-size: 5vw;
+  }
 }

@@ -32,7 +32,7 @@ const Leaddetailspage = () => {
     useState(false);
   const [showAddReminderDialog, setShowAddReminderDialog] = useState(false);
 
-const router = useRouter();
+  const router = useRouter();
 
   const dropdownRef = useRef(null);
 
@@ -203,65 +203,67 @@ const router = useRouter();
             <div className={styles.options}></div>
           </div>
         </div>
+        {/*  Buttons  */}
+        <div className={styles.buttonColumn}>
+          <button className={styles.actionButton} onClick={handleAssignClick}>
+            <FaTasks className={styles.icon} />
+            Assign Task
+          </button>
+          {showDialog && <Assigndialog onClose={closeDialog} />}
 
+          <button
+            className={styles.actionButton}
+            onClick={handleNotificationClick}
+          >
+            <FaBell className={styles.icon} />
+            Send Notification
+          </button>
+          {showNotificationDialog && (
+            <Sendnotificationdialog onClose={closeNotificationDialog} />
+          )}
+
+          <button
+            className={styles.actionButton}
+            onClick={handleScheduleMeetingClick}
+          >
+            <FaCalendarAlt className={styles.icon} />
+            Schedule Meeting
+          </button>
+          {showScheduleMeetingDialog && (
+            <Schedulemeetingdialog onClose={closeScheduleMeeetingDialog} />
+          )}
+
+          <button
+            className={styles.actionButton}
+            onClick={handleLeadRunningStatusClick}
+          >
+            <FaRocket className={styles.icon} />
+            Lead Running Status
+          </button>
+          {showLeadRunningStatusDialog && (
+            <Leadrunningstatusdialog onClose={closeLeadRunningStatusDialog} />
+          )}
+
+          <button
+            className={styles.actionButton}
+            onClick={() => router.push("./leads/estimate-generator")}
+          >
+            <FaRupeeSign className={styles.icon} />
+            Estimate Generator
+          </button>
+
+          <button
+            className={styles.actionButton}
+            onClick={handleAddReminderDialog}
+          >
+            <IoIosAlarm className={styles.icon} />
+            Add Reminder
+          </button>
+          {showAddReminderDialog && (
+            <Setreminderdialog onClose={closeAddReminderDialog} />
+          )}
+        </div>
         <Leadshistory />
-      </div>
-      {/*  Buttons  */}
-      <div className={styles.buttonColumn}>
-        <button className={styles.actionButton} onClick={handleAssignClick}>
-          <FaTasks className={styles.icon} />
-          Assign Task
-        </button>
-        {showDialog && <Assigndialog onClose={closeDialog} />}
-
-        <button
-          className={styles.actionButton}
-          onClick={handleNotificationClick}
-        >
-          <FaBell className={styles.icon} />
-          Send Notification
-        </button>
-        {showNotificationDialog && (
-          <Sendnotificationdialog onClose={closeNotificationDialog} />
-        )}
-
-        <button
-          className={styles.actionButton}
-          onClick={handleScheduleMeetingClick}
-        >
-          <FaCalendarAlt className={styles.icon} />
-          Schedule Meeting
-        </button>
-        {showScheduleMeetingDialog && (
-          <Schedulemeetingdialog onClose={closeScheduleMeeetingDialog} />
-        )}
-
-        <button
-          className={styles.actionButton}
-          onClick={handleLeadRunningStatusClick}
-        >
-          <FaRocket className={styles.icon} />
-          Lead Running Status
-        </button>
-        {showLeadRunningStatusDialog && (
-          <Leadrunningstatusdialog onClose={closeLeadRunningStatusDialog} />
-        )}
-
-        <button className={styles.actionButton} onClick={()=>router.push("./leads/estimate-generator")}>
-          <FaRupeeSign className={styles.icon} />
-          Estimate Generator
-        </button>
-
-        <button
-          className={styles.actionButton}
-          onClick={handleAddReminderDialog}
-        >
-          <IoIosAlarm className={styles.icon} />
-          Add Reminder
-        </button>
-        {showAddReminderDialog && (
-          <Setreminderdialog onClose={closeAddReminderDialog} />
-        )}
       </div>
     </div>
   );

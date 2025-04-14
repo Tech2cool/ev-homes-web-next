@@ -1,9 +1,9 @@
 import React from "react";
 import styles from "./leadlistpage.module.css";
 
-const LeadCard = ({ lead }) => {
+const LeadCard = ({ lead , onClick}) => {
   return (
-    <div className={styles.leadCard}>
+    <div className={styles.leadCard} onClick={()=>{onClick(lead.id)}}>
       <div className={styles.leadInfo}>
         <div className={styles.clientIcon}>
           {lead.clientName.charAt(0).toUpperCase()}
@@ -22,30 +22,30 @@ const LeadCard = ({ lead }) => {
   );
 };
 
-const Leadlistpage = () => {
+const Leadlistpage = ({onLeadClick}) => {
   const leads = [
-    {
+    {id:"1",
       clientName: "Dummy Dummy",
       clientPhone: "123456789",
       assignDate: "04-04-004",
       visitDeadline: "04-04-004",
       clientStatus: "Visit Pending",
     },
-    {
+    {id:"2",
       clientName: "Dummy Dummy",
       clientPhone: "123456789",
       assignDate: "04-04-004",
       visitDeadline: "04-04-004",
       clientStatus: "Visit Pending",
     },
-    {
+    {id:"3",
       clientName: "Dummy Dummy",
       clientPhone: "123456789",
       assignDate: "04-04-004",
       visitDeadline: "04-04-004",
       clientStatus: "Visit Pending",
     },
-    {
+    {id:"4",
       clientName: "Dummy Dummy",
       clientPhone: "123456789",
       assignDate: "04-04-004",
@@ -57,7 +57,7 @@ const Leadlistpage = () => {
   return (
     <div className={styles.leadListContainer}>
       {leads.map((lead, index) => (
-        <LeadCard key={index} lead={lead} />
+        <LeadCard key={index} lead={lead} onClick={onLeadClick}/>
       ))}
     </div>
   );

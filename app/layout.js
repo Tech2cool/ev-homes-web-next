@@ -3,6 +3,7 @@ import Navbar from "@/components/NavBar/Navbar";
 import "./globals.css";
 import { usePathname } from "next/navigation";
 import { UserProvider } from "@/context/UserContext";
+import { useIsMobile } from "@/hooks/useIsMobile";
 
 // export const metadata = {
 //   title: "EvHomes",
@@ -11,12 +12,15 @@ import { UserProvider } from "@/context/UserContext";
 
 export default function RootLayout({ children }) {
   const pathname = usePathname();
+  const isMobile = useIsMobile();
+
+  const paddingTop = pathname === "/" ? 0 :isMobile ? 30 : 60;
 
   return (
     <html lang="en">
       <body
         className="container"
-        style={{ paddingTop: pathname === "/" ? 0 : 60 }}
+        style={{ paddingTop }}
       >
         <UserProvider>
           <Navbar />

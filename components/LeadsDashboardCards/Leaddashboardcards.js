@@ -41,13 +41,13 @@ const Leaddashboardcards = () => {
           className={styles.searchInput}
         />
         <button className={styles.searchButton}>
-          <FiSearch size={20} />
+          <FiSearch size={18} />
         </button>
       </div>
 
       <div className={styles.menuWrapper}>
         <div className={styles.menuIcon} onClick={toggleMenu}>
-          {menuOpen ? <FiX size={20} /> : <FiMenu size={20} />}
+          {menuOpen ? <FiX size={18} /> : <FiMenu size={18} />}
         </div>
 
         {menuOpen && (
@@ -55,7 +55,7 @@ const Leaddashboardcards = () => {
             <div className={styles.menuItem} onClick={toggleFilter}>
               Filter
             </div>
-         
+
             <div className={styles.menuItem}>Multiselect</div>
           </div>
         )}

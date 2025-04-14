@@ -15,18 +15,18 @@
   margin-bottom: 2rem;
   color: #ffffff;
   margin-bottom: 5px;
-    margin-top: 10px;
+  margin-top: 10px;
 }
 
 .heading2 {
-    text-align: right;
-    font-size: 15px;
-    font-weight: 400;
-    margin-bottom: 5px;
-    margin-top: 10px;
-    color: #ffffff;
-    margin-right: 20px;
-  }
+  text-align: right;
+  font-size: 15px;
+  font-weight: 400;
+  margin-bottom: 5px;
+  margin-top: 10px;
+  color: #ffffff;
+  margin-right: 20px;
+}
 
 .timeline {
   position: relative;
@@ -89,47 +89,84 @@
 }
 
 .twoContainers {
-    display: flex;
-    gap: 20px; 
-    justify-content: space-between;
-    flex-wrap: wrap; 
+  display: flex;
+  gap: 20px;
+  justify-content: space-between;
+  flex-wrap: wrap;
+}
+
+.timelineRight {
+  position: relative;
+  margin-right: 20px;
+  padding-right: 20px;
+  border-right: 2px solid #ffffff33;
+}
+
+.timelineRightItem {
+  position: relative;
+  margin-bottom: 10px;
+  display: flex;
+  flex-direction: row-reverse;
+  align-items: flex-start;
+}
+
+.timelineDotRight {
+  position: absolute;
+  right: -30px;
+  top: 5px;
+  width: 20px;
+  height: 20px;
+  background-color: #ffffff;
+  border-radius: 50%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.timelineCardRight {
+  background-color: rgba(255, 255, 255, 0.1);
+  border: 2px solid rgba(0, 0, 0, 0.3);
+  border-radius: 12px;
+  padding: 10px 10px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+  width: 320px;
+}
+
+@media screen and (max-width: 615px) {
+  .twoContainers {
+    flex-direction: column;
+    gap: 10px;
   }
-  
+
+  .container {
+    max-height: none;
+    overflow-y: visible;
+    height: auto;
+  }
+
+  .timelineCard,
+  .timelineCardRight {
+    width: 100%;
+  }
+
+  .heading2 {
+    text-align: left;
+    font-size: 2.5vh;
+  }
 
   .timelineRight {
     position: relative;
-    margin-right: 20px;
-    padding-right: 20px;
-    border-right: 2px solid #ffffff33;
+    margin-left: 20px;
+    padding-left: 20px;
+    border-left: 2px solid #ffffff33;
+    border-right: none;
   }
-  
-  .timelineRightItem {
-    position: relative;
-    margin-bottom: 10px;
-    display: flex;
-    flex-direction: row-reverse;
-    align-items: flex-start;
-  }
-  
+
   .timelineDotRight {
     position: absolute;
-    right: -30px;
+    left: -30px;
     top: 5px;
     width: 20px;
     height: 20px;
-    background-color: #ffffff;
-    border-radius: 50%;
-    display: flex;
-    justify-content: center;
-    align-items: center;
   }
-
-  .timelineCardRight {
-    background-color: rgba(255, 255, 255, 0.1);
-    border: 2px solid rgba(0, 0, 0, 0.3);
-    border-radius: 12px;
-    padding: 10px 10px;
-    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
-    width: 320px;
-  }
-  
+}
