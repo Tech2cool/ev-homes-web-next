@@ -102,7 +102,7 @@
 
 .hamburger {
   display: none;
-  font-size: 25px;
+  font-size: 17px;
   color: white;
   cursor: pointer;
   margin-left: 5px;
@@ -112,7 +112,7 @@
 
 .closeIcon {
   margin-left: 11rem;
-  font-size: 26px;
+  font-size: 18px;
   color: white;
   cursor: pointer;
 
@@ -160,13 +160,13 @@
   color: #f4a261;
 }
 
-@media screen and (max-width: 426px) {
+@media screen and (max-width: 615px) {
   .navLinks {
     display: none;
   }
 
   .navbar {
-    height: 4vh;
+    height: 2vh;
   }
   .hamburger {
     display: block;
@@ -179,11 +179,16 @@
   .logoMobile {
     padding: 10px;
   }
+
+  .icon{
+    font-size: 15px;
+  }
+  
 }
 
-@media screen and (max-width: 790px) {
+@media screen and (max-width: 1024px) and (min-width: 616px){
   .navLinks {
-    gap: 1vw;
+    gap: 2vw;
   }
 
   .navLinks li {
@@ -191,7 +196,7 @@
   }
 
   .logo {
-    width: 180px;
+    width: 150px;
   }
 }
 
