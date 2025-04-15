@@ -1,226 +1,231 @@
 .detailsContainer {
-    width: 800px;
-    max-height: 250px;
-    background-color: #1a1a1aa8;
-    margin: 10px;
-    padding: 10px;
-    display: flex;
-    color: white;
-    font-size: 13px;
-    font-weight: 400;
-    position: relative;
-  }
-  
-  .leftSection {
-    width: 25%;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-  }
-  
-  .avatar {
-    background-color: #00e1ff;
-    color: black;
-    font-weight: bold;
-    width: 60px;
-    height: 60px;
-    border-radius: 50%;
-    font-size: 24px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    margin-bottom: 10px;
-  }
-  
-  .name {
-    font-weight: bold;
-    margin-bottom: 5px;
-    font-size: 14px;
-  }
-  
-  .phone {
-    font-size: 14px;
-    color: #ccc;
-  }
+  width: 60vw;
+  max-height: 100vh;
+  background-color: #1a1a1aa8;
+  margin: 1vw;
+  padding: 1vw;
+  display: flex;
+  color: white;
+  /* font-size: 13px; */
+  /* font-weight: 400; */
+  position: relative;
+}
 
-  .infoSection{
-    display: flex;
-    gap: 10px;
-  }
-  
-  .middleSection,
-  .rightSection {
-    width: 37.5%;
-    padding: 0 10px;
-    display: flex;
-    gap: 2px;
-    flex-direction: column;
-    justify-content: space-between;
-  }
-  
-  .middleSection p,
-  .rightSection p {
-    margin: 2px 0;
-    line-height: 1.4;
-    font-size: 13px;
-    font-weight: 400;
-    gap: 10px;
-  }
-  
-  .label {
-    color: #bbbbbb;
-    font-size: 15px;
-    font-weight: 700;
-    margin-right: 5px;
-  }
-  
-  .value {
-    color: #dddddd;
-    font-weight: 400;
-  }
-  
-  .danger {
-    color: #ff7c7c;
-  }
-  
-  .cold {
-    color: #80dfff;
-  }
-  
-  .sectionContainer {
-    display: flex;
-    flex-direction: row;
-    gap: 10px;
-    padding: 10px;
-  }
-  
-  .buttonColumn {
-    display: flex;
-    flex-direction: column;
-    justify-content: flex-start;
-    gap: 15px;
-    margin-top: 15px;
-  }
-  
-  .actionButton {
-    display: flex;
-    align-items: center;
-    background-color: #2a2a2a;
-    border: none;
-    color: #bfe9ff;
-    padding: 10px 15px;
-    border-radius: 10px;
-    font-size: 15px;
-    font-weight: 500;
-    cursor: pointer;
-    transition: all 0.3s ease;
-    box-shadow: 0 0 5px #00e1ff44;
-    width: 130px;
-    height: 100px;
-    border: 1.5px solid #2a2a2a;
-  }
-  
-  .actionButton:hover {
-    background-color: #3a3a3a;
-    transform: translateY(-1px);
-    border: 1.5px solid #0ae2fe;
-    box-shadow: 0 0 8px #00e1ff;
-  }
-  
-  .icon {
-    margin-right: 8px;
-    font-size: 25px;
-    color: #00e1ff;
-  }
-  
-  .leadHistoryContainer {
-    display: flex;
-    flex-direction: column;
-  }
-  
-  .optionsWrapper {
-    z-index: 5;
-  }
-  
-  .options {
-    position: absolute;
-    top: 20px;
-    right: 30px;
-    cursor: pointer;
-    font-size: 20px;
-    width: 40px;
-    height: 40px;
-    background-color: rgba(255, 255, 255, 0.05);
-    border-radius: 50%;
-    border: 1.5px solid rgba(255, 255, 255, 0.2);
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    color: #ddd;
-    transition: background-color 0.3s ease, color 0.3s ease, border 0.3s ease;
-  }
-  
-  .options:hover {
-    background-color: rgba(255, 255, 255, 0.15);
-    color: #fff;
-    border-color: rgba(255, 255, 255, 0.4);
-  }
-  
-  .dropdown {
-    position: absolute;
-    top: 25px;
-    right: 0;
-    background: white;
-    border: 1px solid #ddd;
-    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.12);
-    min-width: 180px;
-    border-radius: 10px;
-    padding: 8px 0;
-    z-index: 5;
-  }
-  
-  .dropdownItem {
-    position: relative;
-    padding: 12px 20px;
-    cursor: pointer;
-    white-space: nowrap;
-    color: #333;
-    font-size: 15px;
-    transition: background 0.2s ease;
-  }
-  
-  .dropdownItem:hover {
-    background-color: #f5f5f5;
-  }
-  
-  .subMenu {
-    display: none;
-    position: absolute;
-    top: 0;
-    right: 100%;
-    background: white;
-    border: 1px solid #ddd;
-    min-width: 200px;
-    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.12);
-    border-radius: 10px;
-    padding: 8px 0;
-  }
-  
-  .subMenu div {
-    padding: 10px 18px;
-    font-size: 14px;
-    color: #444;
-  }
-  
-  .subMenu div:hover {
-    background-color: #f0f0f0;
-    color: #000;
-    cursor: pointer;
-    border-radius: 4px;
-  }
-  
-  .dropdownItem:hover .subMenu {
-    display: block;
-  }
-  
+.leftSection {
+  width: 25%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.avatar {
+  background-color: #00e1ff;
+  color: black;
+  font-weight: bold;
+  width: 5vw;
+  height: 5vw;
+  border-radius: 50%;
+  font-size: 2vw;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 10px;
+}
+
+.name {
+  font-weight: bold;
+  margin-bottom: 5px;
+  font-size: 1.2vw;
+}
+
+.phone {
+  font-size: 1vw;
+  color: #ccc;
+}
+
+.infoSection {
+  display: flex;
+  gap: 10px;
+}
+
+.middleSection,
+.rightSection {
+  width: 37.5%;
+  padding: 0 10px;
+  display: flex;
+  gap: 2px;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.middleSection p,
+.rightSection p {
+  margin: 2px 0;
+  line-height: 1.4;
+  font-size: 1vw;
+  font-weight: 400;
+  gap: 10px;
+}
+
+.label {
+  color: #bbbbbb;
+  font-size: 1vw;
+  font-weight: 700;
+  margin-right: 5px;
+}
+
+.value {
+  color: #dddddd;
+  font-weight: 400;
+}
+
+.danger {
+  color: #ff7c7c;
+}
+
+.cold {
+  color: #80dfff;
+}
+
+.sectionContainer {
+  display: flex;
+  flex-direction: row;
+  gap: 10px;
+  padding: 10px;
+}
+
+.buttonColumn {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  gap: 15px;
+  padding:5px;
+  margin-top: 15px;
+  margin-right: 10px;
+  max-height: 500px;
+  overflow-y: auto;
+  scrollbar-width: none;
+  -ms-overflow-style: none;
+}
+
+.actionButton {
+  display: flex;
+  align-items: center;
+  background-color: #2a2a2a;
+  border: none;
+  color: #bfe9ff;
+  padding: 10px 15px;
+  border-radius: 10px;
+  font-size: 1vw;
+  font-weight: 500;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  box-shadow: 0 0 5px #00e1ff44;
+  width: 10vw;
+  height: 15vh;
+  border: 1.5px solid #2a2a2a;
+}
+
+.actionButton:hover {
+  background-color: #3a3a3a;
+  transform: translateY(-1px);
+  border: 1.5px solid #0ae2fe;
+  box-shadow: 0 0 8px #00e1ff;
+}
+
+.icon {
+  margin-right: 8px;
+  font-size: 1.5vw;
+  color: #00e1ff;
+}
+
+.leadHistoryContainer {
+  display: flex;
+  flex-direction: column;
+}
+
+.optionsWrapper {
+  z-index: 5;
+}
+
+.options {
+  position: absolute;
+  top: 20px;
+  right: 30px;
+  cursor: pointer;
+  font-size: 20px;
+  width: 40px;
+  height: 40px;
+  background-color: rgba(255, 255, 255, 0.05);
+  border-radius: 50%;
+  border: 1.5px solid rgba(255, 255, 255, 0.2);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #ddd;
+  transition: background-color 0.3s ease, color 0.3s ease, border 0.3s ease;
+}
+
+.options:hover {
+  background-color: rgba(255, 255, 255, 0.15);
+  color: #fff;
+  border-color: rgba(255, 255, 255, 0.4);
+}
+
+.dropdown {
+  position: absolute;
+  top: 25px;
+  right: 0;
+  background: white;
+  border: 1px solid #ddd;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.12);
+  min-width: 180px;
+  border-radius: 10px;
+  padding: 8px 0;
+  z-index: 5;
+}
+
+.dropdownItem {
+  position: relative;
+  padding: 12px 20px;
+  cursor: pointer;
+  white-space: nowrap;
+  color: #333;
+  font-size: 15px;
+  transition: background 0.2s ease;
+}
+
+.dropdownItem:hover {
+  background-color: #f5f5f5;
+}
+
+.subMenu {
+  display: none;
+  position: absolute;
+  top: 0;
+  right: 100%;
+  background: white;
+  border: 1px solid #ddd;
+  min-width: 200px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.12);
+  border-radius: 10px;
+  padding: 8px 0;
+}
+
+.subMenu div {
+  padding: 10px 18px;
+  font-size: 14px;
+  color: #444;
+}
+
+.subMenu div:hover {
+  background-color: #f0f0f0;
+  color: #000;
+  cursor: pointer;
+  border-radius: 4px;
+}
+
+.dropdownItem:hover .subMenu {
+  display: block;
+}
