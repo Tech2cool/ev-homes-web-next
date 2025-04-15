@@ -190,7 +190,12 @@
 @media screen and (max-width: 1024px) and (min-width: 616px) {
   .timelineCard,
   .timelineCardRight {
-    width: 20vw;
+    width: 25vw;
+  }
+
+  .twoContainers {
+    gap: 0vw;
+    
   }
 
   .heading2 {

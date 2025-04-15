@@ -40,7 +40,7 @@ const Profiledialog = ({ isOpen, onClose }) => {
   return (
     <div className={styles.overlay} onClick={onClose}>
       <div className={styles.container} onClick={(e) => e.stopPropagation()}>
-        <button className={styles.closeButton} onClick={onClose}></button>
+        {/* <button className={styles.closeButton} onClick={onClose}></button> */}
 
         <div className={styles.profileContainer}>
           {/* Profile sectionn */}

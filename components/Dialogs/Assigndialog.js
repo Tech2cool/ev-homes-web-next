@@ -23,7 +23,7 @@ useEffect(()=>{
         }`}
         onClick={(e) => e.stopPropagation()}
       >
-        <button className={styles.closeButton} onClick={handleClose}></button>
+        <button className={styles.closeButton} onClick={handleClose}>X</button>
         <h2>Assign Task</h2>
         <div className={styles.formControl}>
           <label htmlFor="select">Subject</label>
