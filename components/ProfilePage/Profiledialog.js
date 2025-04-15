@@ -154,7 +154,7 @@ const Profiledialog = ({ isOpen, onClose }) => {
                 <div className={styles.contactInfoSection}>
                   <h3 className={styles.sectionHeading}>Contact Information</h3>
                   <div className={styles.infoRow}>
-                    <span>Phone Number : </span>{" "}
+                    <span>Phone No. : </span>{" "}
                     <span>{user?.phoneNumber ?? "NA"}</span>
                   </div>
                   <div className={styles.infoRow}>
