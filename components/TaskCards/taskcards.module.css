@@ -66,8 +66,18 @@
   font-size: 14px;
   color: #00e1ff;
 }
-@media screen and (max-width: 616px) {
+@media screen and (max-width: 615px) {
   .card {
  display: none;
+  }
+}
+@media screen and  (max-width: 1024px ) and (min-width: 616px){
+  .taskContainer {
+
+    width: 95%;
+   
+  }
+  .card {
+width: 45%;
   }
 }

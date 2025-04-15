@@ -48,4 +48,7 @@
       height: 35vh;
     }
    }
+   @media screen and (max-width: 1024px ) and (min-width: 616px) {
+    
+   }
    

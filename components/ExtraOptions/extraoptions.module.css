@@ -120,3 +120,12 @@
     color:  #00bfff;
   }
 }
+@media screen and  (max-width: 1024px ) and (min-width: 616px){
+  .button {
+    width: 99% ;
+     }
+     .container {
+    width: 90%;
+    }
+    
+}
