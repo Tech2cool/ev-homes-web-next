@@ -68,29 +68,29 @@
   border-radius: 12px;
   padding: 10px 10px;
   box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
-  width: 320px;
+  width: 25vw;
 }
 
 .name {
   font-weight: 600;
-  font-size: 15px;
+  font-size: 1vw;
   margin-bottom: 4px;
 }
 
 .subtext {
-  font-size: 12px;
+  font-size: 0.9vw;
   color: #cccccc;
   margin-bottom: 6px;
 }
 
 .date {
-  font-size: 12px;
+  font-size: 0.9vw;
   color: #bbbbbb;
 }
 
 .twoContainers {
   display: flex;
-  gap: 20px;
+  gap: 10px;
   justify-content: space-between;
   flex-wrap: wrap;
 }
@@ -129,7 +129,7 @@
   border-radius: 12px;
   padding: 10px 10px;
   box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
-  width: 320px;
+  width: 25vw;
 }
 
 @media screen and (max-width: 615px) {
@@ -146,7 +146,7 @@
 
   .timelineCard,
   .timelineCardRight {
-    width: 100%;
+    width: 70vw;
   }
 
   .heading2 {
@@ -154,9 +154,13 @@
     font-size: 2.5vh;
   }
 
+  .timeline {
+    margin-left: 1vw ;
+  }
+
   .timelineRight {
     position: relative;
-    margin-left: 20px;
+    margin-left: 1vw;
     padding-left: 20px;
     border-left: 2px solid #ffffff33;
     border-right: none;
@@ -168,5 +172,50 @@
     top: 5px;
     width: 20px;
     height: 20px;
+  }
+
+  .name {
+    font-size: 4vw;
+  }
+  
+  .subtext {
+    font-size: 3.5vw;
+  }
+  
+  .date {
+    font-size: 3.5vw;
+  }
+}
+
+@media screen and (max-width: 1024px) and (min-width: 616px) {
+  .timelineCard,
+  .timelineCardRight {
+    width: 20vw;
+  }
+
+  .heading2 {
+    font-size:1.5vw;
+  }
+
+  .heading{
+    font-size:1.5vw;
+
+  }
+
+  .timeline {
+    margin-left: 0vw ;
+  }
+  .timelineRight{
+    margin-right: 0vw ;
+
+  }
+  .timelineDotRight {
+    width: 2vw;
+    height: 2vw;
+  }
+
+  .timelineDot {
+    width: 2vw;
+    height: 2vw;
   }
 }
