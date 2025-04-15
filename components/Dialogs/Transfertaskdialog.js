@@ -1,6 +1,7 @@
 
 import React, { useEffect, useState } from "react";
 import styles from "./assigndialog.module.css";
+import { ImCross } from "react-icons/im";
 
 const Transfertaskdialog = ({ onClose }) => {
 const [isClosing, setIsClosing] = useState(false);
@@ -24,7 +25,7 @@ useEffect(()=>{
         }`}
         onClick={(e) => e.stopPropagation()}
       >
-        <button className={styles.closeButton} onClick={handleClose}></button>
+        <button className={styles.closeButton} onClick={handleClose}><ImCross color="#C41E3A"/></button>
         <h2>Transfer Task</h2>
 
         <div className={styles.formControl}>

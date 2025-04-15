@@ -12,12 +12,12 @@ import Transfertaskdialog from "../Dialogs/Transfertaskdialog";
 const Taskdetailspage = () => {
   const [showDropdown, setShowDropdown] = useState(false);
   const [showDialog, setShowDialog] = useState(false);
-  const [showNotificationDialog, setShowNotificationDialog] = useState(false);
+  const [showSetReminderDialog, setshowSetReminderDialog] = useState(false);
   const [showTransferTaskDialog, setShowTransferTaskDialog] = useState(false);
   const dropdownRef = useRef(null);
 
   const isAnyDialogOpen =
-    showDialog || showNotificationDialog || showTransferTaskDialog;
+    showDialog || showSetReminderDialog || showTransferTaskDialog;
   useBodyScrollLock(isAnyDialogOpen);
 
   useEffect(() => {
@@ -40,18 +40,18 @@ const Taskdetailspage = () => {
     setShowTransferTaskDialog(false);
   };
 
-  const handleAssignClick = () => {
+  const handleUpdateStatusClick = () => {
     setShowDialog(true);
   };
   const closeDialog = () => {
     setShowDialog(false);
   };
 
-  const handleNotificationClick = () => {
-    setShowNotificationDialog(true);
+  const handleSetReminderClick = () => {
+    setshowSetReminderDialog(true);
   };
-  const closeNotificationDialog = () => {
-    setShowNotificationDialog(false);
+  const closeReminderDialog = () => {
+    setshowSetReminderDialog(false);
   };
 
   return (
@@ -142,7 +142,10 @@ const Taskdetailspage = () => {
       </div>
       {/* two Buttons  */}
       <div className={styles.buttonColumn}>
-        <button className={styles.actionButton} onClick={handleAssignClick}>
+        <button
+          className={styles.actionButton}
+          onClick={handleUpdateStatusClick}
+        >
           <FaTasks className={styles.icon} />
           Update Status
         </button>
@@ -150,13 +153,13 @@ const Taskdetailspage = () => {
 
         <button
           className={styles.actionButton}
-          onClick={handleNotificationClick}
+          onClick={handleSetReminderClick}
         >
           <FaBell className={styles.icon} />
           Set Reminder
         </button>
-        {showNotificationDialog && (
-          <Setreminderdialog onClose={closeNotificationDialog} />
+        {showSetReminderDialog && (
+          <Setreminderdialog onClose={closeReminderDialog} />
         )}
       </div>
     </div>

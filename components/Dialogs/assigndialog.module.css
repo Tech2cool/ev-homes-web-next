@@ -14,7 +14,7 @@
   position: absolute;
   top: 0;
   left: 0;
-  width: 22vw;
+  width: 20vw;
   height: 120vh;
   background: white;
   padding: 20px;
@@ -27,7 +27,7 @@
   animation: slideOutLeft 0.3s ease-out forwards;
 }
 
-.handleClose{
+.handleClose {
   margin-right: 30px;
 }
 
@@ -52,7 +52,7 @@
 .closeButton {
   background: transparent;
   border: none;
-  font-size: 18px;
+  font-size: 2vh;
   cursor: pointer;
   position: absolute;
   top: 10px;
@@ -62,18 +62,18 @@
 .formControl {
   display: flex;
   flex-direction: column;
-  width: 100%;
+  width: 20vw;
   position: relative;
   margin-bottom: 20px;
   margin-top: 30px;
 }
 
 .formControl textarea {
-  padding: 10px;
+  padding: 1vw;
 }
 
 .formControl label {
-  font-size: 15px;
+  font-size: 1.1vw;
   position: absolute;
   top: -12px;
   left: 10px;
@@ -83,33 +83,19 @@
 
 .formControl select {
   padding: 10px;
-  font-size: 14px;
+  font-size: 1vw;
 }
 
 .formControl input {
   padding: 10px;
-  font-size: 14px;
-}
-
-.dateInputWrapper {
-  position: relative;
-  display: flex;
-  align-items: center;
+  font-size: 1vw;
 }
 
 .dateInput input[type="date"] {
   padding: 10px;
   padding-right: 35px;
   font-size: 14px;
-  width: 250px;
-}
-
-.calendarIcon {
-  position: absolute;
-  right: 10px;
-  pointer-events: none;
-  font-size: 16px;
-  color: gray;
+  width: auto;
 }
 
 .buttonGroup {
@@ -153,8 +139,27 @@
   margin: 16px 0;
 }
 
- @media screen and (max-width:1024px){
-  .dialogContainer{
-    width: fit-content;
+@media screen and (max-width: 1024px) {
+  .dialogContainer {
+    width: 70vw;
+    height: 120vh;
+    background: white;
+    padding: 20px;
   }
- }
+
+  .formControl {
+    width: 70vw;
+  }
+
+  .formControl label {
+    font-size: 4.2vw;
+  }
+
+  .formControl select {
+    font-size: 4vw;
+  }
+
+  .formControl input {
+    font-size: 4vw;
+  }
+}

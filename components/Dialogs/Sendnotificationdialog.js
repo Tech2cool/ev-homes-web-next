@@ -3,6 +3,7 @@ import styles from "../Dialogs/assigndialog.module.css";
 import style from "./sendnotificationdialog.module.css";
 import { GrAttachment } from "react-icons/gr";
 import { FaEye } from "react-icons/fa";
+import { ImCross } from "react-icons/im";
 
 const SendNotificationDialog = ({ onClose }) => {
   const [fileCount, setFileCount] = useState(0);
@@ -28,7 +29,7 @@ const SendNotificationDialog = ({ onClose }) => {
         }`}
         onClick={(e) => e.stopPropagation()}
       >
-        <button className={styles.closeButton} onClick={handleClose}></button>
+        <button className={styles.closeButton} onClick={handleClose}><ImCross color="#C41E3A"/></button>
         <h2>Send Notification</h2>
         <div className={styles.formControl}>
           <label htmlFor="text">Enter Title</label>
