@@ -318,7 +318,7 @@
 
 @media screen and (max-width: 1024px) and (min-width: 616px) {
   .detailsContainer {
-    width: 60vw;
+    width: 65vw;
     max-height: 100vh;
     margin: 0vw;
     padding: 0.5vw;
@@ -353,6 +353,28 @@
     padding: 5px;
     font-size: 1.1vw;
     text-align: center;
+    justify-content: center;
+  }
+}
+
+
+@media screen and (max-width: 900px) and (min-width: 616px) {
+  .buttonColumn {
+    position: static !important;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+    margin-top: 1rem;
+    width: 100%;
+    gap: 10px;
+  }
+
+  .actionButton {
+    width: 9vw;
+    height: 11vh;
+    font-size: 1.1vw;
+    padding: 5px;
     justify-content: center;
   }
 }
