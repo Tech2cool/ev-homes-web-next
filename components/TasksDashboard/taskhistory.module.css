@@ -1,7 +1,7 @@
 .container {
   width: 100%;
   top: 0;
-  padding: 10px;
+  padding: 0px;
   color: #ffffff;
   max-height: 300px;
   overflow-y: auto;
@@ -13,9 +13,9 @@
 
 .heading {
   text-align: left;
-  font-size: 15px;
+  font-size: 3vh;
   font-weight: 400;
-  margin-bottom: 5px;
+  margin-bottom: 2rem;
   margin-top: 10px;
   color: #ffffff;
   margin-left: 20px;
@@ -23,22 +23,20 @@
 
 .name {
   font-weight: 600;
-  font-size: 15px;
+  font-size: 1vw;
   margin-bottom: 4px;
 }
 
 .subtext {
-  font-size: 12px;
+  font-size: 0.9vw;
   color: #cccccc;
   margin-bottom: 6px;
 }
 
 .date {
-  font-size: 12px;
+  font-size: 0.9vw;
   color: #bbbbbb;
 }
-
-
 
 .timeline {
   position: relative;

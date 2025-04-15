@@ -1,9 +1,9 @@
 import React from "react";
 import styles from "./tasklist.module.css";
 
-const TaskListPage = ({ lead }) => {
+const TaskListPage = ({ lead ,onClick}) => {
   return (
-    <div className={styles.leadCard}>
+    <div className={styles.leadCard} onClick={()=>{onClick(lead.id)}}>
       <div className={styles.leadInfo}>
         <div className={styles.clientIcon}>
           {lead.clientName.charAt(0).toUpperCase()}
@@ -22,30 +22,30 @@ const TaskListPage = ({ lead }) => {
   );
 };
 
-const TaskList = () => {
+const TaskList = ({onLeadClick}) => {
   const leads = [
-    {
+    {id:"1",
       clientName: "Dummy Dummy",
       clientPhone: "123456789",
       task: "followup",
       deadline: "04-04-004",
       taskStatus: "Completed",
     },
-    {
+    {id:"1",
       clientName: "Dummy Dummy",
       clientPhone: "123456789",
       task: "followup",
       deadline: "04-04-004",
       taskStatus: "Completed",
     },
-    {
+    {id:"1",
       clientName: "Dummy Dummy",
       clientPhone: "123456789",
       task: "followup",
       deadline: "04-04-004",
       taskStatus: "Completed",
     },
-    {
+    {id:"1",
       clientName: "Dummy Dummy",
       clientPhone: "123456789",
       task: "followup",
@@ -55,9 +55,9 @@ const TaskList = () => {
   ];
 
   return (
-    <div className={styles.leadListContainer}>
+    <div className={styles.taskListContainer}>
       {leads.map((lead, index) => (
-        <TaskListPage key={index} lead={lead} />
+        <TaskListPage key={index} lead={lead} onClick={onLeadClick}/>
       ))}
     </div>
   );
