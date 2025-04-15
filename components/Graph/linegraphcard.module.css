@@ -64,3 +64,11 @@
   }
   
 }
+@media screen and  (max-width: 1024px ) and (min-width: 616px){
+  .linegraphContainer {
+    width: 99% ;
+     }
+     .card {
+    width: 60%;
+    }
+}
