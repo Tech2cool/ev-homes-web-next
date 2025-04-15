@@ -90,20 +90,22 @@
 .personalInfoSection {
   margin-left: 1vw;
   margin-right: 1vw;
-  width: 27vw;
+  width: 22vw;
 }
 
 .reportingInfoSection,
 .contactInfoSection {
   margin-left: 1vw;
   margin-right: 1vw;
-  width: 22vw;
+  width: 21vw;
   height: 20vh;
 }
 
 .leaveInfoSection {
   margin-left: 1vw;
   margin-right: 1vw;
+  width: 47vw;
+  height: 20vh;
 }
 
 .sectionHeading {
@@ -125,7 +127,7 @@
   border-bottom: 1px dashed #ccc;
   font-size: 2.2vh;
   color: #444;
-  gap: 0.5vw;
+  gap: 0.2vw;
 }
 
 .infoRow:last-child {
