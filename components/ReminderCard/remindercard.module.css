@@ -12,9 +12,30 @@
 
 .reminderList li {
   margin-bottom: 10px;
+  font-size: 16px;
 }
 .title {
   font-size: 18px;
   font-weight: bold;
   margin-bottom: 10px;
+}
+@media screen and (max-width: 616px) {
+  .reminderCard {
+    padding: 20px;
+    width: 50%;
+    height: 200px;
+  }
+  .title {
+    font-size: 16px;
+    font-weight: bold;
+    margin-bottom: 2px;
+  }
+  .reminderList {
+    padding: 5px;
+  }
+  
+  .reminderList li {
+    margin-bottom: 5px;
+    font-size: 12px;
+  }
 }

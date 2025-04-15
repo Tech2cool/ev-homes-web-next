@@ -8,3 +8,18 @@
     display: flex;
     padding-top: 20px;
 }
+.displaymobile{
+    display: none;
+}
+.pie-card-container{
+    flex-direction: row;
+}
+@media screen and (max-width: 615px) {
+    .display {
+   display: none;
+    }
+    .displaymobile{
+        display:flex;
+    }
+  }
+

@@ -61,7 +61,7 @@ const Linegraphcard = () => {
       </div>
 
       <div className={styles.linegraphContainer}>
-        <ResponsiveContainer width={650} height={250}>
+        <ResponsiveContainer width="100%" height={250}>
           <LineChart data={data}>
             <CartesianGrid strokeDasharray="3 3" />
             <XAxis dataKey="month" />
