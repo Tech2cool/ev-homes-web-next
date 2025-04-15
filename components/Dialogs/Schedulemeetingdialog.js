@@ -1,6 +1,7 @@
 import React, { useState, useEffect, useRef } from "react";
 import styles from "../Dialogs/assigndialog.module.css";
 import style from "./schedulemeetingdialog.module.css";
+import { ImCross } from "react-icons/im";
 
 const Schedulemeetingdialog = ({ onClose }) => {
   const [isClosing, setIsClosing] = useState(false);
@@ -89,7 +90,7 @@ const Schedulemeetingdialog = ({ onClose }) => {
         }`}
         onClick={(e) => e.stopPropagation()}
       >
-        <button className={styles.closeButton} onClick={handleClose}></button>
+        <button className={styles.closeButton} onClick={handleClose}><ImCross color="#C41E3A"/></button>
         <h2>Schedule Meeting</h2>
         <p>Select Date & Time</p>
 

@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import styles from "../Dialogs/assigndialog.module.css";
+import { ImCross } from "react-icons/im";
 
 const Leadrunningstatusdialog = ({onClose}) => {
   const [isClosing, setIsClosing] = useState(false);
@@ -23,7 +24,7 @@ const Leadrunningstatusdialog = ({onClose}) => {
         }`}
         onClick={(e) => e.stopPropagation()}
       >
-            <button className={styles.closeButton} onClick={handleClose}></button>
+            <button className={styles.closeButton} onClick={handleClose}><ImCross color="#C41E3A"/></button>
             <h2>Lead Running Status</h2>
           </div>
         </div>

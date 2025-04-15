@@ -7,6 +7,7 @@ import {
   FaCalendarAlt,
   FaRocket,
   FaRupeeSign,
+  FaRegAddressBook,
 } from "react-icons/fa";
 import { IoIosAlarm } from "react-icons/io";
 import Sendnotificationdialog from "../Dialogs/Sendnotificationdialog";
@@ -19,6 +20,7 @@ import useBodyScrollLock from "../useBodyScrollLock";
 import Setreminderdialog from "../Dialogs/Setreminderdialog";
 import Editleaddetailsdialog from "../Dialogs/Editleaddetailsdialog";
 import { useRouter } from "next/navigation";
+import Updatestatusdialog from "../Dialogs/Updatestatusdialog";
 
 const Leaddetailspage = () => {
   const [showDropdown, setShowDropdown] = useState(false);
@@ -31,6 +33,7 @@ const Leaddetailspage = () => {
   const [showEditLeadDetailsDialog, setShowEditLeadDetailsDialog] =
     useState(false);
   const [showAddReminderDialog, setShowAddReminderDialog] = useState(false);
+  const [showUpdateStatusDialog, setShowUpdateStatusDialog] = useState(false);
 
   const router = useRouter();
 
@@ -98,6 +101,13 @@ const Leaddetailspage = () => {
   };
   const closeAddReminderDialog = () => {
     setShowAddReminderDialog(false);
+  };
+
+  const handleUpdateStatusClick = () => {
+    setShowUpdateStatusDialog(true);
+  };
+  const closeUpdateStatusDialog = () => {
+    setShowUpdateStatusDialog(false);
   };
 
   return (
@@ -231,6 +241,17 @@ const Leaddetailspage = () => {
           </button>
           {showScheduleMeetingDialog && (
             <Schedulemeetingdialog onClose={closeScheduleMeeetingDialog} />
+          )}
+
+          <button
+            className={styles.actionButton}
+            onClick={handleUpdateStatusClick}
+          >
+            <FaRegAddressBook className={styles.icon} />
+            Add Feedback
+          </button>
+          {showUpdateStatusDialog && (
+            <Updatestatusdialog onClose={closeUpdateStatusDialog} />
           )}
 
           <button

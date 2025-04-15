@@ -4,6 +4,7 @@ import style from "./editleaddetailsdialog.module.css";
 import { FaUser, FaBuilding } from "react-icons/fa";
 import { MdApartment } from "react-icons/md";
 import { BiSolidMessageSquareEdit } from "react-icons/bi";
+import { ImCross } from "react-icons/im";
 import Select from "react-select";
 
 const Editleaddetailsdialog = ({ onClose }) => {
@@ -56,7 +57,10 @@ const Editleaddetailsdialog = ({ onClose }) => {
         }`}
         onClick={(e) => e.stopPropagation()}
       >
-        <button className={styles.closeButton} onClick={handleClose}></button>
+        <button className={styles.closeButton} onClick={handleClose}>
+          <ImCross color="#C41E3A" />
+        </button>
+
         <h2>Edit Lead Details</h2>
 
         <div className={styles.sectionHeader}>
@@ -212,7 +216,7 @@ const Editleaddetailsdialog = ({ onClose }) => {
         </div>
 
         <div className={styles.sectionHeader}>
-          <BiSolidMessageSquareEdit  className={styles.icon} />
+          <BiSolidMessageSquareEdit className={styles.icon} />
           <span>Remark</span>
         </div>
 

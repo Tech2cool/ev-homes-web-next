@@ -1,6 +1,7 @@
 import React, { useEffect, useState, useRef } from "react";
 import styles from "../Dialogs/assigndialog.module.css";
 import style from "./sendnotificationdialog.module.css";
+import { ImCross } from "react-icons/im";
 
 const Setreminderdialog = ({ onClose }) => {
   const [isClosing, setIsClosing] = useState(false);
@@ -42,7 +43,7 @@ const Setreminderdialog = ({ onClose }) => {
         }`}
         onClick={(e) => e.stopPropagation()}
       >
-        <button className={styles.closeButton} onClick={handleClose}></button>
+        <button className={styles.closeButton} onClick={handleClose}><ImCross color="#C41E3A"/></button>
         <h2>Set Reminder</h2>
         <div className={styles.formControl}>
           <label>Reminder Date & Time</label>
