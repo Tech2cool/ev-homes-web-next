@@ -14,14 +14,14 @@ const Piegraphcard = ({Healine, percentage, status, lableone, labletwo,valueone,
       <div className={styles.container}>
         <div className={styles.chartWrapper}>
         <div className={styles.header} >{Healine}</div>
-        <ResponsiveContainer width={230} height={210}>
+        <ResponsiveContainer fill>
             <PieChart>
               <Pie
                 data={data1}
                 cx="50%"
                 cy="50%"
-                innerRadius={75}
-                outerRadius={100}
+                innerRadius={80}
+                outerRadius={105}
                 fill="#8884d8"
                 paddingAngle={5}
                 dataKey="value"
