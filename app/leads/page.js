@@ -20,10 +20,12 @@ const LeadsPage = () => {
   };
 
   useEffect(() => {
-    if (!isMobile) {
+    if (isMobile === undefined) return;
+
+    if (!isMobile && selectedLeadId === null) {
       setSelectedLeadId("1");
     }
-  }, [isMobile]);
+  }, [isMobile, selectedLeadId]);
 
   return (
     <div className={styles.fullContainer}>

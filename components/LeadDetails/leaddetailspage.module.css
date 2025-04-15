@@ -233,15 +233,17 @@
   .leftSection,
   .middleSection,
   .rightSection {
-    width: 100%;
+    width: 97vw;
     max-width: 100%;
     box-sizing: border-box;
     height: fit-content;
   }
 
   .detailsContainer {
-    margin-right: 10px;
+    margin-left: 0px;
     display: flex;
+    /* margin-right: 100px; */
+
     flex-direction: column;
     align-items: flex-start;
     gap: 13px;
@@ -289,7 +291,7 @@
   }
 
   .actionButton {
-    width: 27vw;
+    width: 26vw;
     height: 15vh;
     padding: 5px;
     font-size: 3.5vw;
@@ -304,7 +306,7 @@
   }
 
   .options {
-    font-size: 15px;
+    font-size: 5vw;
     width: 8vw;
     height: 5vh;
   }
@@ -316,7 +318,7 @@
 
 @media screen and (max-width: 1024px) and (min-width: 616px) {
   .detailsContainer {
-    width: 55vw;
+    width: 60vw;
     max-height: 100vh;
     margin: 0vw;
     padding: 0.5vw;
@@ -342,26 +344,15 @@
     right: 1vh;
     font-size: 12px;
     width: 3vw;
-    height: 4vh;
+    height: 3vw;
   }
 
-  /* .buttonColumn {
-    display: flex;
-    flex-direction: column;
-    position: absolute;
-    right: 10;
-    justify-content: flex-start;
-    gap: 15px;
-    margin-top: 15px;
-  } */
-  
   .actionButton {
-    width: 12vw;
-    height: 10vh;
+    width: 9vw;
+    height: 11vh;
     padding: 5px;
-    font-size: 1.3vw;
+    font-size: 1.1vw;
     text-align: center;
     justify-content: center;
   }
-  
 }

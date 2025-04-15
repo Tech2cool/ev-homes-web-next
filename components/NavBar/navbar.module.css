@@ -54,7 +54,6 @@
   margin-right: 40px;
   display: flex;
   gap: 20px;
-  flex-shrink: 0;
 }
 
 .icon {
@@ -166,7 +165,8 @@
   }
 
   .navbar {
-    height: 2vh;
+    height: 15px;
+    width: 100vw;
   }
   .hamburger {
     display: block;
@@ -181,7 +181,10 @@
   }
 
   .icon{
-    font-size: 15px;
+    font-size: 4vw;
+  }
+  .icons{
+    gap: 4vw;
   }
   
 }
