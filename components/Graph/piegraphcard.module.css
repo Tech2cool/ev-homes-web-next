@@ -2,17 +2,21 @@
     display: flex;
     justify-content: space-between;
     align-items: center;
-    gap: 20px;
+    /* gap: 100px; */
     padding: 10px;
     margin-left:  20px;
     background-color:rgb(233, 225, 225);
     border-radius: 8px;
+    width: fit-content;
+    height: fit-content;
   }
   
   .chartWrapper {
     text-align: center;
-    padding: 10px;
-   
+    padding: 20px;
+    width: 15vw;
+    height: 35vh;
+    
   }
   
   .title {
@@ -23,7 +27,7 @@
   .header{
     font-size: 15;
    font-weight: bold;
-   padding: 10px;
+   padding: 0px;
   
    }
 
@@ -32,7 +36,13 @@
     .container {
      margin-top: 20px;
      gap: 1px;
-     
+
+    }
+    .chartWrapper {
+      text-align: center;
+      padding: 20px;
+      width: 75vw;
+      height: 35vh;
     }
    }
    
