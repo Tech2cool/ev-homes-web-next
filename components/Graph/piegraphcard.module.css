@@ -3,20 +3,23 @@
     justify-content: space-between;
     align-items: center;
     /* gap: 100px; */
-    padding: 10px;
+    padding: 8px;
     margin-left:  20px;
-    background-color:rgb(233, 225, 225);
+    background-color:#555;
     border-radius: 8px;
     width: fit-content;
     height: fit-content;
   }
-  
+  .maincontainer{
+    background-color: #333;
+    width: 100%;
+  }
   .chartWrapper {
     text-align: center;
     padding: 20px;
     width: 15vw;
     height: 35vh;
-    
+    color: white;
   }
   
   .title {
