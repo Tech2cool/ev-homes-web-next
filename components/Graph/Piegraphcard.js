@@ -10,7 +10,7 @@ const data1 = [
 ];
 const Piegraphcard = ({Healine, percentage, status, lableone, labletwo,valueone,valuetwo, colors}) => {
   return (
-    <div>
+    <div className={styles.maincontainer}>
       <div className={styles.container}>
         <div className={styles.chartWrapper}>
         <div className={styles.header} >{Healine}</div>
@@ -21,10 +21,11 @@ const Piegraphcard = ({Healine, percentage, status, lableone, labletwo,valueone,
                 cx="50%"
                 cy="50%"
                 innerRadius={80}
-                outerRadius={105}
+                outerRadius={104}
                 fill="#8884d8"
                 paddingAngle={5}
                 dataKey="value"
+                // cornerRadius={20}
               >
                 {data1.map((entry, index) => (
                   <Cell key={`cell-${index}`} fill={colors[index]} />
