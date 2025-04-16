@@ -10,6 +10,8 @@
   },
   "dependencies": {
     "lucide-react": "^0.487.0",
+    "moment": "^2.30.1",
+    "moment-timezone": "^0.5.48",
     "next": "15.2.4",
     "react": "^19.0.0",
     "react-calendar": "^5.1.0",
