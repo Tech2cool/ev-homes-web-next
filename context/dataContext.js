@@ -9,6 +9,7 @@ export const DataProvider = ({ children }) => {
   const [leadInfo, setleadInfo] = useState(null);
   const [leads, setleads] = useState([]);
   const [loading, setLoading] = useState(false);
+  const [loadingLeads, setLoadingLeads] = useState(false);
   const [error, setError] = useState("");
 
   // useEffect(() => {
@@ -18,31 +19,42 @@ export const DataProvider = ({ children }) => {
   //   }
   // }, []);
 
-  const fetchSaleExecutiveLeads = async (id, page = 1, limit = 10) => {
-    setLoading(true);
+  const fetchSaleExecutiveLeads = async (id, query, page = 1, limit = 10) => {
+    setLoadingLeads(true);
     setError("");
 
     try {
-      const res = await fetchAdapter(`/api/leads-team-leader-reporting/${id}`, {
+      let url = `/api/leads-team-leader-reporting/${id}?query=${query}&page=${page}&limit=${limit}`;
+      const res = await fetchAdapter(url, {
         method: "GET",
       });
-      console.log(res);
       const { data, ...withoutData } = res;
 
       setleadInfo(withoutData);
-      setleads(res?.data ?? []);
+      if (page > 1) {
+        setleads((prev) => [...prev, ...res?.data]);
+      } else {
+        setleads(res?.data ?? []);
+      }
       return { success: true };
     } catch (err) {
       setError(err.message);
       return { success: false, message: err.message };
     } finally {
-      setLoading(false);
+      setLoadingLeads(false);
     }
   };
 
   return (
     <DataContext.Provider
-      value={{ fetchSaleExecutiveLeads, leadInfo, leads, loading, error }}
+      value={{
+        fetchSaleExecutiveLeads,
+        leadInfo,
+        leads,
+        loading,
+        loadingLeads,
+        error,
+      }}
     >
       {children}
     </DataContext.Provider>
