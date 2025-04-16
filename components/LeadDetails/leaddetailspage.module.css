@@ -1,5 +1,6 @@
 .detailsContainer {
-  width: 60vw;
+  /* width: 60vw; */
+  /* width: 100%; */
   max-height: 100vh;
   background-color: #1a1a1aa8;
   margin: 1vw;
@@ -11,6 +12,12 @@
   position: relative;
   border-radius: 8px;
 }
+
+/* .wholeContainer{
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+} */
 
 .leftSection {
   width: 25%;
@@ -94,35 +101,33 @@
   display: flex;
   flex-direction: column;
   position: absolute;
-  right: 10;
+  right: 10px;
+width:8%;
   justify-content: flex-start;
   gap: 15px;
   margin-top: 15px;
   padding:5px;
   margin-right: 10px;
-  max-height:80vh;
+  max-height:calc(100vh-30px);
   overflow-y: auto;
   scrollbar-width: none;
   -ms-overflow-style: none;
-  /* border-left: 1px solid rgba(255, 255, 255, 0.2);   ; */
 }
 
 .actionButton {
   display: flex;
   align-items: center;
-  /* background-color: #2a2a2a; */
   background-color: rgba(255, 255, 255, 0.06); 
-  /* border: none; */
   border: 1px solid rgba(255, 255, 255, 0.2);
   color: #bfe9ff;
-  padding: 20px ;
+  padding: 20px 10px ;
   border-radius: 8px;
   font-size: 1vw;
   font-weight: 500;
   cursor: pointer;
   transition: all 0.3s ease;
   box-shadow: 0 0 5px #00e1ff44;
-  width: 10vw;
+  max-width: 8vw;
   height: fit-content;
   border: 1.5px solid #2a2a2a;
 }
@@ -143,6 +148,7 @@
 .leadHistoryContainer {
   display: flex;
   flex-direction: column;
+  width: 85%;
 }
 
 .optionsWrapper {
@@ -316,6 +322,7 @@
   }
   .buttonColumn {
     position: static;
+    display: flex;
     flex-direction: row;
     flex-wrap: wrap;
     justify-content: center;
@@ -324,10 +331,11 @@
     margin-bottom: 1rem;
     margin-right: 0px;
     padding: 1px;
+    width: 100%;
   }
 
   .actionButton {
-    width: 26vw;
+    width: 42vw;
     height: 15vh;
     padding: 5px;
     font-size: 3.5vw;
@@ -354,7 +362,7 @@
 
 @media screen and (max-width: 1024px) and (min-width: 616px) {
   .detailsContainer {
-    width: 65vw;
+    /* width: 65vw; */
     max-height: 100vh;
     margin: 0vw;
     padding: 0.5vw;
@@ -381,6 +389,16 @@
     font-size: 12px;
     width: 3vw;
     height: 3vw;
+  }
+
+  .optionsFeedback{
+
+      top: 8vh;
+      right: 1vh;
+      font-size: 12px;
+      width: 3vw;
+      height: 3vw;
+    
   }
 
   .actionButton {

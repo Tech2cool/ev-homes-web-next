@@ -48,30 +48,26 @@ const Leaddetailspage = ({ lead = null, id = null }) => {
     showScheduleMeetingDialog ||
     showLeadRunningStatusDialog ||
     showEditLeadDetailsDialog ||
-    showAddReminderDialog ||showUpdateStatusDialog;
+    showAddReminderDialog ||
+    showUpdateStatusDialog;
   useBodyScrollLock(isAnyDialogOpen);
 
   useEffect(() => {
     const handleClickOutside = (event) => {
-      if (
-        dropdownRef.current && !dropdownRef.current.contains(event.target)
-      ) {
+      if (dropdownRef.current && !dropdownRef.current.contains(event.target)) {
         setShowDropdown(false);
       }
-  
-      if (
-        feedbackRef.current && !feedbackRef.current.contains(event.target)
-      ) {
+
+      if (feedbackRef.current && !feedbackRef.current.contains(event.target)) {
         setShowFeedbackDropdown(false);
       }
     };
-  
+
     document.addEventListener("mousedown", handleClickOutside);
     return () => {
       document.removeEventListener("mousedown", handleClickOutside);
     };
   }, []);
-  
 
   const handleAssignClick = () => {
     setShowDialog(true);
@@ -188,17 +184,6 @@ const Leaddetailspage = ({ lead = null, id = null }) => {
           {showUpdateStatusDialog && (
             <Updatestatusdialog onClose={closeUpdateStatusDialog} />
           )}
-
-          {/* <button
-            className={styles.actionButton}
-            onClick={handleUpdateStatusClick}
-          >
-            <FaRegAddressBook className={styles.icon} />
-            Add Feedback
-          </button>
-          {showUpdateStatusDialog && (
-            <Updatestatusdialog onClose={closeUpdateStatusDialog} />
-          )} */}
 
           <div className={styles.leftSection}>
             <div className={styles.avatar}>
@@ -318,17 +303,6 @@ const Leaddetailspage = ({ lead = null, id = null }) => {
             <Schedulemeetingdialog onClose={closeScheduleMeeetingDialog} />
           )}
 
-          {/* <button
-            className={styles.actionButton}
-            onClick={handleUpdateStatusClick}
-          >
-            <FaRegAddressBook className={styles.icon} />
-            Add Feedback
-          </button>
-          {showUpdateStatusDialog && (
-            <Updatestatusdialog onClose={closeUpdateStatusDialog} />
-          )} */}
-
           <button
             className={styles.actionButton}
             onClick={handleLeadRunningStatusClick}
@@ -361,6 +335,7 @@ const Leaddetailspage = ({ lead = null, id = null }) => {
         </div>
         <Leadshistory lead={lead} />
       </div>
+      
     </div>
   );
 };
