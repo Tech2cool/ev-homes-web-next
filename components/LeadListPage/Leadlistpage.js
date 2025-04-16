@@ -88,7 +88,9 @@ const Leadlistpage = ({ onLeadClick }) => {
       })}
       {loadingLeads ? (
         <p style={{ color: "white", textAlign: "center" }}>Loading...</p>
-      ) : null}
+      ) : (
+        <p style={{ color: "white", textAlign: "center" }}>No Results Found</p>
+      ) }
     </div>
   );
 };

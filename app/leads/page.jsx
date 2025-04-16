@@ -55,7 +55,9 @@ const LeadsPage = () => {
             {selectedLeadId ? (
               <Leaddetailspage lead={selectedLead} id={selectedLeadId} />
             ) : (
-              <p>Select a lead to view details</p>
+              <div className={styles.messageWrapper}>
+                <p>Select a lead to view details</p>
+              </div>
             )}
           </div>
         </div>
