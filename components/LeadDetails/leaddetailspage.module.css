@@ -102,13 +102,13 @@
   flex-direction: column;
   position: absolute;
   right: 10px;
-width:8%;
+  width: 8%;
   justify-content: flex-start;
   gap: 15px;
   margin-top: 15px;
-  padding:5px;
+  padding: 5px;
   margin-right: 10px;
-  max-height:calc(100vh-30px);
+  max-height: calc(100vh-30px);
   overflow-y: auto;
   scrollbar-width: none;
   -ms-overflow-style: none;
@@ -117,10 +117,10 @@ width:8%;
 .actionButton {
   display: flex;
   align-items: center;
-  background-color: rgba(255, 255, 255, 0.06); 
+  background-color: rgba(255, 255, 255, 0.06);
   border: 1px solid rgba(255, 255, 255, 0.2);
   color: #bfe9ff;
-  padding: 20px 10px ;
+  padding: 20px 10px;
   border-radius: 8px;
   font-size: 1vw;
   font-weight: 500;
@@ -335,11 +335,13 @@ width:8%;
   }
 
   .actionButton {
-    width: 42vw;
+    flex: 1;
+    min-width: 26vw;
     height: 15vh;
     padding: 5px;
     font-size: 3.5vw;
     text-align: center;
+
     justify-content: center;
   }
 
@@ -391,14 +393,12 @@ width:8%;
     height: 3vw;
   }
 
-  .optionsFeedback{
-
-      top: 8vh;
-      right: 1vh;
-      font-size: 12px;
-      width: 3vw;
-      height: 3vw;
-    
+  .optionsFeedback {
+    top: 8vh;
+    right: 1vh;
+    font-size: 12px;
+    width: 3vw;
+    height: 3vw;
   }
 
   .actionButton {
@@ -412,7 +412,6 @@ width:8%;
 
   .buttonColumn {
     margin-right: 1vw;
-    width: 100%;
   }
 }
 
@@ -434,5 +433,9 @@ width:8%;
     font-size: 1.1vw;
     padding: 5px;
     justify-content: center;
+  }
+
+  .leadHistoryContainer{
+    width: 100%;
   }
 }
