@@ -7,35 +7,35 @@ const Leadcards = ({ leadInfo = null }) => {
     <div className={styles.container}>
       <Link href="/leads" className={styles.card}>
         <div className={styles.text}>
-          <h4>Leads</h4>
+          <p>Leads</p>
           <h2>{leadInfo?.totalItems ?? 0}</h2>
         </div>
         <BarChart className={`${styles.icon} ${styles.blue}`} />
       </Link>
       <div className={styles.card}>
         <div className={styles.text}>
-          <h4>Visit 1</h4>
+          <p>Visit 1</p>
           <h2>{leadInfo?.visitCount ?? 0}</h2>
         </div>
         <MapPin className={`${styles.icon} ${styles.orange}`} />
       </div>
       <div className={styles.card}>
         <div className={styles.text}>
-          <h4>Visit 2</h4>
+          <p>Visit 2</p>
           <h2>{leadInfo?.visit2Count ?? 0}</h2>
         </div>
         <Repeat className={`${styles.icon} ${styles.purple}`} />
       </div>
       <div className={styles.card}>
         <div className={styles.text}>
-          <h4>Booking</h4>
+          <p>Booking</p>
           <h2>{leadInfo?.bookingCount ?? 0}</h2>
         </div>
         <CheckSquare className={`${styles.icon} ${styles.green}`} />
       </div>
       <div className={styles.card}>
         <div className={styles.text}>
-          <h4>Pending</h4>
+          <p>Pending</p>
           <h2>{leadInfo?.pendingCount ?? 0}</h2>
         </div>
         <Clock className={`${styles.icon} ${styles.red}`} />

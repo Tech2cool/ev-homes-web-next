@@ -3,7 +3,7 @@
   align-items: center;
   justify-content: space-between;
   padding: 10px 20px;
-  background-color: #333;
+  /* background-color: #33 */
   color: white;
   position: fixed;
   height: 50px;
@@ -11,27 +11,62 @@
   left: 0;
   width: 100%;
   z-index: 1000;
+  background-color: transparent;
+  transition: background-color 0.3s ease;
+}
+
+.navbar.scrolled {
+  background-color: rgba(0, 0, 0, 0.7); 
+  backdrop-filter: blur(8px);
 }
 
 .navLinks {
   display: flex;
   align-items: center;
   list-style: none;
-
   gap: 4vw;
   margin: 0;
   padding: 0;
 }
 
 .navLinks li {
+  position: relative;
+  cursor: pointer;
+  transition: color 0.3s;
+  font-size: 16px;
+  color: gray;
+ 
+}
+
+.navLinks li::after {
+  content: "";
+  position: absolute;
+bottom: -5px;
+  left: 50%;
+  transform: translateX(-50%) scaleX(0);
+  transform-origin: center;
+  width: 100%;
+  height: 2px;
+  background-color: white;
+  transition: transform 0.3s ease;
+  /* color: white; */
+}
+
+.navLinks li:hover::after {
+  transform: translateX(-50%) scaleX(1);
+}
+
+/* 
+.navLinks li {
   cursor: pointer;
   transition: color 0.3s;
   position: relative;
   font-size: 16px;
-}
+  color: gray;
+} */
 
 .navLinks li:hover {
-  color: #f4a261;
+  color: white;
 }
 
 .active {
@@ -44,10 +79,21 @@
   display: block;
   width: 100%;
   height: 3px;
-  background-color: #f4a261;
+  background-color: white;
   position: absolute;
   bottom: -5px;
   left: 0;
+  font-weight: bold;
+  color: white;
+}
+
+.navLinks li.active {
+  color: white;
+  font-weight: bold;
+}
+
+.navLinks li.active::after {
+  transform: translateX(-50%) scaleX(1);
 }
 
 .icons {
@@ -93,6 +139,7 @@
 .logo img {
   max-width: 100%;
   height: auto;
+  padding-left: 20px;
 }
 
 .logo {

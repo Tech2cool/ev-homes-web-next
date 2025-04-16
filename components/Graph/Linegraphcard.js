@@ -61,17 +61,18 @@ const Linegraphcard = () => {
       </div>
 
       <div className={styles.linegraphContainer}>
-        <ResponsiveContainer width="100%" height={250}>
+        <ResponsiveContainer width="100%" height={210}>
           <LineChart data={data}>
             <CartesianGrid strokeDasharray="3 3" />
-            <XAxis dataKey="month" stroke="white"/>
-            <YAxis stroke="white" />
+            <XAxis dataKey="month" />
+            <YAxis  />
             <Tooltip />
             <Line
               type="monotone"
               dataKey="leads"
-              stroke="hsl(177, 100%, 50%)"
-              strokeWidth={2}
+              // stroke="hsl(177, 100%, 50%)"
+              stroke="#007bff"
+              strokeWidth={1.5}
               dot={{ r: 5 }}
             />
           </LineChart>

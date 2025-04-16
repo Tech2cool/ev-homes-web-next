@@ -3,25 +3,28 @@
   flex-direction: column;
   gap: 10px;
   padding: 20px;
-  background-color: #333;
-  max-height: 500px;
+  /* background-color: #333; */
+  max-height: 80vh;
   overflow-y: auto;
   scrollbar-width: none;
   -ms-overflow-style: none;
+  border-right: 1px solid rgba(255, 255, 255, 0.2); ;
 }
 
 .leadCard {
   display: flex;
   flex-direction: column;
-  background: #505050;
-  border-radius: 8px;
+  /* background: #505050; */
+  /* border-radius: 8px; */
   padding: 10px 20px;
   box-shadow: 0 4px 6px rgba(0, 0, 0, 0.3);
   color: white;
   width: auto;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.2); ;
 }
 
 .leadInfo {
+  
   display: flex;
   align-items: center;
   gap: 10px;
@@ -37,7 +40,7 @@
   align-items: center;
   justify-content: center;
   font-size: 1.2rem;
-  font-weight: bold;
+  /* font-weight: bold; */
   color: white;
 }
 
@@ -53,16 +56,17 @@
 }
 
 .leadMeta p {
-  font-size: 1.1vw;
-  color: white;
+  font-size: 2vh;
+  /* color: white; */
+  color: rgba(255, 255, 255, 0.6);
   margin: 5px 0;
 }
 
 .clientStatus {
   padding: 5px 10px;
-  border-radius: 15px;
+  border-radius: 8px;
   font-size: 0.5vw;
-  background: rgb(244, 192, 96);
+  background: rgb(243, 178, 58);
   color: white;
   display: inline-block;
 }

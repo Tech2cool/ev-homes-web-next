@@ -25,6 +25,7 @@ import { dateFormatOnly } from "@/hooks/useDateFormat";
 
 const Leaddetailspage = ({ lead = null, id = null }) => {
   const [showDropdown, setShowDropdown] = useState(false);
+  const [showFeedbackDropdown, setShowFeedbackDropdown] = useState(false);
   const [showDialog, setShowDialog] = useState(false);
   const [showNotificationDialog, setShowNotificationDialog] = useState(false);
   const [showScheduleMeetingDialog, setShowScheduleMeetingDialog] =
@@ -39,6 +40,7 @@ const Leaddetailspage = ({ lead = null, id = null }) => {
   const router = useRouter();
 
   const dropdownRef = useRef(null);
+  const feedbackRef = useRef(null);
 
   const isAnyDialogOpen =
     showDialog ||
@@ -46,21 +48,30 @@ const Leaddetailspage = ({ lead = null, id = null }) => {
     showScheduleMeetingDialog ||
     showLeadRunningStatusDialog ||
     showEditLeadDetailsDialog ||
-    showAddReminderDialog;
+    showAddReminderDialog ||showUpdateStatusDialog;
   useBodyScrollLock(isAnyDialogOpen);
 
   useEffect(() => {
     const handleClickOutside = (event) => {
-      if (dropdownRef.current && !dropdownRef.current.contains(event.target)) {
+      if (
+        dropdownRef.current && !dropdownRef.current.contains(event.target)
+      ) {
         setShowDropdown(false);
       }
+  
+      if (
+        feedbackRef.current && !feedbackRef.current.contains(event.target)
+      ) {
+        setShowFeedbackDropdown(false);
+      }
     };
-
+  
     document.addEventListener("mousedown", handleClickOutside);
     return () => {
       document.removeEventListener("mousedown", handleClickOutside);
     };
   }, []);
+  
 
   const handleAssignClick = () => {
     setShowDialog(true);
@@ -154,6 +165,40 @@ const Leaddetailspage = ({ lead = null, id = null }) => {
           {showEditLeadDetailsDialog && (
             <Editleaddetailsdialog onClose={closeEditLeadDetailsDialog} />
           )}
+
+          <div className={styles.optionsWrapper} ref={feedbackRef}>
+            <div
+              className={styles.optionsFeedback}
+              onClick={() => setShowFeedbackDropdown(!showFeedbackDropdown)}
+            >
+              <span style={{ fontSize: "20px", fontWeight: "normal" }}>+</span>
+            </div>
+
+            {showFeedbackDropdown && (
+              <div className={styles.dropdown}>
+                <div
+                  className={styles.dropdownItem}
+                  onClick={handleUpdateStatusClick}
+                >
+                  Add Feedback
+                </div>
+              </div>
+            )}
+          </div>
+          {showUpdateStatusDialog && (
+            <Updatestatusdialog onClose={closeUpdateStatusDialog} />
+          )}
+
+          {/* <button
+            className={styles.actionButton}
+            onClick={handleUpdateStatusClick}
+          >
+            <FaRegAddressBook className={styles.icon} />
+            Add Feedback
+          </button>
+          {showUpdateStatusDialog && (
+            <Updatestatusdialog onClose={closeUpdateStatusDialog} />
+          )} */}
 
           <div className={styles.leftSection}>
             <div className={styles.avatar}>
@@ -273,7 +318,7 @@ const Leaddetailspage = ({ lead = null, id = null }) => {
             <Schedulemeetingdialog onClose={closeScheduleMeeetingDialog} />
           )}
 
-          <button
+          {/* <button
             className={styles.actionButton}
             onClick={handleUpdateStatusClick}
           >
@@ -282,7 +327,7 @@ const Leaddetailspage = ({ lead = null, id = null }) => {
           </button>
           {showUpdateStatusDialog && (
             <Updatestatusdialog onClose={closeUpdateStatusDialog} />
-          )}
+          )} */}
 
           <button
             className={styles.actionButton}
