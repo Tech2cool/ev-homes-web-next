@@ -21,13 +21,13 @@ const Taskcards = () => {
         <div className={styles.taskList}>
           {tasks.map((task, index) => (
             <div key={index} className={styles.taskCard}>
-              <Image
+              {/* <Image
                 src="/profile.jpg"
                 alt="Profile"
                 width={40}
                 height={40}
                 // className={styles.profilePic}
-              />
+              /> */}
               <div className={styles.taskInfo}>
                 <p className={styles.clientName}>{task.name}</p>
                 <p className={styles.remark}>{task.remark}</p>

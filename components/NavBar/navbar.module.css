@@ -16,7 +16,7 @@
 }
 
 .navbar.scrolled {
-  background-color: rgba(0, 0, 0, 0.7); 
+  background-color: rgba(0, 0, 0, 0.7);
   backdrop-filter: blur(8px);
 }
 
@@ -34,14 +34,13 @@
   cursor: pointer;
   transition: color 0.3s;
   font-size: 16px;
-  color: gray;
- 
+  color: #ffffffc9;
 }
 
 .navLinks li::after {
   content: "";
   position: absolute;
-bottom: -5px;
+  bottom: -5px;
   left: 50%;
   transform: translateX(-50%) scaleX(0);
   transform-origin: center;
@@ -227,16 +226,15 @@ bottom: -5px;
     padding: 10px;
   }
 
-  .icon{
+  .icon {
     font-size: 4vw;
   }
-  .icons{
+  .icons {
     gap: 4vw;
   }
-  
 }
 
-@media screen and (max-width: 1024px) and (min-width: 616px){
+@media screen and (max-width: 1024px) and (min-width: 616px) {
   .navLinks {
     gap: 2vw;
   }
