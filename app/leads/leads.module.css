@@ -27,3 +27,15 @@
   flex-direction: column;
   width: 77%;
 }
+
+.messageWrapper {
+  flex: 1;
+  display: flex;
+  justify-content: center; 
+  align-items: center;
+  text-align: center;
+}
+.messageWrapper p {
+  color: gray;
+  font-size: 18px;
+}
