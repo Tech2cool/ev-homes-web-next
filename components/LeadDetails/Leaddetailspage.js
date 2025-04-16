@@ -21,8 +21,9 @@ import Setreminderdialog from "../Dialogs/Setreminderdialog";
 import Editleaddetailsdialog from "../Dialogs/Editleaddetailsdialog";
 import { useRouter } from "next/navigation";
 import Updatestatusdialog from "../Dialogs/Updatestatusdialog";
+import { dateFormatOnly } from "@/hooks/useDateFormat";
 
-const Leaddetailspage = () => {
+const Leaddetailspage = ({ lead = null, id = null }) => {
   const [showDropdown, setShowDropdown] = useState(false);
   const [showDialog, setShowDialog] = useState(false);
   const [showNotificationDialog, setShowNotificationDialog] = useState(false);
@@ -155,60 +156,89 @@ const Leaddetailspage = () => {
           )}
 
           <div className={styles.leftSection}>
-            <div className={styles.avatar}>D</div>
-            <div className={styles.name}>Dummy Dummy</div>
-            <div className={styles.phone}>+91 1334567899</div>
+            <div className={styles.avatar}>
+              {lead?.firstName?.charAt(0).toUpperCase() ?? "?"}
+            </div>
+            <div className={styles.name}>
+              {lead?.firstName ?? ""} {lead?.lastName ?? ""}
+            </div>
+            <div className={styles.phone}>
+              {lead?.countryCode ?? "91"} {lead?.phoneNumber}
+            </div>
           </div>
 
           <div className={styles.middleSection}>
             <p>
               <span className={styles.label}>Requirement:</span>{" "}
-              <span className={styles.value}>2BHK, 3BHK, 4BHK</span>
+              <span className={styles.value}>
+                {lead?.requirement?.join(", ") ?? "NA"}
+              </span>
             </p>
             <p>
               <span className={styles.label}>Channel Partner:</span>{" "}
-              <span className={styles.value}>Balaji Properties</span>
+              <span className={styles.value}>
+                {lead?.channelPartner?.firmName ?? "NA"}
+              </span>
             </p>
             <p>
               <span className={styles.label}>Project:</span>{" "}
-              <span className={styles.value}>EV10 Marina Bay</span>
+              <span className={styles.value}>
+                {" "}
+                {lead?.project.map((ele) => ele?.name ?? "")?.join(", ") ??
+                  "NA"}
+              </span>
             </p>
             <p>
               <span className={styles.label}>Status:</span>{" "}
-              <span className={styles.value}>Visit</span>
+              {/* TODO: status logic  */}
+              <span className={styles.value}>{lead?.stage}</span>
             </p>
             <p>
               <span className={styles.label}>Visit Deadline:</span>{" "}
               <span className={`${styles.value} ${styles.danger}`}>
-                06 Apr 2025
+                {dateFormatOnly(lead?.cycle?.validTill)}
               </span>
             </p>
             <p>
               <span className={styles.label}>Site Visit Interested:</span>{" "}
-              <span className={`${styles.value} ${styles.danger}`}>No</span>
+              <span className={`${styles.value} ${styles.danger}`}>
+                {lead?.siteVisitInterested ? "YES" : "NO"}
+              </span>
             </p>
           </div>
 
           <div className={styles.rightSection}>
             <p>
               <span className={styles.label}>Email:</span>{" "}
-              <span className={styles.value}>NA</span>
+              <span className={styles.value}>
+                {lead?.email && lead?.email != "" ? lead?.email : "NA"}
+              </span>
             </p>
             <p>
               <span className={styles.label}>Address:</span>{" "}
-              <span className={styles.value}>na</span>
+              <span className={styles.value}>{lead?.address ?? "NA"}</span>
             </p>
             <p>
               <span className={styles.label}>Assigned To:</span>{" "}
-              <span className={styles.value}>Dummy Man</span>
+              <span className={styles.value}>
+                {lead?.taskRef
+                  ? `${lead?.taskRef?.assignTo?.firstName ?? ""} ${
+                      lead?.taskRef?.assignTo?.lastName ?? ""
+                    }`
+                  : "NA"}
+              </span>
             </p>
             <p>
               <span className={styles.label}>Client Status:</span>{" "}
-              <span className={styles.value}>NA</span>
+              <span className={styles.value}>
+                {lead?.clientInterestedStatus ?? "NA"}
+              </span>
             </p>
             <p>
               <span className={styles.label}>Lead Status:</span>{" "}
-              <span className={`${styles.value} ${styles.cold}`}>cold</span>
+              <span className={`${styles.value} ${styles.cold}`}>
+                {lead?.interestedStatus ?? "NA"}
+              </span>
             </p>
             <div className={styles.options}></div>
           </div>
@@ -284,7 +314,7 @@ const Leaddetailspage = () => {
             <Setreminderdialog onClose={closeAddReminderDialog} />
           )}
         </div>
-        <Leadshistory />
+        <Leadshistory lead={lead} />
       </div>
     </div>
   );

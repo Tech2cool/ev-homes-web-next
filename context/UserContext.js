@@ -1,5 +1,6 @@
 "use client";
 
+import fetchAdapter from "@/adapter.js/fetchAdapter";
 import { createContext, useContext, useEffect, useState } from "react";
 
 const UserContext = createContext();
@@ -22,23 +23,14 @@ export const UserProvider = ({ children }) => {
     setError("");
 
     try {
-      const res = await fetch("/api/employee-login", {
+      const res = await fetchAdapter("/api/employee-login", {
         method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-          "x-platform": "web",
-        },
         body: JSON.stringify({ email, password }),
       });
 
-      const data = await res.json();
+      localStorage.setItem("user", JSON.stringify(res.data));
 
-      if (!res.ok) {
-        throw new Error(data?.message || "Login failed");
-      }
-      localStorage.setItem("user", JSON.stringify(data.data));
-
-      setUser(data?.data);
+      setUser(res?.data);
       return { success: true };
     } catch (err) {
       setError(err.message);
@@ -48,8 +40,14 @@ export const UserProvider = ({ children }) => {
     }
   };
 
-  const logout = () => {
+  const logout = async () => {
+    await fetchAdapter("/api/employee-logout", {
+      method: "POST",
+    });
+
     localStorage.removeItem("user");
+    // Clear cookies for access and refresh tokens
+
     setUser(null);
   };
 

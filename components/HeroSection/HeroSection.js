@@ -2,18 +2,18 @@
 
 import React, { useEffect, useState } from "react";
 import "./HeroSection.css";
+import fetchAdapter from "@/adapter.js/fetchAdapter";
 
 const HeroSection = () => {
   const [projectInfo, setProjectInfo] = useState([]);
   const [currentIndex, setCurrentIndex] = useState(0);
 
   useEffect(() => {
-    fetch("/api/ourProjects", {
+    fetchAdapter("/api/ourProjects", {
       headers: {
         "x-platform": "web",
       },
     })
-      .then((res) => res.json())
       .then((data) => {
         setProjectInfo(data?.data ?? []);
       })
@@ -53,7 +53,6 @@ const HeroSection = () => {
         }") no-repeat center center/cover`,
         position: "relative",
         transition: "background 0.5s ease-in-out",
-        
       }}
     >
       <div className="hero-content">

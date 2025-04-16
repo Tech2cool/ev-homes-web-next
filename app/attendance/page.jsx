@@ -11,17 +11,15 @@ const AttendancePage = () => {
     <div>
       <Attendanceheader />
       <div className={styles.mainContent}>
-        
         <div className={styles.attendanceContainer}>
           <Myattendance />
         </div>
 
-        
         <div className={styles.rightContent}>
           <Attendancecards />
           <div className={styles.attinscalContainer}>
-          <Attendanceinsight />
-          <AttendanceCalendar/>
+            <Attendanceinsight />
+            <AttendanceCalendar />
           </div>
         </div>
       </div>
