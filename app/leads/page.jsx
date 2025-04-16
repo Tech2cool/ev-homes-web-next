@@ -7,23 +7,30 @@ import styles from "./leads.module.css";
 import Leaddetailspage from "@/components/LeadDetails/Leaddetailspage";
 import Leadshistory from "@/components/LeadsHistory/Leadshistory";
 import { useIsMobile } from "@/hooks/useIsMobile";
+import { useData } from "@/context/dataContext";
 
 const LeadsPage = () => {
+  const { fetchSaleExecutiveLeads, leadInfo, leads } = useData();
+
   const [selectedLeadId, setSelectedLeadId] = useState(null);
+  const [selectedLead, setSelectedLead] = useState(null);
   const isMobile = useIsMobile();
 
-  const handleLeadClick = (leadId) => {
-    setSelectedLeadId(leadId);
+  const handleLeadClick = (lead) => {
+    setSelectedLeadId(lead?._id);
+    setSelectedLead(lead);
   };
   const handleBack = () => {
     setSelectedLeadId(null);
   };
 
   useEffect(() => {
+    fetchSaleExecutiveLeads("ev128-ranjana-parmar", 1, 10);
+
     if (isMobile === undefined) return;
 
     if (!isMobile && selectedLeadId === null) {
-      setSelectedLeadId("1");
+      // setSelectedLeadId();
     }
   }, [isMobile, selectedLeadId]);
 
@@ -34,19 +41,19 @@ const LeadsPage = () => {
         selectedLeadId ? (
           <div>
             <button onClick={handleBack}>Back</button>
-            <Leaddetailspage leadId={selectedLeadId} />
+            <Leaddetailspage lead={selectedLead} id={selectedLeadId} />
           </div>
         ) : (
-          <Leadlistpage onLeadClick={handleLeadClick} />
+          <Leadlistpage initialLeads={leads} onLeadClick={handleLeadClick} />
         )
       ) : (
         <div className={styles.listDetailsContainer}>
           <div className={styles.listContainer}>
-            <Leadlistpage onLeadClick={handleLeadClick} />
+            <Leadlistpage initialLeads={leads} onLeadClick={handleLeadClick} />
           </div>
           <div className={styles.listHistoryContainer}>
             {selectedLeadId ? (
-              <Leaddetailspage leadId={selectedLeadId} />
+              <Leaddetailspage lead={selectedLead} id={selectedLeadId} />
             ) : (
               <p>Select a lead to view details</p>
             )}

@@ -14,10 +14,10 @@ const Profiledialog = ({ isOpen, onClose }) => {
     router.push(path);
   };
 
-  const onClickLogout = () => {
+  const onClickLogout = async () => {
     const confirmLogout = window.confirm("Are you sure you want to logout?");
     if (confirmLogout) {
-      logout();
+      await logout();
       navigateTo("/");
       onClose();
     }
