@@ -25,7 +25,7 @@
   margin-bottom: 5px;
   margin-top: 10px;
   color: #ffffff;
-  margin-right: 20px;
+  /* margin-right: 20px; */
 }
 
 .timeline {
@@ -90,11 +90,18 @@
 
 .twoContainers {
   display: flex;
-  gap: 10px;
-  justify-content: space-between;
-  flex-wrap: wrap;
+  gap: 1vw;
+  /* flex-wrap: wrap; */
+  width: 100%;
 }
 
+.leadHistoryContainer{
+width: 49%;
+}
+
+.followUpHistoryContainer{
+width: 49%;
+}
 .timelineRight {
   position: relative;
   margin-right: 20px;

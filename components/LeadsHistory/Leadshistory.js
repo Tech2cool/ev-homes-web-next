@@ -54,7 +54,7 @@ const Leadshistory = ({ lead = null }) => {
   ];*/
   return (
     <div className={styles.twoContainers}>
-      <div>
+      <div className={styles.leadHistoryContainer}>
         <h2 className={styles.heading}>Lead Transfer History</h2>
         <div className={styles.container}>
           <div className={styles.timeline}>
@@ -81,7 +81,7 @@ const Leadshistory = ({ lead = null }) => {
           </div>
         </div>
       </div>
-      <div>
+      <div className={styles.followUpHistoryContainer}>
         <h2 className={styles.heading2}>Follow Up History</h2>
         <div className={styles.container}>
           <div className={styles.timelineRight}>
