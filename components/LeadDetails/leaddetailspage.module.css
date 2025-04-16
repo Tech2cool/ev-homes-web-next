@@ -9,6 +9,7 @@
   flex-direction: row;
   justify-content: space-between;
   position: relative;
+  border-radius: 8px;
 }
 
 .leftSection {
@@ -103,16 +104,19 @@
   overflow-y: auto;
   scrollbar-width: none;
   -ms-overflow-style: none;
+  /* border-left: 1px solid rgba(255, 255, 255, 0.2);   ; */
 }
 
 .actionButton {
   display: flex;
   align-items: center;
-  background-color: #2a2a2a;
-  border: none;
+  /* background-color: #2a2a2a; */
+  background-color: rgba(255, 255, 255, 0.06); 
+  /* border: none; */
+  border: 1px solid rgba(255, 255, 255, 0.2);
   color: #bfe9ff;
   padding: 20px ;
-  border-radius: 10px;
+  border-radius: 8px;
   font-size: 1vw;
   font-weight: 500;
   cursor: pointer;
@@ -147,12 +151,30 @@
 
 .options {
   position: absolute;
-  top: 20px;
+  top: 10px;
   right: 30px;
   cursor: pointer;
   font-size: 20px;
-  width: 40px;
-  height: 40px;
+  width: 35px;
+  height: 35px;
+  background-color: rgba(255, 255, 255, 0.05);
+  border-radius: 50%;
+  border: 1.5px solid rgba(255, 255, 255, 0.2);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #ddd;
+  transition: background-color 0.3s ease, color 0.3s ease, border 0.3s ease;
+}
+
+.optionsFeedback {
+  position: absolute;
+  top: 60px;
+  right: 30px;
+  cursor: pointer;
+  font-size: 20px;
+  width: 35px;
+  height: 35px;
   background-color: rgba(255, 255, 255, 0.05);
   border-radius: 50%;
   border: 1.5px solid rgba(255, 255, 255, 0.2);
@@ -164,6 +186,12 @@
 }
 
 .options:hover {
+  background-color: rgba(255, 255, 255, 0.15);
+  color: #fff;
+  border-color: rgba(255, 255, 255, 0.4);
+}
+
+.optionsFeedback:hover {
   background-color: rgba(255, 255, 255, 0.15);
   color: #fff;
   border-color: rgba(255, 255, 255, 0.4);

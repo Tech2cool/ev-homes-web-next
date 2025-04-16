@@ -20,6 +20,7 @@ const Navbar = () => {
   const [isProfileOpen, setIsProfileOpen] = useState(false);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   const [isAnimatingOut, setIsAnimatingOut] = useState(false);
+  const [scrolled, setScrolled] = useState(false);
 
   const handleClose = () => {
     setIsAnimatingOut(true);
@@ -126,8 +127,20 @@ const Navbar = () => {
     };
   }, [isMobileMenuOpen]);
 
+  useEffect(() => {
+    const handleScroll = () => {
+      setScrolled(window.scrollY > 10);
+    };
+
+    window.addEventListener("scroll", handleScroll);
+    return () => window.removeEventListener("scroll", handleScroll);
+  }, []);
+
   return (
-    <nav className={styles.navbar} style={customNavStyle}>
+    <nav
+      className={`${styles.navbar} ${scrolled ? styles.scrolled : ""}`}
+      style={customNavStyle}
+    >
       <div
         className={styles.hamburger}
         onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
@@ -176,8 +189,8 @@ const Navbar = () => {
         <Image
           src="/images/evhomeslogo.png"
           alt="EV Homes Logo"
-          width={250}
-          height={50}
+          width={180}
+          height={20}
         />
       </div>
 

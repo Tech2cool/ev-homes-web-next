@@ -1,25 +1,35 @@
 .taskContainer {
-  background-color: #333;
-  color: black;
+  /* background-color: white; */
+  /* background-color: rgba(255, 255, 255, 0.06); */
+  /* color: black; */
   width: 400px;
-  height: 250px;
+  height: 33vh;
   padding: 10px;
-  border-radius: 10px;
-  border: 2px solid #00e1ff;
-  box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1); 
+  border-radius: 8px;
+  /* border: 2px solid #00e1ff; */
+  /* border: 2px solid rgb(223,220,220); */
+  /* border: 1px solid rgba(255, 255, 255, 0.2);  */
+  /* box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);  */
   
 }
 .card {
-  background: #333;
-  padding: 20px;
-  border-radius: 12px;
+  /* background: white; */
+  /* padding: 20px; */
+  /* border-radius: 12px; */
+  background-color: rgba(255, 255, 255, 0.06); 
+  padding: 10px;
+  border: 1px solid rgba(255, 255, 255, 0.2);   
+    border-radius: 8px;
+    max-height: fit-content;
 }
 
 .heading {
-  font-size: 18px;
-  font-weight: bold;
+  /* font-size: 18px;
+  font-weight: bold; */
   margin-bottom: 10px;
-  color: #ffff;
+  font-size: 1rem;
+    color: rgba(255, 255, 255, 0.6);
+  /* color: #ffff; */
 }
 
 .taskList {
@@ -27,7 +37,7 @@
   flex-direction: column;
   gap: 10px;
   overflow-y: auto;
-  max-height: 250px;
+  max-height: 30vh;
   scrollbar-width: none;
 }
 .taskList::-webkit-scrollbar {
@@ -38,17 +48,19 @@
   display: flex;
   align-items: center;
   padding: 10px;
-  border-radius: 10px;
-  background-color: #222;
-  border: 1px solid #00e1ff;
-  color: #ffff;
+  border-radius: 8px;
+  /* background-color: white; */
+  border-bottom:  1px solid rgba(255, 255, 255, 0.2);
+  /* border: 1px solid #333; */
+
+  /* color: #ffff; */
 }
 
 .profilePic {
   width: 40px;
   height: 40px;
   border-radius: 50%;
-  margin-right: 10px;
+  margin-right: 20px;
   border: 1px solid white;
 }
 
@@ -58,13 +70,16 @@
 }
 
 .clientName {
-  font-weight: bold;
+  /* font-weight: bold; */
   color: white;
+  font-size: 1rem;
 }
 
 .remark {
   font-size: 14px;
-  color: #00e1ff;
+  /* color: #00e1ff; */
+  /* color: rgb(82,81,81); */
+  color: rgba(255, 255, 255, 0.6);
 }
 @media screen and (max-width: 615px) {
   .card {

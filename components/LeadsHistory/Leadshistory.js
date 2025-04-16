@@ -59,7 +59,7 @@ const Leadshistory = () => {
           <div className={styles.timeline}>
             {transfers.map((item, index) => (
               <div className={styles.timelineItem} key={index}>
-                <div className={styles.timelineDot}> <FaCheck size={10} color="#121212" /></div>
+                <div className={styles.timelineDot}> <FaCheck size={10} color="black" /></div>
                 <div className={styles.timelineCard}>
                   <div className={styles.name}>{item.name}</div>
                   <div className={styles.subtext}>Transferred from</div>
@@ -78,7 +78,7 @@ const Leadshistory = () => {
           <div className={styles.timelineRight}>
             {followups.map((item, index) => (
               <div className={styles.timelineRightItem} key={index}>
-                <div className={styles.timelineDotRight}><FaCheck size={10} color="#121212" /></div>
+                <div className={styles.timelineDotRight}><FaCheck size={10} color="black" /></div>
                 <div className={styles.timelineCardRight}>
                   <div className={styles.name}>{item.name}</div>
                   <div className={styles.subtext}>{item.status}</div>
