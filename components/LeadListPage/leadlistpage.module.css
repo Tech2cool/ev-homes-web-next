@@ -29,8 +29,8 @@
 }
 
 .clientIcon {
-  width:3vw;
-  height:3vw;
+  width: 3vw;
+  height: 3vw;
   border-radius: 50%;
   background-color: #007bff;
   display: flex;

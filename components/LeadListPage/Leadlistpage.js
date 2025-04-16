@@ -39,37 +39,27 @@ const LeadCard = ({ lead, onClick }) => {
   );
 };
 
-const Leadlistpage = ({ initialLeads = [], onLeadClick }) => {
-  const { fetchSaleExecutiveLeads } = useData();
-  const [leads, setLeads] = useState(initialLeads);
+const Leadlistpage = ({ onLeadClick }) => {
+  const { fetchSaleExecutiveLeads, leadInfo, leads, loadingLeads } = useData();
 
-  const [page, setPage] = useState(1);
-  const [hasMore, setHasMore] = useState(true);
   const observer = useRef();
 
   const loadMoreLeads = useCallback(async () => {
     try {
-      const data = await fetchSaleExecutiveLeads(
+      await fetchSaleExecutiveLeads(
         "ev128-ranjana-parmar",
-        page,
+        "",
+        leadInfo?.page + 1 ?? 1,
         10
       );
-
-      if (data?.data?.length > 0) {
-        setLeads((prev) => [...prev, ...data.data]);
-        setPage((prev) => prev + 1);
-      } else {
-        setHasMore(false);
-      }
     } catch (err) {
       console.error("Error loading more leads:", err);
     }
-  }, [page]);
+  }, [leadInfo?.page]);
 
   const lastLeadRef = useCallback(
     (node) => {
       if (observer.current) observer.current.disconnect();
-      if (!hasMore) return;
 
       observer.current = new IntersectionObserver((entries) => {
         console.log("reach end");
@@ -80,7 +70,7 @@ const Leadlistpage = ({ initialLeads = [], onLeadClick }) => {
 
       if (node) observer.current.observe(node);
     },
-    [loadMoreLeads, hasMore]
+    [loadMoreLeads]
   );
 
   return (
@@ -96,6 +86,9 @@ const Leadlistpage = ({ initialLeads = [], onLeadClick }) => {
           return <LeadCard key={index} lead={lead} onClick={onLeadClick} />;
         }
       })}
+      {loadingLeads ? (
+        <p style={{ color: "white", textAlign: "center" }}>Loading...</p>
+      ) : null}
     </div>
   );
 };
