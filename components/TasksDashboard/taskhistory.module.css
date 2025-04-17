@@ -107,9 +107,10 @@
 }
 
 @media screen and (max-width: 1024px) and (min-width: 616px) {
-  .timelineCard {
+  .timelineCard{
     width: 50vw;
   }
+
 
   .heading {
     font-size: 1.5vw;
@@ -118,7 +119,7 @@
   .timeline {
     margin-left: 0vw;
   }
-
+  
   .timelineDot {
     width: 2vw;
     height: 2vw;
