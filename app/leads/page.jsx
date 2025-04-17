@@ -6,9 +6,11 @@ import styles from "./leads.module.css";
 import Leaddetailspage from "@/components/LeadDetails/Leaddetailspage";
 import { useIsMobile } from "@/hooks/useIsMobile";
 import { useData } from "@/context/dataContext";
-import { IoArrowBackCircleOutline } from "react-icons/io5"; 
+import { IoArrowBackCircleOutline } from "react-icons/io5";
+import { useUser } from "@/context/UserContext";
 
 const LeadsPage = () => {
+  const { user } = useUser();
   const { fetchSaleExecutiveLeads, leadInfo, leads } = useData();
 
   const [selectedLeadId, setSelectedLeadId] = useState(null);
@@ -24,7 +26,7 @@ const LeadsPage = () => {
   };
 
   useEffect(() => {
-    fetchSaleExecutiveLeads("ev128-ranjana-parmar", 1, 10);
+    fetchSaleExecutiveLeads(user?._id, 1, 10);
 
     if (isMobile === undefined) return;
 

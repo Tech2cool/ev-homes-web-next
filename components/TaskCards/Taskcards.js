@@ -2,17 +2,17 @@ import React from "react";
 import styles from "./taskcards.module.css";
 import Image from "next/image";
 
-const Taskcards = () => {
-  const tasks = [
-    { name: "Client Name", remark: "Remark……!" },
-    { name: "Client Name", remark: "Remark……!" },
-    { name: "Client Name", remark: "Remark……!" },
-    { name: "Client Name", remark: "Remark……!" },
-    { name: "Client Name", remark: "Remark……!" },
-    { name: "Client Name", remark: "Remark……!" },
-    { name: "Client Name", remark: "Remark……!" },
-    { name: "Client Name", remark: "Remark……!" },
-  ];
+const Taskcards = ({ tasks = [] }) => {
+  // const tasks = [
+  //   { name: "Client Name", remark: "Remark……!" },
+  //   { name: "Client Name", remark: "Remark……!" },
+  //   { name: "Client Name", remark: "Remark……!" },
+  //   { name: "Client Name", remark: "Remark……!" },
+  //   { name: "Client Name", remark: "Remark……!" },
+  //   { name: "Client Name", remark: "Remark……!" },
+  //   { name: "Client Name", remark: "Remark……!" },
+  //   { name: "Client Name", remark: "Remark……!" },
+  // ];
 
   return (
     <div className={styles.card}>

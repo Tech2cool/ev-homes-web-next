@@ -6,11 +6,14 @@ import { FilterCard } from "../FilterCard/Filtercard";
 import useBodyScrollLock from "../useBodyScrollLock";
 import { useData } from "@/context/dataContext";
 import useDebounce from "@/hooks/useDebounce";
+import { useUser } from "@/context/UserContext";
 
 const Leaddashboardcards = () => {
   const [menuOpen, setMenuOpen] = useState(false);
   const [showFilter, setShowFilter] = useState(false);
   const containerRef = useRef(null);
+  const { user } = useUser();
+
   const { fetchSaleExecutiveLeads } = useData();
   const [query, setQuery] = useState("");
 
@@ -41,7 +44,7 @@ const Leaddashboardcards = () => {
 
   useEffect(() => {
     if (debouncedSearch !== "") {
-      fetchSaleExecutiveLeads("ev128-ranjana-parmar", query, 1, 10);
+      fetchSaleExecutiveLeads(user?._id, query, 1, 10);
     }
   }, [debouncedSearch]);
 
