@@ -1,15 +1,112 @@
-.stylingContainer {
-  height: 70px;
-  width: 100%;
-  background-color: #333;
-  display: flex;
-  justify-content: center;
+.container {
+  width: 80%;
+  margin: 2rem auto 0; 
+  /* background-color: #1a1a1a;  */
+  color: white;
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  border-radius: 8px;
+  padding: 1rem;
 }
 
-.whiteContainer {
-  background-color: white;
-  height: 500px;
-  width: 90%;
-  margin: 20px;
-  border-radius: 20px;
+.heading {
+  text-align: center;
+  font-size: 1.5rem;
+  font-weight: bold;
+  margin-bottom: 1rem;
+}
+
+.sections {
+  display: flex;
+  justify-content: space-between;
+  gap: 1rem;
+}
+
+.section {
+  flex: 1;
+  background-color: black;
+  border: 1px solid rgba(255, 255, 255, 0.2);   
+  padding: 1rem;
+  border-radius: 6px;
+  text-align: center;
+  height: 60vh;
+overflow-y: auto;
+scrollbar-width: none;
+}
+
+.sectionStacked {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  gap: 1rem;
+}
+
+.innerSection {
+  background-color: #3a3a3a;
+  padding: 0.75rem;
+  border-radius: 6px;
+  flex: 1;
+}
+
+.formControl {
+  display: flex;
+  flex-direction: column;
+  width: 22vw;
+  position: relative;
+  margin-bottom: 20px;
+  margin-top: 30px;
+}
+
+
+.inputWrapper {
+  display: flex;
+  align-items: center;
+  border: 1px solid rgba(255, 255, 255, 0.4);   
+  border-radius: 8px;
+  padding: 8px;
+}
+
+.inputIcon {
+  color:#007bff;
+  margin-right: 1vw;
+}
+
+.inputField {
+  border: none;
+  outline: none;
+  flex: 1;
+  font-size: 1rem;
+  padding-left: 8px;
+  background: transparent;
+  color: white;
+}
+
+
+.formControl textarea {
+  padding: 1vw;
+}
+
+.formControl label {
+  color: rgba(252, 245, 245, 0.76);
+  font-size: 1.1vw;
+  position: absolute;
+  top: -12px;
+  left: 12px;
+  background-color: black;
+  padding: 0 10px;
+}
+
+.formControl select {
+  padding: 5px;
+  font-size: 1vw;
+  background-color: black;
+  color: white;
+}
+
+.formControl input {
+  padding: 6px;
+  font-size: 1vw;
+}
+
+.estimateHeaders{
+  align-items: left;
 }

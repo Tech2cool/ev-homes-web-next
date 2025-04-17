@@ -69,7 +69,7 @@ const Editleaddetailsdialog = ({ onClose }) => {
         </div>
 
         <div className={styles.formControl}>
-          <label htmlFor="firstName">First Name *</label>
+          <label htmlFor="firstName">First Name </label>
           <div className={style.inputWrapper}>
             <FaUser className={style.inputIcon} />
             <input
