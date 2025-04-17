@@ -1,14 +1,14 @@
 .detailsContainer {
-  width: 60vw;
   max-height: 100vh;
   background-color: #1a1a1aa8;
   margin: 1vw;
   padding: 1vw;
   display: flex;
   color: white;
-  /* font-size: 13px; */
-  /* font-weight: 400; */
+  flex-direction: row;
+  justify-content: space-between;
   position: relative;
+  border-radius: 8px;
 }
 
 .leftSection {
@@ -44,11 +44,6 @@
   color: #ccc;
 }
 
-.infoSection {
-  display: flex;
-  gap: 10px;
-}
-
 .middleSection,
 .rightSection {
   width: 37.5%;
@@ -65,7 +60,6 @@
   line-height: 1.4;
   font-size: 1vw;
   font-weight: 400;
-  gap: 10px;
 }
 
 .label {
@@ -98,12 +92,15 @@
 .buttonColumn {
   display: flex;
   flex-direction: column;
+  position: absolute;
+  right: 10px;
+  width: 8%;
   justify-content: flex-start;
   gap: 15px;
-  padding:5px;
   margin-top: 15px;
+  padding: 5px;
   margin-right: 10px;
-  max-height: 500px;
+  max-height: calc(100vh-30px);
   overflow-y: auto;
   scrollbar-width: none;
   -ms-overflow-style: none;
@@ -112,18 +109,18 @@
 .actionButton {
   display: flex;
   align-items: center;
-  background-color: #2a2a2a;
-  border: none;
+  background-color: rgba(255, 255, 255, 0.06);
+  border: 1px solid rgba(255, 255, 255, 0.2);
   color: #bfe9ff;
-  padding: 10px 15px;
-  border-radius: 10px;
+  padding: 20px 10px;
+  border-radius: 8px;
   font-size: 1vw;
   font-weight: 500;
   cursor: pointer;
   transition: all 0.3s ease;
   box-shadow: 0 0 5px #00e1ff44;
-  width: 10vw;
-  height: 15vh;
+  max-width: 8vw;
+  height: fit-content;
   border: 1.5px solid #2a2a2a;
 }
 
@@ -143,34 +140,42 @@
 .leadHistoryContainer {
   display: flex;
   flex-direction: column;
+  width: 85%;
+}
+
+.optionsContainer {
+  display: flex;
+  position: absolute;
+  top: 1vh;
+  right: 1vw;
+  z-index: 2;
 }
 
 .optionsWrapper {
-  z-index: 5;
+  position: relative;
 }
 
 .options {
-  position: absolute;
-  top: 20px;
-  right: 30px;
-  cursor: pointer;
-  font-size: 20px;
-  width: 40px;
-  height: 40px;
-  background-color: rgba(255, 255, 255, 0.05);
-  border-radius: 50%;
-  border: 1.5px solid rgba(255, 255, 255, 0.2);
+  width: 2vw;
+  height: 2vw;
   display: flex;
   align-items: center;
   justify-content: center;
-  color: #ddd;
-  transition: background-color 0.3s ease, color 0.3s ease, border 0.3s ease;
+  border: 1px solid rgba(255, 255, 255, 0.3);
+  background: transparent;
+  border-radius: 6px;
+  cursor: pointer;
+  font-size: 2.5vh;
+  font-weight: bold;
+  color: #888;
+  transition: all 0.2s ease;
+  padding: 0;
 }
 
 .options:hover {
-  background-color: rgba(255, 255, 255, 0.15);
   color: #fff;
-  border-color: rgba(255, 255, 255, 0.4);
+  border-color: rgba(255, 255, 255, 0.5);
+  background-color: rgba(255, 255, 255, 0.05);
 }
 
 .dropdown {
@@ -228,4 +233,165 @@
 
 .dropdownItem:hover .subMenu {
   display: block;
+}
+
+@media screen and (max-width: 615px) {
+  .sectionContainer,
+  .leadHistoryContainer,
+  .detailsContainer,
+  .leftSection,
+  .middleSection,
+  .rightSection {
+    width: 97vw;
+    max-width: 100%;
+    box-sizing: border-box;
+    height: fit-content;
+  }
+
+  .detailsContainer {
+    margin-left: 0px;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 13px;
+    padding: 0 16px;
+    padding-bottom: 10px;
+  }
+
+  .leftSection {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+  }
+
+  .name {
+    font-size: 3vw;
+    word-break: break-word;
+  }
+
+  .phone {
+    font-size: 3vw;
+  }
+
+  .label {
+    font-size: 4vw;
+  }
+
+  .value {
+    font-size: 3.5vw;
+  }
+
+  .sectionContainer {
+    padding-left: 16px;
+    padding-right: 16px;
+    box-sizing: border-box;
+  }
+  .buttonColumn {
+    position: static;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 10px;
+    margin-top: 1rem;
+    margin-bottom: 1rem;
+    margin-right: 0px;
+    padding: 1px;
+    width: 100%;
+  }
+
+  .actionButton {
+    flex: 1;
+    min-width: 26vw;
+    height: 15vh;
+    padding: 5px;
+    font-size: 3.5vw;
+    text-align: center;
+    justify-content: center;
+  }
+
+  .avatar {
+    width: 10vw;
+    height: 10vw;
+    font-size: 4vw;
+  }
+
+  .options {
+    font-size: 2vh;
+    width: 5vw;
+    height: 5vw;
+  }
+
+  .icon {
+    font-size: 5vw;
+  }
+}
+
+@media screen and (max-width: 1024px) and (min-width: 616px) {
+  .detailsContainer {
+    max-height: 100vh;
+    margin: 0vw;
+    padding: 0.5vw;
+  }
+
+  .name {
+    font-size: 1.4vw;
+  }
+
+  .phone {
+    font-size: 1.2vw;
+  }
+  .label {
+    font-size: 1.3vw;
+  }
+
+  .value {
+    font-size: 1.2vw;
+  }
+
+  .options {
+    top: 1vh;
+    right: 1vh;
+    font-size: 2vh;
+    width: 2vw;
+    height: 2vw;
+  }
+  .actionButton {
+    width: 9vw;
+    height: 11vh;
+    padding: 5px;
+    font-size: 1.1vw;
+    text-align: center;
+    justify-content: center;
+  }
+
+  .buttonColumn {
+    margin-right: 1vw;
+  }
+}
+
+@media screen and (max-width: 900px) and (min-width: 616px) {
+  .buttonColumn {
+    position: static !important;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+    margin-top: 1rem;
+    width: 100%;
+    gap: 10px;
+  }
+
+  .actionButton {
+    width: 9vw;
+    height: 11vh;
+    font-size: 1.1vw;
+    padding: 5px;
+    justify-content: center;
+  }
+
+  .leadHistoryContainer {
+    width: 100%;
+  }
 }

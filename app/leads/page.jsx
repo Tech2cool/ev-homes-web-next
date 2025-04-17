@@ -1,15 +1,12 @@
 "use client";
-import { FilterCard } from "@/components/FilterCard/Filtercard";
 import Leadlistpage from "@/components/LeadListPage/Leadlistpage";
 import Leaddashboardcards from "@/components/LeadsDashboardCards/Leaddashboardcards";
 import React, { useEffect, useState } from "react";
 import styles from "./leads.module.css";
 import Leaddetailspage from "@/components/LeadDetails/Leaddetailspage";
-import Leadshistory from "@/components/LeadsHistory/Leadshistory";
 import { useIsMobile } from "@/hooks/useIsMobile";
 import { useData } from "@/context/dataContext";
 import { IoArrowBackCircleOutline } from "react-icons/io5"; 
-
 
 const LeadsPage = () => {
   const { fetchSaleExecutiveLeads, leadInfo, leads } = useData();

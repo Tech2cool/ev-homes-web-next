@@ -1,6 +1,4 @@
 .detailsContainer {
-  /* width: 60vw; */
-  /* width: 100%; */
   max-height: 100vh;
   background-color: #1a1a1aa8;
   margin: 1vw;
@@ -12,12 +10,6 @@
   position: relative;
   border-radius: 8px;
 }
-
-/* .wholeContainer{
-  display: flex;
-  flex-direction: column;
-  width: 100%;
-} */
 
 .leftSection {
   width: 25%;
@@ -151,13 +143,12 @@
   width: 85%;
 }
 
-
 .optionsContainer {
   display: flex;
   gap: 10px;
   position: absolute;
-  top: 12px;
-  right: 12px;
+  top: 1vh;
+  right: 1vw;
   z-index: 2;
 }
 
@@ -167,8 +158,8 @@
 
 .options,
 .optionsFeedback {
-  width: 38px;
-  height: 38px;
+  width: 2vw;
+  height: 2vw;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -176,7 +167,7 @@
   background: transparent;
   border-radius: 6px;
   cursor: pointer;
-  font-size: 20px;
+  font-size: 2.5vh;
   color: #888;
   transition: all 0.2s ease;
   padding: 0;
@@ -246,12 +237,6 @@
   display: block;
 }
 
-.topContent {
-  display: flex;
-  flex-direction: row;
-  justify-content: space-between;
-  gap: 16px;
-}
 @media screen and (max-width: 615px) {
   .sectionContainer,
   .leadHistoryContainer,
@@ -268,8 +253,6 @@
   .detailsContainer {
     margin-left: 0px;
     display: flex;
-    /* margin-right: 100px; */
-
     flex-direction: column;
     align-items: flex-start;
     gap: 13px;
@@ -327,7 +310,6 @@
     padding: 5px;
     font-size: 3.5vw;
     text-align: center;
-
     justify-content: center;
   }
 
@@ -338,15 +320,15 @@
   }
 
   .options {
-    font-size: 5vw;
-    width: 8vw;
-    height: 8vw;
+    font-size: 2vh;
+    width: 5vw;
+    height: 5vw;
   }
 
   .optionsFeedback {
-    font-size: 5vw;
-    width: 8vw;
-    height: 8vw;
+    font-size: 0.5vh;
+    width: 5vw;
+    height: 5vw;
   }
 
   .icon {
@@ -356,7 +338,6 @@
 
 @media screen and (max-width: 1024px) and (min-width: 616px) {
   .detailsContainer {
-    /* width: 65vw; */
     max-height: 100vh;
     margin: 0vw;
     padding: 0.5vw;
@@ -380,17 +361,17 @@
   .options {
     top: 1vh;
     right: 1vh;
-    font-size: 12px;
-    width: 3vw;
-    height: 3vw;
+    font-size: 2vh;
+    width: 2vw;
+    height: 2vw;
   }
 
   .optionsFeedback {
     top: 8vh;
     right: 1vh;
-    font-size: 12px;
-    width: 3vw;
-    height: 3vw;
+    font-size: 1vh;
+    width: 2vw;
+    height: 2vw;
   }
 
   .actionButton {

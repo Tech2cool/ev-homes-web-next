@@ -5,6 +5,8 @@ import TaskDashboardCard from "@/components/TasksDashboard/Taskcard";
 import TaskList from "@/components/TasksDashboard/Tasklist";
 import Taskdetailspage from "@/components/TasksDashboard/Taskdetail";
 import { useIsMobile } from "@/hooks/useIsMobile";
+import { IoArrowBackCircleOutline } from "react-icons/io5"; 
+
 const TasksPage = () => {
   const [selectedLeadId, setSelectedLeadId] = useState(null);
   const isMobile = useIsMobile();
@@ -23,14 +25,20 @@ const TasksPage = () => {
       setSelectedLeadId("1");
     }
   }, [isMobile, selectedLeadId]);
+
   return (
     <div className={styles.fullContainer}>
-      <TaskDashboardCard />
-      
+      {!(isMobile && selectedLeadId) && <TaskDashboardCard/>}
       {isMobile ? (
         selectedLeadId ? (
           <div>
-            <button onClick={handleBack}>Back</button>
+            <div className={styles.backButtonWrapper}>
+              <IoArrowBackCircleOutline
+                size={20}
+                onClick={handleBack}
+                className={styles.backIcon}
+              />
+            </div>
             <Taskdetailspage leadId={selectedLeadId} />
           </div>
         ) : (
