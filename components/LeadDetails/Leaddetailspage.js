@@ -122,6 +122,7 @@ const Leaddetailspage = ({ lead = null, id = null }) => {
     <div className={styles.sectionContainer}>
       <div className={styles.leadHistoryContainer}>
         <div className={styles.detailsContainer}>
+        <div className={styles.optionsContainer}>
           <div className={styles.optionsWrapper} ref={dropdownRef}>
             <div
               className={styles.options}
@@ -184,6 +185,7 @@ const Leaddetailspage = ({ lead = null, id = null }) => {
           {showUpdateStatusDialog && (
             <Updatestatusdialog onClose={closeUpdateStatusDialog} />
           )}
+          </div>
 
           <div className={styles.leftSection}>
             <div className={styles.avatar}>
@@ -270,7 +272,6 @@ const Leaddetailspage = ({ lead = null, id = null }) => {
                 {lead?.interestedStatus ?? "NA"}
               </span>
             </p>
-            <div className={styles.options}></div>
           </div>
         </div>
         {/*  Buttons  */}

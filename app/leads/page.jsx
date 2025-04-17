@@ -8,6 +8,8 @@ import Leaddetailspage from "@/components/LeadDetails/Leaddetailspage";
 import Leadshistory from "@/components/LeadsHistory/Leadshistory";
 import { useIsMobile } from "@/hooks/useIsMobile";
 import { useData } from "@/context/dataContext";
+import { IoArrowBackCircleOutline } from "react-icons/io5"; 
+
 
 const LeadsPage = () => {
   const { fetchSaleExecutiveLeads, leadInfo, leads } = useData();
@@ -36,11 +38,19 @@ const LeadsPage = () => {
 
   return (
     <div className={styles.fullContainer}>
-      <Leaddashboardcards />
+      {!(isMobile && selectedLeadId) && <Leaddashboardcards />}
+
       {isMobile ? (
         selectedLeadId ? (
           <div>
-            <button onClick={handleBack}>Back</button>
+            <div className={styles.backButtonWrapper}>
+              <IoArrowBackCircleOutline
+                size={20}
+                onClick={handleBack}
+                className={styles.backIcon}
+              />
+            </div>
+
             <Leaddetailspage lead={selectedLead} id={selectedLeadId} />
           </div>
         ) : (
