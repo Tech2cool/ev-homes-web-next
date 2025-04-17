@@ -2,7 +2,7 @@
 
 import React, { useEffect, useState } from "react";
 import "./HeroSection.css";
-import fetchAdapter from "@/adapter.js/fetchAdapter";
+import fetchAdapter from "@/adapter/fetchAdapter";
 
 const HeroSection = () => {
   const [projectInfo, setProjectInfo] = useState([]);
