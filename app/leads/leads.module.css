@@ -39,3 +39,23 @@
   color: gray;
   font-size: 18px;
 }
+
+
+.backButtonWrapper {
+  padding: 10px 20px 0px 20px;
+  display: flex;
+  align-items: center;
+}
+
+.backIcon {
+  cursor: pointer;
+  color: #ffffff;
+  transition: transform 0.2s ease, color 0.2s ease;
+}
+
+.backIcon:hover {
+  color: #007bff;
+  transform: translateX(-3px);
+}
+
+
