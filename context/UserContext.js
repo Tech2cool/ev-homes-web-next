@@ -1,6 +1,6 @@
 "use client";
 
-import fetchAdapter from "@/adapter.js/fetchAdapter";
+import fetchAdapter from "@/adapter/fetchAdapter";
 import { createContext, useContext, useEffect, useState } from "react";
 
 const UserContext = createContext();
