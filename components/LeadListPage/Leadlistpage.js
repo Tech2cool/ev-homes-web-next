@@ -3,6 +3,7 @@ import React, { useCallback, useRef, useState } from "react";
 import styles from "./leadlistpage.module.css";
 import { dateFormatOnly } from "@/hooks/useDateFormat";
 import { useData } from "@/context/dataContext";
+import { useUser } from "@/context/UserContext";
 
 const LeadCard = ({ lead, onClick }) => {
   return (
@@ -40,18 +41,15 @@ const LeadCard = ({ lead, onClick }) => {
 };
 
 const Leadlistpage = ({ onLeadClick }) => {
+  const { user } = useUser();
+
   const { fetchSaleExecutiveLeads, leadInfo, leads, loadingLeads } = useData();
 
   const observer = useRef();
 
   const loadMoreLeads = useCallback(async () => {
     try {
-      await fetchSaleExecutiveLeads(
-        "ev128-ranjana-parmar",
-        "",
-        leadInfo?.page + 1 ?? 1,
-        10
-      );
+      await fetchSaleExecutiveLeads(user?._id, "", leadInfo?.page + 1 ?? 1, 10);
     } catch (err) {
       console.error("Error loading more leads:", err);
     }
@@ -90,7 +88,7 @@ const Leadlistpage = ({ onLeadClick }) => {
         <p style={{ color: "white", textAlign: "center" }}>Loading...</p>
       ) : (
         <p style={{ color: "white", textAlign: "center" }}>No Results Found</p>
-      ) }
+      )}
     </div>
   );
 };

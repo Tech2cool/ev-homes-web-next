@@ -7,9 +7,12 @@ const DataContext = createContext();
 
 export const DataProvider = ({ children }) => {
   const [leadInfo, setleadInfo] = useState(null);
+  const [graphInfo, setGraphInfo] = useState(null);
   const [leads, setleads] = useState([]);
+  const [tasks, setTaks] = useState([]);
   const [loading, setLoading] = useState(false);
   const [loadingLeads, setLoadingLeads] = useState(false);
+  const [loadingTask, setLoadingTask] = useState(false);
   const [error, setError] = useState("");
 
   const fetchSaleExecutiveLeads = async (id, query, page = 1, limit = 10) => {
@@ -35,6 +38,26 @@ export const DataProvider = ({ children }) => {
       return { success: false, message: err.message };
     } finally {
       setLoadingLeads(false);
+    }
+  };
+
+  const fetchSaleExecutiveLeadsGraph = async (id) => {
+    setLoading(true);
+    setError("");
+
+    try {
+      let url = `/api/leads-team-leader-reporting-graph/${id}`;
+      const res = await fetchAdapter(url, {
+        method: "GET",
+      });
+
+      setGraphInfo(res?.data);
+      return { success: true };
+    } catch (err) {
+      setError(err.message);
+      return { success: false, message: err.message };
+    } finally {
+      setLoading(false);
     }
   };
 
@@ -64,15 +87,44 @@ export const DataProvider = ({ children }) => {
     }
   };
 
+  const fetchSaleExecutiveTasks = async (id, query) => {
+    setLoadingTask(true);
+    setError("");
+
+    try {
+      let url = `/task/${id}`;
+      if (query) {
+        url += `?query=${query}`;
+      }
+      const res = await fetchAdapter(url, {
+        method: "GET",
+      });
+
+      setTaks(res?.data ?? []);
+      return { success: true };
+    } catch (err) {
+      console.log(err);
+      setError(err.message);
+      return { success: false, message: err.message };
+    } finally {
+      setLoadingTask(false);
+    }
+  };
+
   return (
     <DataContext.Provider
       value={{
         fetchSaleExecutiveLeads,
         fetchTeamLeaderLeads,
-        leadInfo,
-        leads,
-        loading,
+        fetchSaleExecutiveLeadsGraph,
+        fetchSaleExecutiveTasks,
         loadingLeads,
+        loadingTask,
+        graphInfo,
+        leadInfo,
+        loading,
+        tasks,
+        leads,
         error,
       }}
     >
