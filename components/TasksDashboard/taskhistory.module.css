@@ -1,7 +1,6 @@
 .container {
   width: 100%;
   top: 0;
-  padding: 0px;
   color: #ffffff;
   max-height: 300px;
   overflow-y: auto;
@@ -72,4 +71,56 @@
   padding: 10px 10px;
   box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
   width: 600px;
+}
+
+@media screen and (max-width: 615px) {
+  .container {
+    max-height: none;
+    overflow-y: visible;
+    height: auto;
+  }
+
+  .timelineCard {
+    width: 70vw;
+  }
+
+  .heading {
+    text-align: left;
+    font-size: 2.5vh;
+  }
+
+  .timeline {
+    margin-left: 1vw;
+  }
+
+  .name {
+    font-size: 4vw;
+  }
+
+  .subtext {
+    font-size: 3.5vw;
+  }
+
+  .date {
+    font-size: 3.5vw;
+  }
+}
+
+@media screen and (max-width: 1024px) and (min-width: 616px) {
+  .timelineCard {
+    width: 50vw;
+  }
+
+  .heading {
+    font-size: 1.5vw;
+  }
+
+  .timeline {
+    margin-left: 0vw;
+  }
+
+  .timelineDot {
+    width: 2vw;
+    height: 2vw;
+  }
 }

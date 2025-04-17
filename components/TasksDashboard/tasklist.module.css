@@ -1,69 +1,127 @@
 .taskListContainer {
-    display: flex;
-    flex-direction: column;
-    gap: 10px;
-    padding: 20px;
-    background-color: #333;
-    max-height: 500px;
-    overflow-y: auto;
-    scrollbar-width: none;
-    -ms-overflow-style: none;
-  }
-  
-  .leadCard {
-    display: flex;
-    flex-direction: column;
-    background: #505050;
-    border-radius: 8px;
-    padding: 15px;
-    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.3);
-    color: white;
-    width: 17vw;
-  }
-  
-  .leadInfo {
-    display: flex;
-    align-items: center;
-    gap: 10px;
-    margin-bottom: 10px;
-  }
-  
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  padding: 20px;
+  max-height: 80vh;
+  overflow-y: auto;
+  scrollbar-width: none;
+  -ms-overflow-style: none;
+  border-right: 1px solid rgba(255, 255, 255, 0.2);
+}
+
+.leadCard {
+  display: flex;
+  flex-direction: column;
+  padding: 5px 5px ;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.3);
+  color: white;
+  width: auto;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.2); 
+}
+
+.leadInfo {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-bottom: 10px;
+}
+
+.clientIcon {
+  width: 3vw;
+  height: 3vw;
+  border-radius: 50%;
+  background-color: #007bff;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.2rem;
+  color: white;
+}
+
+.clientDetails h4 {
+  margin: 0;
+  font-size: 1vw;
+  color: white;
+}
+
+.phone {
+  font-size: 1vw;
+  color: #bbb;
+}
+
+.leadMeta p {
+  font-size: 2vh;
+  color: rgba(255, 255, 255, 0.6);
+  margin: 5px 0;
+}
+
+.taskStatus {
+  padding: 5px 10px;
+  border-radius: 8px;
+  font-size: 0.5vw;
+  background: rgb(121, 234, 128);
+  color: white;
+  display: inline-block;
+}
+
+
+@media screen and (max-width: 615px) {
   .clientIcon {
-    width:3vw;
-  height:3vw;
-    border-radius: 50%;
-    background-color: #007bff;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    font-size: 1.2rem;
-    font-weight: bold;
-    color: white;
+    width: 7vw;
+    height: 7vw;
+    font-size: 2.5vh;
   }
-  
+
   .clientDetails h4 {
-    margin: 0;
-    font-size: 1vw;
-    color: white;
+    font-size: 1rem;
   }
-  
+
   .phone {
-    font-size: 1vw;
-    color: #bbb;
+    font-size: 14px;
   }
-  
+
   .leadMeta p {
-    font-size: 1.1vw;
-    color: white;
-    margin: 5px 0;
+    font-size: 13px;
   }
-  
+}
+
+@media screen and (max-width: 1024px) and (min-width: 616px) {
+  .leadListContainer {
+    padding: 10px;
+  }
+
+  .leadCard {
+    padding: 10px;
+    width: fit-content;
+  }
+
+  .leadInfo {
+    gap: 5px;
+    margin-bottom: 5px;
+  }
+
+  .clientIcon {
+    width: 4vw;
+    height: 4vw;
+    font-size: 2vh;
+  }
+
+  .clientDetails h4 {
+    font-size: 1.7vh;
+  }
+
+  .phone {
+    font-size: 1.5vh;
+  }
+
+  .leadMeta p {
+    font-size: 2vh;
+    margin: 1px 0;
+  }
+
   .taskStatus {
-    padding: 5px 10px;
-    border-radius: 15px;
-    font-size: 0.5vw;
-    background: rgb(121, 234, 128);
-    color: white;
-    display: inline-block;
+    padding: 2.5px 5px;
+    font-size: 1.5vh;
   }
-  
+}
