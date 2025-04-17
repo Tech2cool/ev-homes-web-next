@@ -78,11 +78,10 @@ const Taskdetailspage = () => {
                 </div>
               )}
             </div>
-
-            {showTransferTaskDialog && (
-              <Transfertaskdialog onClose={closeTransferTaskDialog} />
-            )}
           </div>
+          {showTransferTaskDialog && (
+            <Transfertaskdialog onClose={closeTransferTaskDialog} />
+          )}
 
           <div className={styles.leftSection}>
             <div className={styles.avatar}>D</div>
