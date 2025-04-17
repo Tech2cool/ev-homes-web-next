@@ -122,70 +122,72 @@ const Leaddetailspage = ({ lead = null, id = null }) => {
     <div className={styles.sectionContainer}>
       <div className={styles.leadHistoryContainer}>
         <div className={styles.detailsContainer}>
-        <div className={styles.optionsContainer}>
-          <div className={styles.optionsWrapper} ref={dropdownRef}>
-            <div
-              className={styles.options}
-              onClick={() => setShowDropdown(!showDropdown)}
-            >
-              <BsThreeDotsVertical />
+          <div className={styles.optionsContainer}>
+            <div className={styles.optionsWrapper} ref={dropdownRef}>
+              <div
+                className={styles.options}
+                onClick={() => setShowDropdown(!showDropdown)}
+              >
+                <BsThreeDotsVertical />
+              </div>
+
+              {showDropdown && (
+                <div className={styles.dropdown}>
+                  <div
+                    className={styles.dropdownItem}
+                    onClick={handleEditLeadDetailsClick}
+                  >
+                    Edit
+                  </div>
+                  <div className={styles.dropdownItem}>
+                    Status
+                    <div className={styles.subMenu}>
+                      <div>Visited</div>
+                      <div>Revisited</div>
+                      <div>Virtual Meeting</div>
+                      <div>Booked</div>
+                    </div>
+                  </div>
+                  <div className={styles.dropdownItem}>
+                    Generate
+                    <div className={styles.subMenu}>
+                      <div>Cost Sheet Generator</div>
+                      <div>Payment Schedule</div>
+                      <div>Demand Letter</div>
+                    </div>
+                  </div>
+                </div>
+              )}
             </div>
 
-            {showDropdown && (
-              <div className={styles.dropdown}>
-                <div
-                  className={styles.dropdownItem}
-                  onClick={handleEditLeadDetailsClick}
-                >
-                  Edit
-                </div>
-                <div className={styles.dropdownItem}>
-                  Status
-                  <div className={styles.subMenu}>
-                    <div>Visited</div>
-                    <div>Revisited</div>
-                    <div>Virtual Meeting</div>
-                    <div>Booked</div>
-                  </div>
-                </div>
-                <div className={styles.dropdownItem}>
-                  Generate
-                  <div className={styles.subMenu}>
-                    <div>Cost Sheet Generator</div>
-                    <div>Payment Schedule</div>
-                    <div>Demand Letter</div>
-                  </div>
-                </div>
+            <div className={styles.optionsWrapper} ref={feedbackRef}>
+              <div
+                className={styles.optionsFeedback}
+                onClick={() => setShowFeedbackDropdown(!showFeedbackDropdown)}
+              >
+                <span style={{ fontSize: "20px", fontWeight: "normal" }}>
+                  +
+                </span>
               </div>
-            )}
+
+              {showFeedbackDropdown && (
+                <div className={styles.dropdown}>
+                  <div
+                    className={styles.dropdownItem}
+                    onClick={handleUpdateStatusClick}
+                  >
+                    Add Feedback
+                  </div>
+                </div>
+              )}
+            </div>
           </div>
           {showEditLeadDetailsDialog && (
             <Editleaddetailsdialog onClose={closeEditLeadDetailsDialog} />
           )}
-
-          <div className={styles.optionsWrapper} ref={feedbackRef}>
-            <div
-              className={styles.optionsFeedback}
-              onClick={() => setShowFeedbackDropdown(!showFeedbackDropdown)}
-            >
-              <span style={{ fontSize: "20px", fontWeight: "normal" }}>+</span>
-            </div>
-
-            {showFeedbackDropdown && (
-              <div className={styles.dropdown}>
-                <div
-                  className={styles.dropdownItem}
-                  onClick={handleUpdateStatusClick}
-                >
-                  Add Feedback
-                </div>
-              </div>
-            )}
-          </div>
           {showUpdateStatusDialog && (
             <Updatestatusdialog onClose={closeUpdateStatusDialog} />
           )}
-          </div>
 
           <div className={styles.leftSection}>
             <div className={styles.avatar}>
@@ -336,7 +338,6 @@ const Leaddetailspage = ({ lead = null, id = null }) => {
         </div>
         <Leadshistory lead={lead} />
       </div>
-      
     </div>
   );
 };
