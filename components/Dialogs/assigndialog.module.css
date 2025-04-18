@@ -18,6 +18,9 @@
   height: 120vh;
   background: white;
   padding: 20px;
+  overflow-y: auto;
+  scrollbar-width: none;
+
   border-radius: 0px 20px 20px 0px;
   animation: slideInLeft 0.3s ease-in forwards;
   box-shadow: 2px 0 10px rgba(0, 0, 0, 0.2);
@@ -166,10 +169,9 @@
   }
 }
 
-@media screen and (max-width: 1024px) and (min-width: 616px){
+@media screen and (max-width: 1024px) and (min-width: 616px) {
   .dialogContainer {
-    width:35vw;
-  
+    width: 35vw;
   }
 
   .formControl {

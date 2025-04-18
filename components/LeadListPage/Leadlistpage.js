@@ -15,24 +15,24 @@ const LeadCard = ({ lead, onClick }) => {
     >
       <div className={styles.leadInfo}>
         <div className={styles.clientIcon}>
-          {lead.firstName.charAt(0).toUpperCase()}
+          {lead?.firstName.charAt(0).toUpperCase()}
         </div>
         <div className={styles.clientDetails}>
           <h4>
-            {lead.firstName ?? ""} {lead.lastName ?? ""}
+            {lead?.firstName ?? ""} {lead?.lastName ?? ""}
           </h4>
           <p className={styles.phone}>
-            {lead.countryCode ?? "91"} {lead.phoneNumber}
+            {lead?.countryCode ?? "91"} {lead?.phoneNumber}
           </p>
         </div>
       </div>
       <div className={styles.leadMeta}>
         <p>
-          <strong>Assign Date:</strong> {dateFormatOnly(lead.cycle?.startDate)}
+          <strong>Assign Date:</strong> {dateFormatOnly(lead?.cycle?.startDate)}
         </p>
         <p>
           <strong>Revisit Deadline:</strong>{" "}
-          {dateFormatOnly(lead.cycle?.validTill)}
+          {dateFormatOnly(lead?.cycle?.validTill)}
         </p>
         <p className={styles.clientStatus}>{lead?.clientInterestedStatus}</p>
       </div>
@@ -77,11 +77,21 @@ const Leadlistpage = ({ onLeadClick }) => {
         if (index === leads.length - 1) {
           return (
             <div ref={lastLeadRef} key={index}>
-              <LeadCard lead={lead} onClick={onLeadClick} />
+              <LeadCard
+                key={`${lead?._id}-${index}`}
+                lead={lead}
+                onClick={onLeadClick}
+              />
             </div>
           );
         } else {
-          return <LeadCard key={index} lead={lead} onClick={onLeadClick} />;
+          return (
+            <LeadCard
+              key={`${lead?._id}-${index}`}
+              lead={lead}
+              onClick={onLeadClick}
+            />
+          );
         }
       })}
       {loadingLeads ? (

@@ -9,6 +9,7 @@ export const DataProvider = ({ children }) => {
   const [leadInfo, setleadInfo] = useState(null);
   const [graphInfo, setGraphInfo] = useState(null);
   const [leads, setleads] = useState([]);
+  const [currentLead, setCurrentLead] = useState(null);
   const [tasks, setTaks] = useState([]);
   const [loading, setLoading] = useState(false);
   const [loadingLeads, setLoadingLeads] = useState(false);
@@ -111,6 +112,53 @@ export const DataProvider = ({ children }) => {
     }
   };
 
+  const updateFeedback = async (data) => {
+    setLoadingTask(true);
+    setError("");
+
+    try {
+      let url = `/api/update-feedback`;
+      const res = await fetchAdapter(url, {
+        method: "POST",
+        body: JSON.stringify(data),
+      });
+
+      // setTaks(res?.data ?? []);
+      return { success: true };
+    } catch (err) {
+      console.log(err);
+      setError(err.message);
+      return { success: false, message: err.message };
+    } finally {
+      setLoadingTask(false);
+    }
+  };
+
+  const getLeadById = async (id) => {
+    setLoadingLeads(true);
+    setError("");
+
+    try {
+      let url = `/api/lead/${id}`;
+      const res = await fetchAdapter(url, {
+        method: "get",
+      });
+
+      setCurrentLead(res?.data);
+      return { success: true };
+    } catch (err) {
+      console.log(err);
+      setError(err.message);
+      return { success: false, message: err.message };
+    } finally {
+      setLoadingLeads(false);
+    }
+  };
+
+  const updateCurrentLead = (lead) => {
+    setCurrentLead(lead);
+  };
+
   return (
     <DataContext.Provider
       value={{
@@ -118,6 +166,9 @@ export const DataProvider = ({ children }) => {
         fetchTeamLeaderLeads,
         fetchSaleExecutiveLeadsGraph,
         fetchSaleExecutiveTasks,
+        updateCurrentLead,
+        updateFeedback,
+        getLeadById,
         loadingLeads,
         loadingTask,
         graphInfo,
@@ -125,6 +176,7 @@ export const DataProvider = ({ children }) => {
         loading,
         tasks,
         leads,
+        currentLead,
         error,
       }}
     >
