@@ -22,6 +22,7 @@ import Editleaddetailsdialog from "../Dialogs/Editleaddetailsdialog";
 import { useRouter } from "next/navigation";
 import Updatestatusdialog from "../Dialogs/Updatestatusdialog";
 import { dateFormatOnly } from "@/hooks/useDateFormat";
+import { capitalizeString } from "@/hooks/useString";
 
 const Leaddetailspage = ({ lead = null, id = null }) => {
   const [showDropdown, setShowDropdown] = useState(false);
@@ -232,7 +233,13 @@ const Leaddetailspage = ({ lead = null, id = null }) => {
               <span className={styles.value}>{lead?.stage}</span>
             </p>
             <p>
-              <span className={styles.label}>Visit Deadline:</span>{" "}
+              <span className={styles.label}>
+                {" "}
+                {lead.cycle != null
+                  ? `${capitalizeString(lead.cycle?.stage ?? "")}`
+                  : "Visit"}{" "}
+                Deadline:
+              </span>{" "}
               <span className={`${styles.value} ${styles.danger}`}>
                 {dateFormatOnly(lead?.cycle?.validTill)}
               </span>

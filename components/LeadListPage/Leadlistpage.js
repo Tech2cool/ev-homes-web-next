@@ -4,6 +4,7 @@ import styles from "./leadlistpage.module.css";
 import { dateFormatOnly } from "@/hooks/useDateFormat";
 import { useData } from "@/context/dataContext";
 import { useUser } from "@/context/UserContext";
+import { capitalizeString } from "@/hooks/useString";
 
 const LeadCard = ({ lead, onClick }) => {
   return (
@@ -31,10 +32,19 @@ const LeadCard = ({ lead, onClick }) => {
           <strong>Assign Date:</strong> {dateFormatOnly(lead?.cycle?.startDate)}
         </p>
         <p>
-          <strong>Revisit Deadline:</strong>{" "}
+          <strong>
+            {lead.cycle != null
+              ? `${capitalizeString(lead.cycle?.stage ?? "")}`
+              : "Visit"}{" "}
+            Deadline:
+          </strong>{" "}
           {dateFormatOnly(lead?.cycle?.validTill)}
         </p>
-        <p className={styles.clientStatus}>{lead?.clientInterestedStatus}</p>
+        {lead?.clientInterestedStatus ? (
+          <p className={styles.clientStatus}>{lead?.clientInterestedStatus}</p>
+        ) : (
+          <></>
+        )}
       </div>
     </div>
   );
