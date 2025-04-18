@@ -93,7 +93,7 @@ export const DataProvider = ({ children }) => {
     setError("");
 
     try {
-      let url = `/task/${id}`;
+      let url = `/api/task/${id}`;
       if (query) {
         url += `?query=${query}`;
       }

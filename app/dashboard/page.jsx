@@ -30,7 +30,7 @@ const Dashboard = () => {
       console.log("use effect dashboard");
       fetchSaleExecutiveLeads(user?._id, 1, 10);
       fetchSaleExecutiveLeadsGraph(user?._id);
-      // fetchSaleExecutiveTasks(user?._id, "");
+      fetchSaleExecutiveTasks(user?._id);
     }
   }, [user, loading]);
 

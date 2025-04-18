@@ -10,14 +10,9 @@ import { IoArrowBackCircleOutline } from "react-icons/io5";
 import { useUser } from "@/context/UserContext";
 
 const LeadsPage = () => {
-  const { user } = useUser();
-  const {
-    fetchSaleExecutiveLeads,
-    leadInfo,
-    leads,
-    updateCurrentLead,
-    currentLead,
-  } = useData();
+  const { user, loading } = useUser();
+  const { fetchSaleExecutiveLeads, leads, updateCurrentLead, currentLead } =
+    useData();
 
   const [selectedLeadId, setSelectedLeadId] = useState(null);
   const [selectedLead, setSelectedLead] = useState(null);
@@ -34,14 +29,15 @@ const LeadsPage = () => {
   };
 
   useEffect(() => {
-    fetchSaleExecutiveLeads(user?._id, 1, 10);
-
-    if (isMobile === undefined) return;
-
-    if (!isMobile && selectedLeadId === null) {
-      // setSelectedLeadId();
+    if (user && !loading) {
+      console.log("use effect dashboard");
+      fetchSaleExecutiveLeads(user?._id, 1, 10);
     }
-  }, [isMobile, selectedLeadId]);
+  }, [user, loading]);
+
+  if (loading || !user) {
+    return <div>Loading...</div>;
+  }
 
   return (
     <div className={styles.fullContainer}>
