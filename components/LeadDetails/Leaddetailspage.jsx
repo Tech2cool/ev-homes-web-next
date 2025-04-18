@@ -186,7 +186,11 @@ const Leaddetailspage = ({ lead = null, id = null }) => {
             <Editleaddetailsdialog onClose={closeEditLeadDetailsDialog} />
           )}
           {showUpdateStatusDialog && (
-            <Updatestatusdialog onClose={closeUpdateStatusDialog} />
+            <Updatestatusdialog
+              onClose={closeUpdateStatusDialog}
+              lead={lead}
+              task={lead?.taskRef}
+            />
           )}
 
           <div className={styles.leftSection}>
@@ -278,19 +282,27 @@ const Leaddetailspage = ({ lead = null, id = null }) => {
         </div>
         {/*  Buttons  */}
         <div className={styles.buttonColumn}>
-          <button className={styles.actionButton} onClick={handleAssignClick}>
+          <button
+            className={styles.actionButton}
+            onClick={handleUpdateStatusClick}
+          >
+            <FaTasks className={styles.icon} />
+            Add Feedback
+          </button>
+
+          {/* <button className={styles.actionButton} onClick={handleAssignClick}>
             <FaTasks className={styles.icon} />
             Assign Task
-          </button>
+          </button> */}
           {showDialog && <Assigndialog onClose={closeDialog} />}
 
-          <button
+          {/* <button
             className={styles.actionButton}
             onClick={handleNotificationClick}
           >
             <FaBell className={styles.icon} />
             Send Notification
-          </button>
+          </button> */}
           {showNotificationDialog && (
             <Sendnotificationdialog onClose={closeNotificationDialog} />
           )}

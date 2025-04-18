@@ -11,7 +11,13 @@ import { useUser } from "@/context/UserContext";
 
 const LeadsPage = () => {
   const { user } = useUser();
-  const { fetchSaleExecutiveLeads, leadInfo, leads } = useData();
+  const {
+    fetchSaleExecutiveLeads,
+    leadInfo,
+    leads,
+    updateCurrentLead,
+    currentLead,
+  } = useData();
 
   const [selectedLeadId, setSelectedLeadId] = useState(null);
   const [selectedLead, setSelectedLead] = useState(null);
@@ -20,9 +26,11 @@ const LeadsPage = () => {
   const handleLeadClick = (lead) => {
     setSelectedLeadId(lead?._id);
     setSelectedLead(lead);
+    updateCurrentLead(lead);
   };
   const handleBack = () => {
     setSelectedLeadId(null);
+    updateCurrentLead(null);
   };
 
   useEffect(() => {
@@ -50,7 +58,7 @@ const LeadsPage = () => {
               />
             </div>
 
-            <Leaddetailspage lead={selectedLead} id={selectedLeadId} />
+            <Leaddetailspage lead={currentLead} id={currentLead?._id} />
           </div>
         ) : (
           <Leadlistpage initialLeads={leads} onLeadClick={handleLeadClick} />
@@ -62,7 +70,7 @@ const LeadsPage = () => {
           </div>
           <div className={styles.listHistoryContainer}>
             {selectedLeadId ? (
-              <Leaddetailspage lead={selectedLead} id={selectedLeadId} />
+              <Leaddetailspage lead={currentLead} id={currentLead?._id} />
             ) : (
               <div className={styles.messageWrapper}>
                 <p>Select a lead to view details</p>
