@@ -7,8 +7,14 @@ import {
   FaHome,
   FaChartArea,
   FaDollarSign,
+  FaBuilding,
+  FaTag,
 } from "react-icons/fa";
-import Select from "react-select";
+import { FaBuildingFlag } from "react-icons/fa6";
+import { IoLayers } from "react-icons/io5";
+import { PiSealPercentFill } from "react-icons/pi";
+
+import CustomSelect from "../CustomSelect";
 
 const Estimategenerator = () => {
   const [customerName, setCustomerName] = useState("");
@@ -29,7 +35,11 @@ const Estimategenerator = () => {
 
   return (
     <div className={styles.container}>
-      <div className={styles.heading}>Estimator</div>
+      <div className={styles.headerRow}>
+        <button className={styles.generateBtn}>Generate PDF</button>
+        <div className={styles.heading}>Estimator</div>
+      </div>
+
       <div className={styles.sections}>
         <div className={styles.section}>
           <div className={styles.sectionHeader}>Client Details</div>
@@ -81,111 +91,66 @@ const Estimategenerator = () => {
         <div className={styles.section}>
           <div className={styles.sectionHeader}>Project Details</div>
 
-          {/* <div className={styles.formControl}>
-            <label htmlFor="projects">Projects</label>
-            <div className={styles.inputWrapper}>
-              <Select
-                id="projects"
-                options={projectOptions}
-                value={selectedProjects}
-                onChange={setSelectedProjects}
-                placeholder="Select projects..."
-                classNamePrefix="react-select"
-                closeMenuOnSelect={false}
-                styles={{
-                  control: (base) => ({
-                    ...base,
-                    minHeight: "40px",
-                    borderColor: "#ccc",
-                    color: "black",
-                  }),
-                  input: (base) => ({
-                    ...base,
-                    color: "black",
-                  }),
-                  placeholder: (base) => ({
-                    ...base,
-                    color: "#666",
-                  }),
-                  singleValue: (base) => ({
-                    ...base,
-                    color: "black",
-                  }),
-                  multiValueLabel: (base) => ({
-                    ...base,
-                    color: "black",
-                  }),
-                  option: (base, { isSelected, isFocused }) => ({
-                    ...base,
-                    color: "black",
-                    backgroundColor: isSelected
-                      ? "#e6f3ff"
-                      : isFocused
-                      ? "#f0f0f0"
-                      : "white",
-                    padding: "10px 12px",
-                  }),
-                  menu: (base) => ({
-                    ...base,
-                    zIndex: 9999,
-                  }),
-                }}
-              />
-            </div>
-          </div> */}
+          <CustomSelect
+            id="projects"
+            label="Projects"
+            icon={FaBuildingFlag}
+            options={projectOptions}
+            value={selectedProjects}
+            onChange={setSelectedProjects}
+            placeholder="Select projects"
+          />
 
-          {/* <div className={styles.formControl}>
-            <label htmlFor="projects">Slab</label>
-            <div className={styles.inputWrapper}>
-              <Select
-                id="projects"
-                options={projectOptions}
-                value={selectedProjects}
-                onChange={setSelectedProjects}
-                placeholder="Select projects..."
-                classNamePrefix="react-select"
-                closeMenuOnSelect={false}
-                styles={{
-                  control: (base) => ({
-                    ...base,
-                    minHeight: "40px",
-                    borderColor: "#ccc",
-                    color: "black",
-                  }),
-                  input: (base) => ({
-                    ...base,
-                    color: "black",
-                  }),
-                  placeholder: (base) => ({
-                    ...base,
-                    color: "#666",
-                  }),
-                  singleValue: (base) => ({
-                    ...base,
-                    color: "black",
-                  }),
-                  multiValueLabel: (base) => ({
-                    ...base,
-                    color: "black",
-                  }),
-                  option: (base, { isSelected, isFocused }) => ({
-                    ...base,
-                    color: "black",
-                    backgroundColor: isSelected
-                      ? "#e6f3ff"
-                      : isFocused
-                      ? "#f0f0f0"
-                      : "white",
-                    padding: "10px 12px",
-                  }),
-                  menu: (base) => ({
-                    ...base,
-                    zIndex: 9999,
-                  }),
-                }}
-              />
-            </div>
-          </div> */}
+          <CustomSelect
+            id="slab"
+            label="Slab"
+            icon={IoLayers}
+            options={projectOptions}
+            value={selectedProjects}
+            onChange={setSelectedProjects}
+            placeholder="Select slab"
+          />
+
+          <CustomSelect
+            id="building"
+            label="Bldg No."
+            icon={FaBuilding}
+            options={projectOptions}
+            value={selectedProjects}
+            onChange={setSelectedProjects}
+            placeholder="Select building"
+          />
+
+          <CustomSelect
+            id="floor"
+            label="Select Floor"
+            icon={FaBuilding}
+            options={projectOptions}
+            value={selectedProjects}
+            onChange={setSelectedProjects}
+            placeholder="Select floor"
+          />
+
+          <CustomSelect
+            id="number"
+            label="Select Number"
+            icon={FaBuilding}
+            options={projectOptions}
+            value={selectedProjects}
+            onChange={setSelectedProjects}
+            placeholder="Select number"
+          />
+
+          <CustomSelect
+            id="flatNumber"
+            label="Select Flat Number"
+            icon={FaBuilding}
+            options={projectOptions}
+            value={selectedProjects}
+            onChange={setSelectedProjects}
+            placeholder="Select Flat No."
+          />
+
           <div className={styles.formControl}>
             <label htmlFor="address">Carpet Area </label>
             <div className={styles.inputWrapper}>
@@ -225,11 +190,76 @@ const Estimategenerator = () => {
               />
             </div>
           </div>
+
+          <CustomSelect
+            id="stampDuty"
+            label="Select Stamp Duty (%)"
+            icon={PiSealPercentFill}
+            options={projectOptions}
+            value={selectedProjects}
+            onChange={setSelectedProjects}
+            placeholder="Stamp duty %"
+          />
+
+          <CustomSelect
+            id="coupon"
+            label="Select Coupon"
+            icon={FaTag}
+            options={projectOptions}
+            value={selectedProjects}
+            onChange={setSelectedProjects}
+            placeholder="coupon"
+          />
         </div>
 
         <div className={`${styles.section} ${styles.sectionStacked}`}>
-          <div className={styles.innerSection}>Estimated Values</div>
-          <div className={styles.innerSection}>Payable Amount Details</div>
+          <div className={styles.innerSection}>
+            <div className={styles.sectionHeader}>Estimated Values</div>
+            <div className={styles.estimatedDetails}>
+              <div className={styles.estimatedRow}>
+                <span>Agreement Value</span>
+                <span>0</span>
+              </div>
+              <div className={styles.estimatedRow}>
+                <span>GST Amount</span>
+                <span>0</span>
+              </div>
+              <div className={styles.estimatedRow}>
+                <span>Stamp Duty Amount</span>
+                <span>0</span>
+              </div>
+              <div className={styles.estimatedRow}>
+                <span>Registration Amount</span>
+                <span>30000</span>
+              </div>
+            </div>
+          </div>
+
+          <div className={styles.innerSection}>
+            <div className={styles.sectionHeader}>Payable Amount Details</div>
+            <div className={styles.estimatedDetails}>
+              <div className={styles.estimatedRow}>
+                <span>Booking Amount</span>
+                <span>0</span>
+              </div>
+              <div className={styles.estimatedRow}>
+                <span>GST Amount</span>
+                <span>0</span>
+              </div>
+              <div className={styles.estimatedRow}>
+                <span>StampDuty + Registration</span>
+                <span>0</span>
+              </div>
+              <div className={styles.estimatedRow}>
+                <span>Total Payable</span>
+                <span>0</span>
+              </div>
+              <div className={styles.estimatedRow}>
+                <span>Total Previous Percentage</span>
+                <span>0</span>
+              </div>
+            </div>
+          </div>
         </div>
       </div>
     </div>
