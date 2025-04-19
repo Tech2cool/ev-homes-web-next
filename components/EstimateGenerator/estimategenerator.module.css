@@ -1,6 +1,6 @@
 .container {
   width: 80%;
-  margin: 2rem auto 0; 
+  margin: 2rem auto 0;
   /* background-color: #1a1a1a;  */
   color: white;
   border: 1px solid rgba(255, 255, 255, 0.2);
@@ -15,6 +15,26 @@
   margin-bottom: 1rem;
 }
 
+
+.headerRow {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  margin-bottom: 1rem;
+}
+
+.generateBtn {
+  position: absolute;
+  left: 0;
+  padding: 8px 16px;
+  background-color: #007bff;
+  border: none;
+  border-radius: 8px;
+  color: white;
+  cursor: pointer;
+}
+
 .sections {
   display: flex;
   justify-content: space-between;
@@ -24,13 +44,28 @@
 .section {
   flex: 1;
   background-color: black;
-  border: 1px solid rgba(255, 255, 255, 0.2);   
+  border: 1px solid rgba(255, 255, 255, 0.2);
   padding: 1rem;
   border-radius: 6px;
   text-align: center;
-  height: 60vh;
-overflow-y: auto;
-scrollbar-width: none;
+  height: 65vh;
+  overflow-y: auto;
+
+  scrollbar-width: thin;
+  scrollbar-color: #888 #000;
+}
+
+.section::-webkit-scrollbar {
+  width: 4px;
+}
+
+.section::-webkit-scrollbar-thumb {
+  background-color: #888;
+  border-radius: 10px;
+}
+
+.section::-webkit-scrollbar-track {
+  background: #000;
 }
 
 .sectionStacked {
@@ -56,17 +91,16 @@ scrollbar-width: none;
   margin-top: 30px;
 }
 
-
 .inputWrapper {
   display: flex;
   align-items: center;
-  border: 1px solid rgba(255, 255, 255, 0.4);   
+  border: 1px solid rgba(255, 255, 255, 0.4);
   border-radius: 8px;
   padding: 8px;
 }
 
 .inputIcon {
-  color:#007bff;
+  color: #007bff;
   margin-right: 1vw;
 }
 
@@ -79,7 +113,6 @@ scrollbar-width: none;
   background: transparent;
   color: white;
 }
-
 
 .formControl textarea {
   padding: 1vw;
@@ -96,7 +129,7 @@ scrollbar-width: none;
 }
 
 .formControl select {
-  padding: 5px;
+  padding: 12px;
   font-size: 1vw;
   background-color: black;
   color: white;
@@ -107,6 +140,34 @@ scrollbar-width: none;
   font-size: 1vw;
 }
 
-.estimateHeaders{
-  align-items: left;
+.estimatedDetails {
+  display: flex;
+  flex-direction: column;
+  gap: 0rem;
+  margin-top: 0.5rem;
+}
+
+.estimatedRow {
+  display: flex;
+  justify-content: space-between;
+  /* color: white; */
+  color: rgba(255, 255, 255, 0.6);
+  font-size: 1vw;
+  padding: 0.3rem 0;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.stickyProgressBarWrapper {
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  background-color: white;
+  padding: 4px 0;
+}
+
+.progressBar {
+  height: 4px;
+  background: linear-gradient(to right, #00c6ff, #0072ff);
+  border-radius: 4px;
+  transition: width 0.3s ease-in-out;
 }

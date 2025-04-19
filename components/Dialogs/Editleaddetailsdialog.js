@@ -63,7 +63,7 @@ const Editleaddetailsdialog = ({ onClose }) => {
 
         <h2>Edit Lead Details</h2>
 
-        <div className={styles.sectionHeader}>
+        <div className={style.sectionHeader}>
           <FaUser className={styles.icon} />
           <span>Personal Information</span>
         </div>
@@ -97,7 +97,7 @@ const Editleaddetailsdialog = ({ onClose }) => {
             />
           </div>
         </div>
-        <div className={styles.sectionHeader}>
+        <div className={style.sectionHeader}>
           <FaBuilding className={styles.icon} />
           <span>Project Information</span>
         </div>
@@ -156,7 +156,7 @@ const Editleaddetailsdialog = ({ onClose }) => {
           </div>
         </div>
 
-        <div className={styles.sectionHeader}>
+        <div className={style.sectionHeader}>
           <MdApartment className={styles.icon} />
           <span>Apartment Preferences</span>
         </div>
@@ -215,7 +215,7 @@ const Editleaddetailsdialog = ({ onClose }) => {
           </div>
         </div>
 
-        <div className={styles.sectionHeader}>
+        <div className={style.sectionHeader}>
           <BiSolidMessageSquareEdit className={styles.icon} />
           <span>Remark</span>
         </div>

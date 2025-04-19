@@ -132,15 +132,6 @@
   color: black !important;
 }
 
-.sectionHeader {
-  display: flex;
-  align-items: center;
-  gap: 0.5rem;
-  color: #08386c;
-  font-size: 1.1rem;
-  font-weight: 600;
-  margin: 16px 0;
-}
 
 @media screen and (max-width: 615px) {
   .dialogContainer {

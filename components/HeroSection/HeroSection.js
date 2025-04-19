@@ -65,7 +65,7 @@ const HeroSection = () => {
         </p>
         <p className="hero-location"> {currentProject?.locationName}</p>
 
-        <a
+        {/* <a
           href={
             currentProject?._id
               ? `/project/${currentProject._id}`
@@ -74,7 +74,15 @@ const HeroSection = () => {
           className="hero-button"
         >
           Learn More
+        </a> */}
+
+        <a
+          href="/project" 
+          className="hero-button"
+        >
+          Learn More
         </a>
+
         {projectInfo.length > 1 && (
           <>
             <button className="carousel-button left" onClick={handlePrev}>

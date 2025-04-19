@@ -1,4 +1,13 @@
 
+.sectionHeader {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  color:  #5fc3f8;
+  font-size: 1.1rem;
+  font-weight: 600;
+  margin: 16px 0;
+}
 .inputWrapper {
     display: flex;
     align-items: center;
