@@ -1,4 +1,5 @@
 // app/layout.tsx
+import ClientLayout from "@/components/ClientLayout";
 import "./globals.css";
 import { Providers } from "./providers";
 import AppLayout from "@/components/AppLayout";
@@ -13,7 +14,7 @@ export default function RootLayout({ children }) {
     <html lang="en">
       <body>
         <Providers>
-          <AppLayout>{children}</AppLayout>
+          <ClientLayout>{children}</ClientLayout>
         </Providers>
       </body>
     </html>
