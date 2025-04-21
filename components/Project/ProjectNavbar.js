@@ -3,12 +3,16 @@ import fetchAdapter from "@/adapter/fetchAdapter";
 import styles from "./projectnavbar.module.css";
 import { CiLocationOn } from "react-icons/ci";
 import { LuPhone } from "react-icons/lu";
+import { FaDownload } from "react-icons/fa6";
+import { IoHome } from "react-icons/io5";
 import Image from "next/image";
 import { MdOutlineMailOutline } from "react-icons/md";
 import "../HeroSection/HeroSection.css";
 import DescriptionSection from "./DescriptionSection";
 import AmenitiesSection from "./AmenitiesSection";
 import ConfigurationSection from "./ConfigurationSection";
+import { FaAngleUp } from "react-icons/fa";
+import Link from "next/link";
 
 const ProjectNavbar = () => {
   const [projectInfo, setProjectInfo] = useState([]);
@@ -116,8 +120,13 @@ const ProjectNavbar = () => {
           <div className={styles.navbar}>
             <div className={styles.topContent}>
               <div className={styles.location}>
+                <Link href="/">
+                  <IoHome className={styles.icon} />
+                </Link>
+                <div>
                 <CiLocationOn className={styles.icon} />
                 EV23 Malibu West, Koparkhairane
+                </div>
               </div>
               <div className={styles.contact}>
                 <span className={styles.phone}>
@@ -153,7 +162,12 @@ const ProjectNavbar = () => {
                 <li onClick={() => scrollToSection("configuration")}>
                   Configuration
                 </li>
-                {/* <li>Brochure</li> */}
+                <li>
+                  <button className={`${styles.bhkButton} ${styles.active}`}>
+                    <FaDownload />
+                    <span>Brochure</span>
+                  </button>
+                </li>
               </ul>
             </div>
           </div>
@@ -161,7 +175,16 @@ const ProjectNavbar = () => {
           <div className={styles.heroText}>
             <div className={styles.smallText} key={currentIndex + "-small"}>
               {heroTexts[currentIndex % heroTexts.length].small}
+              <div className={styles.designWrapper}>
+                <Image
+                  src="/images/design.png"
+                  alt="Building"
+                  width={200}
+                  height={100}
+                />
+              </div>
             </div>
+
             <div className={styles.mainText} key={currentIndex + "-main"}>
               {heroTexts[currentIndex % heroTexts.length].main}
             </div>
@@ -174,6 +197,14 @@ const ProjectNavbar = () => {
       <DescriptionSection />
       <AmenitiesSection />
       <ConfigurationSection />
+      {!atTop && (
+        <button
+          onClick={() => window.scrollTo({ top: 0, behavior: "smooth" })}
+          className={styles.scrollToTop}
+        >
+          <FaAngleUp />
+        </button>
+      )}
     </div>
   );
 };
