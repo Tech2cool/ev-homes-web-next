@@ -236,7 +236,7 @@ const Leaddetailspage = ({ lead = null, id = null }) => {
               <span className={styles.label}>
                 {" "}
                 {lead.cycle != null
-                  ? `${capitalizeString(lead.cycle?.stage ?? "")}`
+                  ? `${capitalizeString(lead?.cycle?.stage ?? "")}`
                   : "Visit"}{" "}
                 Deadline:
               </span>{" "}
