@@ -153,6 +153,7 @@ const ProjectNavbar = () => {
                 <li onClick={() => scrollToSection("configuration")}>
                   Configuration
                 </li>
+                {/* <li>Brochure</li> */}
               </ul>
             </div>
           </div>
