@@ -65,19 +65,12 @@ const HeroSection = () => {
         </p>
         <p className="hero-location"> {currentProject?.locationName}</p>
 
-        {/* <a
+        <a
           href={
             currentProject?._id
               ? `/project/${currentProject._id}`
               : "#learn-more"
           }
-          className="hero-button"
-        >
-          Learn More
-        </a> */}
-
-        <a
-          href="/project" 
           className="hero-button"
         >
           Learn More

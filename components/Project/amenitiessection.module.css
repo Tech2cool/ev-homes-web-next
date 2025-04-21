@@ -1,0 +1,155 @@
+.sectionWrapper {
+  position: relative;
+  width: 100%;
+  height: auto;
+  overflow: hidden;
+}
+
+.title {
+  font-size: 2rem;
+  margin-bottom: 2rem;
+  text-align: center;
+}
+
+.container {
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+  gap: 6rem;
+}
+.imageBox {
+  position: relative;
+  width: 25vw;
+  height: 60vh;
+  /* border: 3px solid black;
+  background-color: #f0f0f0; */
+  background-color: transparent;
+  box-shadow: 0 0 0px rgba(0, 0, 0, 0.1);
+  overflow: hidden;
+  cursor: pointer;
+  transition: transform 0.3s ease;
+}
+
+ 
+
+.imageBox:hover {
+  transform: scale(1.05);
+}
+
+.imageBox img {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  z-index: 0;
+}
+
+.shineEffect {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 50%;
+  height: 100%;
+  background-image: linear-gradient(to right, transparent 0%, #ffffff66 100%);
+  transform: skewX(-0.08turn) translateX(-180%);
+  transition: all 0.8s ease-in-out;
+  pointer-events: none;
+  z-index: 2;
+}
+
+.imageBox:hover .shineEffect {
+  transform: skewX(-0.08turn) translateX(275%);
+}
+
+.imageBox::before,
+.imageBox::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  right: 0;
+  height: 80px;
+  z-index: 1;
+  pointer-events: none;
+}
+
+.imageBox::before {
+  top: 0;
+  background: linear-gradient(to bottom, rgba(0, 0, 0, 0.4), transparent);
+}
+
+.imageBox::after {
+  bottom: 0;
+  background: linear-gradient(to top, rgba(0, 0, 0,0.9 ), transparent);
+}
+
+.imageText,
+.imageText2 {
+  position: absolute;
+  z-index: 3;
+  color: white;
+}
+
+.imageBox1,
+.imageBox3 {
+  margin-top: 30vh;
+}
+
+.centerSection {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.textWrapper {
+  margin-top: 2rem;
+  text-align: center;
+  width: 25vw;
+}
+
+.textLine {
+  display: inline-block;
+  color: white;
+  margin-top: 1vh;
+}
+
+.colorText {
+  color: rgb(179, 135, 53);
+  font-family: "Playfair Display", serif;
+}
+
+.imageBox4,
+.imageBox6 {
+  margin-top: 30vh;
+}
+
+.textWrapper2 {
+  text-align: center;
+  margin-top: 15rem;
+  margin-bottom: 2rem;
+  width: 25vw;
+}
+
+.imageText {
+  position: absolute;
+  bottom: 10vh;
+  left: 50%;
+  transform: translateX(-50%);
+  color: white;
+  font-size: 24px;
+  font-weight: bold;
+  text-shadow: 0 0 5px rgba(0, 0, 0, 0.8);
+  z-index: 2;
+}
+
+.imageText2 {
+  position: absolute;
+  bottom: 4vh;
+  left: 50%;
+  transform: translateX(-50%);
+  color: white;
+  font-size: 24px;
+  font-weight: bold;
+  text-shadow: 0 0 5px rgba(0, 0, 0, 0.8);
+  z-index: 2;
+}
