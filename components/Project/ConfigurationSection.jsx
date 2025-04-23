@@ -100,7 +100,7 @@ const ConfigurationSection = () => {
                 <Image
                   src={card.image}
                   alt="Room"
-                  fill
+                  layout="fill"
                   className={styles.innerImage}
                 />
               </div>
@@ -123,6 +123,7 @@ const ConfigurationSection = () => {
                   src={selectedImage}
                   alt="Preview"
                   fill
+                  width="100%"
                   className={styles.previewImage}
                 />
               </div>

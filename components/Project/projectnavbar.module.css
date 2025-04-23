@@ -45,13 +45,18 @@
 
 .logoContent {
   display: flex;
-  justify-content: space-between;
+  justify-content: flex-end;
   align-items: center;
   margin-top: 4vh;
-  padding: 0 15px 5px 20px;
+  width: 100%;
+  /* padding: 0 15px 5px 20px; */
   flex-wrap: wrap;
   gap: 25vw;
   transition: transform 0.3s ease, background-color 0.3s ease;
+}
+.logoContent .logoList {
+  /* padding: 0 7vw 4px 20px; */
+  /* padding-right: 80px; */
 }
 
 .show {
@@ -243,4 +248,3 @@
   border: 1px solid white;
   color: white;
 }
-

@@ -27,6 +27,7 @@ const AmenitiesSection = () => {
               alt="Hall"
               layout="fill"
               objectFit="cover"
+              // width={100}
             />
             <div className={styles.shineEffect}></div>
 

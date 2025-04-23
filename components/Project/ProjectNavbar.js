@@ -1,5 +1,5 @@
+"use client";
 import React, { useEffect, useState } from "react";
-import fetchAdapter from "@/adapter/fetchAdapter";
 import styles from "./projectnavbar.module.css";
 import { CiLocationOn } from "react-icons/ci";
 import { LuPhone } from "react-icons/lu";
@@ -13,9 +13,12 @@ import AmenitiesSection from "./AmenitiesSection";
 import ConfigurationSection from "./ConfigurationSection";
 import { FaAngleUp } from "react-icons/fa";
 import Link from "next/link";
+import { useData } from "@/context/dataContext";
 
-const ProjectNavbar = () => {
-  const [projectInfo, setProjectInfo] = useState([]);
+const ProjectNavbar = ({ projectInfo }) => {
+  const { getProjectById } = useData();
+
+  // const [projectInfo, setProjectInfo] = useState([]);
   const [currentIndex, setCurrentIndex] = useState(0);
   const [showFixedLogo, setShowFixedLogo] = useState(false);
   const [atTop, setAtTop] = useState(true);
@@ -49,24 +52,24 @@ const ProjectNavbar = () => {
     }
   };
 
-  useEffect(() => {
-    fetchAdapter("/api/ourProjects", {
-      headers: {
-        "x-platform": "web",
-      },
-    })
-      .then((data) => {
-        setProjectInfo(data?.data ?? []);
-      })
-      .catch((err) => console.error("Failed to fetch:", err));
-  }, []);
+  // useEffect(() => {
+  // fetchAdapter("/api/ourProjects", {
+  //   headers: {
+  //     "x-platform": "web",
+  //   },
+  // })
+  //   .then((data) => {
+  //     setProjectInfo(data?.data ?? []);
+  //   })
+  //   .catch((err) => console.error("Failed to fetch:", err));
+  // }, []);
 
   useEffect(() => {
-    if (projectInfo.length <= 1) return;
+    if (projectInfo?.carouselImages?.length <= 1) return;
 
     const interval = setInterval(() => {
       setCurrentIndex((prev) =>
-        prev === projectInfo.length - 1 ? 0 : prev + 1
+        prev === projectInfo?.carouselImages?.length - 1 ? 0 : prev + 1
       );
     }, 5000);
 
@@ -101,7 +104,7 @@ const ProjectNavbar = () => {
     },
   ];
 
-  const currentProject = projectInfo[currentIndex];
+  const currentShowCase = projectInfo?.carouselImages[currentIndex];
   const fallbackImage =
     "https://cdn.evhomes.tech/f5e53c63-905e-4c26-afc0-bd508c452ab7-about-banner.jpg";
   return (
@@ -110,7 +113,7 @@ const ProjectNavbar = () => {
         className={styles.herosection}
         style={{
           background: `url("${
-            currentProject?.showCaseImageLandscape || fallbackImage
+            currentShowCase || fallbackImage
           }") no-repeat center center/cover`,
           position: "relative",
           transition: "background 0.5s ease-in-out",
@@ -124,8 +127,8 @@ const ProjectNavbar = () => {
                   <IoHome className={styles.icon} />
                 </Link>
                 <div>
-                <CiLocationOn className={styles.icon} />
-                EV23 Malibu West, Koparkhairane
+                  <CiLocationOn className={styles.icon} />
+                  EV23 Malibu West, Koparkhairane
                 </div>
               </div>
               <div className={styles.contact}>
@@ -144,16 +147,23 @@ const ProjectNavbar = () => {
                 !atTop ? (showFixedLogo ? styles.show : styles.hide) : ""
               }`}
             >
-              <div className={styles.logo}>
+              {/* <div className={styles.logo}>
                 <Image
                   className={styles.logoImage}
-                  src="/images/evhomeslogo.png"
-                  alt="EV Homes Logo"
-                  width={250}
-                  height={50}
+                  src={projectInfo?.logo ?? "/images/evhomeslogo.png"}
+                  alt={projectInfo?.name ?? "EV Homes Logo"}
+                  width={360} // max width
+                  height={80} // max height
+                  style={{
+                    maxHeight: 180,
+                    maxWidth: 360,
+                    width: "auto",
+                    height: "auto",
+                  }}
+                  layout="intrinsic"
                 />
-              </div>
-              <ul>
+              </div> */}
+              <ul className="logoList">
                 <li>Malibu West</li>
                 <li onClick={() => scrollToSection("description")}>
                   Description

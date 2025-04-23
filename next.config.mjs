@@ -9,6 +9,15 @@ const nextConfig = {
       },
     ];
   },
+  images: {
+    remotePatterns: [
+      {
+        protocol: "https",
+        hostname: "cdn.evhomes.tech",
+        pathname: "**", // allow all paths
+      },
+    ],
+  },
 };
 
 export default nextConfig;
