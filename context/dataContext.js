@@ -8,11 +8,13 @@ const DataContext = createContext();
 export const DataProvider = ({ children }) => {
   const [leadInfo, setleadInfo] = useState(null);
   const [graphInfo, setGraphInfo] = useState(null);
+  const [currentProject, setCurrentProject] = useState(null);
   const [leads, setleads] = useState([]);
   const [currentLead, setCurrentLead] = useState(null);
   const [tasks, setTaks] = useState([]);
   const [loading, setLoading] = useState(false);
   const [loadingLeads, setLoadingLeads] = useState(false);
+  const [loadingProject, setLoadingProject] = useState(false);
   const [loadingTask, setLoadingTask] = useState(false);
   const [error, setError] = useState("");
 
@@ -159,6 +161,27 @@ export const DataProvider = ({ children }) => {
     setCurrentLead(lead);
   };
 
+  const getProjectById = async (id) => {
+    setLoadingProject(true);
+    setError("");
+
+    try {
+      let url = `/api/ourProjects/${id}`;
+      const res = await fetchAdapter(url, {
+        method: "get",
+      });
+      console.log(res);
+      setCurrentProject(res?.data);
+      return { success: true };
+    } catch (err) {
+      console.log(err);
+      setError(err.message);
+      return { success: false, message: err.message };
+    } finally {
+      setLoadingProject(false);
+    }
+  };
+
   return (
     <DataContext.Provider
       value={{
@@ -168,6 +191,7 @@ export const DataProvider = ({ children }) => {
         fetchSaleExecutiveTasks,
         updateCurrentLead,
         updateFeedback,
+        getProjectById,
         getLeadById,
         loadingLeads,
         loadingTask,
@@ -178,6 +202,8 @@ export const DataProvider = ({ children }) => {
         leads,
         currentLead,
         error,
+        loadingProject,
+        currentProject,
       }}
     >
       {children}
