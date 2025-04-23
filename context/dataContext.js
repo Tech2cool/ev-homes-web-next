@@ -11,6 +11,7 @@ export const DataProvider = ({ children }) => {
   const [currentProject, setCurrentProject] = useState(null);
   const [leads, setleads] = useState([]);
   const [currentLead, setCurrentLead] = useState(null);
+  const [currentTask, setCurrentTask] = useState(null);
   const [tasks, setTaks] = useState([]);
   const [loading, setLoading] = useState(false);
   const [loadingLeads, setLoadingLeads] = useState(false);
@@ -35,9 +36,13 @@ export const DataProvider = ({ children }) => {
       } else {
         setleads(res?.data ?? []);
       }
+      setLoadingLeads(false);
+
       return { success: true };
     } catch (err) {
       setError(err.message);
+      setLoadingLeads(false);
+
       return { success: false, message: err.message };
     } finally {
       setLoadingLeads(false);
@@ -104,10 +109,14 @@ export const DataProvider = ({ children }) => {
       });
 
       setTaks(res?.data ?? []);
+      setLoadingTask(false);
+
       return { success: true };
     } catch (err) {
       console.log(err);
       setError(err.message);
+      setLoadingTask(false);
+
       return { success: false, message: err.message };
     } finally {
       setLoadingTask(false);
@@ -160,6 +169,9 @@ export const DataProvider = ({ children }) => {
   const updateCurrentLead = (lead) => {
     setCurrentLead(lead);
   };
+  const updateCurrentTask = (task) => {
+    setCurrentTask(task);
+  };
 
   const getProjectById = async (id) => {
     setLoadingProject(true);
@@ -190,6 +202,7 @@ export const DataProvider = ({ children }) => {
         fetchSaleExecutiveLeadsGraph,
         fetchSaleExecutiveTasks,
         updateCurrentLead,
+        updateCurrentTask,
         updateFeedback,
         getProjectById,
         getLeadById,
@@ -204,6 +217,7 @@ export const DataProvider = ({ children }) => {
         error,
         loadingProject,
         currentProject,
+        currentTask,
       }}
     >
       {children}

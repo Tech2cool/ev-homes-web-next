@@ -1,36 +1,122 @@
 "use client";
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useMemo, useState } from "react";
 import styles from "../leads/leads.module.css";
 import TaskDashboardCard from "@/components/TasksDashboard/Taskcard";
 import TaskList from "@/components/TasksDashboard/Tasklist";
 import Taskdetailspage from "@/components/TasksDashboard/Taskdetail";
 import { useIsMobile } from "@/hooks/useIsMobile";
-import { IoArrowBackCircleOutline } from "react-icons/io5"; 
+import { IoArrowBackCircleOutline } from "react-icons/io5";
+import { useData } from "@/context/dataContext";
+import { useUser } from "@/context/UserContext";
 
 const TasksPage = () => {
-  const [selectedLeadId, setSelectedLeadId] = useState(null);
+  const { user, loading } = useUser();
+
+  const {
+    tasks,
+    currentTask,
+    fetchSaleExecutiveTasks,
+    updateCurrentTask,
+    loadingTask,
+  } = useData();
+
+  const [query, setQuery] = useState("");
+  const [filter, setFilter] = useState(null);
+
   const isMobile = useIsMobile();
 
-  const handleLeadClick = (leadId) => {
-    setSelectedLeadId(leadId);
+  const onChangeSearch = (e) => {
+    setQuery(e.target.value);
   };
+
+  const onChangeFilter = (value) => {
+    setFilter(value);
+  };
+
+  const handleLeadClick = (lead) => {
+    updateCurrentTask(lead);
+  };
+
   const handleBack = () => {
-    setSelectedLeadId(null);
+    // setSelectedLeadId(null);
+    updateCurrentTask(null);
   };
 
   useEffect(() => {
-    if (isMobile === undefined) return;
-
-    if (!isMobile && selectedLeadId === null) {
-      setSelectedLeadId("1");
+    if (user && !loading) {
+      console.log("use effect tasks");
+      fetchSaleExecutiveTasks(user?._id);
     }
-  }, [isMobile, selectedLeadId]);
+    // if (isMobile === undefined) return;
+
+    // if (!isMobile && selectedLeadId === null) {
+    //   setSelectedLeadId("1");
+    // }
+  }, [isMobile]);
+
+  const filteredTasks = useMemo(() => {
+    return tasks.filter((task) => {
+      const name = `${task?.lead?.firstName?.toLowerCase()} ${task?.lead?.lastName?.toLowerCase()}`;
+      const phone = `${task?.lead?.phoneNumber?.toString()?.toLowerCase()}`;
+      if (filter) {
+        if (filter?.toLowerCase() === "pending") {
+          if (
+            task?.completed === false &&
+            (name?.includes(query?.toLowerCase()) ||
+              phone?.includes(query?.toLowerCase()))
+          ) {
+            return true;
+          }
+        } else if (filter?.toLowerCase() === "completed") {
+          if (
+            task?.completed === true &&
+            (name?.includes(query?.toLowerCase()) ||
+              phone?.includes(query?.toLowerCase()))
+          ) {
+            return true;
+          }
+        } else if (filter?.toLowerCase() === "all") {
+          if (
+            name?.includes(query?.toLowerCase()) ||
+            phone?.includes(query?.toLowerCase())
+          ) {
+            return true;
+          }
+        } else if (
+          filter?.toLowerCase() === "first-call" ||
+          filter?.toLowerCase() === "followup"
+        ) {
+          if (
+            (task?.type === filter && name?.includes(query?.toLowerCase())) ||
+            phone?.includes(query?.toLowerCase())
+          ) {
+            return true;
+          }
+        }
+      } else {
+        if (
+          name?.includes(query?.toLowerCase()) ||
+          phone?.includes(query?.toLowerCase())
+        ) {
+          return true;
+        }
+      }
+      return false;
+    });
+  }, [tasks, query, filter]);
 
   return (
     <div className={styles.fullContainer}>
-      {!(isMobile && selectedLeadId) && <TaskDashboardCard/>}
+      {!(isMobile && currentTask) && (
+        <TaskDashboardCard
+          value={query}
+          filter={filter}
+          onChangeSearch={onChangeSearch}
+          onChangeFilter={onChangeFilter}
+        />
+      )}
       {isMobile ? (
-        selectedLeadId ? (
+        currentTask ? (
           <div>
             <div className={styles.backButtonWrapper}>
               <IoArrowBackCircleOutline
@@ -39,19 +125,27 @@ const TasksPage = () => {
                 className={styles.backIcon}
               />
             </div>
-            <Taskdetailspage leadId={selectedLeadId} />
+            <Taskdetailspage task={currentTask} />
           </div>
         ) : (
-          <TaskList onLeadClick={handleLeadClick} />
+          <TaskList
+            tasks={filteredTasks}
+            isLoading={loadingTask}
+            onLeadClick={handleLeadClick}
+          />
         )
       ) : (
         <div className={styles.listDetailsContainer}>
           <div className={styles.listContainer}>
-            <TaskList onLeadClick={handleLeadClick} />
+            <TaskList
+              tasks={filteredTasks}
+              isLoading={loadingTask}
+              onLeadClick={handleLeadClick}
+            />
           </div>
           <div className={styles.listHistoryContainer}>
-            {selectedLeadId ? (
-              <Taskdetailspage leadId={selectedLeadId} />
+            {currentTask ? (
+              <Taskdetailspage task={currentTask} />
             ) : (
               <p>Select a lead to view details</p>
             )}

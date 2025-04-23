@@ -5,6 +5,7 @@ import { dateFormatOnly } from "@/hooks/useDateFormat";
 import { useData } from "@/context/dataContext";
 import { useUser } from "@/context/UserContext";
 import { capitalizeString } from "@/hooks/useString";
+import Skeleton, { SkeletonTheme } from "react-loading-skeleton";
 
 const LeadCard = ({ lead, onClick }) => {
   return (
@@ -16,7 +17,7 @@ const LeadCard = ({ lead, onClick }) => {
     >
       <div className={styles.leadInfo}>
         <div className={styles.clientIcon}>
-          {lead?.firstName.charAt(0).toUpperCase()}
+          {lead?.firstName?.charAt(0)?.toUpperCase()}
         </div>
         <div className={styles.clientDetails}>
           <h4>
@@ -50,7 +51,7 @@ const LeadCard = ({ lead, onClick }) => {
   );
 };
 
-const Leadlistpage = ({ onLeadClick }) => {
+const Leadlistpage = ({ onLeadClick, isLoading }) => {
   const { user } = useUser();
 
   const { fetchSaleExecutiveLeads, leadInfo, leads, loadingLeads } = useData();
@@ -83,27 +84,59 @@ const Leadlistpage = ({ onLeadClick }) => {
 
   return (
     <div className={styles.leadListContainer}>
-      {leads.map((lead, index) => {
-        if (index === leads.length - 1) {
-          return (
-            <div ref={lastLeadRef} key={index}>
-              <LeadCard
-                key={`${lead?._id}-${index}`}
-                lead={lead}
-                onClick={onLeadClick}
-              />
+      {isLoading
+        ? [0, 1, 2, 3, 5].map((ele) => (
+            <div
+              key={ele}
+              style={{
+                paddingBottom: 10,
+                borderBottom: "1px solid rgba(255, 255, 255, 0.2)",
+              }}
+            >
+              <SkeletonTheme baseColor="#202020" highlightColor="#444">
+                <div
+                  style={{
+                    display: "flex",
+                  }}
+                >
+                  <Skeleton count={1} height={45} width={45} circle />
+                  <div
+                    style={{
+                      marginLeft: 10,
+                    }}
+                  >
+                    <Skeleton height={15} width={150} />
+                    <Skeleton height={15} width={150} />
+                  </div>
+                </div>
+                <div>
+                  <Skeleton height={15} width={150} />
+                  <Skeleton height={20} width={70} borderRadius={10} />
+                </div>
+              </SkeletonTheme>
             </div>
-          );
-        } else {
-          return (
-            <LeadCard
-              key={`${lead?._id}-${index}`}
-              lead={lead}
-              onClick={onLeadClick}
-            />
-          );
-        }
-      })}
+          ))
+        : leads.map((lead, index) => {
+            if (index === leads.length - 1) {
+              return (
+                <div ref={lastLeadRef} key={index}>
+                  <LeadCard
+                    key={`${lead?._id}-${index}`}
+                    lead={lead}
+                    onClick={onLeadClick}
+                  />
+                </div>
+              );
+            } else {
+              return (
+                <LeadCard
+                  key={`${lead?._id}-${index}`}
+                  lead={lead}
+                  onClick={onLeadClick}
+                />
+              );
+            }
+          })}
       {loadingLeads ? (
         <p style={{ color: "white", textAlign: "center" }}>Loading...</p>
       ) : (
