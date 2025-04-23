@@ -60,7 +60,10 @@ const Leadshistory = ({ lead = null }) => {
           <div className={styles.timeline}>
             {transfers.map((item, index) => (
               <div className={styles.timelineItem} key={index}>
-                <div className={styles.timelineDot}> <FaCheck size={10} color="black" /></div>
+                <div className={styles.timelineDot}>
+                  {" "}
+                  <FaCheck size={10} color="black" />
+                </div>
                 <div className={styles.timelineDot}>
                   {" "}
                   <FaCheck size={10} color="#121212" />

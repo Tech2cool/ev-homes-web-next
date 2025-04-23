@@ -8,8 +8,10 @@ import Taskhistory from "./Taskhistory";
 import Updatestatusdialog from "../Dialogs/Updatestatusdialog";
 import Setreminderdialog from "../Dialogs/Setreminderdialog";
 import Transfertaskdialog from "../Dialogs/Transfertaskdialog";
+import { dateFormatOnly } from "@/hooks/useDateFormat";
+import { capitalizeString } from "@/hooks/useString";
 
-const Taskdetailspage = () => {
+const Taskdetailspage = ({ task }) => {
   const [showDropdown, setShowDropdown] = useState(false);
   const [showDialog, setShowDialog] = useState(false);
   const [showSetReminderDialog, setshowSetReminderDialog] = useState(false);
@@ -84,54 +86,90 @@ const Taskdetailspage = () => {
           )}
 
           <div className={styles.leftSection}>
-            <div className={styles.avatar}>D</div>
-            <div className={styles.name}>Dummy Dummy</div>
-            <div className={styles.phone}>+91 1334567899</div>
+            <div className={styles.avatar}>
+              {task?.lead?.firstName?.charAt(0)?.toUpperCase()}
+            </div>
+            <div className={styles.name}>
+              {task?.lead?.firstName} {task?.lead?.lastName}
+            </div>
+            <div className={styles.phone}>+91 {task?.lead?.phoneNumber}</div>
           </div>
 
           <div className={styles.middleSection}>
             <p>
               <span className={styles.label}>Task:</span>{" "}
-              <span className={styles.value}>Follow Up</span>
+              <span className={styles.value}>{task?.name}</span>
             </p>
             <p>
               <span className={styles.label}>Description:</span>{" "}
-              <span className={styles.value}>NA</span>
+              <span className={styles.value}>
+                {task?.details != "" ? task?.details : "NA"}
+              </span>
             </p>
             <p>
               <span className={styles.label}>Deadline:</span>{" "}
               <span className={`${styles.value} ${styles.danger}`}>
-                06 Apr 2025
+                {dateFormatOnly(task?.deadline)}
               </span>
             </p>
             <p>
               <span className={styles.label}>Assign To:</span>{" "}
-              <span className={styles.value}>Dummy</span>
+              <span className={styles.value}>
+                {task?.assignTo?.firstName} {task?.assignTo?.lastName}
+              </span>
             </p>
             <p>
               <span className={styles.label}>Assign By:</span>{" "}
-              <span className={styles.value}>Dummy</span>
+              <span className={styles.value}>
+                {" "}
+                {task?.assignBy?.firstName} {task?.assignBy?.lastName}
+              </span>
             </p>
           </div>
 
           <div className={styles.rightSection}>
             <p>
               <span className={styles.label}>Email:</span>{" "}
-              <span className={styles.value}>NA</span>
+              <span className={styles.value}>
+                {task?.lead?.email != "" ? task?.lead?.email : "NA"}
+              </span>
             </p>
             <p>
               <span className={styles.label}>Project:</span>{" "}
               <span className={styles.value}>
-                EV23 Malibu West, EV Heart City , EV 9 Square
+                {task?.lead?.projects?.length > 0
+                  ? task?.lead?.projects?.map((ele) => ele?.name)?.join(", ")
+                  : "NA"}
               </span>
             </p>
             <p>
-              <span className={styles.label}>Requiremnet:</span>{" "}
-              <span className={styles.value}>1BHK , 2BHK, 3BHK, 4BHK</span>
+              <span className={styles.label}>Requirement:</span>{" "}
+              <span className={styles.value}>
+                {task?.lead?.requirement?.length > 0
+                  ? task?.lead?.requirement?.join(", ")
+                  : "NA"}
+              </span>
             </p>
+            {task?.lead?.channelPartner ? (
+              <p>
+                <span className={styles.label}>Channel Partner:</span>{" "}
+                <span className={styles.value}>
+                  {task?.lead?.channelPartner?.firmName}
+                </span>
+              </p>
+            ) : (
+              <></>
+            )}
             <p>
-              <span className={styles.label}>Channel Partner:</span>{" "}
-              <span className={styles.value}>NA</span>
+              <span className={styles.label}>
+                {task?.lead?.cycle != null
+                  ? `${capitalizeString(task?.lead?.cycle?.stage ?? "")}`
+                  : "Visit"}{" "}
+                Deadline:
+              </span>{" "}
+              <span className={`${styles.value} ${styles.danger}`}>
+                {dateFormatOnly(task?.lead?.cycle?.validTill)}
+              </span>
             </p>
           </div>
         </div>
@@ -158,7 +196,7 @@ const Taskdetailspage = () => {
             <Setreminderdialog onClose={closeReminderDialog} />
           )}
         </div>
-        <Taskhistory />
+        <Taskhistory lead={task?.lead} />
       </div>
     </div>
   );

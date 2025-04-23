@@ -11,8 +11,13 @@ import { useUser } from "@/context/UserContext";
 
 const LeadsPage = () => {
   const { user, loading } = useUser();
-  const { fetchSaleExecutiveLeads, leads, updateCurrentLead, currentLead } =
-    useData();
+  const {
+    fetchSaleExecutiveLeads,
+    leads,
+    updateCurrentLead,
+    currentLead,
+    loadingLeads,
+  } = useData();
 
   const [selectedLeadId, setSelectedLeadId] = useState(null);
   const [selectedLead, setSelectedLead] = useState(null);
@@ -62,11 +67,20 @@ const LeadsPage = () => {
       ) : (
         <div className={styles.listDetailsContainer}>
           <div className={styles.listContainer}>
-            <Leadlistpage initialLeads={leads} onLeadClick={handleLeadClick} />
+            <Leadlistpage
+              initialLeads={leads}
+              isLoading={loading ?? loadingLeads}
+              onLeadClick={handleLeadClick}
+            />
           </div>
           <div className={styles.listHistoryContainer}>
             {selectedLeadId ? (
-              <Leaddetailspage lead={currentLead} id={currentLead?._id} />
+              <Leaddetailspage
+                isLoading={loadingLeads}
+                lead={currentLead}
+                id={currentLead?._id}
+                onLeadClick={handleLeadClick}
+              />
             ) : (
               <div className={styles.messageWrapper}>
                 <p>Select a lead to view details</p>
