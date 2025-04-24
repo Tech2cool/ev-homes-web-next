@@ -40,7 +40,9 @@ const Profiledialog = ({ isOpen, onClose }) => {
   return (
     <div className={styles.overlay} onClick={onClose}>
       <div className={styles.container} onClick={(e) => e.stopPropagation()}>
-        {/* <button className={styles.closeButton} onClick={onClose}></button> */}
+        <button className={styles.closeButton} onClick={onClose}>
+          X
+        </button>
 
         <div className={styles.profileContainer}>
           {/* Profile sectionn */}
@@ -55,7 +57,7 @@ const Profiledialog = ({ isOpen, onClose }) => {
                 }") no-repeat center center/cover`,
               }}
             ></div>
-            <div className={styles.userInfo}>
+            <div className={`${styles.userInfo} ${styles.userInfoDesktop}`}>
               <div className={styles.userName}>
                 {user?.firstName ?? ""} {user?.lastName ?? ""}
               </div>
@@ -64,33 +66,60 @@ const Profiledialog = ({ isOpen, onClose }) => {
               </div>
             </div>
 
-            <div className={styles.profileActions}>
-              <div className={styles.customButtonOrange}>
-                <div className={styles.iconCircleOrange}>
-                  <FaUserEdit />
+            <div className={styles.profileActionsWrapper}>
+              <div className={styles.profileActions}>
+                <div className={styles.customOrange}>
+                  <div className={styles.iconCirOrange}>
+                    <FaUserEdit />
+                  </div>
+                  <div className={styles.textOrange}>Edit Profile</div>
                 </div>
-                <div className={styles.textBoxOrange}>Edit Profile</div>
-              </div>
 
-              <div className={styles.customButtonBlue}>
-                <div className={styles.iconCircleBlue}>
-                  <FaKey />
+                <div className={styles.customButtonBlue}>
+                  <div className={styles.iconCircleBlue}>
+                    <FaKey />
+                  </div>
+                  <div className={styles.textBoxBlue}>Change Password</div>
                 </div>
-                <div className={styles.textBoxBlue}>Change Password</div>
-              </div>
 
-              <div className={styles.customButtonRed} onClick={onClickLogout}>
-                <div className={styles.iconCircleRed}>
-                  <FaSignOutAlt />
+                <div className={styles.customButtonRed} onClick={onClickLogout}>
+                  <div className={styles.iconCircleRed}>
+                    <FaSignOutAlt />
+                  </div>
+                  <div className={styles.textBoxRed}>Logout</div>
                 </div>
-                <div className={styles.textBoxRed}>Logout</div>
               </div>
+            </div>
+          </div>
+          <div className={`${styles.userInfo} ${styles.userInfoMobile}`}>
+            <div className={styles.userName}>
+              {user?.firstName ?? ""} {user?.lastName ?? ""}
+            </div>
+            <div className={styles.userDesignation}>
+              {user?.designation?.designation ?? ""}
             </div>
           </div>
 
           <div className={styles.rightSection}>
             <div className={styles.perRepoContainer}>
               {/* Personal Inf */}
+              <div className={styles.profileActionsMobileWrapper}>
+                <div className={styles.profileActionsMobile}>
+                  <div className={styles.customOrange}>
+                    <div className={styles.iconCirOrange}>
+                      <FaUserEdit />
+                    </div>
+                    <div className={styles.textOrange}>Edit Profile</div>
+                  </div>
+
+                  <div className={styles.customBlue}>
+                    <div className={styles.iconCirBlue}>
+                      <FaKey />
+                    </div>
+                    <div className={styles.textBlue}>Change Password</div>
+                  </div>
+                </div>
+              </div>
               <div className={styles.personalInfoSection}>
                 <h3 className={styles.sectionHeading}>Personal Information</h3>
                 <div className={styles.infoRow}>
@@ -175,6 +204,16 @@ const Profiledialog = ({ isOpen, onClose }) => {
               </div>
               <div className={styles.infoRow}>
                 <span>Compensatory Leave : </span> <span>0</span>
+              </div>
+            </div>
+            <div className={styles.profileActionsMobileWrapper}>
+              <div className={styles.profileActionsMobile}>
+                <div className={styles.customRed} onClick={onClickLogout}>
+                  <div className={styles.iconCirRed}>
+                    <FaSignOutAlt />
+                  </div>
+                  <div className={styles.textRed}>Logout</div>
+                </div>
               </div>
             </div>
           </div>
