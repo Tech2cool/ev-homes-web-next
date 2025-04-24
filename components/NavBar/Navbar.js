@@ -67,7 +67,7 @@ const Navbar = () => {
         >
           Tasks
         </li>
-        <li
+        {/* <li
           className={pathname === "/follow-up" ? styles.active : ""}
           onClick={() => {
             navigateTo("/follow-up");
@@ -75,7 +75,7 @@ const Navbar = () => {
           }}
         >
           Follow Up
-        </li>
+        </li> */}
         <li
           className={pathname === "/attendance" ? styles.active : ""}
           onClick={() => {

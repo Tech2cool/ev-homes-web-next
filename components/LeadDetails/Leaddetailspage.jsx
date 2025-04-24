@@ -8,6 +8,8 @@ import {
   FaRocket,
   FaRupeeSign,
   FaRegAddressBook,
+  FaPhone,
+  FaWhatsapp,
 } from "react-icons/fa";
 import { IoIosAlarm } from "react-icons/io";
 import Sendnotificationdialog from "../Dialogs/Sendnotificationdialog";
@@ -23,8 +25,14 @@ import { useRouter } from "next/navigation";
 import Updatestatusdialog from "../Dialogs/Updatestatusdialog";
 import { dateFormatOnly } from "@/hooks/useDateFormat";
 import { capitalizeString } from "@/hooks/useString";
+import { MdAddCall } from "react-icons/md";
+import { useUser } from "@/context/UserContext";
+import { PiPlugsConnectedFill } from "react-icons/pi";
 
 const Leaddetailspage = ({ lead = null, id = null }) => {
+  const { user, getSocket, reconnectSocket, socketInfo } = useUser();
+  const socket = getSocket(); // always latest
+
   const [showDropdown, setShowDropdown] = useState(false);
   const [showFeedbackDropdown, setShowFeedbackDropdown] = useState(false);
   const [showDialog, setShowDialog] = useState(false);
@@ -54,6 +62,7 @@ const Leaddetailspage = ({ lead = null, id = null }) => {
   useBodyScrollLock(isAnyDialogOpen);
 
   useEffect(() => {
+    reconnectSocket();
     const handleClickOutside = (event) => {
       if (dropdownRef.current && !dropdownRef.current.contains(event.target)) {
         setShowDropdown(false);
@@ -203,6 +212,59 @@ const Leaddetailspage = ({ lead = null, id = null }) => {
             </div>
             <div className={styles.phone}>
               {lead?.countryCode ?? "91"} {lead?.phoneNumber}
+            </div>
+            <div style={{ display: "flex", marginTop: 10 }}>
+              <MdAddCall
+                size={25}
+                color="dodgerblue"
+                style={{ cursor: "pointer" }}
+                onClick={() => {
+                  console.log("clicked 1");
+                  console.log(socket);
+                  socket?.emit("callCustomerWeb", {
+                    lead: lead?._id,
+                    phoneNumber: `${lead?.countryCode}${lead?.phoneNumber}`,
+                    type: "call",
+                    message: "call",
+                    userId: user?._id,
+                  });
+                  console.log("clicked 2");
+                }}
+              />
+              <div style={{ marginRight: 10 }} />
+              <FaWhatsapp
+                size={25}
+                color="green"
+                style={{ cursor: "pointer" }}
+                onClick={() => {
+                  console.log("clicked 1");
+
+                  socket?.emit("callCustomerWeb", {
+                    lead: lead?._id,
+                    phoneNumber: `${lead?.countryCode}${lead?.phoneNumber}`,
+                    type: "whatsapp",
+                    message: "hey",
+                    userId: user?._id,
+                  });
+                  console.log("clicked 2");
+                }}
+              />
+            </div>
+            <div
+              style={{ marginTop: 5, display: "flex", alignItems: "center" }}
+            >
+              <PiPlugsConnectedFill
+                color={socketInfo?.phoneSocketId ? "green" : "red"}
+              />
+              <div style={{ marginRight: 5 }} />
+              <p
+                style={{
+                  fontSize: 12,
+                  color: socketInfo?.phoneSocketId ? "green" : "red",
+                }}
+              >
+                {socketInfo?.phoneSocketId ? "Connected" : "Not Connected"}
+              </p>
             </div>
           </div>
 
