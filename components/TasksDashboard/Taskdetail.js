@@ -1,7 +1,7 @@
 "use client";
 import React, { useState, useRef, useEffect } from "react";
 import styles from "./taskdetail.module.css";
-import { FaTasks, FaBell } from "react-icons/fa";
+import { FaTasks, FaBell, FaWhatsapp } from "react-icons/fa";
 import { BsThreeDotsVertical } from "react-icons/bs";
 import useBodyScrollLock from "../useBodyScrollLock";
 import Taskhistory from "./Taskhistory";
@@ -10,6 +10,9 @@ import Setreminderdialog from "../Dialogs/Setreminderdialog";
 import Transfertaskdialog from "../Dialogs/Transfertaskdialog";
 import { dateFormatOnly } from "@/hooks/useDateFormat";
 import { capitalizeString } from "@/hooks/useString";
+import { MdAddCall } from "react-icons/md";
+import { useUser } from "@/context/UserContext";
+import { PiPlugsConnectedFill } from "react-icons/pi";
 
 const Taskdetailspage = ({ task }) => {
   const [showDropdown, setShowDropdown] = useState(false);
@@ -17,6 +20,9 @@ const Taskdetailspage = ({ task }) => {
   const [showSetReminderDialog, setshowSetReminderDialog] = useState(false);
   const [showTransferTaskDialog, setShowTransferTaskDialog] = useState(false);
   const dropdownRef = useRef(null);
+  const { user, getSocket, socketInfo } = useUser();
+
+  const socket = getSocket(); // always latest
 
   const isAnyDialogOpen =
     showDialog || showSetReminderDialog || showTransferTaskDialog;
@@ -93,6 +99,63 @@ const Taskdetailspage = ({ task }) => {
               {task?.lead?.firstName} {task?.lead?.lastName}
             </div>
             <div className={styles.phone}>+91 {task?.lead?.phoneNumber}</div>
+            <div style={{ display: "flex", marginTop: 10 }}>
+              <MdAddCall
+                size={25}
+                color="dodgerblue"
+                style={{ cursor: "pointer" }}
+                onClick={() => {
+                  console.log("clicked 1");
+                  console.log(socket);
+                  socket?.emit("callCustomerWeb", {
+                    lead: task?.lead?._id,
+                    phoneNumber: `${task?.lead?.countryCode}${task?.lead?.phoneNumber}`,
+                    type: "call",
+                    message: "call",
+                    userId: user?._id,
+                  });
+                  console.log("clicked 2");
+                }}
+              />
+              <div style={{ marginRight: 10 }} />
+              <FaWhatsapp
+                size={25}
+                color="green"
+                style={{ cursor: "pointer" }}
+                onClick={() => {
+                  if (!socketInfo?.phoneSocketId) {
+                    alert("App is not connected");
+                    return;
+                  }
+                  console.log("clicked 1");
+
+                  socket?.emit("callCustomerWeb", {
+                    lead: task?.lead?._id,
+                    phoneNumber: `${task?.lead?.countryCode}${task?.lead?.phoneNumber}`,
+                    type: "whatsapp",
+                    message: "hey",
+                    userId: user?._id,
+                  });
+                  console.log("clicked 2");
+                }}
+              />
+            </div>
+            <div
+              style={{ marginTop: 5, display: "flex", alignItems: "center" }}
+            >
+              <PiPlugsConnectedFill
+                color={socketInfo?.phoneSocketId ? "green" : "red"}
+              />
+              <div style={{ marginRight: 5 }} />
+              <p
+                style={{
+                  fontSize: 12,
+                  color: socketInfo?.phoneSocketId ? "green" : "red",
+                }}
+              >
+                {socketInfo?.phoneSocketId ? "Connected" : "Not Connected"}
+              </p>
+            </div>
           </div>
 
           <div className={styles.middleSection}>
