@@ -79,7 +79,6 @@ const Leadlistpage = ({
 
   return (
     <div className={styles.leadListContainer}>
-      <p style={{ color: "wheat" }}>{isLoading ? "YEA" : "NO"}</p>
       {isLoading
         ? [0, 1, 2, 3, 5].map((ele) => (
             <div
