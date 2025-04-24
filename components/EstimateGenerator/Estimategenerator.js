@@ -40,9 +40,10 @@ const Estimategenerator = () => {
         <div className={styles.heading}>Estimator</div>
       </div>
 
-      <div className={styles.sections}>
-        <div className={styles.section}>
-          <div className={styles.sectionHeader}>Client Details</div>
+      {/* <div className={styles.sections}> */}
+      <div className={styles.sectionClient}>
+        <div className={styles.sectionHeader}>Client Details</div>
+        <div className={styles.detailsInfo}>
           <div className={styles.formControl}>
             <label htmlFor="customerName">Customer Name </label>
             <div className={styles.inputWrapper}>
@@ -88,131 +89,134 @@ const Estimategenerator = () => {
             </div>
           </div>
         </div>
-        <div className={styles.section}>
-          <div className={styles.sectionHeader}>Project Details</div>
+      </div>
+      {/* <div className={styles.sections}> */}
+        <div className={styles.remainSection}>
+          <div className={styles.section}>
+            <div className={styles.sectionHeader}>Project Details</div>
 
-          <CustomSelect
-            id="projects"
-            label="Projects"
-            icon={FaBuildingFlag}
-            options={projectOptions}
-            value={selectedProjects}
-            onChange={setSelectedProjects}
-            placeholder="Select projects"
-          />
+            <CustomSelect
+              id="projects"
+              label="Projects"
+              icon={FaBuildingFlag}
+              options={projectOptions}
+              value={selectedProjects}
+              onChange={setSelectedProjects}
+              placeholder="Select projects"
+            />
 
-          <CustomSelect
-            id="slab"
-            label="Slab"
-            icon={IoLayers}
-            options={projectOptions}
-            value={selectedProjects}
-            onChange={setSelectedProjects}
-            placeholder="Select slab"
-          />
+            <CustomSelect
+              id="slab"
+              label="Slab"
+              icon={IoLayers}
+              options={projectOptions}
+              value={selectedProjects}
+              onChange={setSelectedProjects}
+              placeholder="Select slab"
+            />
 
-          <CustomSelect
-            id="building"
-            label="Bldg No."
-            icon={FaBuilding}
-            options={projectOptions}
-            value={selectedProjects}
-            onChange={setSelectedProjects}
-            placeholder="Select building"
-          />
+            <CustomSelect
+              id="building"
+              label="Bldg No."
+              icon={FaBuilding}
+              options={projectOptions}
+              value={selectedProjects}
+              onChange={setSelectedProjects}
+              placeholder="Select building"
+            />
 
-          <CustomSelect
-            id="floor"
-            label="Select Floor"
-            icon={FaBuilding}
-            options={projectOptions}
-            value={selectedProjects}
-            onChange={setSelectedProjects}
-            placeholder="Select floor"
-          />
+            <CustomSelect
+              id="floor"
+              label="Select Floor"
+              icon={FaBuilding}
+              options={projectOptions}
+              value={selectedProjects}
+              onChange={setSelectedProjects}
+              placeholder="Select floor"
+            />
 
-          <CustomSelect
-            id="number"
-            label="Select Number"
-            icon={FaBuilding}
-            options={projectOptions}
-            value={selectedProjects}
-            onChange={setSelectedProjects}
-            placeholder="Select number"
-          />
+            <CustomSelect
+              id="number"
+              label="Select Number"
+              icon={FaBuilding}
+              options={projectOptions}
+              value={selectedProjects}
+              onChange={setSelectedProjects}
+              placeholder="Select number"
+            />
 
-          <CustomSelect
-            id="flatNumber"
-            label="Select Flat Number"
-            icon={FaBuilding}
-            options={projectOptions}
-            value={selectedProjects}
-            onChange={setSelectedProjects}
-            placeholder="Select Flat No."
-          />
+            <CustomSelect
+              id="flatNumber"
+              label="Select Flat Number"
+              icon={FaBuilding}
+              options={projectOptions}
+              value={selectedProjects}
+              onChange={setSelectedProjects}
+              placeholder="Select Flat No."
+            />
 
-          <div className={styles.formControl}>
-            <label htmlFor="address">Carpet Area </label>
-            <div className={styles.inputWrapper}>
-              <FaChartArea className={styles.inputIcon} />
-              <input
-                readOnly
-                id="carpetArea"
-                value={address}
-                placeholder="Carpet Area"
-                className={styles.inputField}
-              />
+            <div className={styles.formControl}>
+              <label htmlFor="address">Carpet Area </label>
+              <div className={styles.inputWrapper}>
+                <FaChartArea className={styles.inputIcon} />
+                <input
+                  readOnly
+                  id="carpetArea"
+                  value={address}
+                  placeholder="Carpet Area"
+                  className={styles.inputField}
+                />
+              </div>
             </div>
-          </div>
-          <div className={styles.formControl}>
-            <label htmlFor="address">Configuration</label>
-            <div className={styles.inputWrapper}>
-              <FaChartArea className={styles.inputIcon} />
-              <input
-                readOnly
-                id="configuration"
-                value={address}
-                placeholder="Configuration"
-                className={styles.inputField}
-              />
+            <div className={styles.formControl}>
+              <label htmlFor="address">Configuration</label>
+              <div className={styles.inputWrapper}>
+                <FaChartArea className={styles.inputIcon} />
+                <input
+                  readOnly
+                  id="configuration"
+                  value={address}
+                  placeholder="Configuration"
+                  className={styles.inputField}
+                />
+              </div>
             </div>
-          </div>
-          <div className={styles.formControl}>
-            <label htmlFor="address">All Inclusive Value</label>
-            <div className={styles.inputWrapper}>
-              <FaDollarSign className={styles.inputIcon} />
-              <input
-                readOnly
-                id="allInclusiveValue"
-                value={address}
-                placeholder="Value"
-                className={styles.inputField}
-              />
+            <div className={styles.formControl}>
+              <label htmlFor="address">All Inclusive Value</label>
+              <div className={styles.inputWrapper}>
+                <FaDollarSign className={styles.inputIcon} />
+                <input
+                  readOnly
+                  id="allInclusiveValue"
+                  value={address}
+                  placeholder="Value"
+                  className={styles.inputField}
+                />
+              </div>
             </div>
+
+            <CustomSelect
+              id="stampDuty"
+              label="Select Stamp Duty (%)"
+              icon={PiSealPercentFill}
+              options={projectOptions}
+              value={selectedProjects}
+              onChange={setSelectedProjects}
+              placeholder="Stamp duty %"
+            />
+
+            <CustomSelect
+              id="coupon"
+              label="Select Coupon"
+              icon={FaTag}
+              options={projectOptions}
+              value={selectedProjects}
+              onChange={setSelectedProjects}
+              placeholder="coupon"
+            />
           </div>
 
-          <CustomSelect
-            id="stampDuty"
-            label="Select Stamp Duty (%)"
-            icon={PiSealPercentFill}
-            options={projectOptions}
-            value={selectedProjects}
-            onChange={setSelectedProjects}
-            placeholder="Stamp duty %"
-          />
-
-          <CustomSelect
-            id="coupon"
-            label="Select Coupon"
-            icon={FaTag}
-            options={projectOptions}
-            value={selectedProjects}
-            onChange={setSelectedProjects}
-            placeholder="coupon"
-          />
-        </div>
-
-        <div className={`${styles.section} ${styles.sectionStacked}`}>
+          <div className={`${styles.section} ${styles.sectionStacked}`}>
           <div className={styles.innerSection}>
             <div className={styles.sectionHeader}>Estimated Values</div>
             <div className={styles.estimatedDetails}>
@@ -261,7 +265,8 @@ const Estimategenerator = () => {
             </div>
           </div>
         </div>
-      </div>
+        </div>
+      {/* </div> */}
     </div>
   );
 };
