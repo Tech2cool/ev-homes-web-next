@@ -6,6 +6,7 @@ import { useData } from "@/context/dataContext";
 import { useUser } from "@/context/UserContext";
 import { capitalizeString } from "@/hooks/useString";
 import Skeleton, { SkeletonTheme } from "react-loading-skeleton";
+import "react-loading-skeleton/dist/skeleton.css";
 
 const LeadCard = ({ lead, onClick }) => {
   return (
@@ -51,20 +52,14 @@ const LeadCard = ({ lead, onClick }) => {
   );
 };
 
-const Leadlistpage = ({ onLeadClick, isLoading }) => {
-  const { user } = useUser();
-
-  const { fetchSaleExecutiveLeads, leadInfo, leads, loadingLeads } = useData();
-
+const Leadlistpage = ({
+  leads = [],
+  onLeadClick,
+  isLoading,
+  loadMoreLeads,
+  fetchingMoreLeads,
+}) => {
   const observer = useRef();
-
-  const loadMoreLeads = useCallback(async () => {
-    try {
-      await fetchSaleExecutiveLeads(user?._id, "", leadInfo?.page + 1 ?? 1, 10);
-    } catch (err) {
-      console.error("Error loading more leads:", err);
-    }
-  }, [leadInfo?.page]);
 
   const lastLeadRef = useCallback(
     (node) => {
@@ -84,6 +79,7 @@ const Leadlistpage = ({ onLeadClick, isLoading }) => {
 
   return (
     <div className={styles.leadListContainer}>
+      <p style={{ color: "wheat" }}>{isLoading ? "YEA" : "NO"}</p>
       {isLoading
         ? [0, 1, 2, 3, 5].map((ele) => (
             <div
@@ -116,8 +112,8 @@ const Leadlistpage = ({ onLeadClick, isLoading }) => {
               </SkeletonTheme>
             </div>
           ))
-        : leads.map((lead, index) => {
-            if (index === leads.length - 1) {
+        : leads?.map((lead, index) => {
+            if (index === leads?.length - 1) {
               return (
                 <div ref={lastLeadRef} key={index}>
                   <LeadCard
@@ -137,9 +133,10 @@ const Leadlistpage = ({ onLeadClick, isLoading }) => {
               );
             }
           })}
-      {loadingLeads ? (
-        <p style={{ color: "white", textAlign: "center" }}>Loading...</p>
-      ) : (
+      {!isLoading && fetchingMoreLeads && (
+        <p style={{ color: "white", textAlign: "center" }}>Loading....</p>
+      )}
+      {isLoading === false && leads.length === 0 && (
         <p style={{ color: "white", textAlign: "center" }}>No Results Found</p>
       )}
     </div>

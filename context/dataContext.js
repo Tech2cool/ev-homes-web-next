@@ -7,20 +7,41 @@ const DataContext = createContext();
 
 export const DataProvider = ({ children }) => {
   const [leadInfo, setleadInfo] = useState(null);
+  // dashboard graph info
   const [graphInfo, setGraphInfo] = useState(null);
-  const [currentProject, setCurrentProject] = useState(null);
+  // leads[]
   const [leads, setleads] = useState([]);
-  const [currentLead, setCurrentLead] = useState(null);
-  const [currentTask, setCurrentTask] = useState(null);
-  const [tasks, setTaks] = useState([]);
-  const [loading, setLoading] = useState(false);
+  // leads[] loading
   const [loadingLeads, setLoadingLeads] = useState(false);
-  const [loadingProject, setLoadingProject] = useState(false);
+  const [fetchingMoreLeads, setFetchingMoreLeads] = useState(false);
+  // current lead
+  const [currentLead, setCurrentLead] = useState(null);
+  // current lead loading
+  const [loadingCurrentLead, setLoadingCurrentLead] = useState(false);
+  // current task
+  const [currentTask, setCurrentTask] = useState(null);
+  // current task loading
+  const [loadingCurrentTask, setLoadingCurrentTask] = useState(false);
+  // tasks[]
+  const [tasks, setTaks] = useState([]);
+  // tasks[] loading
   const [loadingTask, setLoadingTask] = useState(false);
+
+  const [currentProject, setCurrentProject] = useState(null);
+  const [loadingProject, setLoadingProject] = useState(false);
+  // graph loading
+  const [loading, setLoading] = useState(false);
+
+  // universal error
   const [error, setError] = useState("");
 
+  // fetch leads for salesM/ salesEx
   const fetchSaleExecutiveLeads = async (id, query, page = 1, limit = 10) => {
-    setLoadingLeads(true);
+    if (page === 1) {
+      setLoadingLeads(true);
+    } else {
+      setFetchingMoreLeads(true);
+    }
     setError("");
 
     try {
@@ -36,19 +57,23 @@ export const DataProvider = ({ children }) => {
       } else {
         setleads(res?.data ?? []);
       }
+      setFetchingMoreLeads(false);
       setLoadingLeads(false);
 
       return { success: true };
     } catch (err) {
       setError(err.message);
+      setFetchingMoreLeads(false);
       setLoadingLeads(false);
 
       return { success: false, message: err.message };
     } finally {
+      setFetchingMoreLeads(false);
       setLoadingLeads(false);
     }
   };
 
+  // fetch leads for salesM/ salesEx
   const fetchSaleExecutiveLeadsGraph = async (id) => {
     setLoading(true);
     setError("");
@@ -60,15 +85,20 @@ export const DataProvider = ({ children }) => {
       });
 
       setGraphInfo(res?.data);
+      setLoading(false);
+
       return { success: true };
     } catch (err) {
       setError(err.message);
+      setLoading(false);
+
       return { success: false, message: err.message };
     } finally {
       setLoading(false);
     }
   };
 
+  // fetch leads for closing manager
   const fetchTeamLeaderLeads = async (id, query, page = 1, limit = 10) => {
     setLoadingLeads(true);
     setError("");
@@ -95,6 +125,7 @@ export const DataProvider = ({ children }) => {
     }
   };
 
+  // fetch tasks for salesM/ salesEx
   const fetchSaleExecutiveTasks = async (id, query) => {
     setLoadingTask(true);
     setError("");
@@ -123,6 +154,7 @@ export const DataProvider = ({ children }) => {
     }
   };
 
+  // update feedback
   const updateFeedback = async (data) => {
     setLoadingTask(true);
     setError("");
@@ -145,6 +177,7 @@ export const DataProvider = ({ children }) => {
     }
   };
 
+  //get lead by id
   const getLeadById = async (id) => {
     setLoadingLeads(true);
     setError("");
@@ -166,13 +199,17 @@ export const DataProvider = ({ children }) => {
     }
   };
 
+  // utils - update current lead
   const updateCurrentLead = (lead) => {
     setCurrentLead(lead);
   };
+
+  // utils - update current task
   const updateCurrentTask = (task) => {
     setCurrentTask(task);
   };
 
+  //get lead by id
   const getProjectById = async (id) => {
     setLoadingProject(true);
     setError("");
@@ -218,6 +255,7 @@ export const DataProvider = ({ children }) => {
         loadingProject,
         currentProject,
         currentTask,
+        fetchingMoreLeads,
       }}
     >
       {children}

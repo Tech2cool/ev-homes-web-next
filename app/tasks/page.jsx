@@ -147,7 +147,9 @@ const TasksPage = () => {
             {currentTask ? (
               <Taskdetailspage task={currentTask} />
             ) : (
-              <p>Select a lead to view details</p>
+              <div className={styles.messageWrapper}>
+                <p>Select a Task to view details</p>
+              </div>
             )}
           </div>
         </div>

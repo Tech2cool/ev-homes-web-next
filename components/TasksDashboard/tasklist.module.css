@@ -13,11 +13,11 @@
 .leadCard {
   display: flex;
   flex-direction: column;
-  padding: 5px 5px ;
+  padding: 5px 5px;
   box-shadow: 0 4px 6px rgba(0, 0, 0, 0.3);
   color: white;
   width: auto;
-  border-bottom: 1px solid rgba(255, 255, 255, 0.2); 
+  border-bottom: 1px solid rgba(255, 255, 255, 0.2);
 }
 
 .leadInfo {
@@ -64,7 +64,9 @@
   color: white;
   display: inline-block;
 }
-
+.taskStatusPending {
+  background: #ff7f00;
+}
 
 @media screen and (max-width: 615px) {
   .clientIcon {
