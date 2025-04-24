@@ -25,7 +25,7 @@
   transition: box-shadow 0.3s ease;
 }
 
-/* .closeButton {
+.closeButton {
   position: absolute;
   top: 10px;
   right: 15px;
@@ -33,7 +33,7 @@
   background: none;
   font-size: 18px;
   cursor: pointer;
-} */
+}
 
 .profileSection {
   display: flex;
@@ -42,6 +42,7 @@
   gap: 1vh;
   margin-bottom: 20px;
   margin-left: 10px;
+  margin-top: 10px;
 }
 
 .profileImage {
@@ -174,14 +175,12 @@
 }
 
 .rightSection {
-
   flex: 1;
   display: flex;
   flex-wrap: wrap;
   flex-direction: column;
   gap: 20px;
 }
-
 
 .profileActions {
   margin-top: 20px;
@@ -271,5 +270,101 @@
 }
 
 @media screen and (max-width: 616px) {
+  .container {
+    margin-left: auto;
+    margin-right: auto;
+    padding: 0px;
+    height: 90vh;
+    overflow-y: auto;
+    scrollbar-width: thin;
+  }
 
+  .profileSection {
+    flex-direction: row;
+    align-items: center;
+    gap: 4vw;
+  }
+
+  .profileImage {
+    width: 20vw;
+    height: 10vw;
+  }
+
+  .userInfo {
+    text-align: left;
+  }
+
+  .userName {
+    font-size: 4vw;
+  }
+
+  .userDesignation {
+    font-size: 3vw;
+  }
+
+  .profileActions {
+    display: flex !important;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: flex-end;
+    gap: 2vw;
+    margin-top: 3vw;
+  }
+
+  .customButtonOrange,
+  .customButtonBlue,
+  .customButtonRed {
+    width: auto;
+    font-size: 3vw;
+  }
+
+  .iconCircleOrange,
+  .iconCircleBlue,
+  .iconCircleRed {
+    width: 3vw;
+    height: 3vw;
+    font-size: 2vw;
+  }
+
+  .textBoxOrange,
+  .textBoxBlue,
+  .textBoxRed {
+    font-size: 3vw;
+  }
+
+  .rightSection {
+    width: 100%;
+    flex-direction: column;
+    align-items: center;
+  }
+  .personalInfoSection {
+    width: 80vw !important;
+    margin: 0px 0;
+    margin-bottom: 2vh;
+  }
+
+  .perRepoContainer {
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
+  }
+
+  .profileContainer {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .sectionHeading {
+    font-size: 4vw;
+    margin-bottom: 1vh;
+    padding-left: 2vw;
+  }
+
+  .leaveInfoSection,
+  .contactInfoSection,
+  .reportingInfoSection {
+    width: 80vw !important;
+    margin: 0px 0;
+    margin-top: 1vh;
+  }
 }
