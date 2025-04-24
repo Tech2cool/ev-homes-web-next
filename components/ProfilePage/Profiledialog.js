@@ -68,11 +68,11 @@ const Profiledialog = ({ isOpen, onClose }) => {
 
             <div className={styles.profileActionsWrapper}>
               <div className={styles.profileActions}>
-                <div className={styles.customOrange}>
-                  <div className={styles.iconCirOrange}>
+                <div className={styles.customButtonOrange}>
+                  <div className={styles.iconCircleOrange}>
                     <FaUserEdit />
                   </div>
-                  <div className={styles.textOrange}>Edit Profile</div>
+                  <div className={styles.textBoxOrange}>Edit Profile</div>
                 </div>
 
                 <div className={styles.customButtonBlue}>
