@@ -1,7 +1,7 @@
 "use client";
 import Leadlistpage from "@/components/LeadListPage/Leadlistpage";
 import Leaddashboardcards from "@/components/LeadsDashboardCards/Leaddashboardcards";
-import React, { useEffect, useState } from "react";
+import React, { useCallback, useEffect, useState } from "react";
 import styles from "./leads.module.css";
 import Leaddetailspage from "@/components/LeadDetails/Leaddetailspage";
 import { useIsMobile } from "@/hooks/useIsMobile";
@@ -17,19 +17,23 @@ const LeadsPage = () => {
     updateCurrentLead,
     currentLead,
     loadingLeads,
+    leadInfo,
+    fetchingMoreLeads,
   } = useData();
 
-  const [selectedLeadId, setSelectedLeadId] = useState(null);
-  const [selectedLead, setSelectedLead] = useState(null);
   const isMobile = useIsMobile();
+  const loadMoreLeads = useCallback(async () => {
+    try {
+      await fetchSaleExecutiveLeads(user?._id, "", leadInfo?.page + 1 ?? 1, 10);
+    } catch (err) {
+      console.error("Error loading more leads:", err);
+    }
+  }, [leadInfo?.page]);
 
   const handleLeadClick = (lead) => {
-    setSelectedLeadId(lead?._id);
-    setSelectedLead(lead);
     updateCurrentLead(lead);
   };
   const handleBack = () => {
-    setSelectedLeadId(null);
     updateCurrentLead(null);
   };
 
@@ -40,16 +44,16 @@ const LeadsPage = () => {
     }
   }, [user, loading]);
 
-  if (loading || !user) {
-    return <div>Loading...</div>;
-  }
+  // if (loading || !user) {
+  //   return <div>Loading...</div>;
+  // }
 
   return (
     <div className={styles.fullContainer}>
-      {!(isMobile && selectedLeadId) && <Leaddashboardcards />}
+      {!(isMobile && currentLead) && <Leaddashboardcards />}
 
       {isMobile ? (
-        selectedLeadId ? (
+        currentLead ? (
           <div>
             <div className={styles.backButtonWrapper}>
               <IoArrowBackCircleOutline
@@ -62,19 +66,27 @@ const LeadsPage = () => {
             <Leaddetailspage lead={currentLead} id={currentLead?._id} />
           </div>
         ) : (
-          <Leadlistpage initialLeads={leads} onLeadClick={handleLeadClick} />
+          <Leadlistpage
+            leads={leads}
+            isLoading={loading || loadingLeads}
+            onLeadClick={handleLeadClick}
+            loadMoreLeads={loadMoreLeads}
+            fetchingMoreLeads={fetchingMoreLeads}
+          />
         )
       ) : (
         <div className={styles.listDetailsContainer}>
           <div className={styles.listContainer}>
             <Leadlistpage
-              initialLeads={leads}
-              isLoading={loading ?? loadingLeads}
+              leads={leads}
+              isLoading={loading || loadingLeads}
               onLeadClick={handleLeadClick}
+              loadMoreLeads={loadMoreLeads}
+              fetchingMoreLeads={fetchingMoreLeads}
             />
           </div>
           <div className={styles.listHistoryContainer}>
-            {selectedLeadId ? (
+            {currentLead ? (
               <Leaddetailspage
                 isLoading={loadingLeads}
                 lead={currentLead}

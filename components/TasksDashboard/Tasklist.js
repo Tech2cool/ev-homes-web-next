@@ -30,7 +30,11 @@ const TaskListPage = ({ task, onClick }) => {
         <p>
           <strong>Deadline:</strong> {dateFormatOnly(task?.deadline ?? "")}
         </p>
-        <p className={styles.taskStatus}>
+        <p
+          className={`${styles.taskStatus} ${
+            task?.completed === true ? "" : styles.taskStatusPending
+          }`}
+        >
           {task?.completed == true ? "completed" : "pending"}
         </p>
       </div>

@@ -3,7 +3,7 @@ import "./MyHoverCard.css";
 
 const MyHoverCard = ({ title = "", onTap = () => {} }) => {
   return (
-    <button class="Btn" onClick={() => onTap()}>
+    <button className="Btn" onClick={() => onTap()}>
       {title} ❌
     </button>
   );
