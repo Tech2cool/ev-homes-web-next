@@ -28,7 +28,7 @@ export const UserProvider = ({ children }) => {
       return;
     }
 
-    const socket = io("http://localhost:8082", {
+    const socket = io("https://api.evhomes.tech", {
       transports: ["websocket"],
       reconnection: true,
     });
