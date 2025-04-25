@@ -30,8 +30,6 @@
   transition: transform 0.3s ease;
 }
 
- 
-
 .imageBox:hover {
   transform: scale(1.05);
 }
@@ -80,7 +78,7 @@
 
 .imageBox::after {
   bottom: 0;
-  background: linear-gradient(to top, rgba(0, 0, 0,0.9 ), transparent);
+  background: linear-gradient(to top, rgba(0, 0, 0, 0.9), transparent);
 }
 
 .imageText,
@@ -88,6 +86,13 @@
   position: absolute;
   z-index: 3;
   color: white;
+  display: -webkit-box;
+  -webkit-line-clamp: 1;
+  line-clamp: 1;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+  text-overflow: unset;
+  white-space: normal;
 }
 
 .imageBox1,

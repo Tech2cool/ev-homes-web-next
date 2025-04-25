@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import Image from "next/image";
 import styles from "./configurationsection.module.css";
 import style from "./descriptionsection.module.css";
+import CurrencyFormatter from "../CurrencyFormatter/CurrencyFormatter";
 
 const configData = [
   {
@@ -46,13 +47,23 @@ const configData = [
   },
 ];
 
-const ConfigurationSection = () => {
+const ConfigurationSection = ({ projectInfo }) => {
   const [selectedConfig, setSelectedConfig] = useState(null);
   const [selectedImage, setSelectedImage] = useState(null);
+  const configList = projectInfo?.configurations ?? [];
+  const configNames =
+    projectInfo?.configurations
+      ?.map((ele) => ele?.configuration)
+      ?.filter(Boolean) ?? [];
+  // console.log(configNames);
+  const setConfigs = new Set(configNames);
+  const uniqueConfigNames = [...setConfigs];
+
+  console.log(setConfigs);
   const filteredCards =
     selectedConfig === null
-      ? configData
-      : configData.filter((card) => card.configuration === selectedConfig);
+      ? configList
+      : configList.filter((card) => card.configuration === selectedConfig);
   const handleFilterClick = (config) => {
     setSelectedConfig((prev) => (prev === config ? null : config));
   };
@@ -72,27 +83,24 @@ const ConfigurationSection = () => {
         <h2 className={styles.headline}>
           Configuration{" "}
           <div className={styles.buttonContainer}>
-            <button
-              className={`${styles.bhkButton} ${
-                selectedConfig === "2 BHK" ? styles.active : ""
-              }`}
-              onClick={() => handleFilterClick("2 BHK")}
-            >
-              <span>2 BHK</span>
-            </button>
-            <button
-              className={`${styles.bhkButton} ${
-                selectedConfig === "3 BHK" ? styles.active : ""
-              }`}
-              onClick={() => handleFilterClick("3 BHK")}
-            >
-              <span>3 BHK</span>
-            </button>
+            {uniqueConfigNames?.map((ele) => {
+              return (
+                <button
+                  key={ele}
+                  className={`${styles.bhkButton} ${
+                    selectedConfig === "2 BHK" ? styles.active : ""
+                  }`}
+                  onClick={() => handleFilterClick(ele)}
+                >
+                  <span>{ele}</span>
+                </button>
+              );
+            })}
           </div>
         </h2>
         <div className={styles.cardContainer}>
-          {filteredCards.map((card) => (
-            <div className={styles.configCard} key={card.id}>
+          {filteredCards.map((card, i) => (
+            <div className={styles.configCard} key={i}>
               <div
                 className={styles.cardImage}
                 onClick={() => setSelectedImage(card.image)}
@@ -109,7 +117,7 @@ const ConfigurationSection = () => {
                 <div>RERA ID: {card.reraId}</div>
                 <div>Carpet Area: {card.carpetArea}</div>
                 <div>Configuration: {card.configuration}</div>
-                <div>Price: ₹{card.price}</div>
+                <div>Price: {CurrencyFormatter({ amount: card.price })}</div>
               </div>
             </div>
           ))}

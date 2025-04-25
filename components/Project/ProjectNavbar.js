@@ -128,17 +128,17 @@ const ProjectNavbar = ({ projectInfo }) => {
                 </Link>
                 <div>
                   <CiLocationOn className={styles.icon} />
-                  EV23 Malibu West, Koparkhairane
+                  {projectInfo?.name ?? ""}, {projectInfo?.locationName ?? ""}
                 </div>
               </div>
               <div className={styles.contact}>
                 <span className={styles.phone}>
                   <LuPhone className={styles.icon} />
-                  +91 1234567890
+                  +91 8291668777
                 </span>
                 <span className={styles.email}>
                   <MdOutlineMailOutline className={styles.icon} />
-                  example@example.com
+                  {projectInfo?.contactEmail ?? "deepak@evgroup.co.in"}
                 </span>
               </div>
             </div>
@@ -164,7 +164,7 @@ const ProjectNavbar = ({ projectInfo }) => {
                 />
               </div> */}
               <ul className="logoList">
-                <li>Malibu West</li>
+                <li>{projectInfo?.name ?? ""}</li>
                 <li onClick={() => scrollToSection("description")}>
                   Description
                 </li>
@@ -173,10 +173,18 @@ const ProjectNavbar = ({ projectInfo }) => {
                   Configuration
                 </li>
                 <li>
-                  <button className={`${styles.bhkButton} ${styles.active}`}>
+                  <Link
+                    className={`${styles.bhkButton} ${styles.active}`}
+                    href={projectInfo?.brochure}
+                    download="Brochure.pdf"
+                    target="_blank" // This opens the file in a new tab
+                    rel="noopener noreferrer" // For security reasons, always add this when using target="_blank"
+                  >
+                    {/* <button className={`${styles.bhkButton} ${styles.active}`}> */}
                     <FaDownload />
                     <span>Brochure</span>
-                  </button>
+                    {/* </button> */}
+                  </Link>
                 </li>
               </ul>
             </div>
@@ -204,9 +212,9 @@ const ProjectNavbar = ({ projectInfo }) => {
           </div>
         </div>
       </div>
-      <DescriptionSection />
-      <AmenitiesSection />
-      <ConfigurationSection />
+      <DescriptionSection projectInfo={projectInfo} />
+      <AmenitiesSection projectInfo={projectInfo} />
+      <ConfigurationSection projectInfo={projectInfo} />
       {!atTop && (
         <button
           onClick={() => window.scrollTo({ top: 0, behavior: "smooth" })}

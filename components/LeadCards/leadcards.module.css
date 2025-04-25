@@ -1,15 +1,15 @@
 .container {
-    /* padding: 10px 10px; */
-    padding: 15px 15px;
-    display: flex;
-    justify-content: space-between;
-    gap: 20px;
-    position: relative;
-    /* background:#333; */
-    /* height: 80px; */
-  }
-  
-  /* .card {
+  /* padding: 10px 10px; */
+  padding: 15px 15px;
+  display: flex;
+  justify-content: space-between;
+  gap: 20px;
+  position: relative;
+  /* background:#333; */
+  /* height: 80px; */
+}
+
+/* .card {
     background: #222;
     background-color: rgb(136, 133, 133);
     padding: 20px;
@@ -41,131 +41,121 @@
     color: white;
   } */
 
-  .card {
-    background-color: rgba(255, 255, 255, 0.06); 
-    border: 1px solid rgba(255, 255, 255, 0.2);   
-    border-radius: 8px;
-    padding: 20px;
-    box-shadow: inset 0 0 0.5px rgba(255, 255, 255, 0.1); 
-    justify-content: space-between;
-    display: flex;
-    flex:1;
+.card {
+  background-color: rgba(255, 255, 255, 0.06);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  border-radius: 8px;
+  padding: 20px;
+  box-shadow: inset 0 0 0.5px rgba(255, 255, 255, 0.1);
+  justify-content: space-between;
+  display: flex;
+  flex: 1;
+  gap: 5px;
+  color: white;
+  text-decoration: none;
+  width: 2vw;
+  height: 10vh;
+  transition: background 0.3s ease, transform 0.2s ease;
+  padding-top: 20px;
+}
+
+.card:hover {
+  background-color: rgba(255, 255, 255, 0.05);
+  transform: translateY(-2px);
+}
+
+.card p {
+  font-size: 1rem;
+  color: rgba(255, 255, 255, 0.6);
+  margin: 0;
+}
+
+.card h2 {
+  font-size: 1.4rem;
+  font-weight: 400;
+  margin: 0;
+  color: white;
+}
+
+.icon {
+  width: 27px;
+  height: 27px;
+  /* filter: drop-shadow(0 0 5px currentColor); */
+  transition: transform 0.3s ease;
+}
+
+.icon:hover {
+  transform: scale(1.1);
+}
+
+.blue {
+  color: #007bff;
+}
+
+.orange {
+  color: #fd7e14;
+}
+
+.purple {
+  color: #6f42c1;
+}
+
+.green {
+  color: #28a745;
+}
+
+.red {
+  color: #dc3545;
+}
+
+@media screen and (max-width: 616px) {
+  .container {
+    height: 50px;
     gap: 5px;
-    color: white;
-    text-decoration: none;
-    width: 2vw;
-    height: 10vh;
-    transition: background 0.3s ease, transform 0.2s ease;
-    padding-top: 20px;
   }
-  
-  .card:hover {
-    background-color: rgba(255, 255, 255, 0.05);
-    transform: translateY(-2px);
+  .text p {
+    font-size: 12px;
   }
-  
-  .card p {
-    font-size: 1rem;
-    color: rgba(255, 255, 255, 0.6);
-    margin: 0;
+
+  .card {
+    padding: 3%;
+    padding-left: 15px;
+    border-radius: 10px;
+    min-width: 35px;
+    top: 5px;
+    height: 25px;
   }
-  
+
+  .card h4 {
+    font-size: 2.5vw;
+    color: #999;
+  }
+
   .card h2 {
-    font-size: 1.4rem;
-    font-weight: 400;
-    margin: 0;
-    color: white;
+    font-size: 3vw;
+    font-weight: 300;
   }
-  
-  
   .icon {
-    width: 27px;
-    height: 27px;
-    /* filter: drop-shadow(0 0 5px currentColor); */
-    transition: transform 0.3s ease;
+    display: none;
   }
- 
-  .icon:hover {
-    transform: scale(1.1);
+}
+@media screen and (min-width: 427px) and (max-width: 798px) {
+  .card {
+    min-width: 90px;
+    padding: 10px;
   }
-  
-  .blue {
-    color: #007bff;
+  .container {
+    height: 60px;
   }
-  
-  .orange {
-    color: #fd7e14;
-  }
-  
-  .purple {
-    color: #6f42c1;
-  }
-  
-  .green {
-    color: #28a745;
-  }
-  
-  .red {
-    color: #dc3545;
-  }
-  .greencolor{
-    
-  }
-  
-  @media screen and (max-width: 616px) {
-    .container {
-
-      height: 50px;
-      gap: 5px;
-    }
-    .card {
-      padding: 3%;
-      padding-left: 15px;
-      border-radius: 10px;
-      min-width: 35px;
-      top: 5px;
-      height: 25px;
-    }
-   
-    .card h4 {
-      font-size: 2.5vw;
-      color: #999;
-    }
-    
-    .card h2 {
-      font-size: 3vw;
-      font-weight: 300;
-    }
-    .icon {
-    
-      display: none;
-    
-    }
-    
-  }
-  @media screen  and  (min-width: 427px) and (max-width: 798px){
-    .card {
-    
-      min-width: 90px;
-      padding: 10px;
-    }
-    .container {
-     
-      height: 60px;
-    }
-    .card h4 {
-      font-size: 1.5vw;
-    }
-    
-    .card h2 {
-      font-size: 2vw;
-      
-    }
-    .icon {
-      width: 20px;
-      height: 20px;
-      
-    }
+  .card h4 {
+    font-size: 1.5vw;
   }
 
-  
+  .card h2 {
+    font-size: 2vw;
+  }
+  .icon {
+    width: 20px;
+    height: 20px;
+  }
+}

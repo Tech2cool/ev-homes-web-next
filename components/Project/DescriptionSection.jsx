@@ -1,10 +1,10 @@
 import React, { useState } from "react";
 import styles from "./descriptionsection.module.css";
 import Image from "next/image";
-import Switch from "../Switch";
 
-const DescriptionSection = () => {
+const DescriptionSection = ({ projectInfo }) => {
   const [showOverlay, setShowOverlay] = useState(false);
+  const [desc, setDesc] = useState(false);
 
   const handleOverlayClick = () => {
     setShowOverlay(false);
@@ -25,25 +25,21 @@ const DescriptionSection = () => {
       <div className={styles.wholeContainer}>
         <div className={styles.descriptionContainer}>
           <h2>Description</h2>
-          <div className={styles.descriptText}>
-            Welcome to EV 23 Malibu West 🌴✨ <br />
-            Ultra-Luxury Living Inspired by Malibu, California
-            <br />
-            <br />
-            Developed by EV Homes Construction Pvt Ltd, a name synonymous with
-            quality and innovation, EV 23 Malibu West is an ultra-luxury
-            residential project located in Kopar Khairane Sector 23, Navi
-            Mumbai. Inspired by the opulent beachfront lifestyle of Malibu,
-            California, this development offers a range of 2 BHK and 3 BHK
-            sea-facing residences designed to provide both comfort and elegance.
-            Each home is thoughtfully crafted to offer breathtaking sea views
-            and a peaceful living experience.
-            <br />
-            <br />
-            🌟 World-Class Amenities At EV 23 Malibu West, we believe in
-            offering more than just a home – it’s a lifestyle. The project
-            features a range of curated amenities for residents:
-            <button className={styles.button}>Know More</button>
+          <div className={`${styles.descriptText}`}>
+            <p
+              className={styles.descriptionTextPara}
+              style={{ maxHeight: desc ? null : "calc(1.6em * 6)" }}
+            >
+              {projectInfo?.description ?? ""}
+            </p>
+            <button
+              className={styles.button}
+              onClick={() => {
+                setDesc(!desc);
+              }}
+            >
+              Know More
+            </button>
           </div>
         </div>
         <div className={styles.otherContainer}>
@@ -108,15 +104,17 @@ const DescriptionSection = () => {
             {/* <div className={styles.firstImage}></div> */}
             <div className={styles.secondImage}>
               <Image
-                src="/images/Building1.jpg"
+                src={projectInfo?.showCaseImage}
+                // src="/images/Building1.jpg"
                 alt="Building"
                 layout="fill"
                 objectFit="cover"
               />
             </div>
             <div className={styles.thirdImage}>
-            <Image
-                src="/images/Building2.jpg"
+              <Image
+                src={projectInfo?.showCaseImage}
+                // src="/images/Building2.jpg"
                 alt="Building2"
                 layout="fill"
                 objectFit="cover"
