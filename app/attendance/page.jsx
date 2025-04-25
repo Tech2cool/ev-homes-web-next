@@ -1,15 +1,18 @@
-import Attendanceheader from "@/components/AttendanceDashboard/Attendanceheader";
-import Myattendance from "@/components/AttendanceDashboard/Myattendance";
+import Attendanceheader from "@/components/AllAttendance/Attendanceheader";
+// import Myattendance from "@/components/AttendanceDashboard/Myattendance";
 import React from "react";
-import styles from "./attendance.module.css";
-import Attendancecards from "@/components/AttendanceDashboard/Attendancecards";
-import { Attendanceinsight } from "@/components/AttendanceDashboard/Attendanceinsight";
-import AttendanceCalendar from "@/components/AttendanceDashboard/Attendancecalendar";
+// import styles from "./attendance.module.css";
+import Attendancesummarycards from "@/components/AllAttendance/Attendancesummarycards";
+import Attendancefiltersection from "@/components/AllAttendance/Attendancefiltersection";
+import Attendancesection from "@/components/AllAttendance/Attendancesection";
+// import Attendancecards from "@/components/AttendanceDashboard/Attendancecards";
+// import { Attendanceinsight } from "@/components/AttendanceDashboard/Attendanceinsight";
+// import AttendanceCalendar from "@/components/AttendanceDashboard/Attendancecalendar";
 
 const AttendancePage = () => {
   return (
     <div>
-      <Attendanceheader />
+      {/* <Attendanceheader />
       <div className={styles.mainContent}>
         <div className={styles.attendanceContainer}>
           <Myattendance />
@@ -22,7 +25,11 @@ const AttendancePage = () => {
             <AttendanceCalendar />
           </div>
         </div>
-      </div>
+      </div> */}
+      <Attendanceheader/>
+      <Attendancesummarycards/>
+      <Attendancefiltersection/>
+      <Attendancesection/>
     </div>
   );
 };

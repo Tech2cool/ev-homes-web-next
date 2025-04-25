@@ -1,0 +1,132 @@
+.container {
+  padding: 1vh;
+  margin: 2vh;
+  color: #fff;
+  border-radius: 8px;
+  overflow-x: auto;
+  overflow-y: auto;
+  height: 40vh;
+  scrollbar-width: none;
+  border: 1px solid rgba(255, 255, 255, 0.2);
+}
+
+.table {
+  width: 100%;
+  border-collapse: collapse;
+  min-width: 800px;
+}
+
+.table th,
+.table td {
+  padding: 10px 14px;
+  text-align: left;
+}
+
+.table th {
+  background-color: black;
+  color: white;
+  font-weight: normal;
+  font-size: small;
+}
+
+.table tr:nth-child(even) {
+  background-color: rgba(255, 255, 255, 0.02);
+}
+
+.table tr:nth-child(odd) {
+  background-color: rgba(255, 255, 255, 0.06);
+}
+
+.timein {
+  color: rgb(6, 206, 6);
+  font-weight: 500;
+}
+
+.timeout {
+  color: #e74c3c;
+  font-weight: 500;
+}
+
+.profileImage {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  object-fit: cover;
+  margin-right: 12px;
+}
+
+.employeeInfo {
+  display: flex;
+}
+
+.namePhone {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.employeeName {
+  font-weight: 400;
+  font-size: 2.5vh;
+}
+
+.phoneNumber {
+  font-size: 2vh;
+  color: #7d7d7d;
+}
+
+.timeContainer {
+  display: flex;
+  align-items: center;
+  gap: 1vw;
+}
+
+.timeImage {
+  width: 3.5vw;
+  height: 3.3vw;
+  object-fit: cover;
+  border-radius: 2px;
+}
+
+.location {
+  font-size: 2.2vh;
+  font-weight: normal;
+}
+
+.timeline {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.dot {
+  font-size: 18px;
+  color: white;
+  margin: 0;
+}
+
+.workingTime {
+  font-weight: 500;
+  font-size: 2vh;
+  color: #7d7d7d;
+  white-space: nowrap;
+}
+
+.statusPresent {
+  border-left: 8px solid green;
+}
+
+.statusAbsent {
+  border-left: 8px solid red;
+}
+
+.statusWeekOff {
+  border-left: 8px solid orange;
+}
+
+
+.date{
+  font-weight: 500;
+  font-size: 2.2vh;
+  color: #7d7d7d;
+}
