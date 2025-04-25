@@ -1,0 +1,147 @@
+.filterSection {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 16px;
+  border-radius: 10px;
+}
+
+.searchContainer {
+  display: flex;
+  align-items: center;
+  background-color: rgba(255, 255, 255, 0.06);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  border-radius: 8px;
+  padding: 3px;
+  width: 20vw;
+  margin-right: 15px;
+}
+
+.searchInput {
+  border: none;
+  outline: none;
+  padding: 8px;
+  background: transparent;
+  color: white;
+  flex: 1;
+  width: 100%;
+}
+
+.searchInput::placeholder {
+  color: rgb(90, 88, 88);
+  font-size: 17px;
+  font-weight: 400;
+  opacity: 1;
+}
+
+.searchButton {
+  background: #007bff;
+  border: none;
+  padding: 5px 8px;
+  border-radius: 5px;
+  cursor: pointer;
+  color: white;
+  margin-right: 5px;
+}
+
+.customDropdown {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  background-color: rgba(255, 255, 255, 0.06);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  padding: 0.4rem;
+  border-radius: 8px;
+  min-width: 18vw;
+  cursor: pointer;
+}
+
+.leftSide {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.icon {
+  color: #aaa;
+  font-size: 2.8vh;
+}
+
+.label {
+  color: white;
+  font-size: 2.2vh;
+}
+
+.arrowIcon {
+  color: #aaa;
+  font-size: 14px;
+}
+
+.filterSectionWrapper {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 16px;
+  border-radius: 10px;
+}
+
+.filterSectionLeft {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.toggleIcons {
+  display: flex;
+  gap: 8px;
+}
+
+.toggleBtn {
+  background-color: rgba(255, 255, 255, 0.06);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  padding: 1vh;
+  border-radius: 8px;
+  cursor: pointer;
+  color: #aaa;
+  transition: background 0.3s, color 0.3s;
+}
+
+.toggleBtn:hover {
+  background-color: rgba(255, 255, 255, 0.15);
+}
+
+.toggleBtn.active {
+  background-color: #007bff;
+  color: white;
+}
+
+.calendarWrapper {
+  position: absolute;
+  background: white;
+  border: 1px solid #ccc;
+  z-index: 100;
+  margin-top: 10px;
+  padding: 10px;
+  border-radius: 8px;
+}
+
+.okButton {
+  margin-top: 2vh;
+  margin-left: 2vh;
+  padding: 10 12px;
+  background-color: #007bff;
+  color: white;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+}
+
+.calendarWrapper {
+  display: flex;
+  gap: 1rem;
+  background: #fff;
+  padding: 1rem;
+  border-radius: 10px;
+  box-shadow: 0 0 10px rgba(0,0,0,0.1);
+  z-index:1000;
+}

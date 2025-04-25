@@ -1,0 +1,56 @@
+.headerWrapper {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin: 1rem;
+  padding: 0 20px;
+}
+
+.header {
+  color: white;
+  font-size: 4vh;
+  font-weight: 600;
+}
+
+.reportButton {
+  background-color: #007bff;
+  color: white;
+  padding: 10px 20px;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: transform 0.3s ease, background-color 0.3s ease;
+}
+
+.reportButton:hover {
+  transform: scale(1.05);
+  background-color: #0056b3;
+}
+
+.leftSection {
+  display: flex;
+  align-items: center;
+  gap: 5vw;
+}
+
+.dateSelector {
+  display: flex;
+  align-items: center;
+  background-color: black;
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  border-radius: 8px;
+  padding: 6px 12px;
+  gap: 2vw;
+  font-weight: 500;
+  font-size: 2vh;
+  color: #a8a5a5;
+}
+
+.arrowButton {
+  background: transparent;
+  border: none;
+  cursor: pointer;
+  font-size: 14px;
+  color: #d6d2d2;
+  padding: 2px;
+}
