@@ -1,16 +1,17 @@
+"use client";
 import Attendanceheader from "@/components/AllAttendance/Attendanceheader";
 // import Myattendance from "@/components/AttendanceDashboard/Myattendance";
-import React from "react";
+import React, { useState } from "react";
 // import styles from "./attendance.module.css";
 import Attendancesummarycards from "@/components/AllAttendance/Attendancesummarycards";
 import Attendancefiltersection from "@/components/AllAttendance/Attendancefiltersection";
-import Attendancesection from "@/components/AllAttendance/Attendancesection";
 // import Attendancecards from "@/components/AttendanceDashboard/Attendancecards";
 // import { Attendanceinsight } from "@/components/AttendanceDashboard/Attendanceinsight";
 // import AttendanceCalendar from "@/components/AttendanceDashboard/Attendancecalendar";
 
 const AttendancePage = () => {
   return (
+    
     <div>
       {/* <Attendanceheader />
       <div className={styles.mainContent}>
@@ -29,7 +30,6 @@ const AttendancePage = () => {
       <Attendanceheader/>
       <Attendancesummarycards/>
       <Attendancefiltersection/>
-      <Attendancesection/>
     </div>
   );
 };
