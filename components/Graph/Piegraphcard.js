@@ -16,16 +16,17 @@ const Piegraphcard = ({
   valueone,
   valuetwo,
   colors,
+  data = data1,
 }) => {
   return (
     <div className={styles.maincontainer}>
       <div className={styles.container}>
         <div className={styles.chartWrapper}>
           <div className={styles.header}>{Healine}</div>
-          <ResponsiveContainer fill>
+          <ResponsiveContainer width="100%" height={300}>
             <PieChart>
               <Pie
-                data={data1}
+                data={data}
                 cx="50%"
                 cy="50%"
                 innerRadius={70}
@@ -35,11 +36,11 @@ const Piegraphcard = ({
                 dataKey="value"
                 // cornerRadius={20}
               >
-                {data1.map((entry, index) => (
+                {data?.map((entry, index) => (
                   <Cell key={`cell-${index}`} fill={colors[index]} />
                 ))}
               </Pie>
-              {/* <Tooltip /> */}
+              <Tooltip />
               <circle cx="50%" cy="50%" r="28%" fill="#333" />
               <text
                 x="50%"

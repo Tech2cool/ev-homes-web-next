@@ -53,6 +53,16 @@
   color: white;
   padding: 10px;
   text-align: center;
+  /* limit text */
+}
+.descriptionTextPara {
+  display: -webkit-box;
+  -webkit-line-clamp: 16;
+  line-clamp: 16;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: normal;
 }
 
 .button {
@@ -152,7 +162,7 @@
   width: 50px;
   height: 50px;
   cursor: pointer;
-  margin:  0px 100px 10px 150px;
+  margin: 0px 100px 10px 150px;
 }
 .loadershape3:after {
   width: 30px;
@@ -255,7 +265,7 @@
 
 .infoContainer {
   position: absolute;
-  bottom: -80px; 
+  bottom: -80px;
   left: 50%;
   transform: translateX(-50%);
   width: 25vw;
@@ -270,11 +280,11 @@
 }
 
 .circle:hover {
-  transform: rotate(360deg); 
+  transform: rotate(360deg);
 }
 
 .circle:hover .icon {
-  transform: rotate(360deg); 
+  transform: rotate(360deg);
 }
 
 .circle:hover .infoContainer {

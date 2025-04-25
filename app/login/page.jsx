@@ -17,11 +17,9 @@ export default function LoginPage() {
     const result = await login(email, password);
 
     if (result.success) {
-      alert("Logged in!");
+      // alert("Logged in!");
       redirect("/dashboard");
       // redirect or do something
-    } else {
-      alert(result.message);
     }
   };
 

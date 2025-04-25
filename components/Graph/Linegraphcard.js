@@ -12,7 +12,7 @@ import {
 import styles from "./linegraphcard.module.css";
 import { FaFilter } from "react-icons/fa";
 
-const data = [
+const dataFallback = [
   { month: "Mar", leads: 12000 },
   { month: "Apr", leads: 18000 },
   { month: "May", leads: 15000 },
@@ -24,9 +24,14 @@ const data = [
   { month: "Nov", leads: 30000 },
 ];
 
-const Linegraphcard = () => {
+const Linegraphcard = ({
+  data = dataFallback,
+  interval,
+  onTapFilter = (value) => {},
+}) => {
   const [showDropdown, setShowDropdown] = useState(false);
   const dropdownRef = useRef(null);
+  const dataKey = interval === "weekly" ? "day" : "month";
 
   useEffect(() => {
     const handleClickOutside = (event) => {
@@ -52,9 +57,18 @@ const Linegraphcard = () => {
           />
           {showDropdown && (
             <div className={styles.dropdown}>
-              <div className={styles.dropdownItem}>Daily</div>
-              <div className={styles.dropdownItem}>Monthly</div>
-              <div className={styles.dropdownItem}>Yearly</div>
+              <div
+                className={styles.dropdownItem}
+                onClick={() => onTapFilter("weekly")}
+              >
+                Weekly
+              </div>
+              <div
+                className={styles.dropdownItem}
+                onClick={() => onTapFilter("monthly")}
+              >
+                Monthly
+              </div>
             </div>
           )}
         </div>
@@ -64,12 +78,12 @@ const Linegraphcard = () => {
         <ResponsiveContainer width="100%" height={210}>
           <LineChart data={data}>
             <CartesianGrid strokeDasharray="3 3" />
-            <XAxis dataKey="month" />
-            <YAxis  />
+            <XAxis dataKey={dataKey} />
+            <YAxis />
             <Tooltip />
             <Line
               type="monotone"
-              dataKey="leads"
+              dataKey="count"
               // stroke="hsl(177, 100%, 50%)"
               stroke="#007bff"
               strokeWidth={1.5}

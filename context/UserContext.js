@@ -86,6 +86,11 @@ export const UserProvider = ({ children }) => {
         method: "POST",
         body: JSON.stringify({ email, password }),
       });
+      console.log(res);
+      if (res.code != 200) {
+        setError(res?.message);
+        return { success: false, message: res?.message };
+      }
       if (res.data) {
         localStorage.setItem("user", JSON.stringify(res.data));
       }

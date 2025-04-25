@@ -9,6 +9,8 @@ export const DataProvider = ({ children }) => {
   const [leadInfo, setleadInfo] = useState(null);
   // dashboard graph info
   const [graphInfo, setGraphInfo] = useState(null);
+  const [leadLineGraph, setLeadLineGraph] = useState([]);
+  const [taskReminders, setTaskReminders] = useState([]);
   // leads[]
   const [leads, setleads] = useState([]);
   // leads[] loading
@@ -83,8 +85,33 @@ export const DataProvider = ({ children }) => {
       const res = await fetchAdapter(url, {
         method: "GET",
       });
-
+      console.log(res);
       setGraphInfo(res?.data);
+      setLoading(false);
+
+      return { success: true };
+    } catch (err) {
+      setError(err.message);
+      setLoading(false);
+
+      return { success: false, message: err.message };
+    } finally {
+      setLoading(false);
+    }
+  };
+
+  // fetch leads for salesM/ salesEx
+  const fetchSaleExecutiveLeadsLineGraph = async (id, interval = "monthly") => {
+    setLoading(true);
+    setError("");
+
+    try {
+      let url = `/api/lead-count?teamLeader=${id}&interval=${interval}`;
+      const res = await fetchAdapter(url, {
+        method: "GET",
+      });
+      console.log(res);
+      setLeadLineGraph(res?.data);
       setLoading(false);
 
       return { success: true };
@@ -140,6 +167,31 @@ export const DataProvider = ({ children }) => {
       });
 
       setTaks(res?.data ?? []);
+      setLoadingTask(false);
+
+      return { success: true };
+    } catch (err) {
+      console.log(err);
+      setError(err.message);
+      setLoadingTask(false);
+
+      return { success: false, message: err.message };
+    } finally {
+      setLoadingTask(false);
+    }
+  };
+  // fetch tasks for salesM/ salesEx
+  const fetchSaleExecutiveTaskReminders = async (id) => {
+    setLoadingTask(true);
+    setError("");
+
+    try {
+      let url = `/api/task-reminder-all/${id}`;
+      const res = await fetchAdapter(url, {
+        method: "GET",
+      });
+
+      setTaskReminders(res?.data ?? []);
       setLoadingTask(false);
 
       return { success: true };
@@ -243,6 +295,8 @@ export const DataProvider = ({ children }) => {
         updateFeedback,
         getProjectById,
         getLeadById,
+        fetchSaleExecutiveLeadsLineGraph,
+        fetchSaleExecutiveTaskReminders,
         loadingLeads,
         loadingTask,
         graphInfo,
@@ -256,6 +310,8 @@ export const DataProvider = ({ children }) => {
         currentProject,
         currentTask,
         fetchingMoreLeads,
+        leadLineGraph,
+        taskReminders,
       }}
     >
       {children}

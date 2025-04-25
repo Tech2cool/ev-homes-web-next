@@ -16,6 +16,11 @@ const nextConfig = {
         hostname: "cdn.evhomes.tech",
         pathname: "**", // allow all paths
       },
+      {
+        protocol: "http", // allow http instead of https
+        hostname: "cdn.evhomes.tech",
+        pathname: "**",
+      },
     ],
   },
 };
