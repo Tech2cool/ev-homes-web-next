@@ -97,6 +97,8 @@
   height: 100vh;
   z-index: 1000;
   animation: slideIn 0.4s forwards;
+  overflow-y: scroll;
+  scrollbar-width: none;
 }
 
 @keyframes slideIn {
