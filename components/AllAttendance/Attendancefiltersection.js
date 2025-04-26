@@ -105,7 +105,7 @@ const Attendancefiltersection = () => {
               viewType === "grid" ? styles.active : ""
             }`}
           >
-            <HiOutlineSquares2X2 size={18} />
+            <HiOutlineSquares2X2 className={styles.gridIcon}/>
           </button>
           <button
             onClick={() => setViewType("table")}
@@ -113,7 +113,7 @@ const Attendancefiltersection = () => {
               viewType === "table" ? styles.active : ""
             }`}
           >
-            <HiOutlineTableCells size={18} />
+            <HiOutlineTableCells className={styles.tableIcon} />
           </button>
         </div>
       </div>
