@@ -3,6 +3,7 @@
 import React, { useEffect } from "react";
 import styles from "./profiledialog.module.css";
 import { FaUserEdit, FaKey, FaSignOutAlt } from "react-icons/fa";
+import { FiMaximize } from "react-icons/fi";
 import { useUser } from "@/context/UserContext";
 import { useRouter } from "next/navigation";
 
@@ -40,6 +41,9 @@ const Profiledialog = ({ isOpen, onClose }) => {
   return (
     <div className={styles.overlay} onClick={onClose}>
       <div className={styles.container} onClick={(e) => e.stopPropagation()}>
+        {/* <button>
+        <FiMaximize />
+        </button> */}
         <button className={styles.closeButton} onClick={onClose}>
           X
         </button>

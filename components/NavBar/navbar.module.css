@@ -2,7 +2,7 @@
   display: flex;
   align-items: center;
   justify-content: space-between;
-  padding: 10px 20px;
+  padding: 0.6rem 0.7rem;
   /* background-color: #33 */
   color: white;
   position: fixed;
@@ -33,7 +33,7 @@
   position: relative;
   cursor: pointer;
   transition: color 0.3s;
-  font-size: 16px;
+  font-size: 2.5vh;
   color: #ffffffc9;
 }
 
@@ -96,13 +96,13 @@
 }
 
 .icons {
-  margin-right: 40px;
+  margin-right: 2rem;
   display: flex;
-  gap: 20px;
+  gap: 2vw;
 }
 
 .icon {
-  font-size: 20px;
+  font-size: 3vh;
   cursor: pointer;
   color: white;
   transition: color 0.3s;
@@ -136,13 +136,13 @@
 }
 
 .logo img {
-  max-width: 100%;
-  height: auto;
-  padding-left: 20px;
+  width: 15vw;
+  height: 6vh;
+  padding-left: 1rem;
 }
 
 .logo {
-  width: 250px;
+  width: 15vw;
 }
 
 .hamburger {
