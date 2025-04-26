@@ -8,9 +8,26 @@ import { useIsMobile } from "@/hooks/useIsMobile";
 import { useData } from "@/context/dataContext";
 import { IoArrowBackCircleOutline } from "react-icons/io5";
 import { useUser } from "@/context/UserContext";
+import useDebounce from "@/hooks/useDebounce";
 
 const LeadsPage = () => {
   const { user, loading } = useUser();
+  const [query, setQuery] = useState("");
+
+  const [selectedFilter, setSelectedFilter] = useState({
+    status: null,
+    callData: null,
+    cycle: null,
+    order: null,
+    clientstatus: null,
+    leadstatus: null,
+    startDate: null,
+    endDate: null,
+    date: null,
+    member: null,
+  });
+
+  const debouncedSearch = useDebounce(query, 500);
   const {
     fetchSaleExecutiveLeads,
     leads,
@@ -22,9 +39,25 @@ const LeadsPage = () => {
   } = useData();
 
   const isMobile = useIsMobile();
+
   const loadMoreLeads = useCallback(async () => {
     try {
-      await fetchSaleExecutiveLeads(user?._id, "", leadInfo?.page + 1 ?? 1, 10);
+      await fetchSaleExecutiveLeads({
+        id: user?._id,
+        query: query,
+        page: leadInfo?.page + 1 ?? 1,
+        limit: 10,
+        status: selectedFilter?.status,
+        callData: selectedFilter?.callData,
+        cycle: selectedFilter?.cycle,
+        order: selectedFilter?.order,
+        clientstatus: selectedFilter?.clientstatus,
+        leadstatus: selectedFilter?.leadstatus,
+        startDate: selectedFilter?.startDate,
+        endDate: selectedFilter?.endDate,
+        date: selectedFilter?.date,
+        member: selectedFilter?.member,
+      });
     } catch (err) {
       console.error("Error loading more leads:", err);
     }
@@ -36,13 +69,67 @@ const LeadsPage = () => {
   const handleBack = () => {
     updateCurrentLead(null);
   };
+  const onChangeSearch = (e) => {
+    console.log(e.target.value);
+    setQuery(e.target.value);
+  };
+  const onChangeFilter = (filters, reset = false) => {
+    //TODO:select filter logic
+    console.log(filters);
+    setSelectedFilter(filters);
+    if (!reset) {
+      fetchSaleExecutiveLeads({
+        id: user?._id,
+        query: query,
+        page: 1,
+        limit: 10,
+        ...filters,
+      });
+    }
+  };
 
   useEffect(() => {
     if (user && !loading) {
       console.log("use effect dashboard");
-      fetchSaleExecutiveLeads(user?._id, 1, 10);
+      fetchSaleExecutiveLeads({
+        id: user?._id,
+        query: query,
+        page: leadInfo?.page + 1 ?? 1,
+        limit: 10,
+        status: selectedFilter?.status,
+        callData: selectedFilter?.callData,
+        cycle: selectedFilter?.cycle,
+        order: selectedFilter?.order,
+        clientstatus: selectedFilter?.clientstatus,
+        leadstatus: selectedFilter?.leadstatus,
+        startDate: selectedFilter?.startDate,
+        endDate: selectedFilter?.endDate,
+        date: selectedFilter?.date,
+        member: selectedFilter?.member,
+      });
     }
   }, [user, loading]);
+
+  useEffect(() => {
+    if (debouncedSearch !== "") {
+      fetchSaleExecutiveLeads({
+        id: user?._id,
+        query: query,
+        page: 1,
+        limit: 10,
+        status: selectedFilter?.status,
+        callData: selectedFilter?.callData,
+        cycle: selectedFilter?.cycle,
+        order: selectedFilter?.order,
+        clientstatus: selectedFilter?.clientstatus,
+        leadstatus: selectedFilter?.leadstatus,
+        startDate: selectedFilter?.startDate,
+        endDate: selectedFilter?.endDate,
+        date: selectedFilter?.date,
+        member: selectedFilter?.member,
+      });
+    }
+  }, [debouncedSearch]);
 
   // if (loading || !user) {
   //   return <div>Loading...</div>;
@@ -50,7 +137,13 @@ const LeadsPage = () => {
 
   return (
     <div className={styles.fullContainer}>
-      {!(isMobile && currentLead) && <Leaddashboardcards />}
+      {!(isMobile && currentLead) && (
+        <Leaddashboardcards
+          onChangeSearch={onChangeSearch}
+          query={query}
+          onChangeFilter={onChangeFilter}
+        />
+      )}
 
       {isMobile ? (
         currentLead ? (

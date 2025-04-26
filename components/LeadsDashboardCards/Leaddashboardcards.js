@@ -4,29 +4,21 @@ import { FiSearch, FiMenu, FiX } from "react-icons/fi";
 import styles from "./leadsdashboardcards.module.css";
 import { FilterCard } from "../FilterCard/Filtercard";
 import useBodyScrollLock from "../useBodyScrollLock";
-import { useData } from "@/context/dataContext";
-import useDebounce from "@/hooks/useDebounce";
-import { useUser } from "@/context/UserContext";
 
-const Leaddashboardcards = () => {
+const Leaddashboardcards = ({
+  onChangeSearch = (e) => {},
+  onChangeFilter = (f, r = false) => {},
+  query,
+}) => {
   const [menuOpen, setMenuOpen] = useState(false);
   const [showFilter, setShowFilter] = useState(false);
   const containerRef = useRef(null);
-  const { user } = useUser();
-
-  const { fetchSaleExecutiveLeads } = useData();
-  const [query, setQuery] = useState("");
-
-  const debouncedSearch = useDebounce(query, 500);
 
   const isAnyFilterOpen = showFilter;
   useBodyScrollLock(isAnyFilterOpen);
 
   const toggleMenu = () => setMenuOpen((prev) => !prev);
   const toggleFilter = () => setShowFilter((prev) => !prev);
-  const handleInput = (e) => {
-    setQuery(e.target.value);
-  };
 
   useEffect(() => {
     const handleClickOutside = (event) => {
@@ -42,12 +34,6 @@ const Leaddashboardcards = () => {
     return () => document.removeEventListener("mousedown", handleClickOutside);
   }, []);
 
-  useEffect(() => {
-    if (debouncedSearch !== "") {
-      fetchSaleExecutiveLeads(user?._id, query, 1, 10);
-    }
-  }, [debouncedSearch]);
-
   return (
     <div className={styles.container} ref={containerRef}>
       <h2 className={styles.title}>Dashboard</h2>
@@ -58,7 +44,7 @@ const Leaddashboardcards = () => {
           placeholder="Search"
           className={styles.searchInput}
           value={query}
-          onChange={handleInput}
+          onChange={onChangeSearch}
         />
         <button className={styles.searchButton}>
           <FiSearch size={18} />
@@ -85,7 +71,10 @@ const Leaddashboardcards = () => {
         <>
           <div className={styles.overlay} onClick={toggleFilter}></div>
           <div className={styles.filterSlideIn}>
-            <FilterCard />
+            <FilterCard
+              onChangeFilter={onChangeFilter}
+              toggleFilter={toggleFilter}
+            />
           </div>
         </>
       )}

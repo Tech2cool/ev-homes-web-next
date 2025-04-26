@@ -38,7 +38,22 @@ export const DataProvider = ({ children }) => {
   const [error, setError] = useState("");
 
   // fetch leads for salesM/ salesEx
-  const fetchSaleExecutiveLeads = async (id, query, page = 1, limit = 10) => {
+  const fetchSaleExecutiveLeads = async ({
+    id,
+    query = "",
+    page = 1,
+    limit = 10,
+    status = null,
+    callData = null,
+    cycle = null,
+    order = null,
+    clientstatus = null,
+    leadstatus = null,
+    startDate = null,
+    endDate = null,
+    date = null,
+    member = null,
+  }) => {
     if (page === 1) {
       setLoadingLeads(true);
     } else {
@@ -48,6 +63,37 @@ export const DataProvider = ({ children }) => {
 
     try {
       let url = `/api/leads-team-leader-reporting/${id}?query=${query}&page=${page}&limit=${limit}`;
+      if (status) {
+        url += `&status=${status}`;
+      }
+      if (callData) {
+        url += `&callData=${callData}`;
+      }
+      if (cycle) {
+        url += `&cycle=${cycle}`;
+      }
+      if (order) {
+        url += `&order=${order}`;
+      }
+      if (clientstatus) {
+        url += `&clientstatus=${clientstatus}`;
+      }
+      if (leadstatus) {
+        url += `&leadstatus=${leadstatus}`;
+      }
+      if (startDate) {
+        url += `&startDate=${startDate}`;
+      }
+      if (endDate) {
+        url += `&endDate=${endDate}`;
+      }
+      if (date) {
+        url += `&date=${date}`;
+      }
+      if (member) {
+        url += `&member=${member}`;
+      }
+      console.log(url);
       const res = await fetchAdapter(url, {
         method: "GET",
       });
