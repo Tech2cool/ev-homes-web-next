@@ -31,7 +31,7 @@ import { PiPlugsConnectedFill } from "react-icons/pi";
 
 const Leaddetailspage = ({ lead = null, id = null }) => {
   const { user, getSocket, reconnectSocket, socketInfo } = useUser();
-  const socket = getSocket(); // always latest
+  const socket = getSocket();
 
   const [showDropdown, setShowDropdown] = useState(false);
   const [showFeedbackDropdown, setShowFeedbackDropdown] = useState(false);
@@ -133,7 +133,7 @@ const Leaddetailspage = ({ lead = null, id = null }) => {
       <div className={styles.leadHistoryContainer}>
         <div className={styles.detailsContainer}>
           <div className={styles.optionsContainer}>
-            <div className={styles.optionsWrapper} ref={dropdownRef}>
+            {/* <div className={styles.optionsWrapper} ref={dropdownRef}>
               <div
                 className={styles.options}
                 onClick={() => setShowDropdown(!showDropdown)}
@@ -168,7 +168,7 @@ const Leaddetailspage = ({ lead = null, id = null }) => {
                   </div>
                 </div>
               )}
-            </div>
+            </div> */}
 
             <div className={styles.optionsWrapper} ref={feedbackRef}>
               {showFeedbackDropdown && (
@@ -397,13 +397,13 @@ const Leaddetailspage = ({ lead = null, id = null }) => {
             Estimate Generator
           </button>
 
-          <button
+          {/* <button
             className={styles.actionButton}
             onClick={handleAddReminderDialog}
           >
             <IoIosAlarm className={styles.icon} />
             Add Reminder
-          </button>
+          </button> */}
           {showAddReminderDialog && (
             <Setreminderdialog onClose={closeAddReminderDialog} />
           )}
