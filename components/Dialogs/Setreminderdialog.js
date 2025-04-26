@@ -49,7 +49,7 @@ const Setreminderdialog = ({ onClose }) => {
           <label>Reminder Date & Time</label>
           <div>
             <div className={styles.formControl}>
-              <label>Select Reminder Date</label>
+              <label>Select Reminder Date <span style={{ color: 'red' }}>*</span></label>
               <input
                 type="date"
                 value={selectedDate}
@@ -62,7 +62,7 @@ const Setreminderdialog = ({ onClose }) => {
               />
             </div>
             <div className={styles.formControl}>
-              <label>Select Reminder Time</label>
+              <label>Select Reminder Time <span style={{ color: 'red' }}>*</span></label>
               <input
                 type="time"
                 value={selectedTime}
@@ -74,7 +74,7 @@ const Setreminderdialog = ({ onClose }) => {
           {selectedDate && selectedTime && <div>{formatDisplayDateTime()}</div>}
         </div>
         <div className={styles.formControl}>
-          <label htmlFor="text">Description</label>
+          <label htmlFor="text">Description <span style={{ color: 'red' }}>*</span></label>
           <textarea name="text" rows="5" />
         </div>
 

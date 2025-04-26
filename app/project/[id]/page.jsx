@@ -8,7 +8,7 @@ const ProjectPage = async ({ params }) => {
   let error = "";
 
   try {
-    const baseUrl = process.env.NEXT_PUBLIC_BASE_URL || "http://localhost:8082";
+    const baseUrl = process.env.NEXT_PUBLIC_BASE_URL || "https://api.evhomes.tech";
 
     const res = await fetchAdapter(`${baseUrl}/ourProjects/${id}`, {
       method: "get",

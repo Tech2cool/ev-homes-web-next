@@ -29,7 +29,7 @@ useEffect(()=>{
         <h2>Transfer Task</h2>
 
         <div className={styles.formControl}>
-          <label htmlFor="assignee">Assign To</label>
+          <label htmlFor="assignee">Assign To <span style={{ color: 'red' }}>*</span></label>
           <select name="assignee" id="assignee">
             <option value="assignee1">First</option>
             <option value="assignee2">Second</option>
