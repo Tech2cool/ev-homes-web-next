@@ -5,7 +5,7 @@ import { ImCross } from "react-icons/im";
 import { useData } from "@/context/dataContext";
 
 const Updatestatusdialog = ({ onClose, lead, task }) => {
-  const { updateFeedback, getLeadById } = useData();
+  const { updateFeedback, getLeadById, getTaskById } = useData();
   const [isClosing, setIsClosing] = useState(false);
   const [selectedDate, setSelectedDate] = useState("");
   const [selectedTime, setSelectedTime] = useState("");
@@ -81,6 +81,10 @@ const Updatestatusdialog = ({ onClose, lead, task }) => {
   };
 
   const onSubmit = async () => {
+    if (!selectedDate || !selectedTime) {
+      alert("select date & time for reminder");
+      return;
+    }
     const dateObj = new Date(`${selectedDate}T${selectedTime}`);
 
     let data = {
@@ -95,11 +99,12 @@ const Updatestatusdialog = ({ onClose, lead, task }) => {
       feedback: feedback,
       // 'document': images.isNotEmpty ? images[0] : '',
       // 'recording': recordings.isNotEmpty ? recordings[0] : '',
-      task: task?._id,
-      lead: lead?._id,
+      task: task?._id ?? lead?.taskRef?._id,
+      lead: lead?._id ?? task?.lead?._id,
     };
     await updateFeedback(data);
-    await getLeadById(lead?._id);
+    await getLeadById(lead?._id ?? task?.lead?._id);
+    await getTaskById(task?._id ?? lead?.taskRef?._id);
 
     onClose();
   };

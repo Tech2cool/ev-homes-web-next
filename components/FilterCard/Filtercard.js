@@ -1,13 +1,15 @@
 "use client";
-import React, { useState } from "react";
+import React, { useMemo, useState } from "react";
 import styles from "./filtercard.module.css";
 import { FaCheckCircle } from "react-icons/fa";
 import { MdCancel } from "react-icons/md";
 import { IoIosCheckmarkCircle, IoIosRemoveCircle } from "react-icons/io";
+import Dropdown from "../Dropdown/Dropdown";
 
 const FilterCard = ({
   onChangeFilter = (filter, reset) => {},
   toggleFilter = () => {},
+  employees = [],
 }) => {
   const [selectedFilter, setSelectedFilter] = useState({
     status: null,
@@ -39,7 +41,7 @@ const FilterCard = ({
   ];
   const clientFilters = ["interested", "not-interested"];
   const leadFilters = ["hot", "warm", "cold", "just-curious"];
-  const cycleFilters = [1, 2, 3, 4, 5];
+  const cycleFilters = [30, 15, 7, 3];
   const orderFilters = ["Ascending", "Descending"];
 
   const onClickReset = () => {
@@ -76,6 +78,14 @@ const FilterCard = ({
     onChangeFilter(selectedFilter, false);
     toggleFilter();
   };
+  const emps = useMemo(
+    () =>
+      employees.map((ele) => ({
+        id: ele._id,
+        name: `${ele?.firstName} ${ele?.lastName}`,
+      })),
+    [employees]
+  );
   return (
     <div className={styles.filterCard}>
       <div
@@ -160,7 +170,7 @@ const FilterCard = ({
       </div>
       {/* lead status */}
       <div className={styles.filterCategory}>
-        <h4 className={styles.categoryTitle}>Client Status</h4>
+        <h4 className={styles.categoryTitle}>Lead Status</h4>
         {leadFilters.map((option) => (
           <label key={option} className={styles.checkboxLabel}>
             <input
@@ -179,7 +189,7 @@ const FilterCard = ({
       </div>
       {/* cycle status */}
       <div className={styles.filterCategory}>
-        <h4 className={styles.categoryTitle}>Client Status</h4>
+        <h4 className={styles.categoryTitle}>Cycle </h4>
         {cycleFilters.map((option) => (
           <label key={option} className={styles.checkboxLabel}>
             <input
@@ -198,7 +208,7 @@ const FilterCard = ({
       </div>
       {/* order */}
       <div className={styles.filterCategory}>
-        <h4 className={styles.categoryTitle}>Client Status</h4>
+        <h4 className={styles.categoryTitle}>Sort Status</h4>
         {orderFilters.map((option) => (
           <label key={option} className={styles.checkboxLabel}>
             <input
@@ -215,25 +225,17 @@ const FilterCard = ({
           </label>
         ))}
       </div>
-
-      {/* {Object.entries(filters).map(([category, options]) => (
-        <div key={category} className={styles.filterCategory}>
-          <h4 className={styles.categoryTitle}>{category}</h4>
-          {options.map((option) => (
-            <label key={option} className={styles.checkboxLabel}>
-              <input
-                type="checkbox"
-                checked={selectedFilters[category]?.includes(option) || false}
-                onChange={() => handleCheckboxChange(category, option)}
-                className={styles.checkbox}
-              />
-              {String(option)
-                .replace(/-/g, " ")
-                .replace(/\b\w/g, (c) => c.toUpperCase())}
-            </label>
-          ))}
-        </div>
-      ))} */}
+      <div className={styles.filterCategory}>
+        <h4 className={styles.categoryTitle}>Team Member</h4>
+        <Dropdown
+          heading="Select Team"
+          items={emps}
+          onChange={(v) => {
+            setSelectedFilter((prev) => ({ ...prev, member: v.id }));
+          }}
+          selectedItem={selectedFilter.member}
+        />
+      </div>
     </div>
   );
 };

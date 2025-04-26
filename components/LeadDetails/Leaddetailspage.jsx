@@ -171,15 +171,6 @@ const Leaddetailspage = ({ lead = null, id = null }) => {
             </div>
 
             <div className={styles.optionsWrapper} ref={feedbackRef}>
-              <div
-                className={styles.optionsFeedback}
-                onClick={() => setShowFeedbackDropdown(!showFeedbackDropdown)}
-              >
-                <span style={{ fontSize: "20px", fontWeight: "normal" }}>
-                  +
-                </span>
-              </div>
-
               {showFeedbackDropdown && (
                 <div className={styles.dropdown}>
                   <div

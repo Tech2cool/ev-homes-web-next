@@ -244,9 +244,15 @@ const Taskdetailspage = ({ task }) => {
             onClick={handleUpdateStatusClick}
           >
             <FaTasks className={styles.icon} />
-            Update Status
+            Add Feedback
           </button>
-          {showDialog && <Updatestatusdialog onClose={closeDialog} />}
+          {showDialog && (
+            <Updatestatusdialog
+              task={task}
+              lead={task?.lead}
+              onClose={closeDialog}
+            />
+          )}
 
           <button
             className={styles.actionButton}

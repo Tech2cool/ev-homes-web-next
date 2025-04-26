@@ -56,7 +56,6 @@ const FollowupTopCard = () => {
               Filter
             </div>
             <div className={styles.menuItem}>Reminders</div>
-            
           </div>
         )}
       </div>

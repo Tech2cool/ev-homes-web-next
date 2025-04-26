@@ -117,7 +117,7 @@ const TaskDashboardCard = ({
             >
               Pending
             </div>
-            <div className={styles.menuItem}>Reminders</div>
+            {/* <div className={styles.menuItem}>Reminders</div> */}
           </div>
         )}
       </div>

@@ -4,11 +4,15 @@ import { FiSearch, FiMenu, FiX } from "react-icons/fi";
 import styles from "./leadsdashboardcards.module.css";
 import { FilterCard } from "../FilterCard/Filtercard";
 import useBodyScrollLock from "../useBodyScrollLock";
+import MyHoverCard from "../MyHoverCard/MyHoverCard";
 
 const Leaddashboardcards = ({
   onChangeSearch = (e) => {},
   onChangeFilter = (f, r = false) => {},
   query,
+  employees,
+  selectedFilter,
+  setSelectedFilter,
 }) => {
   const [menuOpen, setMenuOpen] = useState(false);
   const [showFilter, setShowFilter] = useState(false);
@@ -37,7 +41,28 @@ const Leaddashboardcards = ({
   return (
     <div className={styles.container} ref={containerRef}>
       <h2 className={styles.title}>Dashboard</h2>
-
+      <div
+        style={{
+          display: "flex",
+          marginRight: "auto",
+          marginLeft: 10,
+        }}
+      >
+        {Object.entries(selectedFilter)
+          .filter(([key, value]) => value != null && value !== "")
+          .map(([key, value], index) => (
+            <div key={key} style={{ marginLeft: 10 }}>
+              <MyHoverCard
+                title={value}
+                onTap={() => {
+                  const updatedFilter = { ...selectedFilter, [key]: null };
+                  setSelectedFilter(updatedFilter);
+                  onChangeFilter(updatedFilter);
+                }}
+              />
+            </div>
+          ))}
+      </div>
       <div className={styles.searchContainer}>
         <input
           type="text"
@@ -74,6 +99,7 @@ const Leaddashboardcards = ({
             <FilterCard
               onChangeFilter={onChangeFilter}
               toggleFilter={toggleFilter}
+              employees={employees}
             />
           </div>
         </>
