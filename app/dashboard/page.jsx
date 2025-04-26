@@ -32,7 +32,7 @@ const Dashboard = () => {
   useEffect(() => {
     if (user && !loading) {
       console.log("use effect dashboard");
-      fetchSaleExecutiveLeads(user?._id, 1, 10);
+      fetchSaleExecutiveLeads({ id: user?._id, query: "", page: 1, limit: 10 });
       fetchSaleExecutiveLeadsGraph(user?._id);
       fetchSaleExecutiveTasks(user?._id);
       fetchSaleExecutiveLeadsLineGraph(user?.reportingTo?._id, interval);
