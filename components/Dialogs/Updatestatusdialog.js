@@ -122,7 +122,7 @@ const Updatestatusdialog = ({ onClose, lead, task }) => {
         </button>
         <h2>Update Feedback</h2>
         <div className={styles.formControl}>
-          <label htmlFor="select">Lead Stage</label>
+          <label htmlFor="select">Lead Stage <span style={{ color: 'red' }}>*</span></label>
           <select name="select" id="select" onChange={onChangeStage}>
             <option value="first-call">First Call</option>
             <option value="followup">Follow Up</option>
@@ -130,7 +130,7 @@ const Updatestatusdialog = ({ onClose, lead, task }) => {
           </select>
         </div>
         <div className={styles.formControl}>
-          <label htmlFor="select">Call Status</label>
+          <label htmlFor="select">Call Status <span style={{ color: 'red' }}>*</span></label>
           <select name="select" id="select" onChange={onChangeCallStatus}>
             <option value="Call Done">Call Done</option>
             <option value="Call Not Received">Call Not Received</option>
@@ -140,14 +140,14 @@ const Updatestatusdialog = ({ onClose, lead, task }) => {
           </select>
         </div>
         <div className={styles.formControl}>
-          <label htmlFor="select">Interested Status</label>
+          <label htmlFor="select">Interested Status <span style={{ color: 'red' }}>*</span></label>
           <select name="select" id="select" onChange={onChangeClientStatus}>
             <option value="interested">Interested</option>
             <option value="not-interested">Not Interested</option>
           </select>
         </div>
         <div className={styles.formControl}>
-          <label htmlFor="select">Lead Status</label>
+          <label htmlFor="select">Lead Status <span style={{ color: 'red' }}>*</span></label>
           <select name="select" id="select" onChange={onChangeLeadStatus}>
             <option value="cold">Cold</option>
             <option value="warm">Warm</option>
@@ -159,7 +159,7 @@ const Updatestatusdialog = ({ onClose, lead, task }) => {
           <label>Reminder Date & Time</label>
           <div>
             <div className={styles.formControl}>
-              <label>Select Reminder Date</label>
+              <label>Select Reminder Date  <span style={{ color: 'red' }}>*</span></label>
               <input
                 type="date"
                 value={selectedDate}
@@ -172,7 +172,7 @@ const Updatestatusdialog = ({ onClose, lead, task }) => {
               />
             </div>
             <div className={styles.formControl}>
-              <label>Select Reminder Time</label>
+              <label>Select Reminder Time  <span style={{ color: 'red' }}>*</span></label>
               <input
                 type="time"
                 value={selectedTime}
@@ -184,7 +184,7 @@ const Updatestatusdialog = ({ onClose, lead, task }) => {
           {selectedDate && selectedTime && <div>{formatDisplayDateTime()}</div>}
         </div>
         <div className={styles.formControl}>
-          <label htmlFor="text">Feedback</label>
+          <label htmlFor="text">Feedback  <span style={{ color: 'red' }}>*</span></label>
           <textarea name="text" rows="5" onChange={onChangeFeedback} />
         </div>
 

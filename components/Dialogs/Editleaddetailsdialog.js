@@ -69,7 +69,7 @@ const Editleaddetailsdialog = ({ onClose }) => {
         </div>
 
         <div className={styles.formControl}>
-          <label htmlFor="firstName">First Name </label>
+          <label htmlFor="firstName">First Name <span style={{ color: 'red' }}>*</span></label>
           <div className={style.inputWrapper}>
             <FaUser className={style.inputIcon} />
             <input
@@ -103,7 +103,7 @@ const Editleaddetailsdialog = ({ onClose }) => {
         </div>
 
         <div className={styles.formControl}>
-          <label htmlFor="projects">Projects</label>
+          <label htmlFor="projects">Projects <span style={{ color: 'red' }}>*</span></label>
           <div className={style.inputWrapper}>
             <Select
               id="projects"
@@ -162,7 +162,7 @@ const Editleaddetailsdialog = ({ onClose }) => {
         </div>
 
         <div className={styles.formControl}>
-          <label htmlFor="apartmnets">Apartments</label>
+          <label htmlFor="apartmnets">Apartments <span style={{ color: 'red' }}>*</span></label>
           <div className={style.inputWrapper}>
             <Select
               id="apartments"
