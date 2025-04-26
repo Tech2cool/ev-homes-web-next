@@ -30,12 +30,14 @@ const LeadsPage = () => {
   const debouncedSearch = useDebounce(query, 500);
   const {
     fetchSaleExecutiveLeads,
+    fetchReportingToEmployees,
     leads,
     updateCurrentLead,
     currentLead,
     loadingLeads,
     leadInfo,
     fetchingMoreLeads,
+    employees,
   } = useData();
 
   const isMobile = useIsMobile();
@@ -107,6 +109,7 @@ const LeadsPage = () => {
         date: selectedFilter?.date,
         member: selectedFilter?.member,
       });
+      fetchReportingToEmployees(user?.reportingTo?._id, "sales");
     }
   }, [user, loading]);
 
@@ -142,6 +145,9 @@ const LeadsPage = () => {
           onChangeSearch={onChangeSearch}
           query={query}
           onChangeFilter={onChangeFilter}
+          employees={employees}
+          selectedFilter={selectedFilter}
+          setSelectedFilter={setSelectedFilter}
         />
       )}
 

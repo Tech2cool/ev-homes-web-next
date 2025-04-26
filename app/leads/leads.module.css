@@ -12,10 +12,12 @@
 .listDetailsContainer {
   display: flex;
   width: 100%;
+  min-height: 30vh;
 }
 .listContainer {
   /* width: auto; */
   width: 23%;
+  min-height: 30vh;
 }
 
 .listHistoryContainer {

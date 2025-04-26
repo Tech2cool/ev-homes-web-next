@@ -11,6 +11,7 @@ export const DataProvider = ({ children }) => {
   const [graphInfo, setGraphInfo] = useState(null);
   const [leadLineGraph, setLeadLineGraph] = useState([]);
   const [taskReminders, setTaskReminders] = useState([]);
+  const [employees, setEmployees] = useState([]);
   // leads[]
   const [leads, setleads] = useState([]);
   // leads[] loading
@@ -36,6 +37,34 @@ export const DataProvider = ({ children }) => {
 
   // universal error
   const [error, setError] = useState("");
+
+  // fetch leads for salesM/ salesEx
+  const fetchReportingToEmployees = async (id, dept) => {
+    setLoading(true);
+    setError("");
+
+    try {
+      let url = `/api/employee-reporting/${id}`;
+      if (dept) {
+        url += `?dept=${dept}`;
+      }
+      const res = await fetchAdapter(url, {
+        method: "GET",
+      });
+      console.log(res);
+      setEmployees(res?.data);
+      setLoading(false);
+
+      return { success: true };
+    } catch (err) {
+      setError(err.message);
+      setLoading(false);
+
+      return { success: false, message: err.message };
+    } finally {
+      setLoading(false);
+    }
+  };
 
   // fetch leads for salesM/ salesEx
   const fetchSaleExecutiveLeads = async ({
@@ -297,6 +326,28 @@ export const DataProvider = ({ children }) => {
     }
   };
 
+  //get lead by id
+  const getTaskById = async (id) => {
+    setLoadingTask(true);
+    setError("");
+
+    try {
+      let url = `/api/task-by-id/${id}`;
+      const res = await fetchAdapter(url, {
+        method: "get",
+      });
+
+      setCurrentTask(res?.data);
+      return { success: true };
+    } catch (err) {
+      console.log(err);
+      setError(err.message);
+      return { success: false, message: err.message };
+    } finally {
+      setLoadingTask(false);
+    }
+  };
+
   // utils - update current lead
   const updateCurrentLead = (lead) => {
     setCurrentLead(lead);
@@ -343,6 +394,8 @@ export const DataProvider = ({ children }) => {
         getLeadById,
         fetchSaleExecutiveLeadsLineGraph,
         fetchSaleExecutiveTaskReminders,
+        fetchReportingToEmployees,
+        getTaskById,
         loadingLeads,
         loadingTask,
         graphInfo,
@@ -358,6 +411,7 @@ export const DataProvider = ({ children }) => {
         fetchingMoreLeads,
         leadLineGraph,
         taskReminders,
+        employees,
       }}
     >
       {children}

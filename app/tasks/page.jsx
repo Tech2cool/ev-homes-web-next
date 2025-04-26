@@ -86,11 +86,12 @@ const TasksPage = () => {
           filter?.toLowerCase() === "first-call" ||
           filter?.toLowerCase() === "followup"
         ) {
-          if (
-            (task?.type === filter && name?.includes(query?.toLowerCase())) ||
-            phone?.includes(query?.toLowerCase())
-          ) {
-            return true;
+          if (task?.type === filter) {
+            if (
+              name?.includes(query?.toLowerCase()) ||
+              phone?.includes(query?.toLowerCase())
+            )
+              return true;
           }
         }
       } else {
