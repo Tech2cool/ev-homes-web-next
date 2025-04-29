@@ -28,9 +28,11 @@ import { capitalizeString } from "@/hooks/useString";
 import { MdAddCall } from "react-icons/md";
 import { useUser } from "@/context/UserContext";
 import { PiPlugsConnectedFill } from "react-icons/pi";
+import { useData } from "@/context/dataContext";
 
 const Leaddetailspage = ({ lead = null, id = null }) => {
   const { user, getSocket, reconnectSocket, socketInfo } = useUser();
+  const { updateLeadById } = useData();
   const socket = getSocket();
 
   const [showDropdown, setShowDropdown] = useState(false);
@@ -112,6 +114,7 @@ const Leaddetailspage = ({ lead = null, id = null }) => {
   };
   const closeEditLeadDetailsDialog = () => {
     setShowEditLeadDetailsDialog(false);
+    closeUpdateStatusDialog();
   };
 
   const handleAddReminderDialog = () => {
@@ -121,11 +124,19 @@ const Leaddetailspage = ({ lead = null, id = null }) => {
     setShowAddReminderDialog(false);
   };
 
-  const handleUpdateStatusClick = () => {
+  const handleAddFeedbackClick = () => {
+    if (lead?.callHistory?.length === 0) {
+      handleEditLeadDetailsClick();
+    }
     setShowUpdateStatusDialog(true);
   };
   const closeUpdateStatusDialog = () => {
     setShowUpdateStatusDialog(false);
+  };
+
+  const onClickSave = (v = {}) => {
+    updateLeadById(lead?._id, v);
+    setShowEditLeadDetailsDialog(false);
   };
 
   return (
@@ -133,7 +144,7 @@ const Leaddetailspage = ({ lead = null, id = null }) => {
       <div className={styles.leadHistoryContainer}>
         <div className={styles.detailsContainer}>
           <div className={styles.optionsContainer}>
-            {/* <div className={styles.optionsWrapper} ref={dropdownRef}>
+            <div className={styles.optionsWrapper} ref={dropdownRef}>
               <div
                 className={styles.options}
                 onClick={() => setShowDropdown(!showDropdown)}
@@ -149,7 +160,7 @@ const Leaddetailspage = ({ lead = null, id = null }) => {
                   >
                     Edit
                   </div>
-                  <div className={styles.dropdownItem}>
+                  {/* <div className={styles.dropdownItem}>
                     Status
                     <div className={styles.subMenu}>
                       <div>Visited</div>
@@ -165,17 +176,17 @@ const Leaddetailspage = ({ lead = null, id = null }) => {
                       <div>Payment Schedule</div>
                       <div>Demand Letter</div>
                     </div>
-                  </div>
+                  </div> */}
                 </div>
               )}
-            </div> */}
+            </div>
 
             <div className={styles.optionsWrapper} ref={feedbackRef}>
               {showFeedbackDropdown && (
                 <div className={styles.dropdown}>
                   <div
                     className={styles.dropdownItem}
-                    onClick={handleUpdateStatusClick}
+                    onClick={handleAddFeedbackClick}
                   >
                     Add Feedback
                   </div>
@@ -183,14 +194,26 @@ const Leaddetailspage = ({ lead = null, id = null }) => {
               )}
             </div>
           </div>
-          {showEditLeadDetailsDialog && (
-            <Editleaddetailsdialog onClose={closeEditLeadDetailsDialog} />
-          )}
           {showUpdateStatusDialog && (
-            <Updatestatusdialog
-              onClose={closeUpdateStatusDialog}
+            <>
+              {/* <Updatestatusdialog
+                onClose={closeUpdateStatusDialog}
+                lead={lead}
+                task={lead?.taskRef}
+              /> */}
+              <Updatestatusdialog
+                onClose={closeUpdateStatusDialog}
+                lead={lead}
+                task={lead?.taskRef}
+              />
+            </>
+          )}
+
+          {showEditLeadDetailsDialog && (
+            <Editleaddetailsdialog
+              onClose={closeEditLeadDetailsDialog}
               lead={lead}
-              task={lead?.taskRef}
+              onClickSave={onClickSave}
             />
           )}
 
@@ -344,7 +367,7 @@ const Leaddetailspage = ({ lead = null, id = null }) => {
         <div className={styles.buttonColumn}>
           <button
             className={styles.actionButton}
-            onClick={handleUpdateStatusClick}
+            onClick={handleAddFeedbackClick}
           >
             <FaTasks className={styles.icon} />
             Add Feedback

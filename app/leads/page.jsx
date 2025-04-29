@@ -38,6 +38,8 @@ const LeadsPage = () => {
     leadInfo,
     fetchingMoreLeads,
     employees,
+    getProjects,
+    getRequirements,
   } = useData();
 
   const isMobile = useIsMobile();
@@ -110,6 +112,8 @@ const LeadsPage = () => {
         member: selectedFilter?.member,
       });
       fetchReportingToEmployees(user?.reportingTo?._id, "sales");
+      getProjects();
+      getRequirements();
     }
   }, [user, loading]);
 

@@ -30,6 +30,8 @@ export const DataProvider = ({ children }) => {
   // tasks[] loading
   const [loadingTask, setLoadingTask] = useState(false);
 
+  const [projects, setProjects] = useState([]);
+  const [requirements, setRequirements] = useState([]);
   const [currentProject, setCurrentProject] = useState(null);
   const [loadingProject, setLoadingProject] = useState(false);
   // graph loading
@@ -255,6 +257,7 @@ export const DataProvider = ({ children }) => {
       setLoadingTask(false);
     }
   };
+
   // fetch tasks for salesM/ salesEx
   const fetchSaleExecutiveTaskReminders = async (id) => {
     setLoadingTask(true);
@@ -380,6 +383,84 @@ export const DataProvider = ({ children }) => {
     }
   };
 
+  //get lead by id
+  const updateLeadById = async (id, updates = {}) => {
+    setLoadingCurrentLead(true);
+    setError("");
+
+    try {
+      let url = `/api/lead-update-details/${id}`;
+      const res = await fetchAdapter(url, {
+        method: "post",
+        body: JSON.stringify(updates),
+      });
+      console.log(res);
+      setCurrentLead(res?.data);
+      setLoadingCurrentLead(false);
+      return { success: true };
+    } catch (err) {
+      console.log(err);
+      setError(err.message);
+      setLoadingCurrentLead(false);
+
+      return { success: false, message: err.message };
+    } finally {
+      setLoadingCurrentLead(false);
+    }
+  };
+
+  //get projects
+  const getProjects = async () => {
+    setLoadingProject(true);
+    setError("");
+
+    try {
+      let url = `/api/ourProjects`;
+      const res = await fetchAdapter(url, {
+        method: "get",
+      });
+
+      setProjects(res?.data ?? []);
+      setLoadingProject(false);
+
+      return { success: true };
+    } catch (err) {
+      console.log(err);
+      setError(err.message);
+      setLoadingProject(false);
+
+      return { success: false, message: err.message };
+    } finally {
+      setLoadingProject(false);
+    }
+  };
+
+  //get projects
+  const getRequirements = async () => {
+    setLoadingProject(true);
+    setError("");
+
+    try {
+      let url = `/api/requirements`;
+      const res = await fetchAdapter(url, {
+        method: "get",
+      });
+      let reqs = res?.data?.map((ele) => ele?.requirement);
+      setRequirements(reqs ?? []);
+      setLoadingProject(false);
+
+      return { success: true };
+    } catch (err) {
+      console.log(err);
+      setError(err.message);
+      setLoadingProject(false);
+
+      return { success: false, message: err.message };
+    } finally {
+      setLoadingProject(false);
+    }
+  };
+
   return (
     <DataContext.Provider
       value={{
@@ -395,10 +476,15 @@ export const DataProvider = ({ children }) => {
         fetchSaleExecutiveLeadsLineGraph,
         fetchSaleExecutiveTaskReminders,
         fetchReportingToEmployees,
+        getProjects,
+        getRequirements,
         getTaskById,
+        updateLeadById,
         loadingLeads,
         loadingTask,
         graphInfo,
+        projects,
+        requirements,
         leadInfo,
         loading,
         tasks,

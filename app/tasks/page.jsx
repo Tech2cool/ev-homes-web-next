@@ -18,6 +18,8 @@ const TasksPage = () => {
     fetchSaleExecutiveTasks,
     updateCurrentTask,
     loadingTask,
+    getProjects,
+    getRequirements,
   } = useData();
 
   const [query, setQuery] = useState("");
@@ -46,6 +48,8 @@ const TasksPage = () => {
     if (user && !loading) {
       console.log("use effect tasks");
       fetchSaleExecutiveTasks(user?._id);
+      getProjects();
+      getRequirements();
     }
     // if (isMobile === undefined) return;
 
