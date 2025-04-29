@@ -8,7 +8,7 @@ import { ImCross } from "react-icons/im";
 import Select from "react-select";
 import { useData } from "@/context/dataContext";
 
-const Editleaddetailsdialog = ({
+const EditleaddetailsViaTaskdialog = ({
   onClose,
   onClickSave = (v = {}) => {},
   lead,

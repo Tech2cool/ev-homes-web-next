@@ -13,19 +13,28 @@ import { capitalizeString } from "@/hooks/useString";
 import { MdAddCall } from "react-icons/md";
 import { useUser } from "@/context/UserContext";
 import { PiPlugsConnectedFill } from "react-icons/pi";
+import Editleaddetailsdialog from "../Dialogs/Editleaddetailsdialog";
+import { useData } from "@/context/dataContext";
 
 const Taskdetailspage = ({ task }) => {
   const [showDropdown, setShowDropdown] = useState(false);
   const [showDialog, setShowDialog] = useState(false);
   const [showSetReminderDialog, setshowSetReminderDialog] = useState(false);
   const [showTransferTaskDialog, setShowTransferTaskDialog] = useState(false);
+  const [showEditLeadDetailsDialog, setShowEditLeadDetailsDialog] =
+    useState(false);
+
   const dropdownRef = useRef(null);
   const { user, getSocket, socketInfo } = useUser();
+  const { updateLeadById, getTaskById } = useData();
 
   const socket = getSocket(); // always latest
 
   const isAnyDialogOpen =
-    showDialog || showSetReminderDialog || showTransferTaskDialog;
+    showDialog ||
+    showSetReminderDialog ||
+    showEditLeadDetailsDialog ||
+    showTransferTaskDialog;
   useBodyScrollLock(isAnyDialogOpen);
 
   useEffect(() => {
@@ -40,6 +49,18 @@ const Taskdetailspage = ({ task }) => {
       document.removeEventListener("mousedown", handleClickOutside);
     };
   }, []);
+  const handleEditLeadDetailsClick = () => {
+    setShowEditLeadDetailsDialog(true);
+  };
+  const closeEditLeadDetailsDialog = () => {
+    setShowEditLeadDetailsDialog(false);
+    closeDialog();
+  };
+  const onClickSave = async (v = {}) => {
+    await updateLeadById(task?.lead?._id, v);
+    await getTaskById(task?._id);
+    setShowEditLeadDetailsDialog(false);
+  };
 
   const handleTransferTaskClick = () => {
     setShowTransferTaskDialog(true);
@@ -49,6 +70,9 @@ const Taskdetailspage = ({ task }) => {
   };
 
   const handleUpdateStatusClick = () => {
+    if (task?.lead?.callHistory?.length === 0) {
+      handleEditLeadDetailsClick();
+    }
     setShowDialog(true);
   };
   const closeDialog = () => {
@@ -79,10 +103,17 @@ const Taskdetailspage = ({ task }) => {
                 <div className={styles.dropdown}>
                   <div
                     className={styles.dropdownItem}
+                    onClick={handleEditLeadDetailsClick}
+                  >
+                    Edit
+                  </div>
+
+                  {/* <div
+                    className={styles.dropdownItem}
                     onClick={handleTransferTaskClick}
                   >
                     Transfer Task
-                  </div>
+                  </div> */}
                 </div>
               )}
             </div>
@@ -251,6 +282,13 @@ const Taskdetailspage = ({ task }) => {
               task={task}
               lead={task?.lead}
               onClose={closeDialog}
+            />
+          )}
+          {showEditLeadDetailsDialog && (
+            <Editleaddetailsdialog
+              onClose={closeEditLeadDetailsDialog}
+              lead={task?.lead}
+              onClickSave={onClickSave}
             />
           )}
 
