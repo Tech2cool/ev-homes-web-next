@@ -5,6 +5,30 @@
   overflow: hidden;
 }
 
+.headingContainer {
+  position: relative;
+  width: 100%;
+  margin-bottom: 10vh;
+}
+
+.customHeading {
+  margin-bottom: 2rem;
+  position: absolute;
+  top: 0;
+  left: 0;
+  margin: 8vh;
+  padding: 2vh;
+  font-size: 7vh;
+  font-weight: bold;
+  color: #fff;
+  font-family: "Playfair Display", serif;
+}
+
+.styleIcon {
+  margin-left: 2vw;
+  color: orange;
+  font-size: 5vh;
+}
 .title {
   font-size: 2rem;
   margin-bottom: 2rem;
@@ -110,6 +134,7 @@
   margin-top: 2rem;
   text-align: center;
   width: 25vw;
+  font-size: 2.3vh;
 }
 
 .textLine {
@@ -133,6 +158,7 @@
   margin-top: 15rem;
   margin-bottom: 2rem;
   width: 25vw;
+  font-size: 2.3vh;
 }
 
 .imageText {
@@ -141,7 +167,7 @@
   left: 50%;
   transform: translateX(-50%);
   color: white;
-  font-size: 24px;
+  font-size: 3.5vh;
   font-weight: bold;
   text-shadow: 0 0 5px rgba(0, 0, 0, 0.8);
   z-index: 2;
@@ -153,7 +179,7 @@
   left: 50%;
   transform: translateX(-50%);
   color: white;
-  font-size: 24px;
+  font-size: 4vh;
   font-weight: bold;
   text-shadow: 0 0 5px rgba(0, 0, 0, 0.8);
   z-index: 2;
