@@ -7,6 +7,7 @@ import { FaDownload } from "react-icons/fa6";
 import { IoHome } from "react-icons/io5";
 import Image from "next/image";
 import { MdOutlineMailOutline } from "react-icons/md";
+import { PiDiamondsFourDuotone } from "react-icons/pi";
 import "../HeroSection/HeroSection.css";
 import DescriptionSection from "./DescriptionSection";
 import AmenitiesSection from "./AmenitiesSection";
@@ -136,6 +137,9 @@ const ProjectNavbar = ({ projectInfo }) => {
                   <LuPhone className={styles.icon} />
                   +91 8291668777
                 </span>
+                <span className={styles.styleIcon}>
+                  <PiDiamondsFourDuotone />
+                </span>
                 <span className={styles.email}>
                   <MdOutlineMailOutline className={styles.icon} />
                   {projectInfo?.contactEmail ?? "deepak@evgroup.co.in"}
@@ -147,23 +151,23 @@ const ProjectNavbar = ({ projectInfo }) => {
                 !atTop ? (showFixedLogo ? styles.show : styles.hide) : ""
               }`}
             >
-              {/* <div className={styles.logo}>
+              <div className={styles.logo}>
                 <Image
                   className={styles.logoImage}
                   src={projectInfo?.logo ?? "/images/evhomeslogo.png"}
                   alt={projectInfo?.name ?? "EV Homes Logo"}
-                  width={360} // max width
-                  height={80} // max height
+                  width={300}
+                  height={10}
                   style={{
-                    maxHeight: 180,
+                    maxHeight: 100,
                     maxWidth: 360,
                     width: "auto",
                     height: "auto",
                   }}
                   layout="intrinsic"
                 />
-              </div> */}
-              <ul className="logoList">
+              </div>
+              <ul className={styles.logoList}>
                 <li>{projectInfo?.name ?? ""}</li>
                 <li onClick={() => scrollToSection("description")}>
                   Description
@@ -172,21 +176,19 @@ const ProjectNavbar = ({ projectInfo }) => {
                 <li onClick={() => scrollToSection("configuration")}>
                   Configuration
                 </li>
-                <li>
-                  <Link
-                    className={`${styles.bhkButton} ${styles.active}`}
-                    href={projectInfo?.brochure}
-                    download="Brochure.pdf"
-                    target="_blank" // This opens the file in a new tab
-                    rel="noopener noreferrer" // For security reasons, always add this when using target="_blank"
-                  >
-                    {/* <button className={`${styles.bhkButton} ${styles.active}`}> */}
-                    <FaDownload />
-                    <span>Brochure</span>
-                    {/* </button> */}
-                  </Link>
-                </li>
               </ul>
+              <Link
+                className={`${styles.bhkButton} ${styles.active}`}
+                href={projectInfo?.brochure}
+                download="Brochure.pdf"
+                target="_blank" // This opens the file in a new tab
+                rel="noopener noreferrer" // For security reasons, always add this when using target="_blank"
+              >
+                {/* <button className={`${styles.bhkButton} ${styles.active}`}> */}
+                <FaDownload />
+                <span>Brochure</span>
+                {/* </button> */}
+              </Link>
             </div>
           </div>
 
