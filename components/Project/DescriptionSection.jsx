@@ -1,10 +1,43 @@
-import React, { useState } from "react";
+import React, { useEffect, useRef, useState } from "react";
 import styles from "./descriptionsection.module.css";
 import Image from "next/image";
 
 const DescriptionSection = ({ projectInfo }) => {
   const [showOverlay, setShowOverlay] = useState(false);
   const [desc, setDesc] = useState(false);
+
+  const [showClickHint, setShowClickHint] = useState(false);
+  const loaderRef = useRef(null);
+
+  useEffect(() => {
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        if (entry.isIntersecting) {
+          setShowClickHint(true);
+          setTimeout(() => setShowClickHint(false), 3000);
+        }
+      },
+      { threshold: 0.6 }
+    );
+
+    if (loaderRef.current) {
+      observer.observe(loaderRef.current);
+    }
+
+    return () => {
+      if (loaderRef.current) {
+        observer.unobserve(loaderRef.current);
+      }
+    };
+  }, []);
+
+  const handleMouseEnter = () => {
+    setShowClickHint(true);
+  };
+
+  const handleMouseLeave = () => {
+    setTimeout(() => setShowClickHint(false), 1000);
+  };
 
   const handleOverlayClick = () => {
     setShowOverlay(false);
@@ -24,7 +57,7 @@ const DescriptionSection = ({ projectInfo }) => {
 
       <div className={styles.wholeContainer}>
         <div className={styles.descriptionContainer}>
-          <h2>Description</h2>
+          <h2>Discover {projectInfo?.name ?? ""}</h2>
           <div className={`${styles.descriptText}`}>
             <p
               className={styles.descriptionTextPara}
@@ -41,13 +74,24 @@ const DescriptionSection = ({ projectInfo }) => {
               Know More
             </button>
           </div>
+          <div className={styles.contactUsWrapper}>Get In Touch Today !</div>
+          <div className={styles.contactNumberWrapper}> +91 8291668777</div>
         </div>
         <div className={styles.otherContainer}>
           <div className={styles.loaderWrapper}>
             <div
+              ref={loaderRef}
               className={styles.loadershape3}
               onClick={() => setShowOverlay(true)}
-            ></div>
+              onMouseEnter={handleMouseEnter}
+              onMouseLeave={handleMouseLeave}
+            >
+              {showClickHint && (
+                <div className={styles.clickHint}>
+                  📍 Want to know why this location is prime? Click me!
+                </div>
+              )}
+            </div>
 
             {showOverlay && (
               <div className={styles.hoverOverlay} onClick={handleOverlayClick}>

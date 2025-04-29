@@ -39,21 +39,38 @@
   text-align: center;
 }
 
+.contactUsWrapper {
+  margin-top: 3vh;
+  font-size: 0.8rem;
+  color: rgb(164, 152, 152);
+}
+.contactNumberWrapper {
+  margin-top: 1vh;
+  font-size: 1.5rem;
+  color: orange;
+  cursor: pointer;
+  font-weight: 500;
+  position: relative;
+  padding-bottom: 4px;
+  transition: color 0.3s ease;
+}
+
+.contactNumberWrapper:hover {
+  color: rgb(116, 76, 3);
+}
+
 .descriptionContainer h2 {
-  font-size: 7.5vh;
+  font-size: 2.2rem;
   color: white;
   text-align: center;
   font-family: "Playfair Display", serif;
-  margin-bottom: 20px;
 }
 
 .descriptText {
-  font-size: 2.3vh;
+  font-size: 2.2vh;
   line-height: 1.6;
   color: white;
-  padding: 10px;
   text-align: center;
-  /* limit text */
 }
 .descriptionTextPara {
   display: -webkit-box;
@@ -119,30 +136,20 @@
 }
 
 .imageWrapper {
-  margin-left: 0px;
+  margin-left: 2vw;
   position: relative;
   width: 100%;
   height: 70vh;
 }
 
-.firstImage {
-  width: 10vw;
-  height: 20vh;
-  background-color: rgba(255, 255, 255, 0.06);
-  border: 1px solid rgba(255, 255, 255, 0.2);
-  position: absolute;
-  top: 0;
-  left: 170px;
-}
-
 .secondImage {
-  width: 50vh;
-  height: 50vh;
+  width: 60vh;
+  height: 65vh;
   background-color: rgba(255, 255, 255, 0.06);
   border: 1px solid rgba(255, 255, 255, 0.2);
   position: absolute;
   top: 20%;
-  left: 270px;
+  left: 15vw;
   transform: translateY(-50%);
 }
 
@@ -153,20 +160,19 @@
   border: 1px solid rgba(255, 255, 255, 0.2);
   position: absolute;
   bottom: 10%;
-  left: 170px;
+  left: 9vw;
 }
 
 .loadershape3 {
   position: relative;
   display: inline-block;
-  width: 50px;
-  height: 50px;
+  width: 10vw;
+  height: 9vh;
   cursor: pointer;
-  margin: 0px 100px 10px 150px;
 }
 .loadershape3:after {
-  width: 30px;
-  height: 20px;
+  width: 2.5em;
+  height: 1em;
   border-radius: 100%;
   background-color: rgba(255, 255, 255, 0.2);
   top: 50%;
@@ -175,10 +181,10 @@
   margin-top: 15px;
 }
 .loadershape3:before {
-  width: 20px;
-  height: 20px;
+  width: 1.6em;
+  height: 1.6em;
   border-radius: 100% 100% 100% 0;
-  box-shadow: 0px 0px 0px 2px rgba(255, 255, 255, 1);
+  box-shadow: 0px 0px 0px 2px rgb(253, 181, 47);
   animation: anm-SL-3-move 1s linear infinite;
   top: 50%;
   left: 50%;
@@ -195,17 +201,51 @@
     top: 0;
   }
   50% {
-    top: -5px;
+    top: -15px;
   }
   100% {
     top: 0;
   }
 }
 
+.clickHint {
+  position: absolute;
+  width: 100%;
+  top: 70px;
+  left: 50%;
+  right: 20%;
+  transform: translateX(-50%);
+  background-color: rgba(255, 255, 255, 0.06);
+  padding: 6px 12px;
+  border-radius: 8px;
+  font-size: 0.7rem;
+  color: rgb(184, 120, 2);
+  font-weight: 500;
+  animation: fadeInOut 5s ease forwards;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 1);
+  z-index: 100;
+}
+
+@keyframes fadeInOut {
+  0% {
+    opacity: 0;
+    transform: translateY(-10px) translateX(-50%);
+  }
+  10% {
+    opacity: 1;
+  }
+  90% {
+    opacity: 1;
+  }
+  100% {
+    opacity: 0;
+    transform: translateY(-10px) translateX(-50%);
+  }
+}
+
 .loaderWrapper {
   position: relative;
   display: inline-block;
-  z-index: 2;
 }
 
 .prime {
@@ -321,4 +361,74 @@
 .circle4 {
   animation: floatIn 1.8s ease-out 0s forwards;
   transform: translateX(60px);
+}
+
+@media screen and (max-width: 615px) {
+  .sectionWrapper {
+    height: auto;
+  }
+  .wholeContainer {
+    flex-direction: column;
+    align-items: center;
+    padding: 20px 0px;
+  }
+
+  .descriptionContainer,
+  .otherContainer {
+    width: 100%;
+  }
+
+  .descriptionContainer h2 {
+    font-size: 1.5rem;
+  }
+
+  .descriptText {
+    font-size: 2vh;
+  }
+
+  .imageWrapper {
+    margin-top: 10vh;
+    height: 50vh;
+    align-items: end;
+    margin-left: 5vw;
+  }
+
+  .secondImage {
+    width: 30vh;
+    height: 40vh;
+    left: 30vw;
+  }
+
+  .thirdImage {
+    width: 20vh;
+    height: 25vh;
+    left: 10vw;
+  }
+
+  .loadershape3 {
+    width: 20vw;
+    height: 7vh;
+  }
+
+  .loadershape3:after {
+    width: 2em;
+    height: 1em;
+    top: 160%;
+    left: 80%;
+  }
+  .loadershape3:before {
+    width: 1.2em;
+    height: 1.2em;
+    top: 150%;
+    left: 80%;
+    margin-top: 10vh;
+  }
+
+  .clickHint {
+    width: 100%;
+    position: absolute;
+    top: 100px;
+    left: 80%;
+    font-size: 0.6rem;
+  }
 }
