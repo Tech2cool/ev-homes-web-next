@@ -36,7 +36,7 @@
 }
 
 .topContent {
-  padding: 10px 0px;
+  padding: 1.5vh 0px;
   display: flex;
   justify-content: space-between;
   width: 100%;
@@ -121,6 +121,7 @@
 }
 
 .logoList li {
+  font-size: 2.3vh;
   cursor: pointer;
   font-weight: 500;
   position: relative;
@@ -223,7 +224,7 @@
 
 .bhkButton {
   width: fit-content;
-  padding: 0.5rem 2rem;
+  padding: 1.3vh 2.5vw;
   background-color: black;
   color: white;
   font-family: "Playfair Display", serif;
@@ -234,7 +235,7 @@
   overflow: hidden;
   transition: color 0.3s ease;
   margin-right: 2vw;
-  gap: 5px;
+  gap: 1vw;
   text-decoration: none;
   flex: 0 0 auto;
   display: flex;
