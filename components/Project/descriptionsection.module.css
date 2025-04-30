@@ -1,3 +1,40 @@
+.dialogOverlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background-color: rgba(0, 0, 0, 0.6);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 999;
+}
+
+.dialogBox {
+  background-color: white;
+  padding: 1rem;
+  border-radius: 12px;
+  max-width: 50vw;
+  max-height: 80vh;
+  overflow-y: auto;
+  box-shadow: 0 0 20px rgba(0, 0, 0, 0.3);
+}
+
+.dialogBox p {
+  color: black;
+  font-size: 2vh;
+}
+
+.closeDialogButton {
+  background-color: #000;
+  color: #fff;
+  padding: 1vh 1vw;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+}
+
 .sectionWrapper {
   position: relative;
   width: 100%;
@@ -430,5 +467,14 @@
     top: 100px;
     left: 80%;
     font-size: 0.6rem;
+  }
+
+  .dialogBox {
+    padding: 0.2rem;
+    max-width: 85vw;
+  }
+
+  .closeDialogButton {
+    padding: 1vh 2vw;
   }
 }
