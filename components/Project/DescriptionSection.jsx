@@ -1,13 +1,18 @@
 import React, { useEffect, useRef, useState } from "react";
 import styles from "./descriptionsection.module.css";
 import Image from "next/image";
+import useBodyScrollLock from "../useBodyScrollLock";
 
 const DescriptionSection = ({ projectInfo }) => {
   const [showOverlay, setShowOverlay] = useState(false);
   const [desc, setDesc] = useState(false);
+  const [showDescriptionDialog, setShowDescriptionDialog] = useState(false);
 
   const [showClickHint, setShowClickHint] = useState(false);
   const loaderRef = useRef(null);
+
+  const isAnyDialogOpen = showDescriptionDialog;
+  useBodyScrollLock(isAnyDialogOpen);
 
   useEffect(() => {
     const observer = new IntersectionObserver(
@@ -65,11 +70,18 @@ const DescriptionSection = ({ projectInfo }) => {
             >
               {projectInfo?.description ?? ""}
             </p>
-            <button
+            {/* <button
               className={styles.button}
               onClick={() => {
                 setDesc(!desc);
               }}
+            >
+              Know More
+            </button> */}
+
+            <button
+              className={styles.button}
+              onClick={() => setShowDescriptionDialog(true)}
             >
               Know More
             </button>
@@ -167,6 +179,26 @@ const DescriptionSection = ({ projectInfo }) => {
           </div>
         </div>
       </div>
+      {showDescriptionDialog && (
+        <div
+          className={styles.dialogOverlay}
+          onClick={() => setShowDescriptionDialog(false)}
+        >
+          <div
+            className={styles.dialogBox}
+            onClick={(e) => e.stopPropagation()}
+          >
+            <h3>Project Description</h3>
+            <p>{projectInfo?.description ?? "No Description Available"}</p>
+            <button
+              className={styles.closeDialogButton}
+              onClick={() => setShowDescriptionDialog(false)}
+            >
+              Close
+            </button>
+          </div>
+        </div>
+      )}
     </section>
   );
 };

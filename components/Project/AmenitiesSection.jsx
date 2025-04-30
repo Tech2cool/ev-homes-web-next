@@ -1,5 +1,6 @@
 import React from "react";
 import styles from "./amenitiessection.module.css";
+import style from "./descriptionsection.module.css";
 import { PiDiamondsFourDuotone } from "react-icons/pi";
 import Image from "next/image";
 
@@ -14,12 +15,22 @@ const AmenitiesSection = ({ projectInfo }) => {
   //   const [item1, item2, item3] = group;
   return (
     <section id="amenities" className={styles.sectionWrapper}>
+       <div className={style.bgWrapper}>
+        <Image
+          src="/images/buildingforDescription.jpg"
+          alt="Description Background"
+          fill
+          className={style.bgImage}
+          priority
+        />
+        <div className={style.overlay}></div>
+      </div>
       <div className={styles.headingContainer}>
         <h3 className={styles.customHeading}>
           <span className={styles.styleIcon}>
             <PiDiamondsFourDuotone />
           </span>
-          Amenities
+              Amenities
         </h3>
       </div>
       {grouped.map((grp, index) => {

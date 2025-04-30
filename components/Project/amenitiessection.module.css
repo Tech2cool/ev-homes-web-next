@@ -17,7 +17,7 @@
   top: 0;
   left: 0;
   margin: 8vh;
-  padding: 2vh;
+  padding: 8vh;
   font-size: 7vh;
   font-weight: bold;
   color: #fff;
@@ -25,7 +25,8 @@
 }
 
 .styleIcon {
-  margin-left: 2vw;
+  margin-left: 1vw;
+  margin-right: 1vw;
   color: orange;
   font-size: 5vh;
 }
@@ -135,6 +136,7 @@
   text-align: center;
   width: 25vw;
   font-size: 2.3vh;
+  z-index: 1;
 }
 
 .textLine {
@@ -150,15 +152,20 @@
 
 .imageBox4,
 .imageBox6 {
-  margin-top: 30vh;
+  margin-top: 20vh;
+}
+
+.imageBox5 {
+  margin-bottom: 10vh;
 }
 
 .textWrapper2 {
   text-align: center;
-  margin-top: 15rem;
+  margin-top: 10rem;
   margin-bottom: 2rem;
   width: 25vw;
   font-size: 2.3vh;
+  z-index: 1;
 }
 
 .imageText {
