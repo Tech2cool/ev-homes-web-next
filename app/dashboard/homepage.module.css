@@ -19,6 +19,12 @@
 .displaydesktop{
     display: none;
 }
+.buttondisplay{
+    display: flex;
+}
+.desktopRemander{
+    display: none;
+}
 @media screen and (max-width: 615px) {
     .display {
    display: none;
@@ -29,12 +35,48 @@
     .display{
         display: none;
     }
+    .buttondisplay{
+        display: none;
+    }
   }
-  @media screen and  (max-width: 1024px ) and (min-width: 616px){
+  @media screen and  (max-width: 1024px ) and (min-width: 900px){
+    .displaydesktop{
+        display: none;
+    }
+    .lineTaskContainer{
+        padding-top: 3vh;
+    }
+    .nondisplaydesktop{
+        display: none;
+    }
+    .desktopRemander{
+        display: flex;
+    }
+  }
+  @media screen and  (max-width: 901px ) and (min-width: 616px){
     .displaydesktop{
         display: flex;
     }
-    .display {
+    .lineTaskContainer{
+       
+        padding-top: 3vh;
+        
+    }
+    .nondisplaydesktop{
         display: none;
-         }
+    }
+    .displaydesktop{
+        display: flex;
+        
+    }
+    .display{
+        display: none;
+    }
+    .buttondisplay{
+        display: flex;
+    }
+    .desktopRemander{
+        display: flex;
+    }
+
   }

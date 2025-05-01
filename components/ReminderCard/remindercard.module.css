@@ -42,5 +42,12 @@
 }
 @media screen and  (max-width: 1024px ) and (min-width: 616px){
  
-
+  .reminderCard {
+    padding: 20px;
+    width: 50%;
+    height: 200px;
+     border-left: 1px solid rgba(255, 255, 255, 0.2); 
+     border-right: none;
+  }
+  
 }

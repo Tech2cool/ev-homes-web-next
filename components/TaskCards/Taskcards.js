@@ -22,6 +22,7 @@ const Taskcards = ({ tasks = [] }) => {
   // ];
 
   return (
+    <div className={styles.desktopdisplay}>
     <div className={styles.card}>
       <div className={styles.headingContainer}>
         <h2 className={styles.heading}>Upcoming Tasks</h2>
@@ -63,6 +64,7 @@ const Taskcards = ({ tasks = [] }) => {
             ))
           )}
         </div>
+      </div>
       </div>
     </div>
   );
