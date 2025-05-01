@@ -2,8 +2,8 @@
   /* background-color: white; */
   /* background-color: rgba(255, 255, 255, 0.06); */
   /* color: black; */
-  width: 400px;
-  height: 33vh;
+  width: 28vw;
+  height: 32vh;
   padding: 10px;
   border-radius: 8px;
   /* border: 2px solid #00e1ff; */
@@ -117,10 +117,16 @@
   }
 }
 @media screen and (max-width: 1024px) and (min-width: 616px) {
-  .taskContainer {
-    width: 95%;
+
+  
+  .desktopdisplay{
+    padding-left: 2vw;
+    padding-right: 1vw;
   }
-  .card {
-    width: 45%;
+  .taskContainer {
+
+    width: 27vw;
+ 
+   
   }
 }

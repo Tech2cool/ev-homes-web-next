@@ -13,6 +13,7 @@
 .maincontainer {
   /* background-color: white; */
   width: 100%;
+ 
 }
 .chartWrapper {
   text-align: center;
@@ -47,5 +48,31 @@
     height: 35vh;
   }
 }
-@media screen and (max-width: 1024px) and (min-width: 616px) {
+@media screen and (max-width: 1024px) and (min-width: 900px) {
+  .chartWrapper {
+   
+    padding: 1px;
+      width: 23vw;
+  }
+  .container {
+   
+    margin-left: 1px;
+  }
+  
+}
+@media screen and (max-width: 901px) and (min-width: 616px) {
+  .chartWrapper {
+   
+    padding: 1px;
+      width: 30vw;
+      height: 50vh;
+  }
+  .container {
+   
+    margin-left: 1px;
+  }
+  .maincontainer{
+    display: flex;
+    justify-content: center; 
+  }
 }

@@ -50,12 +50,8 @@
     height: 45px;
     font-size: 12px;
     font-weight: 600;
-    background-color: #00bfff;
-    border: 2px solid whitesmoke;
-    color: rgb(233, 225, 225);
-  }
-  .icon {
-    color: rgb(233, 225, 225);
+   
+  
   }
 
   .button:hover {
@@ -71,7 +67,7 @@
 }
 @media screen and (max-width: 1024px) and (min-width: 616px) {
   .button {
-    width: 99%;
+    width: 13vw;
   }
   .container {
     width: 90%;

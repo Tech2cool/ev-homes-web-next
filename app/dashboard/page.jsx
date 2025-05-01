@@ -57,13 +57,19 @@ const Dashboard = () => {
             fetchSaleExecutiveLeadsLineGraph(user?.reportingTo?._id, v);
           }}
         />
+        <div className={styles.nondisplaydesktop}>
         <Taskcards tasks={tasks} />
-        <div className={styles.display}>
+        </div>
+       
+        
+        <div className={styles.buttondisplay}>
           <Extraoptions />
         </div>
+         <div className={styles.desktopRemander}> <Remindercard reminders={taskReminders} /></div>
       </div>
       <div className={styles.ReminPieContainer}>
-        <Remindercard reminders={taskReminders} />
+        <div className={styles.nondisplaydesktop}> <Remindercard reminders={taskReminders} /></div>
+       
         <div className={styles.displaymobile}>
           <Extraoptions />
         </div>
@@ -248,9 +254,7 @@ const Dashboard = () => {
             { name: "Visit 1", value: graphInfo?.visitCount },
           ]}
         />
-      </div>
-      <div className={styles.displaydesktop}>
-        <Piegraphcard
+         <Piegraphcard
           Healine="Visit 1 to Booking"
           percentage={`${(
             ((graphInfo?.bookingCpCount ?? 0) * 100) /
@@ -263,6 +267,9 @@ const Dashboard = () => {
           valuetwo={graphInfo?.bookingCpCount ?? 0}
           colors={["#7469B6", "#E1AFD1"]}
         />
+      </div>
+      <div className={styles.displaydesktop}>
+       
         <Piegraphcard
           Healine="Visit 2 to Booking"
           percentage={`${(

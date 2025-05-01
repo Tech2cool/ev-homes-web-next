@@ -46,6 +46,7 @@ const Linegraphcard = ({
   }, []);
 
   return (
+    <div className={styles.destopdiplay}>
     <div className={styles.card}>
       <div className={styles.titleRow}>
         <h3 className={styles.title}>Total Leads</h3>
@@ -91,6 +92,7 @@ const Linegraphcard = ({
             />
           </LineChart>
         </ResponsiveContainer>
+      </div>
       </div>
     </div>
   );
