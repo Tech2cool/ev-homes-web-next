@@ -478,3 +478,21 @@
     padding: 1vh 2vw;
   }
 }
+
+
+@media screen and (max-width: 1024px) and (min-width: 616px) {
+
+  
+.secondImage {
+  width: 45vh;
+  height: 50vh;
+  left: 10vw;
+}
+
+.thirdImage {
+  width: 15vw;
+  height: 30vh;
+  left: 5vw;
+}
+
+}

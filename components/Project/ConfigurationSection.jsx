@@ -117,7 +117,7 @@ const ConfigurationSection = ({ projectInfo }) => {
                 <div>RERA ID: {card.reraId}</div>
                 <div>Carpet Area: {card.carpetArea}</div>
                 <div>Configuration: {card.configuration}</div>
-                <div>Price: {CurrencyFormatter({ amount: card.price })}</div>
+                <div className={styles.price}>Price: {CurrencyFormatter({ amount: card.price })}</div>
               </div>
             </div>
           ))}
