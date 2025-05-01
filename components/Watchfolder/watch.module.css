@@ -19,13 +19,12 @@
   width: 100%;
   height: auto;
   border-radius: 20px;
-  background-color: #222;
+  background-color: rgba(255, 255, 255, 0.08);
   margin-bottom: 1rem;
   display: flex;
   align-items: center;
   justify-content: center;
   color: white;
-  font-size: 1.2rem;
 }
 
 .title {
@@ -70,6 +69,9 @@
 .sidebar h4 {
   color: white;
   margin-bottom: 2vh;
+  position: sticky;
+  top: 0;
+  z-index: 10;
 }
 
 .recommendation {
@@ -135,4 +137,63 @@
 .vidChannel,
 .vidStats {
   color: #aaa;
+}
+
+@media screen and (max-width: 615px) {
+  .container {
+    flex-direction: column;
+  }
+
+  .videoAvatar {
+    width: 9vw;
+    height: 9vw;
+  }
+
+  .uploaderInfo {
+    gap: 3vw;
+  }
+
+  .sideVedios {
+    width: 40vw;
+    height: 13vh;
+  }
+
+  .sidebarVideoInfo {
+    margin-left: 2vw;
+  }
+
+  .videoPlayer {
+    padding: 0;
+  }
+
+  .videoBox video {
+    height: 32vh;
+  }
+
+  .videoBox {
+    width: auto;
+  }
+}
+
+@media screen and (max-width: 1024px) and (min-width: 616px) {
+  .videoBox video {
+    width: 60vw;
+    height: 50vh;
+  }
+
+  .videoBox {
+    width: 60vw;
+  }
+
+  .sideVedios {
+    width: 15vw;
+    height: 13vh;
+  }
+  .mainContent {
+    flex: 1;
+  }
+  .videoAvatar {
+    width: 4vw;
+    height: 4vw;
+  }
 }

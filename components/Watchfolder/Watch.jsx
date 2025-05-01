@@ -84,7 +84,6 @@ const Watch = () => {
               width="100%"
               height="400"
               controls
-              className={styles.videoTag}
             />
           </div>
           <h2 className={styles.title}>{selectedVideo.title}</h2>
@@ -114,8 +113,9 @@ const Watch = () => {
             onClick={() => setSelectedVideo(video)}
             style={{
               cursor: "pointer",
+              borderRadius:10,
               backgroundColor:
-                selectedVideo.title === video.title ? "#3a3939" : "transparent",
+                selectedVideo.title === video.title ? "#2d2d2d" : "transparent",
             }}
           >
             <div
