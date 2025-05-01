@@ -40,6 +40,15 @@ const Navbar = () => {
   const renderNavLinks = (handleClick = () => {}) => {
     return user ? (
       <>
+      <li
+          className={pathname === "/watch-folder" ? styles.active : ""}
+          onClick={() => {
+            navigateTo("/watch-folder");
+            handleClick();
+          }}
+        >
+          Watch
+        </li>
         <li
           className={pathname === "/dashboard" ? styles.active : ""}
           onClick={() => {
