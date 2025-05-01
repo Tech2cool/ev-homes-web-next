@@ -155,3 +155,46 @@
 .previewImage {
   object-fit: contain;
 }
+
+.price {
+  color: orange;
+}
+
+@media screen and (max-width: 615px) {
+  .headline {
+    font-size: 5vh;
+    margin-left: 4vw;
+    margin-top: 0vh;
+    gap: 2vh;
+  }
+
+  .buttonContainer {
+    margin-left: 1vw;
+  }
+  .bhkButton {
+    margin-top: 1vh;
+    padding: 2vh 2vh;
+    font-size: 3vh;
+  }
+
+  .cardContainer {
+    height: auto;
+    gap: 4vh;
+  }
+
+  .configCard {
+    width: 80vw;
+    height: 25vh;
+    flex-direction: row;
+  }
+
+  .cardImage {
+    height: 100%;
+    width: 50%;
+  }
+  .cardContent {
+    padding: 0.5rem;
+    font-size: 2vh;
+    gap: 1vh;
+  }
+}

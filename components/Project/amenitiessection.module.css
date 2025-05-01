@@ -30,11 +30,11 @@
   color: orange;
   font-size: 5vh;
 }
-.title {
+/* .title {
   font-size: 2rem;
   margin-bottom: 2rem;
   text-align: center;
-}
+} */
 
 .container {
   display: flex;
@@ -190,4 +190,59 @@
   font-weight: bold;
   text-shadow: 0 0 5px rgba(0, 0, 0, 0.8);
   z-index: 2;
+}
+
+@media screen and (max-width: 615px) {
+  .customHeading {
+    margin-left: 5vw;
+    margin: 2vh;
+    padding: 0vh;
+    font-size: 5vh;
+  }
+
+  .styleIcon {
+    margin-left: 0vw;
+    margin-right: 0vw;
+    font-size: 4vh;
+  }
+
+  .container {
+    gap: 1vw;
+  }
+
+  .imageBox {
+    width: 30vw;
+    height: 25vh;
+  }
+
+  .textWrapper {
+    margin-top: 5vh;
+    width: 27vw;
+    font-size: 1.5vh;
+  }
+
+  .textWrapper2 {
+    margin-top: 7vh;
+    margin-bottom: 10vh;
+    width: 27vw;
+    font-size: 1.5vh;
+  }
+
+ 
+  .imageBox4,
+  .imageBox6 {
+    margin-top: 10vh;
+  }
+
+  .imageText {
+    bottom: 3vh;
+    font-size: 1.8vh;
+    font-weight: normal;
+  }
+
+  .imageText2 {
+    bottom: 1vh;
+    font-size: 1.5vh;
+    font-weight: normal;
+  }
 }
