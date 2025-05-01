@@ -246,3 +246,21 @@
     font-weight: normal;
   }
 }
+
+@media screen and (max-width: 1024px) and (min-width: 616px) {
+  .customHeading {
+    margin-left: 5vw;
+    margin: 3vh;
+    padding: 0vh;
+    font-size: 7vh;
+  }
+
+  .container {
+    gap: 4vw;
+  }
+
+  .imageBox {
+    width: 30vw;
+    height: 50vh;
+  }
+}
