@@ -136,18 +136,28 @@ const ProjectNavbar = ({ projectInfo }) => {
           {/* Mobile  */}
           <div
             className={`${styles.logoContentMobile} ${
-              !atTop ? (showFixedLogo ? styles.showMobile : styles.hideMobile) : ""
+              !atTop
+                ? showFixedLogo
+                  ? styles.showMobile
+                  : styles.hideMobile
+                : ""
             }`}
           >
-            <div className={styles.mobileTopbar}>
-              <div className={styles.mobileLogo}>
-                <Image
-                  src={projectInfo?.logo ?? "/images/evhomeslogo.png"}
-                  alt="Logo"
-                  width={120}
-                  height={40}
-                />
+            <div className={styles.homeMobile}>
+              <div className={styles.mobileTopSection}>
+                <Link href="/">
+                  <IoHome className={styles.icon} />
+                </Link>
+                <div className={styles.mobileLogo}>
+                  <Image
+                    src={projectInfo?.logo ?? "/images/evhomeslogo.png"}
+                    alt="Logo"
+                    width={120}
+                    height={40}
+                  />
+                </div>
               </div>
+
               <div className={styles.hamburger} ref={hamburgerRef}>
                 <Checkbox
                   checked={isMobileMenuOpen}
@@ -172,11 +182,28 @@ const ProjectNavbar = ({ projectInfo }) => {
             </div>
             <ul className={styles.sidebarLinks}>
               <li>{projectInfo?.name ?? ""}</li>
-              <li onClick={() => {scrollToSection("description"); setIsMobileMenuOpen(false)}}>
+              <li
+                onClick={() => {
+                  scrollToSection("description");
+                  setIsMobileMenuOpen(false);
+                }}
+              >
                 Description
               </li>
-              <li onClick={() => {scrollToSection("amenities"); setIsMobileMenuOpen(false)}}>Amenities</li>
-              <li onClick={() => {scrollToSection("configuration"); setIsMobileMenuOpen(false)}}>
+              <li
+                onClick={() => {
+                  scrollToSection("amenities");
+                  setIsMobileMenuOpen(false);
+                }}
+              >
+                Amenities
+              </li>
+              <li
+                onClick={() => {
+                  scrollToSection("configuration");
+                  setIsMobileMenuOpen(false);
+                }}
+              >
                 Configuration
               </li>
             </ul>
