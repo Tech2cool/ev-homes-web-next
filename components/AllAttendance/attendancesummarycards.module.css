@@ -54,3 +54,39 @@
   background-color: rgba(255, 255, 255, 0.3);
   align-self: center;
 }
+ @media screen and (max-width: 615){
+  .title {
+    font-size: 1.5vh;
+    font-weight: 400;
+    margin-bottom: 0.5rem;
+  }
+  .card {    
+    padding: 0.5rem;
+  }
+  .container {
+     padding-left: 0px;
+     display: flex;
+     justify-content: center;
+   
+  }
+  .label {
+    font-size: 1.3vh;
+    font-weight: 300;
+   
+  }
+  .value {
+    font-size: 2vh;
+    color: #ffffff;
+    text-align: center;
+  }
+  .itemBox {
+   
+    height: 8vh;
+    width: 11vw;
+  }
+  .divider {
+
+    height: 8vh;
+
+  }
+ }

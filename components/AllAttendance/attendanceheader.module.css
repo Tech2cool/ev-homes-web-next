@@ -57,3 +57,66 @@
   color: #d6d2d2;
   padding: 2px;
 }
+.noreportButton{
+  display: none;
+}
+
+
+@media screen and (max-width: 615px){
+  .header {
+     font-size: 3vh;
+    font-weight: 500;
+  }
+  .leftSection {
+    padding-right: 0.5rem;
+    gap: 3vw;
+  }
+  .dateSelector {
+
+    padding:0px;
+
+    font-size: 2vh;
+    color: #a8a5a5;
+  }
+  
+  .reportButton{
+    display: none;
+  }
+  .noreportButton {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: black;
+    color: white;
+    border: none;
+    padding: 8px;
+    border-radius: 4px;
+    cursor: pointer;
+  }
+  .report {
+    height: 6vh;
+    width: 23vw;
+    font-size: 1.5vh;
+    font-weight: 500;
+    background-color: #007bff;
+    color: white;
+    padding: 0.2rem 0.5rem;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: transform 0.3s ease, background-color 0.3s ease;
+    margin-top: 1rem;
+  }
+  
+  .report:hover {
+    transform: scale(1.05);
+    background-color: #0056b3;
+  }
+  .headerWrapper {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin: 0.5rem;
+    padding: 0 1rem;
+  }
+}

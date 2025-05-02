@@ -69,7 +69,7 @@ const Attendancesection = ({ viewType }) => {
                 <th>
                   <FaClock /> Time In & Time Out
                 </th>
-                <th>Date</th>
+                <th> Date  </th>
                 <th>
                   <FcOvertime /> Overtime
                 </th>

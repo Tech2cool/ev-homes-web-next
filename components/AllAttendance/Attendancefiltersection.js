@@ -44,8 +44,11 @@ const Attendancefiltersection = () => {
 
   return (
     <div className={styles.attSection}>
+        
       <div className={styles.filterSectionWrapper}>
+    
         <div className={styles.filterSectionLeft}>
+          <div className={styles.nodisplaymobile} >
           <div className={styles.searchContainer}>
             <input
               type="text"
@@ -56,7 +59,7 @@ const Attendancefiltersection = () => {
               <FiSearch size={18} />
             </button>
           </div>
-
+          </div>
           <div className={styles.customDropdown} onClick={toggleCalendar}>
             <div className={styles.leftSide}>
               <FaCalendarAlt className={styles.icon} />
@@ -107,6 +110,7 @@ const Attendancefiltersection = () => {
           >
             <HiOutlineSquares2X2 className={styles.gridIcon}/>
           </button>
+          <div className={styles.nodisplaymobile}>
           <button
             onClick={() => setViewType("table")}
             className={`${styles.toggleBtn} ${
@@ -115,10 +119,26 @@ const Attendancefiltersection = () => {
           >
             <HiOutlineTableCells className={styles.tableIcon} />
           </button>
+          </div>
+
         </div>
       </div>
+      <div className={styles.displaymobile} >
+          <div className={styles.searchContainer}>
+            <input
+              type="text"
+              placeholder="Search Employee"
+              className={styles.searchInput}
+            />
+            <button className={styles.searchButton}>
+              <FiSearch size={18} />
+            </button>
+          </div>
+          </div>
       <Attendancesection viewType={viewType} />
+      
     </div>
+    
   );
 };
 

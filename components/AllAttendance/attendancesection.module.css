@@ -240,3 +240,30 @@
   margin: 4px 0;
   color: white;
 }
+
+@media screen and (max-width:601px){
+  
+ 
+   .cardContainer{
+   flex-direction: row;
+    
+   }
+  
+  .card {
+    min-width: 75vw;
+    max-width: 75vw;
+    height: 18vh;
+    padding: 0.5rem;
+
+  }
+  .cardTimeImage {
+    margin-bottom: 0.1vh;
+    width: 9vw;
+    height: 9vw;
+   
+    border-radius: 50%;
+  }
+  .container{
+    display: none;
+  }
+}

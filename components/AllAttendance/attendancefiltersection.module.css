@@ -160,3 +160,36 @@
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
   z-index: 1000;
 }
+.displaymobile{
+  display: none;
+}
+
+@media screen and (max-width: 615px) {
+  .displaymobile{
+    display: flex;
+   
+    justify-content: center;
+  }
+  .nodisplaymobile{
+    display: none;
+   
+  }
+  .searchContainer {
+    width: 60vw;
+  }
+  .searchButton {
+   
+    padding: 0.1rem 0.2rem;
+    border-radius: 5px;
+    cursor: pointer;
+    margin-right: 0vw;
+  }
+ .tableIcon{
+  display: none;
+ }
+ .calendarWrapper {
+flex-direction: column;
+  gap: 2rem;
+  padding: 0.5rem;
+}
+}
