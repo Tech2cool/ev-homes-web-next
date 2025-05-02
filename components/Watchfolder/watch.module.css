@@ -15,7 +15,7 @@
   border-radius: 10px;
 }
 
-.videoBox {
+/* .videoBox {
   width: 100%;
   height: auto;
   border-radius: 20px;
@@ -25,7 +25,117 @@
   align-items: center;
   justify-content: center;
   color: white;
+  position: relative;
+} */
+
+.videoBox {
+  width: 100%;
+  height: auto;
+  border-radius: 20px;
+  background-color: rgba(255, 255, 255, 0.08);
+  margin-bottom: 1rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  color: white;
 }
+
+.controls {
+  position: absolute;
+  bottom: 1vh;
+  /* left: 0.5vw; */
+  /* display: flex; */
+  /* flex-direction: column; */
+  align-items: center;
+  gap: 0.7vw;
+  width: 100%;
+}
+.leftControls{
+  display: flex;
+  align-items: flex-start;
+  justify-content: left;
+  margin-left: 1vw;
+}
+
+.belowControls{
+  display: flex;
+  justify-content: space-between;
+}
+.rightControls{
+  margin-right: 1vw;
+}
+
+.playpausebtn,
+.volumebtn {
+  background: rgba(0, 0, 0, 0);
+  border: none;
+  cursor: pointer;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: white;
+}
+
+.miniPlayerBtn,
+.theatreBtn,
+.fullScreenBtn{
+  background: rgba(0, 0, 0, 0);
+  cursor: pointer;
+  color: white;
+  border: none;
+}
+
+.volumeslider {
+  margin: 1vh;
+  width: 50px;
+  cursor: pointer;
+  accent-color: white;
+}
+
+.durationcontainer {
+  margin-left: 1vw;
+  display: flex;
+  color: white;
+  font-size: 2.5vh;
+  gap: 0.1vw;
+}
+
+
+
+.progressContainer {
+  width: 100%;
+  margin-top: 1vh;
+}
+
+.progressBar {
+  width: 100%;
+  appearance: none;
+  height: 5px;
+  background: #ccc;
+  border-radius: 0px;
+  outline: none;
+  cursor: pointer;
+}
+
+.progressBar::-webkit-slider-thumb {
+  appearance: none;
+  height: 12px;
+  width: 12px;
+  background:red;
+  border-radius: 50%;
+  cursor: pointer;
+  margin-top: -3.5px;
+}
+
+.progressBar::-moz-range-thumb {
+  height: 12px;
+  width: 12px;
+  background: red;
+  border-radius: 50%;
+  cursor: pointer;
+}
+
 
 .title {
   font-size: 4vh;

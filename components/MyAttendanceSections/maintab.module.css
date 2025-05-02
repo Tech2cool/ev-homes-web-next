@@ -1,0 +1,100 @@
+.container {
+  margin: 0.5rem;
+  padding: 0.5rem;
+  display: flex;
+}
+
+.wholeContainer {
+  display: flex;
+  flex-direction: column;
+}
+
+.profileSection {
+  width: fit-content;
+  padding-right: 3vw;
+  display: flex;
+  align-items: center;
+  border-right: 1px solid rgba(255, 255, 255, 0.3);
+}
+
+.profileImage {
+  width: 3vw;
+  height: 3vw;
+  border-radius: 50%;
+  object-fit: cover;
+  margin-right: 1vw;
+  border: 2px solid #ccc;
+}
+
+.details {
+  display: flex;
+  flex-direction: column;
+}
+
+.name {
+  color: white;
+  font-size: 2.2vh;
+  font-weight: 500;
+  margin-bottom: 0.5vh;
+}
+.desgination,
+.empid {
+  margin-top: 0.5vh;
+  color: white;
+  font-size: 1.7vh;
+  font-weight: 400;
+  margin-bottom: 0.5vh;
+  margin-left: 2vw;
+}
+
+.desgination {
+  font-size: 2vh;
+  font-weight: 400;
+}
+
+.status {
+  padding: 0.3vh 0.7vw;
+  border-radius: 12px;
+  font-size: 1.8vh;
+  font-weight: 500;
+  width: fit-content;
+}
+
+.active {
+  background-color: #d1f7c4;
+  color: #2e7d32;
+}
+
+.inactive {
+  background-color: #f9d6d5;
+  color: #c62828;
+}
+
+.navbar {
+  background-color: #111;
+  color: #fff;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 12px 24px;
+  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+  border-bottom: 1px solid #333;
+}
+
+.logo {
+  font-weight: bold;
+  font-size: 16px;
+  color: #0f0; /* Optional: green dot next to name */
+}
+
+.links span {
+  margin-left: 1.5vw;
+  font-size: 2.2vh;
+  cursor: pointer;
+  color: #aaa;
+  transition: color 0.2s ease;
+}
+
+.links span:hover {
+  color: #fff;
+}
