@@ -281,8 +281,23 @@
 .mobileTopbar {
   display: none;
 }
+.homeMobile {
+  display: none;
+}
 
 @media screen and (max-width: 615px) {
+  .mobileTopSection {
+    margin-left: 4vw;
+    display: flex;
+    justify-content: space-around;
+    gap: 9vw;
+  }
+  .homeMobile {
+    display: flex;
+    align-items: start;
+    margin-right: 12vw;
+    justify-content: space-between;
+  }
   .showMobile {
     position: fixed;
     top: 0;
@@ -323,6 +338,7 @@
     margin-top: 2vh;
     font-size: 2vh;
     color: white;
+    cursor: pointer;
   }
 
   .address {
@@ -349,24 +365,14 @@
     font-size: 2.5vh;
   }
 
-  .mobileTopbar {
-    padding: 3vh;
-    display: flex;
-    justify-content: space-around;
-    align-items: center;
-    padding: 2vh;
-    position: fixed;
-    top: 0;
-    width: 100%;
-    z-index: 2000;
-  }
-
   .mobileLogo img {
-    height: auto;
+    margin-top: 4vh;
+    height: 12vh;
     width: 20vw;
   }
 
   .hamburger {
+    margin-top: 8vh;
     font-size: 24px;
     color: white;
     cursor: pointer;
