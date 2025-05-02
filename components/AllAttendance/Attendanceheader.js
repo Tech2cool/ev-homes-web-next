@@ -2,10 +2,11 @@
 import React, { useState } from "react";
 import styles from "./attendanceheader.module.css";
 import { FaChevronLeft, FaChevronRight } from "react-icons/fa";
+import { BsThreeDotsVertical } from "react-icons/bs";
 
 const Attendanceheader = () => {
   const [selectedDate, setSelectedDate] = useState(new Date());
-
+  const[showReport,setShowReport]=useState(false);
   const handlePrevDay = () => {
     const newDate = new Date(selectedDate);
     newDate.setDate(newDate.getDate() - 1);
@@ -39,7 +40,13 @@ const Attendanceheader = () => {
         </div>
       </div>
       <button className={styles.reportButton}>Monthly Report</button>
+      <button
+    onClick={() => setShowReport(!showReport)}className={styles.noreportButton}>
+    <BsThreeDotsVertical size={20} /></button>
+      {showReport && (
+    <button className={styles.report}>Monthly Report</button>)}
     </div>
+    
   );
 };
 
