@@ -38,6 +38,12 @@
     .buttondisplay{
         display: none;
     }
+    .lineTaskContainer{
+       
+        padding-left: 1vh;
+        padding-right: 1vh;
+        
+    }
   }
   @media screen and  (max-width: 1024px ) and (min-width: 900px){
     .displaydesktop{
@@ -60,6 +66,7 @@
     .lineTaskContainer{
        
         padding-top: 3vh;
+        
         
     }
     .nondisplaydesktop{

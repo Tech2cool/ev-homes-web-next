@@ -60,6 +60,64 @@ const data = [
 const Attendancesection = ({ viewType }) => {
   return (
     <div>
+      <div className={styles.display}>
+       <div className={styles.cardContainer}>
+          {data.map((emp, idx) => (
+            <div key={idx} className={styles.card}>
+              <div className={styles.cardHeader}>
+                <span className={styles.cardDate}>{emp.date}</span>
+
+                <button
+                  className={`${styles.cardStatusBtn} ${
+                    emp.status === "present"
+                      ? styles.cardPresent
+                      : emp.status === "absent"
+                      ? styles.cardAbsent
+                      : styles.cardWeekOff
+                  }`}
+                >
+                  {emp.status}
+                </button>
+              </div>
+              <span className={styles.cardName}>{emp.name}</span>
+
+              <div className={styles.cardContent}>
+                <div className={styles.timeBlock}>
+                  <img
+                    src={
+                      emp.timeInImage ||
+                      "https://www.ohe.org/wp-content/uploads/2023/02/fallback-profile-image_1.jpg"
+                    }
+                    className={styles.cardTimeImage}
+                    alt="Time In"
+                  />
+                  <div className={styles.timeDetails}>
+                    <div className={styles.timeValue}>{emp.timeIn}</div>
+                  </div>
+                </div>
+                <span className={styles.cardWorkingTime}>
+                  {emp.workingTime}
+                </span>
+                <div className={styles.timeBlock}>
+                  <img
+                    src={
+                      emp.timeOutImage ||
+                      "https://www.ohe.org/wp-content/uploads/2023/02/fallback-profile-image_1.jpg"
+                    }
+                    className={styles.cardTimeImage}
+                    alt="Time Out"
+                  />
+                  <div className={styles.timeDetails}>
+                    <div className={styles.timeValue}>{emp.timeOut}</div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          ))}
+        </div>
+        </div>
+    <div className={styles.nodipaly}>
+      
       {viewType == "table" ? (
         <div className={styles.container}>
           <table className={styles.table}>
@@ -210,8 +268,11 @@ const Attendancesection = ({ viewType }) => {
             </div>
           ))}
         </div>
+        
       )}
     </div>
+    </div>
+    
   );
 };
 
