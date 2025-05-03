@@ -13,6 +13,8 @@ import {
   IoMdPlay,
   IoMdPause,
 } from "react-icons/io";
+import { FaShare } from "react-icons/fa";
+import { BiLike, BiDislike, BiSolidDislike, BiSolidLike } from "react-icons/bi";
 import styles from "./watch.module.css";
 
 const sidebarVideos = [
@@ -78,6 +80,18 @@ const Watch = () => {
   const containerRef = useRef(null);
   const [showControls, setShowControls] = useState(false);
   const [playbackRate, setPlaybackRate] = useState(1);
+  const [liked, setLiked] = useState(false);
+  const [disliked, setDisliked] = useState(false);
+
+  const handleLike = () => {
+    setLiked(!liked);
+    if (disliked) setDisliked(false);
+  };
+
+  const handleDislike = () => {
+    setDisliked(!disliked);
+    if (liked) setLiked(false);
+  };
 
   const handleToggleFullscreen = () => {
     const elem = containerRef.current;
@@ -325,7 +339,9 @@ const Watch = () => {
                   style={{
                     background: `linear-gradient(to right, red 0%, red ${
                       (currentTime / duration) * 100
-                    }%, #ccc ${(currentTime / duration) * 100}%, #ccc 100%)`,
+                    }%, rgba(66, 64, 64, 0.5) ${
+                      (currentTime / duration) * 100
+                    }%, rgba(103, 101, 101, 0.5) 100%)`,
                   }}
                   className={styles.progressBar}
                 />
@@ -396,14 +412,43 @@ const Watch = () => {
               </div>
             </div>
           </div>
+          {/* <div className={styles.shareSection}> */}
           <h2 className={styles.title}>{selectedVideo.title}</h2>
+          {/* </div> */}
           <div className={styles.videoDetails}>
             <span>{selectedVideo.time}</span>
           </div>
           <div className={styles.uploaderInfo}>
-            <div className={styles.videoAvatar}></div>
-            <div>
+            <div className={styles.uploader}>
+              <div className={styles.videoAvatar}></div>
               <h3>{selectedVideo.channel}</h3>
+            </div>
+            <div className={styles.downloadSection}>
+              <div className={styles.likeBtns}>
+                <div className={styles.likeContainer} onClick={handleLike}>
+                  {liked ? (
+                    <BiSolidLike size={20} className={styles.like} />
+                  ) : (
+                    <BiLike size={20} className={styles.like} />
+                  )}
+                </div>
+
+                <div
+                  className={styles.dislikeContainer}
+                  onClick={handleDislike}
+                >
+                  {disliked ? (
+                    <BiSolidDislike size={20} className={styles.dislike} />
+                  ) : (
+                    <BiDislike size={20} className={styles.dislike} />
+                  )}
+                </div>
+              </div>
+
+              <div className={styles.shareBtn}>
+                <FaShare size={20} /> <span>Share</span>
+              </div>
+              {/* <MdFileDownload size={24} className={styles.downloadBtn}/> */}
             </div>
           </div>
 

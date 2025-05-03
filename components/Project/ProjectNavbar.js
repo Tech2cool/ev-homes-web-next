@@ -304,6 +304,9 @@ const ProjectNavbar = ({ projectInfo }) => {
                 {/* </button> */}
               </Link>
             </div>
+            {/* <div>
+              <Image/>
+            </div> */}
           </div>
 
           <div className={styles.heroText}>
@@ -311,10 +314,10 @@ const ProjectNavbar = ({ projectInfo }) => {
               {heroTexts[currentIndex % heroTexts.length].small}
               <div className={styles.designWrapper}>
                 <Image
-                  src="/images/design.png"
+                  src="/images/design1.png"
                   alt="Building"
                   width={200}
-                  height={100}
+                  height={20}
                 />
               </div>
             </div>
