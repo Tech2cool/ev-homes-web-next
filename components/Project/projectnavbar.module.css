@@ -163,6 +163,33 @@
   margin-top: 1.5vh;
 }
 
+
+.leftArrow,
+.rightArrow {
+  position: absolute;
+  top: 70%;
+  transform: translateY(-50%);
+  background: rgba(0,0,0,0.0);
+  border: none;
+  padding: 10px;
+  cursor: pointer;
+  z-index: 10;
+}
+
+.leftArrow {
+  left: 3vw;
+}
+
+.rightArrow {
+  right: 3vw;
+}
+
+.leftArrow img,
+.rightArrow img {
+  width: 10vh;
+  height: 10vh;
+}
+
 .heroText {
   position: absolute;
   bottom: 5vh;
@@ -458,5 +485,19 @@
     margin-left: 11vw;
     margin-top: 2vh;
     gap: 4vw;
+  }
+
+  .leftArrow {
+    left: 1vw;
+  }
+  
+  .rightArrow {
+    right: 1vw;
+  }
+  
+  .leftArrow img,
+  .rightArrow img {
+    width: 4vh;
+    height: 4vh;
   }
 }
