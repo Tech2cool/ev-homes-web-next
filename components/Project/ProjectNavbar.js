@@ -137,6 +137,109 @@ const ProjectNavbar = ({ projectInfo }) => {
         }}
       >
         <div className={styles.overlay}>
+          
+          {/* mobile start */}
+          <div
+            className={`${styles.logoContentMobile} ${
+              !atTop
+                ? showFixedLogo
+                  ? styles.showMobile
+                  : styles.hideMobile
+                : ""
+            }`}
+          >
+            <div className={styles.homeMobile}>
+              <div className={styles.mobileTopSection}>
+                <Link href="/">
+                  <IoHome className={styles.icon} />
+                </Link>
+                <div className={styles.mobileLogo}>
+                  <Image
+                    src={projectInfo?.logo ?? "/images/evhomeslogo.png"}
+                    alt="Logo"
+                    width={120}
+                    height={40}
+                  />
+                </div>
+              </div>
+
+              <div className={styles.hamburger} ref={hamburgerRef}>
+                <Checkbox
+                  checked={isMobileMenuOpen}
+                  onChange={(e) => setIsMobileMenuOpen(e.target.checked)}
+                />
+              </div>
+            </div>
+          </div>
+          <div
+            className={`${styles.mobileSidebar} ${
+              isMobileMenuOpen ? styles.open : ""
+            }`}
+            ref={sidebarRef}
+          >
+            <div className={styles.sidebarLogo}>
+              <Image
+                src={projectInfo?.logo ?? "/images/evhomeslogo.png"}
+                alt="Logo"
+                width={50}
+                height={50}
+              />
+            </div>
+            <ul className={styles.sidebarLinks}>
+              <li>{projectInfo?.name ?? ""}</li>
+              <li
+                onClick={() => {
+                  scrollToSection("description");
+                  setIsMobileMenuOpen(false);
+                }}
+              >
+                Description
+              </li>
+              <li
+                onClick={() => {
+                  scrollToSection("amenities");
+                  setIsMobileMenuOpen(false);
+                }}
+              >
+                Amenities
+              </li>
+              <li
+                onClick={() => {
+                  scrollToSection("configuration");
+                  setIsMobileMenuOpen(false);
+                }}
+              >
+                Configuration
+              </li>
+            </ul>
+            <div className={styles.sidebarBottom}>
+              <div className={styles.address}>
+                <CiLocationOn className={styles.icon} />{" "}
+                {projectInfo?.name ?? ""}, {projectInfo?.locationName ?? ""}
+              </div>
+              <div className={styles.contactUsOn}>Contact Us On</div>
+              <div className={styles.phone}>
+                <LuPhone className={styles.icon} /> +91 8291668777
+              </div>
+              <div className={styles.email}>
+                <MdOutlineMailOutline className={styles.icon} />
+                {projectInfo?.contactEmail ?? "deepak@evgroup.co.in"}
+              </div>
+              <div className={styles.contactUsOn}>Download Now!</div>
+              <Link
+                className={`${styles.bhkButton} ${styles.active}`}
+                href={projectInfo?.brochure}
+                download="Brochure.pdf"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                <FaDownload />
+                <span>Brochure</span>
+              </Link>
+            </div>
+          </div>
+          {/* mobile end */}
+
           <div className={styles.navbar}>
             <div className={styles.topContent}>
               <div className={styles.location}>
@@ -206,20 +309,7 @@ const ProjectNavbar = ({ projectInfo }) => {
                 {/* </button> */}
               </Link>
             </div>
-            {/* <div>
-              <Image/>
-            </div> */}
           </div>
-          {/* <button
-            className={styles.leftArrow}
-            onClick={() =>
-              setCurrentIndex((prev) =>
-                prev === 0 ? projectInfo?.carouselImages.length - 1 : prev - 1
-              )
-            }
-          >
-            <img src="/images/leftBtn.png" alt="Previous" />
-          </button> */}
 
           <button
             className={styles.leftArrow}
