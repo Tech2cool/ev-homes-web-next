@@ -1,12 +1,11 @@
 "use client";
 import React, { useEffect, useRef, useState } from "react";
-// import VideoPlayer from "react-video-js-player";
 import {
   MdFullscreen,
-  MdOutlineRectangle,
   MdFullscreenExit,
+  MdOutlineForward10,
+  MdOutlineReplay10,
 } from "react-icons/md";
-import { CgMiniPlayer } from "react-icons/cg";
 import {
   IoMdVolumeOff,
   IoMdVolumeLow,
@@ -25,7 +24,6 @@ const sidebarVideos = [
     url: "https://www.w3schools.com/html/movie.mp4",
     thumbnail: "images/Building1.jpg",
   },
-
   {
     title: "Testimonial 2",
     channel: "EvHomes",
@@ -78,6 +76,8 @@ const Watch = () => {
   const [currentTime, setCurrentTime] = useState(0);
   const [duration, setDuration] = useState(0);
   const containerRef = useRef(null);
+  const [showControls, setShowControls] = useState(false);
+  const [playbackRate, setPlaybackRate] = useState(1);
 
   const handleToggleFullscreen = () => {
     const elem = containerRef.current;
@@ -93,27 +93,23 @@ const Watch = () => {
     }
   };
 
-  useEffect(() => {
-    const video = videoRef.current;
-    if (video) {
-      const handleMetadata = () => setDuration(video.duration);
-      video.addEventListener("loadedmetadata", handleMetadata);
-      return () => {
-        video.removeEventListener("loadedmetadata", handleMetadata);
-      };
+  const rewind10Seconds = () => {
+    if (videoRef.current) {
+      videoRef.current.currentTime = Math.max(
+        0,
+        videoRef.current.currentTime - 10
+      );
     }
-  }, [selectedVideo]);
+  };
 
-  useEffect(() => {
-    const video = videoRef.current;
-    if (video) {
-      const handleEnded = () => setIsPlaying(false);
-      video.addEventListener("ended", handleEnded);
-      return () => {
-        video.removeEventListener("ended", handleEnded);
-      };
+  const forward10Seconds = () => {
+    if (videoRef.current) {
+      videoRef.current.currentTime = Math.min(
+        duration,
+        videoRef.current.currentTime + 10
+      );
     }
-  }, []);
+  };
 
   const formatTime = (time) => {
     const minutes = Math.floor(time / 60);
@@ -148,8 +144,18 @@ const Watch = () => {
 
   const toggleMute = () => {
     const video = videoRef.current;
-    video.muted = !video.muted;
-    setIsMuted(video.muted);
+    if (video.muted || video.volume === 0) {
+      video.muted = false;
+      const restoredVolume = volume === 0 ? 0.5 : volume;
+      video.volume = restoredVolume;
+      setVolume(restoredVolume);
+      setIsMuted(false);
+    } else {
+      video.muted = true;
+      video.volume = 0;
+      setVolume(0);
+      setIsMuted(true);
+    }
   };
 
   const handleVolumeChange = (e) => {
@@ -176,11 +182,108 @@ const Watch = () => {
     }
   };
 
+  useEffect(() => {
+    if (videoRef.current) {
+      videoRef.current.playbackRate = playbackRate;
+    }
+  }, [playbackRate]);
+
+  useEffect(() => {
+    const video = videoRef.current;
+    if (video) {
+      const handleMetadata = () => setDuration(video.duration);
+      video.addEventListener("loadedmetadata", handleMetadata);
+      return () => {
+        video.removeEventListener("loadedmetadata", handleMetadata);
+      };
+    }
+  }, [selectedVideo]);
+
+  useEffect(() => {
+    const video = videoRef.current;
+    if (video) {
+      const handleEnded = () => setIsPlaying(false);
+      video.addEventListener("ended", handleEnded);
+      return () => {
+        video.removeEventListener("ended", handleEnded);
+      };
+    }
+  }, []);
+
+  useEffect(() => {
+    const handleKeyDown = (e) => {
+      const video = videoRef.current;
+      if (!video) return;
+
+      switch (e.key.toLowerCase()) {
+        case " ":
+          e.preventDefault();
+          togglePlayPause();
+          break;
+        case "m":
+          toggleMute();
+          break;
+        case "arrowleft":
+          rewind10Seconds();
+          break;
+        case "arrowright":
+          forward10Seconds();
+          break;
+        case "arrowup":
+          e.preventDefault();
+          setVolume((prev) => {
+            const newVol = Math.min(1, prev + 0.1);
+            video.volume = newVol;
+            video.muted = newVol === 0;
+            setIsMuted(newVol === 0);
+            return newVol;
+          });
+          break;
+        case "arrowdown":
+          e.preventDefault();
+          setVolume((prev) => {
+            const newVol = Math.max(0, prev - 0.1);
+            video.volume = newVol;
+            video.muted = newVol === 0;
+            setIsMuted(newVol === 0);
+            return newVol;
+          });
+          break;
+        case "f":
+          handleToggleFullscreen();
+          break;
+        default:
+          break;
+      }
+    };
+    window.addEventListener("keydown", handleKeyDown);
+    return () => {
+      window.removeEventListener("keydown", handleKeyDown);
+    };
+  }, [
+    togglePlayPause,
+    toggleMute,
+    rewind10Seconds,
+    forward10Seconds,
+    handleToggleFullscreen,
+    setVolume,
+    videoRef,
+    isFullScreen,
+  ]);
+
   return (
     <div className={styles.container}>
       <div className={styles.mainContent}>
         <div className={styles.videoPlayer}>
-          <div className={styles.videoBox} ref={containerRef}>
+          <div
+            className={`${styles.videoBox} ${
+              showControls ? styles.showControls : ""
+            }`}
+            ref={containerRef}
+            onMouseEnter={() => setShowControls(true)}
+            onMouseLeave={() => setShowControls(false)}
+            onTouchStart={() => setShowControls(true)}
+          >
             <video
               ref={videoRef}
               onTimeUpdate={handleTimeUpdate}
@@ -191,6 +294,20 @@ const Watch = () => {
               preload="metadata"
               // controls
             />
+
+            <div className={styles.centerControls}>
+              <button className={styles.rewindbtn} onClick={rewind10Seconds}>
+                <MdOutlineReplay10 size={24} />
+              </button>
+
+              <button className={styles.playpausebtn} onClick={togglePlayPause}>
+                {!isPlaying ? <IoMdPlay size={24} /> : <IoMdPause size={24} />}
+              </button>
+
+              <button className={styles.forwardbtn} onClick={forward10Seconds}>
+                <MdOutlineForward10 size={24} />
+              </button>
+            </div>
 
             <div className={styles.controls}>
               <div className={styles.progressContainer}>
@@ -204,6 +321,11 @@ const Watch = () => {
                     const newTime = parseFloat(e.target.value);
                     videoRef.current.currentTime = newTime;
                     setCurrentTime(newTime);
+                  }}
+                  style={{
+                    background: `linear-gradient(to right, red 0%, red ${
+                      (currentTime / duration) * 100
+                    }%, #ccc ${(currentTime / duration) * 100}%, #ccc 100%)`,
                   }}
                   className={styles.progressBar}
                 />
@@ -242,22 +364,21 @@ const Watch = () => {
                   />
 
                   <div className={styles.durationcontainer}>
-                    <div className={styles.currenttime}>
-                      {formatTime(currentTime)}
-                    </div>
-                    /
-                    <div className={styles.totaltime}>
-                      {formatTime(duration)}
-                    </div>
+                    <div>{formatTime(currentTime)}</div>/
+                    <div>{formatTime(duration)}</div>
                   </div>
                 </div>
                 <div className={styles.rightControls}>
-                  <button className={styles.miniPlayerBtn}>
-                  <CgMiniPlayer size={24} />
-                  </button>
-                  <button className={styles.theatreBtn}>
-                    <MdOutlineRectangle size={24} />
-                  </button>
+                  <select
+                    className={styles.speedControl}
+                    value={playbackRate}
+                    onChange={(e) => setPlaybackRate(Number(e.target.value))}
+                  >
+                    <option value={0.5}>0.5x</option>
+                    <option value={1}>1x</option>
+                    <option value={1.5}>1.5x</option>
+                    <option value={2}>2x</option>
+                  </select>
                   <button className={styles.fullScreenBtn}>
                     {isFullScreen ? (
                       <MdFullscreenExit
