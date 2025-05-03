@@ -48,7 +48,7 @@ const Attendancefiltersection = () => {
       <div className={styles.filterSectionWrapper}>
     
         <div className={styles.filterSectionLeft}>
-          <div className={styles.nodisplaymobile} >
+          
           <div className={styles.searchContainer}>
             <input
               type="text"
@@ -59,7 +59,7 @@ const Attendancefiltersection = () => {
               <FiSearch size={18} />
             </button>
           </div>
-          </div>
+          
           <div className={styles.customDropdown} onClick={toggleCalendar}>
             <div className={styles.leftSide}>
               <FaCalendarAlt className={styles.icon} />
@@ -67,7 +67,10 @@ const Attendancefiltersection = () => {
             </div>
             <FaChevronDown className={styles.arrowIcon} />
           </div>
-
+          <div className={styles.noleftSide }  onClick={toggleCalendar}>
+              <FaCalendarAlt className={styles.icon} />
+              
+            </div>
           {showCalendar && (
             <div className={styles.calendarWrapper}>
               <div>
@@ -100,41 +103,29 @@ const Attendancefiltersection = () => {
             </div>
           )}
         </div>
-
-        <div className={styles.toggleIcons}>
-          <button
-            onClick={() => setViewType("grid")}
-            className={`${styles.toggleBtn} ${
-              viewType === "grid" ? styles.active : ""
-            }`}
-          >
-            <HiOutlineSquares2X2 className={styles.gridIcon}/>
-          </button>
           <div className={styles.nodisplaymobile}>
-          <button
-            onClick={() => setViewType("table")}
-            className={`${styles.toggleBtn} ${
-              viewType === "table" ? styles.active : ""
-            }`}
-          >
-            <HiOutlineTableCells className={styles.tableIcon} />
-          </button>
+            <div className={styles.toggleIcons}>
+              <button
+                onClick={() => setViewType("grid")}
+                className={`${styles.toggleBtn} ${
+                  viewType === "grid" ? styles.active : ""
+                }`}
+              >
+                <HiOutlineSquares2X2 className={styles.gridIcon}/>
+              </button>
+              <button
+                onClick={() => setViewType("table")}
+                className={`${styles.toggleBtn} ${
+                  viewType === "table" ? styles.active : ""
+                }`}
+              >
+                <HiOutlineTableCells className={styles.tableIcon} />
+              </button>
+            </div>
           </div>
-
-        </div>
+           
       </div>
-      <div className={styles.displaymobile} >
-          <div className={styles.searchContainer}>
-            <input
-              type="text"
-              placeholder="Search Employee"
-              className={styles.searchInput}
-            />
-            <button className={styles.searchButton}>
-              <FiSearch size={18} />
-            </button>
-          </div>
-          </div>
+     
       <Attendancesection viewType={viewType} />
       
     </div>

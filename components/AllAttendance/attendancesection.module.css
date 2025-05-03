@@ -240,6 +240,9 @@
   margin: 4px 0;
   color: white;
 }
+.display{
+  display: none;
+}
 
 @media screen and (max-width:601px){
   
@@ -265,5 +268,11 @@
   }
   .container{
     display: none;
+  }
+  .nodipaly{
+    display: none;
+  }
+  .display{
+    display: flex;
   }
 }

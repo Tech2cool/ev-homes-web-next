@@ -163,6 +163,9 @@
 .displaymobile{
   display: none;
 }
+.noleftSide{
+  display: none;
+}
 
 @media screen and (max-width: 615px) {
   .displaymobile{
@@ -175,11 +178,12 @@
    
   }
   .searchContainer {
-    width: 60vw;
+    width: 70vw;
+    margin-left: 0.5vw;
   }
   .searchButton {
    
-    padding: 0.1rem 0.2rem;
+    padding: 0.2rem 0.3rem;
     border-radius: 5px;
     cursor: pointer;
     margin-right: 0vw;
@@ -191,5 +195,21 @@
 flex-direction: column;
   gap: 2rem;
   padding: 0.5rem;
+}
+.searchInput::placeholder {
+  font-size: 2vh;
+}
+
+.noleftSide{
+  display:flex;
+}
+.customDropdown{
+  display: none;
+}
+.icon {
+   font-size: 3.5vh;
+}
+.filterSectionLeft {
+ justify-content: center;
 }
 }
