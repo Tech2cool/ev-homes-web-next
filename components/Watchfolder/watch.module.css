@@ -81,7 +81,8 @@
 
 /* progress bar section */
 .progressContainer {
-  width: 100%;
+  padding-left: 1.2vw;
+  width: 96%;
   margin-top: 1vh;
 }
 
@@ -179,6 +180,51 @@
   margin-bottom: 1vh;
 }
 
+.downloadSection,
+.shareSection {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.downloadBtn,
+.shareBtn {
+  padding: 0.5vh 1vh;
+  margin-left: 1vw;
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  border-radius: 20px;
+  cursor: pointer;
+}
+
+.likeBtns {
+  display: flex;
+  align-items: center;
+}
+
+
+.likeContainer,
+.dislikeContainer {
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  border-radius: 20px 0px 0px 20px;
+  transition: background-color 0.3s ease;
+  cursor: pointer;
+  padding: 1vh 2vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.dislikeContainer{
+  border-radius: 0px 20px 20px 0px;
+}
+
+.dislikeContainer:hover,
+.likeContainer:hover {
+  background-color: rgba(255, 255, 255, 0.1);
+}
+
+
+
 .videoDetails {
   display: flex;
   justify-content: space-between;
@@ -189,9 +235,16 @@
 
 .uploaderInfo {
   display: flex;
+  justify-content: space-between;
   align-items: center;
   gap: 1vw;
   margin-bottom: 2vh;
+}
+
+.uploader {
+  display: flex;
+  align-items: center;
+  gap: 1vw;
 }
 
 .videoAvatar {
@@ -320,6 +373,15 @@
 
   .videoBox {
     width: auto;
+  }
+
+  .downloadBtn,
+  .shareBtn {
+    border: 0px solid rgba(255, 255, 255, 0.2);
+    border-radius: 0px;
+  }
+  .shareBtn span {
+    display: none;
   }
 }
 

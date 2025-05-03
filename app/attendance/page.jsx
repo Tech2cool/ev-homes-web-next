@@ -5,6 +5,7 @@ import React, { useState } from "react";
 // import styles from "./attendance.module.css";
 import Attendancesummarycards from "@/components/AllAttendance/Attendancesummarycards";
 import Attendancefiltersection from "@/components/AllAttendance/Attendancefiltersection";
+import MainTab from "@/components/MyAttendanceSections/MainTab";
 // import Attendancecards from "@/components/AttendanceDashboard/Attendancecards";
 // import { Attendanceinsight } from "@/components/AttendanceDashboard/Attendanceinsight";
 // import AttendanceCalendar from "@/components/AttendanceDashboard/Attendancecalendar";
@@ -27,9 +28,11 @@ const AttendancePage = () => {
           </div>
         </div>
       </div> */}
-      <Attendanceheader/>
+      {/* <Attendanceheader/>
       <Attendancesummarycards/>
-      <Attendancefiltersection/>
+      <Attendancefiltersection/> */}
+
+      <MainTab/>
     </div>
   );
 };

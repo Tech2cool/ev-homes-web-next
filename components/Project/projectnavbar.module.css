@@ -159,6 +159,10 @@
   }
 }
 
+.designWrapper{
+  margin-top: 1.5vh;
+}
+
 .heroText {
   position: absolute;
   bottom: 5vh;
