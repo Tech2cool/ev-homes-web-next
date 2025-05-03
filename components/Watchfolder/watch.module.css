@@ -8,25 +8,13 @@
   flex: 3;
 }
 
+/* vedio css  */
 .videoPlayer {
   background-color: #000;
   color: #fff;
   padding: 1rem;
   border-radius: 10px;
 }
-
-/* .videoBox {
-  width: 100%;
-  height: auto;
-  border-radius: 20px;
-  background-color: rgba(255, 255, 255, 0.08);
-  margin-bottom: 1rem;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  color: white;
-  position: relative;
-} */
 
 .videoBox {
   width: 100%;
@@ -41,29 +29,100 @@
   color: white;
 }
 
+/* center controls */
+.rewindbtn,
+.forwardbtn {
+  background: none;
+  border: none;
+  color: white;
+  cursor: pointer;
+  padding: 0 6px;
+  transition: transform 0.2s ease, opacity 0.2s ease;
+}
+
+.rewindbtn:active,
+.forwardbtn:active {
+  transform: scale(1.2);
+  opacity: 0.6;
+}
+
+/* controls */
+.showControls .centerControls,
+.showControls .controls {
+  opacity: 1;
+  pointer-events: auto;
+}
+
+.centerControls {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  display: flex;
+  gap: 20px;
+  align-items: center;
+  justify-content: center;
+  z-index: 2;
+  opacity: 0;
+  transition: opacity 0.3s ease;
+  pointer-events: none;
+}
+
 .controls {
   position: absolute;
   bottom: 1vh;
-  /* left: 0.5vw; */
-  /* display: flex; */
-  /* flex-direction: column; */
   align-items: center;
   gap: 0.7vw;
   width: 100%;
+  opacity: 0;
+  transition: opacity 0.3s ease;
+  pointer-events: none;
 }
-.leftControls{
+
+/* progress bar section */
+.progressContainer {
+  width: 100%;
+  margin-top: 1vh;
+}
+
+.progressBar {
+  width: 100%;
+  appearance: none;
+  height: 5px;
+  border-radius: 0px;
+  outline: none;
+  cursor: pointer;
+}
+
+.progressBar::-webkit-slider-thumb {
+  appearance: none;
+  height: 2vh;
+  width: 2vh;
+  background: red;
+  border-radius: 50%;
+  cursor: pointer;
+  margin-top: -0.5px;
+}
+
+.progressBar::-moz-range-thumb {
+  height: 12px;
+  width: 12px;
+  background: red;
+  border-radius: 10%;
+  cursor: pointer;
+}
+
+/* left control section */
+.belowControls {
+  display: flex;
+  justify-content: space-between;
+}
+
+.leftControls {
   display: flex;
   align-items: flex-start;
   justify-content: left;
   margin-left: 1vw;
-}
-
-.belowControls{
-  display: flex;
-  justify-content: space-between;
-}
-.rightControls{
-  margin-right: 1vw;
 }
 
 .playpausebtn,
@@ -75,15 +134,6 @@
   justify-content: center;
   align-items: center;
   color: white;
-}
-
-.miniPlayerBtn,
-.theatreBtn,
-.fullScreenBtn{
-  background: rgba(0, 0, 0, 0);
-  cursor: pointer;
-  color: white;
-  border: none;
 }
 
 .volumeslider {
@@ -101,42 +151,29 @@
   gap: 0.1vw;
 }
 
-
-
-.progressContainer {
-  width: 100%;
-  margin-top: 1vh;
+/* right control section */
+.rightControls {
+  display: flex;
+  gap: 1vw;
+  margin-right: 1vw;
 }
 
-.progressBar {
-  width: 100%;
-  appearance: none;
-  height: 5px;
-  background: #ccc;
-  border-radius: 0px;
-  outline: none;
+.speedControl {
+  padding: 1px;
+  font-size: 2vh;
+  background: #222;
+  color: white;
+  border: none;
+}
+
+.fullScreenBtn {
+  background: rgba(0, 0, 0, 0);
   cursor: pointer;
+  color: white;
+  border: none;
 }
 
-.progressBar::-webkit-slider-thumb {
-  appearance: none;
-  height: 12px;
-  width: 12px;
-  background:red;
-  border-radius: 50%;
-  cursor: pointer;
-  margin-top: -3.5px;
-}
-
-.progressBar::-moz-range-thumb {
-  height: 12px;
-  width: 12px;
-  background: red;
-  border-radius: 50%;
-  cursor: pointer;
-}
-
-
+/* video desciption section */
 .title {
   font-size: 4vh;
   margin-bottom: 1vh;
@@ -172,6 +209,7 @@
   line-height: 1.5;
 }
 
+/* sidebar section */
 .sidebar {
   flex: 1;
 }
