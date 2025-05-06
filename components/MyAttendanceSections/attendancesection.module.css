@@ -98,10 +98,19 @@
   border-radius: 8px;
 }
 
+.timeOutImage {
+  margin-left: 4vw;
+  margin-right: 2vw;
+}
+
+.timeInImage {
+  margin-left: 1vw;
+}
+
 .timelineRow {
   display: flex;
   align-items: center;
-  justify-content: space-between;
+  justify-content: space-around;
   background-color: rgba(255, 255, 255, 0.06);
   border: 1px solid rgba(255, 255, 255, 0.2);
   border-radius: 8px;
@@ -122,8 +131,13 @@
   color: #878787;
 }
 
-.barSection {
+.barWrapper {
   width: 60%;
+  display: flex;
+  justify-content: center;
+}
+.barSection {
+  width: 90%;
   padding: 1vh;
 }
 
@@ -149,6 +163,7 @@
   margin-top: 1vh;
   height: 2vh;
   width: 100%;
+  cursor: pointer;
 }
 
 .fixedLabel {
@@ -156,8 +171,10 @@
   top: 0;
   font-size: 2vh;
   color: white;
+  cursor: pointer;
 }
 
+.dynamicTimeOutLabel,
 .dynamicLabel {
   position: absolute;
   /* top: -10vh; */
@@ -167,6 +184,14 @@
   font-weight: 600;
   transform: translateX(-50%);
   white-space: nowrap;
+  cursor: pointer;
+}
+
+.dynamicTimeOutLabel {
+  margin-left: 0.5vw;
+  transform: translateX(-0%);
+  transform: translateY(-150%);
+  cursor: pointer;
 }
 
 .dynamicExpectedLabel {
@@ -178,10 +203,30 @@
   font-weight: 600;
   transform: translateX(-50%);
   white-space: nowrap;
+  cursor: pointer;
 }
 
 .aboveBar {
   top: -8vh;
+}
+
+.tooltip {
+  display: none;
+  position: absolute;
+  background-color: #333;
+  color: #fff;
+  font-size: 1.5vh;
+  padding: 4px 8px;
+  border-radius: 4px;
+  white-space: nowrap;
+  z-index: 100;
+}
+
+.fixedLabel:hover .tooltip,
+.dynamicLabel:hover .tooltip,
+.dynamicExpectedLabel:hover .tooltip,
+.dynamicTimeOutLabel:hover .tooltip {
+  display: block;
 }
 
 .lateArrival {
@@ -192,6 +237,12 @@
 
 .workingTime {
   background-color: #4cbb17;
+  height: 100%;
+  border-radius: 4px;
+}
+
+.pendingTime {
+  background-color: rgba(246, 232, 232, 0.2);
   height: 100%;
   border-radius: 4px;
 }
@@ -218,6 +269,7 @@
   align-items: center;
   justify-content: center;
   height: 100%;
+  cursor: pointer;
 }
 
 .holidayBar,

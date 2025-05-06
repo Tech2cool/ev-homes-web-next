@@ -35,12 +35,11 @@ const TimelineSection = () => {
           shiftHours="8"
           shiftTimeIn="10:00 AM"
           shiftTimeOut="6:00 PM"
-          timeIn="10:50 AM"
-          expectedTimeOut="6:50 PM"
-          timeOut="07:10 PM"
-          total="8h 51m"
-          overtime="1h 21m"
-          status="present"
+          timeIn="10:00 AM"
+          expectedTimeOut="06:00 PM"
+          timeOut="6:10 PM"
+          total=""
+          overtime=""
         />
         <AttendanceSection
           date="Today"
@@ -48,10 +47,35 @@ const TimelineSection = () => {
           shiftTimeIn="10:00 AM"
           shiftTimeOut="6:00 PM"
           timeIn="10:17 AM"
-          expectedTimeOut="07:50 PM"
-          timeOut="07:56 PM"
+          expectedTimeOut="06:17 PM"
+          timeOut=""
+          total=""
+          overtime=""
+        />
+        <AttendanceSection
+          date="Today"
+          shiftHours="8"
+          shiftTimeIn="10:00 AM"
+          shiftTimeOut="6:00 PM"
+          timeIn="10:50 AM"
+          expectedTimeOut="6:50 PM"
+          timeOut="07:10 PM"
           total="8h 51m"
           overtime="1h 21m"
+          status="present"
+        />
+
+        <AttendanceSection
+          date="Today"
+          shiftHours="8"
+          shiftTimeIn="10:00 AM"
+          shiftTimeOut="6:00 PM"
+          timeIn="10:50 AM"
+          expectedTimeOut="6:50 PM"
+          timeOut="08:10 PM"
+          total="8h 51m"
+          overtime="1h 21m"
+          status="present"
         />
 
         <AttendanceSection
@@ -106,6 +130,7 @@ const AttendanceSection = ({
   overtime,
   expectedTimeOut,
   shiftTimeOut,
+  shiftTimeIn,
   status,
   weekoff,
   onLeave,
@@ -121,23 +146,32 @@ const AttendanceSection = ({
     return hours + minutes / 60;
   };
 
-  const start = parseTime(timeIn);
-  const end = parseTime(timeOut);
+  const startTimeIn = parseTime(timeIn);
+  const endTimeOut = parseTime(timeOut);
   const shiftEnd = parseTime(shiftTimeOut);
-  const workingStart = 10;
+  const shiftStart = parseTime(shiftTimeIn);
   const workingEnd = parseTime(expectedTimeOut);
 
   // const totalDuration = end - start;
-  const lateDuration = Math.max(0, start - workingStart);
+  const lateDuration = Math.max(0, startTimeIn - shiftStart);
   const workingDuration = Math.max(
     0,
-    Math.min(end, workingEnd) - Math.max(start, workingStart)
+    Math.min(endTimeOut, workingEnd) - Math.max(startTimeIn, shiftStart)
   );
-  const overtimeDuration = Math.max(0, end - workingEnd);
+  const overtimeDuration = Math.max(0, endTimeOut - workingEnd);
 
   const expectedWorkingDuration = Math.max(0, workingEnd - shiftEnd);
 
-  const visibleDuration = end - workingStart;
+  const visibleEndTime = endTimeOut - shiftStart;
+  const visibleWhenPending = workingEnd - shiftStart;
+  const visibleEnd = Math.max(shiftEnd, workingEnd);
+  const actualEnd = parseTime(timeOut);
+  const visibleEnd2 = Math.max(shiftEnd, workingEnd, actualEnd);
+
+  const visibleDuration = visibleEnd - shiftStart;
+  const visibleDuration2 = visibleEnd2 - shiftStart;
+  const isPending = !timeOut || timeOut.trim() === "";
+  // const visibleEnd = workingEnd - shiftEnd;
 
   const latePercent = (lateDuration / visibleDuration) * 100;
   const workingPercent = (workingDuration / visibleDuration) * 100;
@@ -156,7 +190,7 @@ const AttendanceSection = ({
           <div>Status: {status} </div>
         </div>
       </div>
-      <div>
+      <div className={styles.timeInImage}>
         <img
           src={
             // emp.timeOutImage ||
@@ -166,8 +200,8 @@ const AttendanceSection = ({
           alt="Time In"
         />
       </div>
-      <div className={styles.barSection}>
-        <div className={styles.barWrapper}>
+      <div className={styles.barWrapper}>
+        <div className={styles.barSection}>
           <div className={styles.bar}>
             {weekoff === "true" ? (
               <div className={styles.weekOffBar}>
@@ -194,6 +228,22 @@ const AttendanceSection = ({
                   </div>
                 )}
 
+                {timeIn && !timeOut && (
+                  <div
+                    className={styles.pendingTime}
+                    style={{
+                      left: `${
+                        ((startTimeIn - shiftStart) / visibleWhenPending) * 100
+                      }%`,
+                      width: `${
+                        ((workingEnd - startTimeIn) / visibleWhenPending) * 100
+                      }%`,
+                    }}
+                  >
+                    <span className={styles.barLabel}>Pending</span>
+                  </div>
+                )}
+
                 {workingDuration > 0 && (
                   <div
                     className={styles.workingTime}
@@ -210,7 +260,7 @@ const AttendanceSection = ({
                     className={styles.expectedWorkingTime}
                     style={{ width: `${expectedWorkingPercent}%` }}
                   >
-                    {expectedWorkingPercent > 1 && (
+                    {expectedWorkingPercent > 5 && (
                       <span className={styles.barLabel}>working</span>
                     )}
                   </div>
@@ -235,17 +285,21 @@ const AttendanceSection = ({
               className={`${styles.fixedLabel} ${styles.fixedStart}`}
               style={{ left: "0%" }}
             >
-              10:00 AM
+              {shiftTimeIn}
+              <span className={styles.tooltip}>Your shift start time</span>
             </span>
 
-            {start !== workingStart && (
+            {startTimeIn !== shiftStart && (
               <span
                 className={`${styles.dynamicLabel} ${styles.aboveBar}`}
                 style={{
-                  left: `${((start - workingStart) / visibleDuration) * 100}%`,
+                  left: `${
+                    ((startTimeIn - shiftStart) / visibleDuration) * 100
+                  }%`,
                 }}
               >
                 {timeIn}
+                <span className={styles.tooltip}>Your Time In</span>
               </span>
             )}
 
@@ -259,37 +313,43 @@ const AttendanceSection = ({
                     }
                   : {
                       left: `${
-                        ((shiftEnd - workingStart) / visibleDuration) * 100
+                        ((shiftEnd - shiftStart) /
+                          (isPending ? visibleWhenPending : visibleEndTime)) *
+                        100
                       }%`,
                       transform: "translateX(-50%)",
                     }
               }
             >
-              6:00 PM
+              6:00PM
+              <span className={styles.tooltip}>Your Shift End Time</span>
             </span>
 
             <span
               className={`${styles.dynamicExpectedLabel} ${styles.aboveBar}`}
               style={{
                 left: `${
-                  ((workingEnd - workingStart) / visibleDuration) * 100
+                  ((workingEnd - shiftStart) / visibleDuration2) * 100
                 }%`,
               }}
             >
               {expectedTimeOut}
+              <span className={styles.tooltip}>Your Expected Time Out</span>
             </span>
+
             <span
-              className={`${styles.dynamicLabel} `}
+              className={`${styles.dynamicTimeOutLabel} `}
               style={{
-                left: `${((end - workingStart) / visibleDuration) * 100}%`,
+                left: `${((endTimeOut - shiftStart) / visibleEndTime) * 100}%`,
               }}
             >
               {timeOut}
+              <span className={styles.tooltip}>Your Time Out</span>
             </span>
           </div>
         </div>
       </div>
-      <div>
+      <div className={styles.timeOutImage}>
         <img
           src={
             // emp.timeOutImage ||
@@ -301,13 +361,13 @@ const AttendanceSection = ({
       </div>
       <div className={styles.detailsSection}>
         <div className={styles.clockText}>
-          <div>Time-out:  {timeOut}</div>
+          <div>Time-out: {timeOut}</div>
         </div>
         <div className={styles.clockText}>
-          <div>Total: {total}</div> 
+          <div>Total: {total}</div>
         </div>
         <div className={styles.clockText}>
-          <div>Overtime: {overtime}</div> 
+          <div>Overtime: {overtime}</div>
         </div>
       </div>
     </div>
