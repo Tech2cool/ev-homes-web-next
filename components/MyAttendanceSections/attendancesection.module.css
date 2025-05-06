@@ -1,3 +1,298 @@
-.headline{
-    color: white;
+.container {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 16px;
+  background-color: rgba(255, 255, 255, 0.03);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.2);
+  border-left: 1px solid rgba(255, 255, 255, 0.2);
+  border-right: 1px solid rgba(255, 255, 255, 0.2);
+  padding: 5px;
+  padding-top: 3vh;
+  border-radius: 20px;
+  justify-content: space-between;
+}
+
+.attList {
+  height: 50vh;
+  overflow-y: auto;
+  scrollbar-width: none;
+}
+
+.card {
+  color: white;
+  border-right: 1px solid rgba(255, 255, 255, 0.2);
+  padding: 16px;
+  width: 8vw;
+  flex: 1;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.title {
+  font-size: 2vh;
+  opacity: 0.8;
+}
+
+.value {
+  font-size: 3vh;
+  font-weight: 500;
+}
+
+/* header section  */
+.headerContainer {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 2vh 1vh;
+  border-radius: 8px;
+  flex-wrap: wrap;
+}
+
+.tabs {
+  display: flex;
+  gap: 12px;
+}
+
+.tab {
+  background-color: transparent;
+  border: none;
+  padding: 8px 16px;
+  border-radius: 20px;
+  font-size: 14px;
+  color: #aaa;
+  cursor: pointer;
+  transition: 0.3s;
+}
+
+.active {
+  background-color: #1c1c1c;
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  color: rgb(19, 226, 19);
+}
+
+.dateRange {
+  display: flex;
+  align-items: center;
+  font-weight: bold;
+  gap: 10px;
+  font-size: 14px;
+  color: white;
+}
+
+.navArrow {
+  background-color: #fff;
+  border: 1px solid #ccc;
+  padding: 4px 10px;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+/* timeline */
+
+.cardTimeImage {
+  margin-bottom: 1vh;
+  width: 3.5vw;
+  height: 3.3vw;
+  object-fit: cover;
+  border-radius: 8px;
+}
+
+.timeOutImage {
+  margin-left: 4vw;
+  margin-right: 2vw;
+}
+
+.timeInImage {
+  margin-left: 1vw;
+}
+
+.timelineRow {
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+  background-color: rgba(255, 255, 255, 0.06);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  border-radius: 8px;
+  padding: 2vh;
+  margin: 1vh 1vw;
+}
+
+.dateSection,
+.detailsSection {
+  width: 10%;
+  display: flex;
+  flex-direction: column;
+  gap: 0.5vh;
+  font-size: 2vh;
+}
+
+.date {
+  color: #878787;
+}
+
+.barWrapper {
+  width: 60%;
+  display: flex;
+  justify-content: center;
+}
+.barSection {
+  width: 90%;
+  padding: 1vh;
+}
+
+.bar {
+  display: flex;
+  height: 4vh;
+  border-radius: 0px;
+  overflow: hidden;
+}
+
+.clockText {
+  font-size: 2vh;
+  color: white;
+}
+
+.statusClockText {
+  font-size: 2vh;
+  color: green;
+}
+
+.timeLabels {
+  position: relative;
+  margin-top: 1vh;
+  height: 2vh;
+  width: 100%;
+  cursor: pointer;
+}
+
+.fixedLabel {
+  position: absolute;
+  top: 0;
+  font-size: 2vh;
+  color: white;
+  cursor: pointer;
+}
+
+.dynamicTimeOutLabel,
+.dynamicLabel {
+  position: absolute;
+  /* top: -10vh; */
+  font-size: 1.7vh;
+  background-color: transparent;
+  color: #007bff;
+  font-weight: 600;
+  transform: translateX(-50%);
+  white-space: nowrap;
+  cursor: pointer;
+}
+
+.dynamicTimeOutLabel {
+  margin-left: 0.5vw;
+  transform: translateX(-0%);
+  transform: translateY(-150%);
+  cursor: pointer;
+}
+
+.dynamicExpectedLabel {
+  position: absolute;
+  /* top: -10vh; */
+  font-size: 1.7vh;
+  background-color: transparent;
+  color: grey;
+  font-weight: 600;
+  transform: translateX(-50%);
+  white-space: nowrap;
+  cursor: pointer;
+}
+
+.aboveBar {
+  top: -8vh;
+}
+
+.tooltip {
+  display: none;
+  position: absolute;
+  background-color: #333;
+  color: #fff;
+  font-size: 1.5vh;
+  padding: 4px 8px;
+  border-radius: 4px;
+  white-space: nowrap;
+  z-index: 100;
+}
+
+.fixedLabel:hover .tooltip,
+.dynamicLabel:hover .tooltip,
+.dynamicExpectedLabel:hover .tooltip,
+.dynamicTimeOutLabel:hover .tooltip {
+  display: block;
+}
+
+.lateArrival {
+  background-color: red;
+  height: 100%;
+  border-radius: 4px;
+}
+
+.workingTime {
+  background-color: #4cbb17;
+  height: 100%;
+  border-radius: 4px;
+}
+
+.pendingTime {
+  background-color: rgba(246, 232, 232, 0.2);
+  height: 100%;
+  border-radius: 4px;
+}
+
+.expectedWorkingTime {
+  background-color: green;
+  height: 100%;
+  border-radius: 4px;
+}
+
+.overtime {
+  background-color: #4a90e2;
+  height: 100%;
+  border-radius: 4px;
+}
+
+.barLabel {
+  font-size: 1.6vh;
+  color: rgb(255, 254, 254);
+  font-weight: 600;
+  text-align: center;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 100%;
+  cursor: pointer;
+}
+
+.holidayBar,
+.leaveBar,
+.weekOffBar {
+  width: 100%;
+  background-color: orange;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #000;
+  font-weight: bold;
+  border-radius: 4px;
+}
+
+.leaveBar {
+  background-color: purple;
+}
+
+.holidayBar {
+  background-image: url("/images/Building2.jpg");
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center;
 }
