@@ -64,7 +64,23 @@
   color: white;
   display: inline-block;
 }
-
+.assignby{
+  display: flex;
+  width: 27px;
+  height: 27px;
+  border-radius: 50%;
+  background-color: #007bff;
+  justify-content: center;
+  align-items: center;
+  font-size: 14px;
+  color: white;
+  margin-left: auto;
+}
+.lastpart{
+  display: flex;
+  align-items: center;
+ justify-content: space-between;
+}
 @media screen and (max-width: 615px) {
   .clientIcon {
     width: 7vw;
