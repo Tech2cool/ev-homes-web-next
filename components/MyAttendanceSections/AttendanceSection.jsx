@@ -30,6 +30,59 @@ const TimelineSection = () => {
         </div>
       </div>
       <div className={styles.attList}>
+        {/* <AttendanceSection
+          date="Today"
+          shiftHours="8"
+          shiftTimeIn="10:00 AM"
+          shiftTimeOut="6:00 PM"
+          timeIn="09:00 AM"
+          expectedTimeOut="05:00 PM"
+          timeOut=""
+          total=""
+          overtime=""
+        /> */}
+
+        <AttendanceSection
+          date="Today"
+          shiftHours="8"
+          shiftTimeIn="10:00 AM"
+          shiftTimeOut="6:00 PM"
+          timeIn=""
+          expectedTimeOut=""
+          timeOut=""
+          total=""
+          overtime=""
+          weekoff=""
+          holiday=""
+          onLeave=""
+        />
+
+        <AttendanceSection
+          date="Today"
+          shiftHours="8"
+          shiftTimeIn="10:00 AM"
+          shiftTimeOut="6:00 PM"
+          timeIn="10:10 AM"
+          expectedTimeOut="06:10 PM"
+          timeOut="6:15 PM"
+          total=""
+          overtime=""
+          holiday="true"
+        />
+
+        <AttendanceSection
+          date="Today"
+          shiftHours="8"
+          shiftTimeIn="10:00 AM"
+          shiftTimeOut="6:00 PM"
+          timeIn="10:10 AM"
+          expectedTimeOut="06:10 PM"
+          timeOut="6:15 PM"
+          total=""
+          overtime=""
+          weekoff="true"
+        />
+
         <AttendanceSection
           date="Today"
           shiftHours="8"
@@ -137,8 +190,13 @@ const AttendanceSection = ({
   holiday,
 }) => {
   const parseTime = (timeStr) => {
+    if (!timeStr || typeof timeStr !== "string") return null;
+
     const [time, modifier] = timeStr.split(" ");
+    if (!time || !modifier) return null;
+
     let [hours, minutes] = time.split(":").map(Number);
+    if (isNaN(hours) || isNaN(minutes)) return null;
 
     if (modifier === "PM" && hours !== 12) hours += 12;
     if (modifier === "AM" && hours === 12) hours = 0;
@@ -152,32 +210,34 @@ const AttendanceSection = ({
   const shiftStart = parseTime(shiftTimeIn);
   const workingEnd = parseTime(expectedTimeOut);
 
-  // const totalDuration = end - start;
-  const lateDuration = Math.max(0, startTimeIn - shiftStart);
-  const workingDuration = Math.max(
-    0,
-    Math.min(endTimeOut, workingEnd) - Math.max(startTimeIn, shiftStart)
-  );
-  const overtimeDuration = Math.max(0, endTimeOut - workingEnd);
-
-  const expectedWorkingDuration = Math.max(0, workingEnd - shiftEnd);
-
   const visibleEndTime = endTimeOut - shiftStart;
   const visibleWhenPending = workingEnd - shiftStart;
+
+  const actualEnd = endTimeOut ?? workingEnd ?? shiftEnd;
+  const visibleEnd2 = Math.max(shiftEnd || 0, workingEnd || 0, actualEnd || 0);
+  const visibleDuration2 = visibleEnd2 - (shiftStart || 0);
+
   const visibleEnd = Math.max(shiftEnd, workingEnd);
-  const actualEnd = parseTime(timeOut);
-  const visibleEnd2 = Math.max(shiftEnd, workingEnd, actualEnd);
-
   const visibleDuration = visibleEnd - shiftStart;
-  const visibleDuration2 = visibleEnd2 - shiftStart;
-  const isPending = !timeOut || timeOut.trim() === "";
-  // const visibleEnd = workingEnd - shiftEnd;
 
+  const isPending = !timeOut || timeOut.trim() === "";
+
+
+  // late coming 
+  const lateDuration = Math.max(0, startTimeIn - shiftStart);
   const latePercent = (lateDuration / visibleDuration) * 100;
+
+  // working time 
+  const workingDuration = Math.max( 0, Math.min(endTimeOut, workingEnd) - Math.max(startTimeIn, shiftStart));
   const workingPercent = (workingDuration / visibleDuration) * 100;
-  const expectedWorkingPercent =
-    (expectedWorkingDuration / visibleDuration) * 100;
+
+  // overtime working 
+  const overtimeDuration = Math.max(0, endTimeOut - workingEnd);
   const overtimePercent = (overtimeDuration / visibleDuration) * 100;
+
+  // expected working time 
+  const expectedWorkingDuration = Math.max(0, workingEnd - shiftEnd);
+  const expectedWorkingPercent = (expectedWorkingDuration / visibleDuration) * 100;
 
   return (
     <div className={styles.timelineRow}>
@@ -203,7 +263,15 @@ const AttendanceSection = ({
       <div className={styles.barWrapper}>
         <div className={styles.barSection}>
           <div className={styles.bar}>
-            {weekoff === "true" ? (
+            {!timeIn &&
+            !timeOut &&
+            weekoff !== "true" &&
+            onLeave !== "true" &&
+            holiday !== "true" ? (
+              <div className={styles.absentBar}>
+                <span className={styles.barLabel}>Absent</span>
+              </div>
+            ) : weekoff === "true" && !timeIn && !timeOut ? (
               <div className={styles.weekOffBar}>
                 <span className={styles.barLabel}>Requested Week off</span>
               </div>
@@ -211,7 +279,7 @@ const AttendanceSection = ({
               <div className={styles.leaveBar}>
                 <span className={styles.barLabel}>On Leave</span>
               </div>
-            ) : holiday === "true" ? (
+            ) : holiday === "true" && !timeIn && !timeOut ? (
               <div className={styles.holidayBar}>
                 <span className={styles.barLabel}>Holiday</span>
               </div>
@@ -219,7 +287,7 @@ const AttendanceSection = ({
               <>
                 {lateDuration > 0 && (
                   <div
-                    className={styles.lateArrival}
+                    className={styles.lateArrivalBar}
                     style={{ width: `${latePercent}%` }}
                   >
                     {latePercent > 3 && (
@@ -230,7 +298,7 @@ const AttendanceSection = ({
 
                 {timeIn && !timeOut && (
                   <div
-                    className={styles.pendingTime}
+                    className={styles.pendingTimeBar}
                     style={{
                       left: `${
                         ((startTimeIn - shiftStart) / visibleWhenPending) * 100
@@ -246,18 +314,30 @@ const AttendanceSection = ({
 
                 {workingDuration > 0 && (
                   <div
-                    className={styles.workingTime}
+                    className={
+                      weekoff === "true" && timeIn && timeOut
+                        ? styles.workingOnWeekoffBar
+                        : holiday === "true" && timeIn && timeOut
+                        ? styles.workingOnHolidayBar
+                        : styles.workingTimeBar
+                    }
                     style={{ width: `${workingPercent}%` }}
                   >
                     {workingPercent > 5 && (
-                      <span className={styles.barLabel}>Working Time</span>
+                      <span className={styles.barLabel}>
+                        {weekoff === "true" && timeIn && timeOut
+                          ? "Working on Weekoff"
+                          : holiday === "true" && timeIn && timeOut
+                          ? "Working on Holiday"
+                          : "Working Time"}
+                      </span>
                     )}
                   </div>
                 )}
 
                 {expectedWorkingDuration > 0 && (
                   <div
-                    className={styles.expectedWorkingTime}
+                    className={styles.expectedWorkingTimeBar}
                     style={{ width: `${expectedWorkingPercent}%` }}
                   >
                     {expectedWorkingPercent > 5 && (
@@ -268,7 +348,7 @@ const AttendanceSection = ({
 
                 {overtimeDuration > 0 && (
                   <div
-                    className={styles.overtime}
+                    className={styles.overtimeBar}
                     style={{ width: `${overtimePercent}%` }}
                   >
                     {overtimePercent > 5 && (
@@ -282,7 +362,7 @@ const AttendanceSection = ({
 
           <div className={styles.timeLabels}>
             <span
-              className={`${styles.fixedLabel} ${styles.fixedStart}`}
+              className={`${styles.fixedLabel}`}
               style={{ left: "0%" }}
             >
               {shiftTimeIn}
@@ -304,9 +384,12 @@ const AttendanceSection = ({
             )}
 
             <span
-              className={`${styles.fixedLabel} ${styles.fixedEnd}`}
+              className={`${styles.fixedLabel}`}
               style={
-                weekoff === "true" || onLeave === "true" || holiday === "true"
+                weekoff === "true" ||
+                onLeave === "true" ||
+                holiday === "true" ||
+                (!timeIn && !timeOut)
                   ? {
                       left: "100%",
                       transform: "translateX(-100%)",
