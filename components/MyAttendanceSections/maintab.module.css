@@ -9,6 +9,23 @@
   flex-direction: column;
 }
 
+.secondContainer{
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.insightButton{
+  padding: 1vh 2vh;
+  margin-right: 2vw;
+  background-color: black;
+  color: white;
+  font-size: 2.5vh;
+  border-radius: 8px;
+  border: 2px solid rgba(255, 255, 255, 0.2); 
+  cursor: pointer;  
+}
+
 /* profilesection */
 .profileSection {
   width: fit-content;
