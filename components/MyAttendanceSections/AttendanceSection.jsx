@@ -1,5 +1,9 @@
-import React from "react";
+import React, { useState } from "react";
 import styles from "./attendancesection.module.css";
+import { FiSearch } from "react-icons/fi";
+import { IoCalendar } from "react-icons/io5";
+import DatePicker from "react-datepicker";
+import "react-datepicker/dist/react-datepicker.css";
 
 const data = [
   { title: "Present", value: 12 },
@@ -11,6 +15,7 @@ const data = [
 ];
 
 const TimelineSection = () => {
+  const [selectedMonth, setSelectedMonth] = useState(new Date());
   return (
     <div>
       <div className={styles.container}>
@@ -23,25 +28,36 @@ const TimelineSection = () => {
       </div>
 
       <div className={styles.headerContainer}>
-        <div className={styles.tabs}>
+        <div className={styles.monthPicker}>
           <button className={`${styles.tab} ${styles.active}`}>
             Your Attendance
+          </button>
+          <div className={styles.monthPickerWrapper}>
+            <IoCalendar className={styles.calendarIcon} />
+            <DatePicker
+              selected={selectedMonth}
+              onChange={(date) => setSelectedMonth(date)}
+              dateFormat="MMMM yyyy"
+              showMonthYearPicker
+              showFullMonthYearPicker
+              className={styles.monthInput}
+            />
+          </div>
+        </div>
+        <div className={styles.searchContainer}>
+          <input
+            type="text"
+            placeholder="Search by Status"
+            className={styles.searchInput}
+            // value={query}
+            // onChange={onChangeSearch}
+          />
+          <button className={styles.searchButton}>
+            <FiSearch size={18} />
           </button>
         </div>
       </div>
       <div className={styles.attList}>
-        {/* <AttendanceSection
-          date="Today"
-          shiftHours="8"
-          shiftTimeIn="10:00 AM"
-          shiftTimeOut="6:00 PM"
-          timeIn="09:00 AM"
-          expectedTimeOut="05:00 PM"
-          timeOut=""
-          total=""
-          overtime=""
-        /> */}
-
         <AttendanceSection
           date="Today"
           shiftHours="8"
@@ -222,22 +238,25 @@ const AttendanceSection = ({
 
   const isPending = !timeOut || timeOut.trim() === "";
 
-
-  // late coming 
+  // late coming
   const lateDuration = Math.max(0, startTimeIn - shiftStart);
   const latePercent = (lateDuration / visibleDuration) * 100;
 
-  // working time 
-  const workingDuration = Math.max( 0, Math.min(endTimeOut, workingEnd) - Math.max(startTimeIn, shiftStart));
+  // working time
+  const workingDuration = Math.max(
+    0,
+    Math.min(endTimeOut, workingEnd) - Math.max(startTimeIn, shiftStart)
+  );
   const workingPercent = (workingDuration / visibleDuration) * 100;
 
-  // overtime working 
+  // overtime working
   const overtimeDuration = Math.max(0, endTimeOut - workingEnd);
   const overtimePercent = (overtimeDuration / visibleDuration) * 100;
 
-  // expected working time 
+  // expected working time
   const expectedWorkingDuration = Math.max(0, workingEnd - shiftEnd);
-  const expectedWorkingPercent = (expectedWorkingDuration / visibleDuration) * 100;
+  const expectedWorkingPercent =
+    (expectedWorkingDuration / visibleDuration) * 100;
 
   return (
     <div className={styles.timelineRow}>
@@ -361,10 +380,7 @@ const AttendanceSection = ({
           </div>
 
           <div className={styles.timeLabels}>
-            <span
-              className={`${styles.fixedLabel}`}
-              style={{ left: "0%" }}
-            >
+            <span className={`${styles.fixedLabel}`} style={{ left: "0%" }}>
               {shiftTimeIn}
               <span className={styles.tooltip}>Your shift start time</span>
             </span>

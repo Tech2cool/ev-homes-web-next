@@ -4,13 +4,13 @@
   display: flex;
   flex-wrap: wrap;
   gap: 16px;
-  background-color: rgba(255, 255, 255, 0.03);
+  background-color: rgba(255, 255, 255, 0.02);
   border-bottom: 1px solid rgba(255, 255, 255, 0.2);
   border-left: 1px solid rgba(255, 255, 255, 0.2);
   border-right: 1px solid rgba(255, 255, 255, 0.2);
   padding: 5px;
   padding-top: 3vh;
-  border-radius: 20px;
+  border-radius: 0px 0px 20px 20px;
   justify-content: space-between;
 }
 
@@ -46,26 +46,94 @@
   flex-wrap: wrap;
 }
 
-.tabs {
-  display: flex;
-  gap: 12px;
-}
-
 .tab {
   background-color: transparent;
   border: none;
   padding: 8px 16px;
   border-radius: 20px;
-  font-size: 14px;
-  color: #aaa;
-  cursor: pointer;
-  transition: 0.3s;
+  font-size: 2vh;
 }
 
 .active {
   background-color: #1c1c1c;
+  border: 2px solid green;
+  color: white;
+}
+
+/* month picker  */
+
+.monthPicker {
+  margin-left: 1rem;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+  gap: 2vw;
+}
+
+.monthPickerWrapper{
+  background-color: black;
+  color: white;
+  padding: 1vh 1vh;
+  border: 1px solid rgba(255, 255, 255, 0.5);   
+  border-radius: 8px;
+  font-size: 2vh;
+  justify-content: center;
+  text-align: center;
+  cursor: pointer;
+}
+
+.monthInput {
+  margin-left: 1vw;
+  background-color: black;
+  color: white;
+  border: none;
+  font-size: 2vh;
+  cursor: pointer;
+}
+
+.calendarIcon{
+  color: white;
+  font-size: 2vh;
+}
+
+/* search by status  */
+
+.searchContainer {
+  display: flex;
+  align-items: center;
+  background-color: rgba(255, 255, 255, 0.06);
   border: 1px solid rgba(255, 255, 255, 0.2);
-  color: rgb(19, 226, 19);
+  border-radius: 8px;
+  width: 25vw;
+  margin-right: 1vw;
+}
+
+.searchInput::placeholder {
+  color: rgb(237, 228, 228);
+  font-size: 2vhs;
+  font-weight: 400;
+  opacity: 1;
+}
+
+.searchInput {
+  border: none;
+  outline: none;
+  padding: 8px;
+  background: transparent;
+  color: white;
+  flex: 1;
+  width: 100%;
+}
+
+.searchButton {
+  background: #007bff;
+  border: none;
+  padding: 0.5vh 1vh;
+  border-radius: 5px;
+  cursor: pointer;
+  color: white;
+  margin-right: 0.5vw;
 }
 
 /* attendance list  */
@@ -166,20 +234,23 @@
 .leaveBar,
 .weekOffBar {
   width: 100%;
-  background-color: orange;
+  background-color: #f39c12;
   height: 100%;
   display: flex;
   align-items: center;
   justify-content: center;
   border-radius: 4px;
+  cursor: pointer;
 }
 
+.lateArrivalBar,
 .absentBar {
-  background-color: #ff1f1f;
+  background-color: #e74c3c;
+  border-right: 1px solid white;
 }
 
 .leaveBar {
-  background-color: purple;
+  background-color: #9b59b6;
 }
 
 .workingOnHolidayBar,
@@ -188,10 +259,7 @@
   background-size: cover;
   background-repeat: no-repeat;
   background-position: center;
-}
-
-.lateArrivalBar {
-  background-color: #ff1f1f;
+  border-right: 1px solid white;
 }
 
 .pendingTimeBar {
@@ -199,19 +267,22 @@
 }
 
 .workingOnWeekoffBar {
-  background: linear-gradient(to right, orange, green);
+  background: linear-gradient(to right, #f39c12, #0bbc55);
+  border-right: 1px solid white;
 }
 
 .workingTimeBar {
-  background-color: #4cbb17;
+  background-color: #0bbc55;
+  border-right: 1px solid white;
 }
 
 .expectedWorkingTimeBar {
-  background-color: green;
+  background-color: rgb(0, 196, 0);
+  border-right: 1px solid white;
 }
 
 .overtimeBar {
-  background-color: #4a90e2;
+  background-color: #3498db;
 }
 
 /* labels  */

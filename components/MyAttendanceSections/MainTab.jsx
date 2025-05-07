@@ -38,32 +38,37 @@ const MainTab = () => {
 
   return (
     <div className={styles.wholeContainer}>
-      <div className={styles.container}>
-        <div className={styles.profileSection}>
-          <img
-            src="/path/to/profile.jpg"
-            alt="Profile"
-            className={styles.profileImage}
-          />
-          <div className={styles.details}>
-            <div className={styles.name}>{name}</div>
-            <div
-              className={`${styles.status} ${
-                isActive ? styles.active : styles.inactive
-              }`}
-            >
-              {isActive ? "Active" : "Inactive"}
+      <div className={styles.secondContainer}>
+        <div className={styles.container}>
+          <div className={styles.profileSection}>
+            <img
+              src="/path/to/profile.jpg"
+              alt="Profile"
+              className={styles.profileImage}
+            />
+            <div className={styles.details}>
+              <div className={styles.name}>{name}</div>
+              <div
+                className={`${styles.status} ${
+                  isActive ? styles.active : styles.inactive
+                }`}
+              >
+                {isActive ? "Active" : "Inactive"}
+              </div>
+            </div>
+          </div>
+          <div>
+            <div className={styles.empid}>
+              <IoPersonCircle size={15} color="#d3af1f" /> Emp Id : {empId}
+            </div>
+            <div className={styles.desgination}>
+              <MdBadge size={15} color="#d3af1f" />
+              {desg}
             </div>
           </div>
         </div>
-        <div>
-          <div className={styles.empid}>
-            <IoPersonCircle size={15} color="#d3af1f"/> Emp Id : {empId}
-          </div>
-          <div className={styles.desgination}>
-            <MdBadge size={15} color="#d3af1f"/>
-            {desg}
-          </div>
+        <div className={styles.insightButton}>
+          Attendance Insight
         </div>
       </div>
       <div className={styles.navbar}>
