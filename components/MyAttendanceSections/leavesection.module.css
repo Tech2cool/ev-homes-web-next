@@ -1,14 +1,14 @@
 .maincontainer {
   display: flex;
   flex-direction: row;
-
+  width: 100%;
 }
 
-.LeaveSection {
+.leaveSection {
   display: flex;
   flex-direction: column;
   flex: 2;
-  width: 100%;
+  width: 75%;
   height: 100%;
 }
 /* ...............................aprove reject card................................... */
@@ -25,7 +25,7 @@
   padding-left: 2rem;
 }
 
-.diveder {
+.divider {
   display: flex;
   border-right: 1px solid rgba(255, 255, 255, 0.2);
   width: 11vw;
@@ -53,13 +53,12 @@
   font-size: 16px;
 }
 
- /* ........................................information.................................. */
+/* ........................................information.................................. */
 .container {
   display: flex;
   flex-direction: column;
   border-radius: 15px;
   padding: 2rem 0.5rem;
-
 }
 
 .info {
@@ -69,7 +68,6 @@
   padding: 0.5rem;
   background-color: hsla(0, 0%, 100%, 0.075);
   border-bottom: 1px solid #3b3939;
-
 }
 
 .iconplan {
@@ -95,11 +93,9 @@
 .context h6 {
   color: #b6b1b1;
   font-size: 10px;
-
 }
 
 .context h4 {
-
   font-size: 14px;
 }
 
@@ -109,89 +105,32 @@
   width: 7vw;
 }
 
-
 /* .................................form section.................................... */
 .applysection {
-  display: flex;
-  flex-direction: column;
-  flex: 1;
-  height: 100%;
+  margin-top: 2vh;
+  border-radius: 20px;
   border-left: 1px solid rgba(255, 255, 255, 0.2);
-}
-.form {
-  max-width: 400px;
-  padding: 7px 20px;
-  border-radius: 10px;
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-  font-family: sans-serif;
-  display: flex;
-  flex-direction: column;
+  width: 25%;
+  height: 70vh;
+  overflow-y: auto;
+  scrollbar-width: none;
 }
 
-.form h2 {
-  text-align: center;
-  margin-bottom: 7px;
-  padding-top: 10px;
-  color: #ccc;
+.formHeadline {
+  margin-top: 3vh;
+  padding-left: 2vw;
+  color: #9b9a9a;
+  font-size: 2.5vh;
+  font-weight: bold;
 }
-
-
 
 /*....................................... reason......................................... */
-.maincontrol{
-  display: flex;
-  flex-direction: row;
-   gap: 0.5rem;
-}
+
 .control {
   position: relative;
-  margin-bottom: 1rem;
 }
 
-
-.control label {
-  color: rgba(252, 245, 245, 0.76);
-  font-size: 12px;
-  position: absolute;
-  top: -10px;
-  left: 10px;
-  background-color: black;
-  padding: 0 5px;
-  z-index: 1;
-}
-.control input{
-  background-color: black;
-  color: white;
-  border: 1px solid rgba(252, 245, 245, 0.4);
-  padding: 10px;
-  width: 84%;
-  font-size: 1rem;
-  border-radius: 4px;
-  resize: vertical;
-  outline: none;
-}
-
-.inputField {
-  background-color: black;
-  color: white;
-  border: 1px solid rgba(252, 245, 245, 0.4);
-  padding: 10px 10px 10px 35px; 
-  width: 100%;
-  font-size: 1rem;
-  border-radius: 4px;
-  outline: none;
- padding-left: 12rem;
-}
-
-.inputIcon {
-  position: absolute;
-  top: 50%;
-  left: 10px;
-  transform: translateY(-50%);
-  color: #007bff;
-  pointer-events: none;
-}
-.dateicon{
+.dateicon {
   position: absolute;
   top: 50%;
   left: 7rem;
@@ -200,27 +139,28 @@
   pointer-events: none;
 }
 
-
 .uploadBox {
   display: flex;
   align-items: center;
-  gap: 8px;
+  gap: 1vw;
   background-color: black;
   border: 1px solid rgba(252, 245, 245, 0.4);
-  padding: 19px 40px;
-  border-radius: 4px;
+  padding: 1vh 1vh;
+  border-radius: 8px;
   cursor: pointer;
   color: white;
-   position: relative;
-  
+  position: relative;
 }
+
+.inputIcon {
+  font-size: 3vh;
+  color: #007bff;
+  position: relative;
+}
+
 .uploadText {
-  color: rgba(252, 245, 245, 0.9);
-  position: absolute;
-  top: -8px;
-  left: 10px;
-  font-size: 12px;
-  background-color: black;
+  font-size: 2vh;
+  color: rgba(252, 245, 245, 0.8);
 }
 
 .fileName {
@@ -228,41 +168,73 @@
   font-size: 0.9rem;
   color: rgba(252, 245, 245, 0.8);
 }
-.control textarea {
-  background-color: black;
-  color: white;
-  border: 1px solid rgba(252, 245, 245, 0.4);
-  padding: 10px;
-  width: 90%;
-  font-size: 1rem;
-  border-radius: 4px;
-  resize: vertical;
-  outline: none;
-}
 
 /* button css */
-.button{
+/* .button {
   display: flex;
   justify-content: center;
   align-items: center;
   padding-right: 1rem;
-
 }
 .submitButton {
   background-color: #00d4ff;
   color: black;
   border: 1px solid #00d4ff;
-  padding: 10px ;
+  padding: 10px;
   font-size: 1rem;
   border-radius: 8px;
   cursor: pointer;
-  transition: background-color 0.3s,
-   color 0.3s;
-   width: 90%;
-}
+  transition: background-color 0.3s, color 0.3s;
+  width: 90%;
+} */
 
-.submitButton:hover {
-
+/* .submitButton:hover {
   background-color: transparent;
   color: #00d4ff;
+} */
+
+.formControl {
+  display: flex;
+  flex-direction: column;
+  position: relative;
+  margin-top: 5vh;
+  margin-left: 2vw;
+  margin-right: 4vw;
+  width: 21vw;
+  border-radius: 8px;
+}
+
+.formControl textarea {
+  padding: 1vw;
+  background-color: black;
+  color: white;
+  border-radius: 8px;
+}
+
+.formControl label {
+  font-size: 0.9vw;
+  position: absolute;
+  top: -12px;
+  left: 10px;
+  background-color: black;
+  padding: 0 10px;
+  color: #949494;
+  border-radius: 8px;
+}
+
+.formControl select {
+  padding: 10px;
+  background-color: black;
+  font-size: 0.9vw;
+  color: #ccc;
+  border-radius: 8px;
+}
+
+.formControl input {
+  padding: 10px;
+  font-size: 0.9vw;
+  background-color: black;
+  color: white;
+  border: 1px solid rgba(252, 245, 245, 0.4);
+  border-radius: 8px;
 }
