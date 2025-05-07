@@ -42,12 +42,15 @@ const LeadCard = ({ lead, onClick }) => {
           </strong>{" "}
           {dateFormatOnly(lead?.cycle?.validTill)}
         </p>
+        <div className={styles.lastpart}>
         {lead?.clientInterestedStatus ? (
           <p className={styles.clientStatus}>{lead?.clientInterestedStatus}</p>
         ) : (
           <></>
         )}
-      </div>
+        <div className={styles.assignby}>Sv</div>
+        </div>
+        </div>
     </div>
   );
 };

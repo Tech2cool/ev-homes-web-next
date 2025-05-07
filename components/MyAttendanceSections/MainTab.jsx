@@ -3,6 +3,7 @@ import styles from "./maintab.module.css";
 import { MdBadge } from "react-icons/md";
 import { IoPersonCircle } from "react-icons/io5";
 import AttendanceSection from "./AttendanceSection";
+import LeaveSection from "./LeaveSection";
 
 const MainTab = () => {
   const name = "Shruti Misal";
@@ -19,7 +20,7 @@ const MainTab = () => {
       case "Attendance":
         return <AttendanceSection />;
       case "Leave":
-        return <AttendanceSection />;
+        return <LeaveSection />;
       case "Weekoff":
         return <AttendanceSection />;
       case "Regularization":
