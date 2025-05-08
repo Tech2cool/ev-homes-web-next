@@ -1,111 +1,57 @@
 .maincontainer {
   display: flex;
   flex-direction: row;
-  width: 100%;
 }
 
 .leaveSection {
   display: flex;
   flex-direction: column;
   flex: 2;
-  width: 75%;
   height: 100%;
 }
 /* ...............................aprove reject card................................... */
 .leavecontainer {
+  margin: 3vh;
   display: flex;
   flex-direction: row;
-  padding: 2rem 1rem;
+  padding: 2vh 1vh;
   cursor: pointer;
 }
 .leavecard {
   display: flex;
   flex-direction: column;
+  width: 12vw;
   color: #d7cfcf;
-  padding-left: 2rem;
+  padding-left: 2vw;
+  border-right: 1px solid rgba(255, 255, 255, 0.2);
 }
 
-.divider {
-  display: flex;
-  border-right: 1px solid rgba(255, 255, 255, 0.2);
-  width: 11vw;
-}
 .numberleave {
-  font-size: 25px;
+  font-size: 3vh;
 }
 
 .request {
   color: #b3d1f4;
+  font-size: 2.4vh;
 }
 
 .aproved {
   color: rgb(201, 254, 201);
+  font-size: 2.4vh;
 }
 
 .rejected {
   color: rgb(244, 180, 180);
+  font-size: 2.4vh;
 }
 
 .pending {
   color: rgb(238, 203, 138);
-}
-.leavecard p {
-  font-size: 16px;
-}
-
-/* ........................................information.................................. */
-.container {
-  display: flex;
-  flex-direction: column;
-  border-radius: 15px;
-  padding: 2rem 0.5rem;
-}
-
-.info {
-  display: flex;
-  flex-direction: row;
-  gap: 3vw;
-  padding: 0.5rem;
-  background-color: hsla(0, 0%, 100%, 0.075);
-  border-bottom: 1px solid #3b3939;
-}
-
-.iconplan {
-  font-size: 20px;
-}
-
-.vector {
-  display: flex;
-  width: 30px;
-  height: 30px;
-  border-radius: 50%;
-  background-color: #ffff;
-  align-items: center;
-  justify-content: center;
-}
-
-.context p {
-  color: #fff;
-  font-size: 12px;
-  font-weight: 300;
-}
-
-.context h6 {
-  color: #b6b1b1;
-  font-size: 10px;
-}
-
-.context h4 {
-  font-size: 14px;
-}
-
-.context {
-  display: flex;
-  flex-direction: column;
-  width: 7vw;
+  font-size: 2.4vh;
 }
 
 /* .................................form section.................................... */
+
 .applysection {
   margin-top: 2vh;
   border-radius: 20px;
@@ -169,30 +115,6 @@
   color: rgba(252, 245, 245, 0.8);
 }
 
-/* button css */
-/* .button {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  padding-right: 1rem;
-}
-.submitButton {
-  background-color: #00d4ff;
-  color: black;
-  border: 1px solid #00d4ff;
-  padding: 10px;
-  font-size: 1rem;
-  border-radius: 8px;
-  cursor: pointer;
-  transition: background-color 0.3s, color 0.3s;
-  width: 90%;
-} */
-
-/* .submitButton:hover {
-  background-color: transparent;
-  color: #00d4ff;
-} */
-
 .formControl {
   display: flex;
   flex-direction: column;
@@ -237,4 +159,174 @@
   color: white;
   border: 1px solid rgba(252, 245, 245, 0.4);
   border-radius: 8px;
+}
+
+/* table container  */
+
+.tableContainer {
+  overflow-x: auto;
+  background-color: black;
+  padding: 4vh;
+}
+
+.applyIcon {
+  margin-right: 0.5vw;
+  font-size: 3vh;
+}
+
+.topBar {
+  display: flex;
+  justify-content: flex-start;
+  margin-bottom: 3vh;
+}
+
+.applyButton {
+  background-color: #238dfe;
+  border: 2px solid #007bff;
+  color: white;
+  padding: 0.3rem 1.5rem;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.applyButton:hover {
+  background-color: #0056b3;
+}
+
+.leaveTable {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 2vh;
+  color: white;
+}
+
+.leaveTable th,
+.leaveTable td {
+  border: 1px solid #333;
+  padding: 1.5vh;
+  text-align: left;
+  cursor: pointer;
+}
+
+.leaveTable th {
+  background-color: #121212;
+  color: #ffffff;
+  font-weight: 600;
+}
+
+.leaveTable td {
+  background-color: #1a1a1a;
+}
+
+.leaveTable a {
+  color: #4dabf7;
+  text-decoration: none;
+}
+
+.leaveTable a:hover {
+  text-decoration: underline;
+}
+
+.statusApproved {
+  color: #4caf50;
+  font-weight: bold;
+}
+
+.statusPending {
+  color: #ff9800;
+  font-weight: bold;
+}
+
+.statusRejected {
+  color: #f44336;
+  font-weight: bold;
+}
+
+.statsWithProgress {
+  margin-left: 2vh;
+  margin-right: 2vh;
+  display: flex;
+  justify-content: space-around;
+  align-items: flex-start;
+  flex-wrap: wrap;
+  border-bottom: 2px solid rgba(255, 255, 255, 0.3);
+  border-radius: 20px;
+}
+
+/* progress container  */
+.progressContainer {
+  width: 30vw;
+  display: flex;
+  flex-direction: column;
+  gap: 2vh;
+  padding: 1vh 2vw;
+  border-radius: 12px;
+}
+
+.leaveHeadline {
+  font-size: 2.5vh;
+  font-weight: 500;
+  color: #007bff;
+  display: flex;
+  align-items: center;
+  gap: 1vw;
+}
+
+.progressGroup {
+  display: flex;
+  gap: 1vw;
+}
+
+.labelColumn {
+  display: flex;
+  flex-direction: column;
+  font-size: 1.8vh;
+  font-weight: 500;
+  color: #919090;
+  gap: 0.8vh;
+  width: 25%;
+}
+
+.countColumn {
+  display: flex;
+  flex-direction: column;
+  width: 2%;
+  color: #919090;
+  font-size: 1.8vh;
+  font-weight: 500;
+  color: #919090;
+  gap: 0.8vh;
+}
+
+.barColumn {
+  display: flex;
+  flex-direction: column;
+  gap: 2.7vh;
+}
+
+.progressBar {
+  background-color: #e0e0e0;
+  border-radius: 10px;
+  height: 1.1vh;
+  overflow: hidden;
+  width: 15vw;
+}
+
+.progressFillCL {
+  height: 100%;
+  background-color: orange;
+  transition: width 0.5s ease;
+}
+
+.progressFillCO {
+  height: 100%;
+  background-color: blue;
+  transition: width 0.5s ease;
+}
+
+.progressFillPL {
+  height: 100%;
+  background-color: green;
+  transition: width 0.5s ease;
 }
