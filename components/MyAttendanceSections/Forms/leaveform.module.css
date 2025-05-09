@@ -1,0 +1,148 @@
+.formHeadline {
+  /* margin-top: 3vh; */
+  /* padding-left: 2vw; */
+  /* color: #313131; */
+  color: black;
+  font-size: 3vh;
+  font-weight: 500;
+}
+
+.formControl {
+  display: flex;
+  flex-direction: column;
+  position: relative;
+  margin-top: 3vh;
+  border-radius: 8px;
+}
+
+.formControlForDate {
+  width: 14.5vw;
+}
+
+.formControl textarea {
+  padding: 1vw;
+  color: black;
+  border-radius: 8px;
+}
+
+.formControl label {
+  font-size: 2vh;
+  position: absolute;
+  top: -12px;
+  left: 10px;
+  background-color: white;
+  padding: 0 10px;
+  color: black;
+  border-radius: 8px;
+}
+
+.formControl select {
+  padding: 10px;
+  font-size: 0.9vw;
+  color: black;
+  border-radius: 8px;
+}
+
+.formControl input {
+  padding: 10px;
+  font-size: 0.9vw;
+  color: black;
+  border: 1px solid black;
+  border-radius: 8px;
+}
+
+.dateicon {
+  position: absolute;
+  top: 50%;
+  left: 7rem;
+  transform: translateY(-50%);
+  color: #007bff;
+  pointer-events: none;
+}
+
+.dateSection {
+  display: flex;
+  justify-content: space-between;
+}
+
+.uploadBox {
+  display: flex;
+  align-items: center;
+  gap: 1vw;
+  background-color: rgb(0, 0, 0);
+  border: 1px solid rgba(252, 245, 245, 0.4);
+  padding: 1vh 1vh;
+  border-radius: 8px;
+  cursor: pointer;
+  color: white;
+  position: relative;
+}
+
+.inputIcon {
+  font-size: 3vh;
+  color: #007bff;
+  position: relative;
+}
+
+.uploadText {
+  font-size: 2vh;
+  color: rgba(252, 245, 245, 0.8);
+}
+
+.fileName {
+  margin-top: 5px;
+  font-size: 0.9rem;
+}
+
+.buttonRow {
+  display: flex;
+  justify-content: flex-end;
+  gap: 1rem;
+  margin-top: 1.5rem;
+}
+
+.cancelButton {
+  background-color: #e0e0e0;
+  color: #333;
+  border: none;
+  padding: 0.5rem 1.2rem;
+  border-radius: 6px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.cancelButton:hover {
+  background-color: #c6c6c6;
+}
+
+.submitButton {
+  background-color: #007bff;
+  color: #fff;
+  border: none;
+  padding: 0.5rem 1.2rem;
+  border-radius: 6px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.submitButton:hover {
+  background-color: #0069d9;
+}
+
+.radioSection {
+    display: flex;
+    gap: 4vw;
+    margin: 1rem 0;
+    align-items: center;
+  }
+  
+  .radioSection label {
+    display: flex;
+    align-items: center;
+    gap: 0.4rem;
+    font-size: 2vh;
+    font-weight: 600;
+    cursor: pointer;
+    margin-bottom: 2vh;
+  }
+  

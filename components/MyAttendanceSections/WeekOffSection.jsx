@@ -1,57 +1,41 @@
 import React, { useState } from "react";
 import styles from "./leavesection.module.css";
-import { PiAirplaneTakeoffFill } from "react-icons/pi";
+import Image from "next/image";
 import { LuAlarmClock } from "react-icons/lu";
 import { FaBagShopping } from "react-icons/fa6";
 import { MdOutlineFeedback, MdOutlineCallToAction } from "react-icons/md";
+import { MdHolidayVillage } from "react-icons/md";
 import { FaCalendarCheck, FaCalendarDay, FaFileUpload } from "react-icons/fa";
-import { FaPersonWalkingLuggage } from "react-icons/fa6";
-import LeaveForm from "./Forms/LeaveForm";
+import WeekOffForm from "./Forms/WeekoffForm";
 
 const initialLeaveData = [
   {
     apply: "25 April 2025",
-    startdate: "28 April 2025",
-    enddate: "29 April 2025",
-    totalDays: "2",
-    leaveType: "Casual Leave",
+    weekoffdate: "28 April 2025",
     reason: "Personal reason..",
     status: "Pending",
-    attachment: "",
   },
   {
     apply: "12 March 2025",
-    startdate: "15 March 2025",
-    enddate: "20 March 2025",
-    totalDays: "6",
-    leaveType: "Comp Leave",
+    weekoffdate: "15 March 2025",
     reason: "Internal exam...",
     status: "Approved",
-    attachment: "",
   },
   {
     apply: "02 Feb 2025",
-    startdate: "05 Feb 2025",
-    enddate: "10 Feb 2025",
-    totalDays: "6",
-    leaveType: "Paid Leave",
+    weekoffdate: "05 Feb 2025",
     reason: "For personal...",
     status: "Rejected",
-    attachment: "",
   },
   {
     apply: "02 Feb 2025",
-    startdate: "05 Feb 2025",
-    enddate: "10 Feb 2025",
-    totalDays: "6",
-    leaveType: "Paid Leave",
+    weekoffdate: "05 Feb 2025",
     reason: "For personal...",
     status: "Rejected",
-    attachment: "",
   },
 ];
 
-export default function LeaveSection() {
+const WeekOffSection = () => {
   const [leaveData, setLeaveData] = useState(initialLeaveData);
   const [filter, setFilter] = useState("All");
   const [isModalOpen, setIsModalOpen] = useState(false);
@@ -113,44 +97,6 @@ export default function LeaveSection() {
               </div>
             </div>
           </div>
-
-          <div className={styles.progressContainer}>
-            <div className={styles.leaveHeadline}>
-              <LuAlarmClock /> Your Leave
-            </div>
-            <div className={styles.progressGroup}>
-              <div className={styles.labelColumn}>
-                <span>Casual Leave</span>
-                <span>Comp Off</span>
-                <span>Paid Leave</span>
-              </div>
-              <div className={styles.barColumn}>
-                <div className={styles.progressBar}>
-                  <div
-                    className={styles.progressFillCL}
-                    style={{ width: `${casualPercent}%` }}
-                  />
-                </div>
-                <div className={styles.progressBar}>
-                  <div
-                    className={styles.progressFillCO}
-                    style={{ width: `${compPercent}%` }}
-                  />
-                </div>
-                <div className={styles.progressBar}>
-                  <div
-                    className={styles.progressFillPL}
-                    style={{ width: `${paidPercent}%` }}
-                  />
-                </div>
-              </div>
-              <div className={styles.countColumn}>
-                <span>{casualCount.toString().padStart(2, "0")}</span>
-                <span>{compCount.toString().padStart(2, "0")}</span>
-                <span>{paidCount.toString().padStart(2, "0")}</span>
-              </div>
-            </div>
-          </div>
         </div>
 
         <div className={styles.tableContainer}>
@@ -159,8 +105,7 @@ export default function LeaveSection() {
               className={styles.applyButton}
               onClick={() => setIsModalOpen(true)}
             >
-              <FaPersonWalkingLuggage className={styles.applyIcon} /> Apply
-              Leave
+              <MdHolidayVillage className={styles.applyIcon} /> Apply WeekOff
             </div>
           </div>
           <table className={styles.leaveTable}>
@@ -170,20 +115,13 @@ export default function LeaveSection() {
                   <FaBagShopping /> Applied On
                 </th>
                 <th>
-                  <FaCalendarDay /> Start Date & End Date
+                  <FaCalendarDay /> WeekOff Date
                 </th>
-                <th>
-                  <FaCalendarCheck /> Total days
-                </th>
-                <th>
-                  <PiAirplaneTakeoffFill /> Leave Type
-                </th>
+
                 <th>
                   <MdOutlineFeedback /> Reason
                 </th>
-                <th>
-                  <FaFileUpload /> Attachment
-                </th>
+
                 <th>
                   <MdOutlineCallToAction /> Action
                 </th>
@@ -193,25 +131,8 @@ export default function LeaveSection() {
               {filteredData.map((leave, index) => (
                 <tr key={index}>
                   <td>{leave.apply}</td>
-                  <td>
-                    {leave.startdate} to {leave.enddate}
-                  </td>
-                  <td>{leave.totalDays}</td>
-                  <td>{leave.leaveType}</td>
+                  <td>{leave.weekoffdate}</td>
                   <td>{leave.reason}</td>
-                  <td>
-                    {leave.attachment ? (
-                      <a
-                        href={leave.attachment}
-                        target="_blank"
-                        rel="noreferrer"
-                      >
-                        View
-                      </a>
-                    ) : (
-                      "-"
-                    )}
-                  </td>
                   <td>
                     <span
                       className={
@@ -239,11 +160,13 @@ export default function LeaveSection() {
               >
                 x
               </button>
-              <LeaveForm />
+              <WeekOffForm />
             </div>
           </div>
         )}
       </div>
     </div>
   );
-}
+};
+
+export default WeekOffSection;
