@@ -4,7 +4,11 @@ import { MdBadge } from "react-icons/md";
 import { IoPersonCircle } from "react-icons/io5";
 import AttendanceSection from "./AttendanceSection";
 import LeaveSection from "./LeaveSection";
+
+import Personalsection from "./Personalsection";
+
 import WeekOffSection from "./WeekOffSection";
+
 
 const MainTab = () => {
   const name = "Shruti Misal";
@@ -17,7 +21,7 @@ const MainTab = () => {
   const renderSection = () => {
     switch (selectedTab) {
       case "Personal":
-        return <AttendanceSection />;
+        return <Personalsection />;
       case "Attendance":
         return <AttendanceSection />;
       case "Leave":

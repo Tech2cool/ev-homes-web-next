@@ -1,0 +1,256 @@
+.maincontainer {
+  display: flex;
+  flex-direction: column;
+  color: #efeaea;
+  padding: 1rem 2rem;
+}
+
+.headsection {
+  display: flex;
+  flex-direction: row;
+  gap: 2vw;
+
+}
+
+/* *****************************profile section*************************** */
+.profilesection {
+  display: flex;
+  flex-direction: column;
+  background-color: #1e1e1e0f;
+  width: 18.5vw;
+  padding-top: 0.5rem;
+  border-radius: 0.2rem;
+}
+
+.imagesection {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 1vh;
+
+}
+
+.profileImage {
+  width: 25vh;
+  height: 25vh;
+  object-fit: cover;
+  border-radius: 50%;
+
+}
+
+.profilesection h6 {
+  font-size: 2.5vh;
+  font-weight: 400;
+}
+
+.employeebutton {
+  display: flex;
+  width: 6vw;
+  height: 4vh;
+  background-color: #504f4f52;
+  font-size: 1.5vh;
+  font-weight: 300;
+  align-items: center;
+  justify-content: center;
+  border-radius: 0.3rem;
+  
+}
+
+/* ******************************Contact Section************************* */
+.contact {
+  padding: 1.5rem;
+}
+
+.contact p {
+  font-size: 2.5vh;
+  font-weight: 500;
+  color: rgb(58, 58, 204);
+
+}
+
+.container {
+  height: 6vh;
+  width: 100%;
+  background-color: #34333336;
+  padding: 0.4rem 0rem 0.4rem 0.6rem;
+  margin-top: 0.5rem;
+  border-radius: 0.3rem;
+}
+
+.container h5 {
+  color: grey;
+  font-size: 1.7vh;
+}
+
+.container p {
+  color: #c5c1c1;
+  font-size: 2vh;
+}
+
+.joincontainer {
+  display: flex;
+  flex-direction: column;
+  gap: 2vh;
+}
+
+/* ****************************PERSONAL INFOMATION************************* */
+.personalInfo {
+  width: 45vw;
+  height: 11vw;
+  background-color: #1e1e1e0f;
+  border-radius: 0.2rem;
+  padding: 1rem 2rem;
+  color: rgb(58, 58, 204);
+  font-size: 2.5vh;
+  font-weight: 500;
+}
+
+.containerrow {
+  display: flex;
+  flex-direction: row;
+  gap: 1.5vw;
+}
+
+/* * ****************************Information professional*****************************  */
+.proInfo {
+  display: flex;
+  flex-direction: column;
+  gap: 2vh;
+  width: 20vw;
+  height: 100%;
+  background-color: #1e1e1e0f;
+  border-radius: 0.2rem;
+  padding: 1rem 2rem;
+  color: rgb(58, 58, 204);
+  font-size: 2.5vh;
+  font-weight: 500;
+}
+
+/* *******************************LEAVE AND REPORTING******************** */
+.leaverepoting {
+  flex-direction: row;
+  display: flex;
+  width: 45vw;
+  height: 29vh;
+  background-color: #1e1e1e0f;
+  border-radius: 0.2rem;
+  padding: 1rem 2rem;
+  align-items: center;
+}
+
+.progressContainer {
+  width: 30vw;
+  display: flex;
+  flex-direction: column;
+  gap: 2vh;
+  padding: 1vh 2vw;
+  border-radius: 12px;
+}
+
+.leaveHeadline {
+  font-size: 2.5vh;
+  font-weight: 500;
+  color: rgb(58, 58, 204);
+
+  display: flex;
+  align-items: center;
+  gap: 1vw;
+}
+
+.progressGroup {
+  display: flex;
+  gap: 1vw;
+}
+
+.labelColumn {
+  display: flex;
+  flex-direction: column;
+  font-size: 1.8vh;
+  font-weight: 500;
+  color: #919090;
+  gap: 0.8vh;
+  width: 25%;
+}
+
+.countColumn {
+  display: flex;
+  flex-direction: column;
+  width: 2%;
+  color: #919090;
+  font-size: 1.8vh;
+  font-weight: 500;
+  color: #919090;
+  gap: 0.8vh;
+}
+
+.barColumn {
+  display: flex;
+  flex-direction: column;
+  gap: 2.7vh;
+}
+
+.progressBar {
+  background-color: #e0e0e0;
+  border-radius: 10px;
+  height: 1.1vh;
+  overflow: hidden;
+  width: 15vw;
+}
+
+.progressFillCL {
+  height: 100%;
+  background-color: #2E073F;
+  transition: width 0.5s ease;
+}
+
+.progressFillCO {
+  height: 100%;
+  background-color: #750E21;
+  transition: width 0.5s ease;
+}
+
+.progressFillPL {
+  height: 100%;
+  background-color: #FF4C29;
+  transition: width 0.5s ease;
+}
+
+/* **********************REPORTING TO ********************** */
+.reportingContair {
+  display: flex;
+  flex-direction:column;
+  gap:0.3vh;
+}
+.reportingContair p{
+  font-size: 2.5vh;
+  font-weight: 500;
+  color: rgb(58, 58, 204);
+}
+.imagecontainer{
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding: 0.5rem 1rem;
+  background-color: #1e1e1e98;
+  border-radius: 0.5rem;
+  width: 14vw; 
+  height: 24vh;
+}
+.repotingImage{
+  width: 15vh;
+  height: 15vh;
+  object-fit: cover;
+  border-radius: 50%;
+}
+.imagecontainer h6{
+  font-size: 0.8vw;
+  font-weight: 500;
+  padding-top: 0.5rem;
+}
+.imagecontainer p{
+  font-size: 0.9vw;
+  font-weight: 300;
+  color: #bfbebe;
+}
