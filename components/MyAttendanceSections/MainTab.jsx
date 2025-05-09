@@ -5,6 +5,7 @@ import { IoPersonCircle } from "react-icons/io5";
 import AttendanceSection from "./AttendanceSection";
 import LeaveSection from "./LeaveSection";
 import WeekOffSection from "./WeekOffSection";
+import ShiftPlannerSection from "./ShiftPlannerSection";
 
 const MainTab = () => {
   const name = "Shruti Misal";
@@ -28,6 +29,8 @@ const MainTab = () => {
         return <AttendanceSection />;
       case "Gracetime":
         return <AttendanceSection />;
+      case "Shiftplanner":
+          return <ShiftPlannerSection />;
       case "Reimbursement":
         return <AttendanceSection />;
       case "Assets":
@@ -109,6 +112,12 @@ const MainTab = () => {
             className={selectedTab === "Gracetime" ? styles.activeTab : ""}
           >
             Grace Time
+          </span>
+          <span
+            onClick={() => setSelectedTab("Shiftplanner")}
+            className={selectedTab === "Shiftplanner" ? styles.activeTab : ""}
+          >
+            Request Shift Planner
           </span>
           <span
             onClick={() => setSelectedTab("Reimbursement")}
