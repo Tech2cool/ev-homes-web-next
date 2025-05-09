@@ -1,0 +1,89 @@
+.filterSection {
+  margin-left: 2vw;
+  display: flex;
+  /* color: blue; */
+  color: grey;
+  gap: 1vw;
+  cursor: pointer;
+  font-size: 1.7vh;
+}
+
+.status,
+.paidBy,
+.reimType,
+.dateRange {
+  display: flex;
+  flex-direction: column;
+  gap: 1vh;
+  width: 5vw;
+  padding: 0.5vh;
+  text-align: center;
+  align-items: center;
+  justify-content: center;
+  border-radius: 8px;
+   border: 1px solid rgba(255, 255, 255, 0.2);
+  background-color: transparent;
+}
+
+.status:hover,
+.paidBy:hover,
+.reimType:hover,
+.dateRange:hover {
+  background-color: #0056b3;
+  color: white;
+}
+
+.headlineSection {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.exportBtn {
+  color: black;
+  font-size: 2vh;
+  font-weight: 500;
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  padding: 0.5vh 2vw;
+  border-radius: 20px;
+  background-color: rgb(253, 181, 48);
+  cursor: pointer;
+}
+
+.reimHeadline {
+  font-size: 2.5vh;
+  font-weight: 500;
+  color: skyblue;
+  display: flex;
+  align-items: center;
+  gap: 1vw;
+}
+
+
+.wrapper {
+  position: relative;
+  display: inline-block;
+}
+
+.dropdown {
+  position: absolute;
+  top: 100%;
+  left: 0;
+  margin-top: 0.5vh;
+  background: white;
+  border-radius: 6px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15);
+  z-index: 10;
+  overflow: hidden;
+  min-width: 150px;
+}
+
+.dropdownItem {
+  padding: 8px 12px;
+  cursor: pointer;
+  color: #333;
+}
+
+.dropdownItem:hover {
+  background-color: #f0f0f0;
+}

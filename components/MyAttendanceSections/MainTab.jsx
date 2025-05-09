@@ -9,7 +9,7 @@ import Personalsection from "./Personalsection";
 
 import WeekOffSection from "./WeekOffSection";
 import ShiftPlannerSection from "./ShiftPlannerSection";
-
+import ReimbursementSection from "./ReimbursementSection";
 
 const MainTab = () => {
   const name = "Shruti Misal";
@@ -34,9 +34,9 @@ const MainTab = () => {
       case "Gracetime":
         return <AttendanceSection />;
       case "Shiftplanner":
-          return <ShiftPlannerSection />;
+        return <ShiftPlannerSection />;
       case "Reimbursement":
-        return <AttendanceSection />;
+        return <ReimbursementSection />;
       case "Assets":
         return <AttendanceSection />;
       default:
@@ -75,9 +75,7 @@ const MainTab = () => {
             </div>
           </div>
         </div>
-        <div className={styles.insightButton}>
-          Attendance Insight
-        </div>
+        <div className={styles.insightButton}>Attendance Insight</div>
       </div>
       <div className={styles.navbar}>
         <div className={styles.links}>

@@ -7,12 +7,17 @@
   font-weight: 500;
 }
 
+.formControlAttach,
 .formControl {
   display: flex;
   flex-direction: column;
   position: relative;
   margin-top: 3vh;
   border-radius: 8px;
+}
+
+.formControlAttach{
+  width: 14vw;
 }
 
 .formControlForDate {
@@ -146,3 +151,8 @@
     margin-bottom: 2vh;
   }
   
+
+  .attachmentContainer{
+    display: flex;
+    justify-content: space-evenly;
+  }
