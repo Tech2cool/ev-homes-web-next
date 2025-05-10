@@ -1,15 +1,17 @@
-import React, { useState } from "react";
+import React, { useState, useRef } from "react";
 import styles from "./leavesection.module.css";
 import { PiAirplaneTakeoffFill } from "react-icons/pi";
 import { FaBagShopping } from "react-icons/fa6";
 import {
   MdOutlineFeedback,
   MdOutlineCallToAction,
-  MdAttachMoney,MdFilterList
+  MdAttachMoney,
+  MdFilterList,
 } from "react-icons/md";
 import { FaCalendarCheck, FaFileUpload } from "react-icons/fa";
 import ReimbursementForm from "./Forms/ReimbursementForm";
 import ReimbursementFilterDialog from "../Dialogs/ReimbursementFilterDialog";
+import { useClickOutside } from "../useClickOutside";
 
 const initialLeaveData = [
   {
@@ -55,6 +57,8 @@ const initialLeaveData = [
 ];
 
 export default function ReimbursementSection() {
+  const modalRef = useRef(null);
+
   const [leaveData, setLeaveData] = useState(initialLeaveData);
   const [filter, setFilter] = useState("All");
   const [isModalOpen, setIsModalOpen] = useState(false);
@@ -66,6 +70,11 @@ export default function ReimbursementSection() {
 
   const [showReimDropdown, setShowReimDropdown] = useState(false);
 
+  useClickOutside({
+    refs: [modalRef],
+    handler: () => setIsModalOpen(false),
+    active: isModalOpen,
+  });
 
   return (
     <div className={styles.maincontainer}>
@@ -207,7 +216,7 @@ export default function ReimbursementSection() {
         </div>
         {isModalOpen && (
           <div className={styles.modalOverlay}>
-            <div className={styles.modalContent}>
+            <div className={styles.modalContent} ref={modalRef}>
               <button
                 className={styles.closeButton}
                 onClick={() => setIsModalOpen(false)}
