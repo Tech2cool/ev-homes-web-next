@@ -28,11 +28,11 @@ const AttendancePage = () => {
           </div>
         </div>
       </div> */}
-      <Attendanceheader/>
+      {/* <Attendanceheader/>
       <Attendancesummarycards/>
-      <Attendancefiltersection/>
+      <Attendancefiltersection/> */}
 
-      {/* <MainTab/> */}
+      <MainTab/>
     </div>
   );
 };

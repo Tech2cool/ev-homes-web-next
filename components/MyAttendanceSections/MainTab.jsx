@@ -8,6 +8,8 @@ import LeaveSection from "./LeaveSection";
 import Personalsection from "./Personalsection";
 
 import WeekOffSection from "./WeekOffSection";
+import Regularization from "./Regularizationsection";
+import Assets from "./Assetssection";
 
 
 const MainTab = () => {
@@ -29,13 +31,13 @@ const MainTab = () => {
       case "Weekoff":
         return <WeekOffSection />;
       case "Regularization":
-        return <AttendanceSection />;
+        return <Regularization />;
       case "Gracetime":
         return <AttendanceSection />;
       case "Reimbursement":
         return <AttendanceSection />;
       case "Assets":
-        return <AttendanceSection />;
+        return <Assets />;
       default:
         return null;
     }

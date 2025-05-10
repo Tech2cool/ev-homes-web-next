@@ -16,6 +16,7 @@ import {
 import { FaShare } from "react-icons/fa";
 import { BiLike, BiDislike, BiSolidDislike, BiSolidLike } from "react-icons/bi";
 import styles from "./watch.module.css";
+import AnimatedCursor from "../Animation/AnimatedCurser";
 
 const sidebarVideos = [
   {
@@ -287,6 +288,7 @@ const Watch = () => {
 
   return (
     <div className={styles.container}>
+      <AnimatedCursor/>
       <div className={styles.mainContent}>
         <div className={styles.videoPlayer}>
           <div

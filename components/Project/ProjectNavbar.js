@@ -17,6 +17,7 @@ import Link from "next/link";
 import { useData } from "@/context/dataContext";
 import Checkbox from "./MenuIcon";
 import { useClickOutside } from "../useClickOutside";
+import AnimatedCursor from "../Animation/AnimatedCurser";
 
 const ProjectNavbar = ({ projectInfo }) => {
   const sidebarRef = useRef(null);
@@ -126,6 +127,7 @@ const ProjectNavbar = ({ projectInfo }) => {
     "https://cdn.evhomes.tech/f5e53c63-905e-4c26-afc0-bd508c452ab7-about-banner.jpg";
   return (
     <div className={styles.scrollableContainer}>
+      <AnimatedCursor/>
       <div
         className={styles.herosection}
         style={{
