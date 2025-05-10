@@ -8,8 +8,14 @@ import LeaveSection from "./LeaveSection";
 import Personalsection from "./Personalsection";
 
 import WeekOffSection from "./WeekOffSection";
+
+import Regularization from "./Regularizationsection";
+import Assets from "./Assetssection";
+
+
 import ShiftPlannerSection from "./ShiftPlannerSection";
 import ReimbursementSection from "./ReimbursementSection";
+
 
 const MainTab = () => {
   const name = "Shruti Misal";
@@ -30,7 +36,7 @@ const MainTab = () => {
       case "Weekoff":
         return <WeekOffSection />;
       case "Regularization":
-        return <AttendanceSection />;
+        return <Regularization />;
       case "Gracetime":
         return <AttendanceSection />;
       case "Shiftplanner":
@@ -38,7 +44,7 @@ const MainTab = () => {
       case "Reimbursement":
         return <ReimbursementSection />;
       case "Assets":
-        return <AttendanceSection />;
+        return <Assets />;
       default:
         return null;
     }
