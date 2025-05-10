@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState,useRef } from "react";
 import styles from "./leavesection.module.css";
 import Image from "next/image";
 import { LuAlarmClock } from "react-icons/lu";
@@ -7,6 +7,7 @@ import { MdOutlineFeedback, MdOutlineCallToAction } from "react-icons/md";
 import { MdHolidayVillage } from "react-icons/md";
 import { FaCalendarCheck, FaCalendarDay, FaFileUpload } from "react-icons/fa";
 import WeekOffForm from "./Forms/WeekoffForm";
+import { useClickOutside } from "../useClickOutside";
 
 const initialLeaveData = [
   {
@@ -36,9 +37,16 @@ const initialLeaveData = [
 ];
 
 const WeekOffSection = () => {
+  const modalRef = useRef(null);
   const [leaveData, setLeaveData] = useState(initialLeaveData);
   const [filter, setFilter] = useState("All");
   const [isModalOpen, setIsModalOpen] = useState(false);
+
+  useClickOutside({
+      refs: [modalRef],
+      handler: () => setIsModalOpen(false),
+      active: isModalOpen,
+    });
 
   const filteredData =
     filter == "All"
@@ -153,7 +161,7 @@ const WeekOffSection = () => {
         </div>
         {isModalOpen && (
           <div className={styles.modalOverlay}>
-            <div className={styles.modalContent}>
+            <div className={styles.modalContent} ref={modalRef}>
               <button
                 className={styles.closeButton}
                 onClick={() => setIsModalOpen(false)}
