@@ -1,7 +1,6 @@
-import React, { useState, useRef } from "react";
+import React, { useRef, useState } from "react";
 import styles from "./leavesection.module.css";
-import { MdOutlineFeedback, MdOutlineCallToAction, MdLockClock } from "react-icons/md";
-import { MdHolidayVillage } from "react-icons/md";
+import { MdOutlineFeedback, MdOutlineCallToAction } from "react-icons/md";
 import {
   FaCalendarCheck,
   FaCalendarDay,
@@ -60,7 +59,6 @@ const Regularization = () => {
     filter == "All"
       ? Regularize
       : Regularize.filter((leave) => leave.status === filter);
-
   useClickOutside({
     refs: [modalRef],
     handler: () => setIsModalOpen(false),
@@ -94,17 +92,6 @@ const Regularization = () => {
                 {Regularize.filter((l) => l.status === "Rejected").length}
               </div>
             </div>
-
-          </div>
-  
-          <div className={styles.tableContainer}>
-            <div className={styles.topBar}>
-              <div
-                className={styles.applyButton}
-                onClick={() => setIsModalOpen(true)}
-              >
-                <FaClock className={styles.applyIcon} /> Apply Regularization
-
             <div
               className={styles.leavecard}
               onClick={() => setFilter("Pending")}
@@ -112,23 +99,9 @@ const Regularization = () => {
               <div className={styles.pending}>Pending</div>
               <div className={styles.numberleave}>
                 {Regularize.filter((l) => l.status === "Pending").length}
-
               </div>
             </div>
           </div>
-
-          {isModalOpen && (
-            <div className={styles.modalOverlay}>
-              <div className={styles.modalContent}>
-                <button
-                  className={styles.closeButton}
-                  onClick={() => setIsModalOpen(false)}
-                >
-                  x
-                </button>
-                <RegularizationFrom oncancel={()=>setIsModalOpen(false)}/>
-              </div>
-
         </div>
 
         <div className={styles.tableContainer}>
@@ -137,9 +110,7 @@ const Regularization = () => {
               className={styles.applyButton}
               onClick={() => setIsModalOpen(true)}
             >
-              <MdHolidayVillage className={styles.applyIcon} /> Apply
-              Regularization
-
+              <FaClock className={styles.applyIcon} /> Apply Regularization
             </div>
           </div>
           <table className={styles.leaveTable}>
@@ -205,7 +176,7 @@ const Regularization = () => {
               >
                 x
               </button>
-              <RegularizationFrom />
+              <RegularizationFrom oncancel={() => setIsModalOpen(false)} />
             </div>
           </div>
         )}
