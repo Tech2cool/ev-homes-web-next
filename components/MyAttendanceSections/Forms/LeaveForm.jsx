@@ -4,7 +4,7 @@ import { FaCalendarDay, FaFileUpload } from "react-icons/fa";
 import { MdOutlineFeedback } from "react-icons/md";
 import { FaPersonWalkingLuggage } from "react-icons/fa6";
 
-const LeaveForm = () => {
+const LeaveForm = ({oncancel}) => {
   const [startdate, setstartdate] = useState("");
   const [enddate, setenddate] = useState("");
   const [numberleave, setnumberleave] = useState("");
@@ -121,7 +121,7 @@ const LeaveForm = () => {
         />
       </div>
       <div className={styles.buttonRow}>
-        <button className={styles.cancelButton} type="button">
+        <button className={styles.cancelButton}  onClick={oncancel} type="button">
           Cancel
         </button>
         <button className={styles.submitButton} type="submit">

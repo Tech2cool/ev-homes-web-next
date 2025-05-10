@@ -1,6 +1,6 @@
 import React, { useState, useRef } from "react";
 import styles from "./leavesection.module.css";
-import { MdOutlineFeedback, MdOutlineCallToAction } from "react-icons/md";
+import { MdOutlineFeedback, MdOutlineCallToAction, MdLockClock } from "react-icons/md";
 import { MdHolidayVillage } from "react-icons/md";
 import {
   FaCalendarCheck,
@@ -94,6 +94,17 @@ const Regularization = () => {
                 {Regularize.filter((l) => l.status === "Rejected").length}
               </div>
             </div>
+
+          </div>
+  
+          <div className={styles.tableContainer}>
+            <div className={styles.topBar}>
+              <div
+                className={styles.applyButton}
+                onClick={() => setIsModalOpen(true)}
+              >
+                <FaClock className={styles.applyIcon} /> Apply Regularization
+
             <div
               className={styles.leavecard}
               onClick={() => setFilter("Pending")}
@@ -101,9 +112,23 @@ const Regularization = () => {
               <div className={styles.pending}>Pending</div>
               <div className={styles.numberleave}>
                 {Regularize.filter((l) => l.status === "Pending").length}
+
               </div>
             </div>
           </div>
+
+          {isModalOpen && (
+            <div className={styles.modalOverlay}>
+              <div className={styles.modalContent}>
+                <button
+                  className={styles.closeButton}
+                  onClick={() => setIsModalOpen(false)}
+                >
+                  x
+                </button>
+                <RegularizationFrom oncancel={()=>setIsModalOpen(false)}/>
+              </div>
+
         </div>
 
         <div className={styles.tableContainer}>
@@ -114,6 +139,7 @@ const Regularization = () => {
             >
               <MdHolidayVillage className={styles.applyIcon} /> Apply
               Regularization
+
             </div>
           </div>
           <table className={styles.leaveTable}>
