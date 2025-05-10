@@ -8,8 +8,13 @@ import LeaveSection from "./LeaveSection";
 import Personalsection from "./Personalsection";
 
 import WeekOffSection from "./WeekOffSection";
+
 import Regularization from "./Regularizationsection";
 import Assets from "./Assetssection";
+
+
+import ShiftPlannerSection from "./ShiftPlannerSection";
+import ReimbursementSection from "./ReimbursementSection";
 
 
 const MainTab = () => {
@@ -34,8 +39,10 @@ const MainTab = () => {
         return <Regularization />;
       case "Gracetime":
         return <AttendanceSection />;
+      case "Shiftplanner":
+        return <ShiftPlannerSection />;
       case "Reimbursement":
-        return <AttendanceSection />;
+        return <ReimbursementSection />;
       case "Assets":
         return <Assets />;
       default:
@@ -74,9 +81,7 @@ const MainTab = () => {
             </div>
           </div>
         </div>
-        <div className={styles.insightButton}>
-          Attendance Insight
-        </div>
+        <div className={styles.insightButton}>Attendance Insight</div>
       </div>
       <div className={styles.navbar}>
         <div className={styles.links}>
@@ -115,6 +120,12 @@ const MainTab = () => {
             className={selectedTab === "Gracetime" ? styles.activeTab : ""}
           >
             Grace Time
+          </span>
+          <span
+            onClick={() => setSelectedTab("Shiftplanner")}
+            className={selectedTab === "Shiftplanner" ? styles.activeTab : ""}
+          >
+            Request Shift Planner
           </span>
           <span
             onClick={() => setSelectedTab("Reimbursement")}

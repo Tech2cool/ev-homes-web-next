@@ -37,10 +37,10 @@ const Attendancefiltersection = () => {
     "dd-MM-yyyy"
   )} - ${format(dateRange[0].endDate, "dd-MM-yyyy")}`;
 
-  const formattedAdvancedDateRange = `${format(
-    dateRange[0].startDate,
-    "dd-MM-yyyy"
-  )} - ${format(dateRange[0].endDate, "dd-MM-yyyy")}`;
+  // const formattedAdvancedDateRange = `${format(
+  //   dateRange[0].startDate,
+  //   "dd-MM-yyyy"
+  // )} - ${format(dateRange[0].endDate, "dd-MM-yyyy")}`;
 
   return (
     <div className={styles.attSection}>

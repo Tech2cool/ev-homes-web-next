@@ -254,3 +254,25 @@
   font-size: 1.5rem;
   cursor: pointer;
 }
+
+/* reimbursement page filter css  */
+
+.filterReimbursement {
+  align-items: center;
+  font-size: 2.2vh;
+  gap: 1vw;
+  color: white;
+  display: flex;
+  margin-left: 10vw;
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  border-radius: 30px;
+  padding: 0vh 2vh;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.filterReimbursement:hover {
+  background-color: rgba(255, 255, 255, 0.1);
+  border-color: rgba(255, 255, 255, 0.4);
+  transform: scale(1.03);
+}

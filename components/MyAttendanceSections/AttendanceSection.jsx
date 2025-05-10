@@ -72,7 +72,7 @@ const TimelineSection = () => {
           holiday=""
           onLeave=""
         />
-
+        
         <AttendanceSection
           date="Today"
           shiftHours="8"
