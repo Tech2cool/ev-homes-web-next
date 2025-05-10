@@ -8,15 +8,19 @@ import LeaveSection from "./LeaveSection";
 import Personalsection from "./Personalsection";
 
 import WeekOffSection from "./WeekOffSection";
-
 import Regularization from "./Regularizationsection";
 import Assets from "./Assetssection";
+
 
 import ShiftPlannerSection from "./ShiftPlannerSection";
 import ReimbursementSection from "./ReimbursementSection";
 import ApprovalSection from "../ApprovalSection/ApprovalSection";
 
+import { useRouter } from "next/navigation";
+
+
 const MainTab = () => {
+  const router=useRouter();
   const name = "Shruti Misal";
   const isActive = true;
   const empId = "EV";
@@ -38,10 +42,8 @@ const MainTab = () => {
         return <Regularization />;
       case "Gracetime":
         return <AttendanceSection />;
-      case "Shiftplanner":
-        return <ShiftPlannerSection />;
       case "Reimbursement":
-        return <ReimbursementSection />;
+        return <AttendanceSection />;
       case "Assets":
         return <Assets />;
       case "Approval":
@@ -64,9 +66,8 @@ const MainTab = () => {
             <div className={styles.details}>
               <div className={styles.name}>{name}</div>
               <div
-                className={`${styles.status} ${
-                  isActive ? styles.active : styles.inactive
-                }`}
+                className={`${styles.status} ${isActive ? styles.active : styles.inactive
+                  }`}
               >
                 {isActive ? "Active" : "Inactive"}
               </div>
@@ -82,7 +83,26 @@ const MainTab = () => {
             </div>
           </div>
         </div>
-        <div className={styles.insightButton}>Attendance Insight</div>
+        {/* <div className={styles.insightButton}>
+          Attendance Insight
+        </div> */}
+        <button className={styles.btn} onClick={()=>router.push("./attendance/attendanceinsight")}>
+          Attendance Insight
+          <svg>
+            <defs>
+              <filter id="glow">
+                <fegaussianblur result="coloredBlur"></fegaussianblur>
+                <femerge>
+                  <femergenode in="coloredBlur"></femergenode>
+                  <femergenode in="coloredBlur"></femergenode>
+                  <femergenode in="coloredBlur"></femergenode>
+                  <femergenode in="SourceGraphic"></femergenode>
+                </femerge>
+              </filter>
+            </defs>
+            <rect />
+          </svg>
+        </button>
       </div>
       <div className={styles.navbar}>
         <div className={styles.links}>
@@ -121,12 +141,6 @@ const MainTab = () => {
             className={selectedTab === "Gracetime" ? styles.activeTab : ""}
           >
             Grace Time
-          </span>
-          <span
-            onClick={() => setSelectedTab("Shiftplanner")}
-            className={selectedTab === "Shiftplanner" ? styles.activeTab : ""}
-          >
-            Request Shift Planner
           </span>
           <span
             onClick={() => setSelectedTab("Reimbursement")}

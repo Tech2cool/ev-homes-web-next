@@ -16,6 +16,7 @@ const data = [
 
 const TimelineSection = () => {
   const [selectedMonth, setSelectedMonth] = useState(new Date());
+ 
   return (
     <div>
       <div className={styles.container}>
@@ -257,7 +258,11 @@ const AttendanceSection = ({
   const expectedWorkingDuration = Math.max(0, workingEnd - shiftEnd);
   const expectedWorkingPercent =
     (expectedWorkingDuration / visibleDuration) * 100;
+ const [showText, setShowText] = useState(false); 
 
+  const handleClick = () => {
+    setShowText(!showText); 
+  };
   return (
     <div className={styles.timelineRow}>
       <div className={styles.dateSection}>
@@ -281,7 +286,7 @@ const AttendanceSection = ({
       </div>
       <div className={styles.barWrapper}>
         <div className={styles.barSection}>
-          <div className={styles.bar}>
+          <div className={styles.bar} onClick={handleClick}>
             {!timeIn &&
             !timeOut &&
             weekoff !== "true" &&
@@ -377,6 +382,14 @@ const AttendanceSection = ({
                 )}
               </>
             )}
+            {showText && (
+        <div className={styles.tool}>
+          Do you want to Regularize it ?
+          <span>
+            <button>Regularize</button>
+          </span>
+        </div>
+      )}
           </div>
 
           <div className={styles.timeLabels}>
