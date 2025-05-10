@@ -239,7 +239,7 @@ export default function LeaveSection() {
               >
                 x
               </button>
-              <LeaveForm />
+              <LeaveForm oncancel={()=>setIsModalOpen(false)}/>
             </div>
           </div>
         )}

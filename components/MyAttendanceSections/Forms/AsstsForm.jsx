@@ -4,14 +4,14 @@ import { FaCalendarDay, FaClock, } from "react-icons/fa";
 import { MdOutlineFeedback } from "react-icons/md";
 import { FaCalendarDays, FaClockRotateLeft, FaTypo3 } from "react-icons/fa6";
 
-function AsstsForm() {
+function AsstsForm({ onCancel }) {
   const [assetDate, setassetDate] = useState("");
   const [Remark, setRemark] = useState("");
   const [Assettype, setAssettype] = useState("Mobile",)
   const assetDateRef = useRef(null);
   return (
     <div>
-      <div className={styles.formHeadline}>Regularization Off Application Form</div>
+      <div className={styles.formHeadline}>Apply Asset Request</div>
       <div
         className={` ${styles.formControl}`}
         onClick={() => assetDateRef.current?.showPicker()}
@@ -53,7 +53,7 @@ function AsstsForm() {
         />
       </div>
       <div className={styles.buttonRow}>
-        <button className={styles.cancelButton}
+        <button className={styles.cancelButton} onClick={onCancel}
           type="button">
           Cancel
         </button>

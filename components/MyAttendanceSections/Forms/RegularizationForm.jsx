@@ -4,7 +4,7 @@ import { FaCalendarDay, FaClock, } from "react-icons/fa";
 import { MdOutlineFeedback } from "react-icons/md";
 import { FaCalendarDays, FaClockRotateLeft, FaTypo3 } from "react-icons/fa6";
 
-const RegularizationFrom = () => {
+const RegularizationFrom = ({oncancel}) => {
     const [checkIn, setcheckIn] = useState("");
     const [reason, setreason] = useState("");
     const [checkout, setcheckout] = useState("");
@@ -14,8 +14,13 @@ const RegularizationFrom = () => {
 
     return (
         <div>
-            <div className={styles.formHeadline}>Regularization Off Application Form</div>
+            <div className={styles.formHeadline}>Regularization Form</div>
+            <div className={styles.regularizedate}>
+                <h6>Regularization date</h6>
+                <p>6 April 2025</p>
+            </div>
             <div className={styles.formControl}>
+
                 <label htmlFor="select">
                     <FaCalendarDays /> Regularization Type{" "}
                     <span style={{ color: "red" }}>*</span>
@@ -25,6 +30,7 @@ const RegularizationFrom = () => {
                     <option value="Present">Present</option>
                     <option value="Half-Day">Half Day</option>
                 </select>
+                <p>you have 2.0 regularization</p>
 
             </div>
             {regularizatype !== "Week-Off" && (
@@ -77,7 +83,7 @@ const RegularizationFrom = () => {
                 />
             </div>
             <div className={styles.buttonRow}>
-                <button className={styles.cancelButton} type="button">
+                <button className={styles.cancelButton} onClick={oncancel} type="button">
                     Cancel
                 </button>
                 <button className={styles.submitButton} type="submit">

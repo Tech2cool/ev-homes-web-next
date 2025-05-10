@@ -160,7 +160,7 @@ const WeekOffSection = () => {
               >
                 x
               </button>
-              <WeekOffForm />
+              <WeekOffForm onCancel={()=>setIsModalOpen(false)} />
             </div>
           </div>
         )}

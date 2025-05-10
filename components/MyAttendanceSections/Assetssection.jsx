@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import styles from "./leavesection.module.css";
 import { MdOutlineFeedback, MdOutlineCallToAction } from "react-icons/md";
 import { MdHolidayVillage } from "react-icons/md";
-import { FaCalendarCheck, FaCalendarDay, FaClock, FaTypo3 } from "react-icons/fa";
+import { FaCalendarCheck, FaCalendarDay, FaClock, FaMobile, FaMobileAlt, FaTypo3 } from "react-icons/fa";
 import AsstsForm from "./Forms/AsstsForm";
 
 const AssetData = [
@@ -91,7 +91,7 @@ function Assets() {
                             className={styles.applyButton}
                             onClick={() => setIsModalOpen(true)}
                         >
-                            <MdHolidayVillage className={styles.applyIcon} /> Apply Assettion
+                            <FaMobileAlt className={styles.applyIcon} /> Apply Asset
                         </div>
                     </div>
                     <table className={styles.leaveTable}>
@@ -150,7 +150,7 @@ function Assets() {
                             >
                                 x
                             </button>
-                            <AsstsForm />
+                            <AsstsForm onCancel={()=>setIsModalOpen(false)}/>
                         </div>
                     </div>
                 )}

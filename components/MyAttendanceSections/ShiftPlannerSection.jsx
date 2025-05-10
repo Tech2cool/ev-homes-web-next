@@ -152,7 +152,7 @@ const ShiftPlannerSection = () => {
               >
                 x
               </button>
-              <ShiftPlannerForm />
+              <ShiftPlannerForm oncencel={()=>setIsModalOpen(false)}/>
             </div>
           </div>
         )}

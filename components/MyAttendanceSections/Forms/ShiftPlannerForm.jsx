@@ -4,7 +4,7 @@ import { FaCalendarDay, FaFileUpload } from "react-icons/fa";
 import { FaPersonWalkingLuggage } from "react-icons/fa6";
 import { MdOutlineFeedback } from "react-icons/md";
 
-const ShiftPlannerForm = () => {
+const ShiftPlannerForm = ({oncencel}) => {
   const [shiftrequestdate, setshiftrequestdate] = useState("");
   const [reason, setreason] = useState("");
 
@@ -54,7 +54,7 @@ const ShiftPlannerForm = () => {
         />
       </div>
       <div className={styles.buttonRow}>
-        <button className={styles.cancelButton} type="button">
+        <button className={styles.cancelButton} onClick={oncencel} type="button">
           Cancel
         </button>
         <button className={styles.submitButton} type="submit">

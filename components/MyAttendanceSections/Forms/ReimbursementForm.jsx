@@ -3,7 +3,7 @@ import styles from "./leaveform.module.css";
 import { FaCalendarDay, FaFileUpload, FaCheck } from "react-icons/fa";
 import { MdOutlineFeedback, MdAttachMoney } from "react-icons/md";
 
-const ReimbursementForm = () => {
+const ReimbursementForm = ({oncencel}) => {
   const [date, setdate] = useState("");
   const [amount, setamount] = useState("");
   const [remark, setremark] = useState("");
@@ -133,7 +133,7 @@ const ReimbursementForm = () => {
       </div>
 
       <div className={styles.buttonRow}>
-        <button className={styles.cancelButton} type="button">
+        <button className={styles.cancelButton } onClick={oncencel} type="button">
           Cancel
         </button>
         <button className={styles.submitButton} type="submit">

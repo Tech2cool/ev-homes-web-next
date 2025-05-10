@@ -3,7 +3,7 @@ import styles from "./leaveform.module.css";
 import { FaCalendarDay, FaFileUpload } from "react-icons/fa";
 import { MdOutlineFeedback } from "react-icons/md";
 
-const WeekOffForm = () => {
+const WeekOffForm = ({onCancel}) => {
   const [weekoffdate, setweekoffdate] = useState("");
   const [reason, setreason] = useState("");
 
@@ -42,7 +42,7 @@ const WeekOffForm = () => {
         />
       </div>
       <div className={styles.buttonRow}>
-        <button className={styles.cancelButton} type="button">
+        <button className={styles.cancelButton} onClick={onCancel} type="button">
           Cancel
         </button>
         <button className={styles.submitButton} type="submit">
