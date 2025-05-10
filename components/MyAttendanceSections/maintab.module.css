@@ -110,7 +110,14 @@
   padding-bottom: 0.5vh;
 }
 
+.links {
+  display: flex;
+  align-items: center;
+  width: 100%;
+}
+
 .links span {
+  display: inline-block;
   margin-left: 1.5vw;
   font-size: 2.2vh;
   cursor: pointer;
@@ -120,6 +127,10 @@
 
 .links span:hover {
   color: #fff;
+}
+
+.rightAligned {
+  margin-left: auto;
 }
 
 
