@@ -1,17 +1,15 @@
 import React, { useState } from "react";
 import styles from "./leavesection.module.css";
-import reimStyles from "./reimbursementsection.module.css";
 import { PiAirplaneTakeoffFill } from "react-icons/pi";
 import { FaBagShopping } from "react-icons/fa6";
 import {
   MdOutlineFeedback,
   MdOutlineCallToAction,
-  MdPaid,
-  MdAttachMoney,
+  MdAttachMoney,MdFilterList
 } from "react-icons/md";
 import { FaCalendarCheck, FaFileUpload } from "react-icons/fa";
-import { CiBookmarkCheck } from "react-icons/ci";
 import ReimbursementForm from "./Forms/ReimbursementForm";
+import ReimbursementFilterDialog from "../Dialogs/ReimbursementFilterDialog";
 
 const initialLeaveData = [
   {
@@ -66,24 +64,8 @@ export default function ReimbursementSection() {
       ? leaveData
       : leaveData.filter((leave) => leave.status === filter);
 
-  const getTotalDays = (type) =>
-    leaveData
-      .filter((l) => l.leaveType === type)
-      .reduce((sum, l) => sum + parseInt(l.totalDays, 10), 0);
-
-  const casualCount = getTotalDays("Casual Leave");
-  const compCount = getTotalDays("Comp Leave");
-  const paidCount = getTotalDays("Paid Leave");
-
-  const totalDaysAll = casualCount + compCount + paidCount;
-
-  const casualPercent = totalDaysAll ? (casualCount / totalDaysAll) * 100 : 0;
-  const compPercent = totalDaysAll ? (compCount / totalDaysAll) * 100 : 0;
-  const paidPercent = totalDaysAll ? (paidCount / totalDaysAll) * 100 : 0;
-
   const [showReimDropdown, setShowReimDropdown] = useState(false);
 
-  const options = ["Travel", "Food", "Phone", "Miscellaneous"];
 
   return (
     <div className={styles.maincontainer}>
@@ -121,50 +103,15 @@ export default function ReimbursementSection() {
                 {leaveData.filter((l) => l.status === "Pending").length}
               </div>
             </div>
+
+            <div
+              className={styles.filterReimbursement}
+              onClick={() => setShowReimDropdown(true)}
+            >
+              <MdFilterList size={20} />
+              <span>Filter Reimbursement Data</span>
+            </div>
           </div>
-
-          {/* <div className={styles.progressContainer}>
-            <div className={reimStyles.headlineSection}>
-              <div className={reimStyles.reimHeadline}>Filter</div>
-              <div className={reimStyles.exportBtn}>Export</div>
-            </div>
-            <div className={reimStyles.filterSection}>
-              <div className={reimStyles.dateRange}>
-                {" "}
-                <FaCalendarCheck size={16} />
-                Date Range
-              </div>
-
-              <div className={reimStyles.wrapper}>
-                <div
-                  className={reimStyles.reimType}
-                  onClick={() => {
-                    setShowReimDropdown(!showReimDropdown);
-                  }}
-                >
-                  <MdAttachMoney size={20} /> Reim Type
-                </div>
-
-                {showReimDropdown && (
-                  <div className={reimStyles.dropdown}>
-                    {options.map((option, index) => (
-                      <div key={index} className={reimStyles.dropdownItem}>
-                        {option}
-                      </div>
-                    ))}
-                  </div>
-                )}
-              </div>
-
-              <div className={reimStyles.paidBy}>
-                <MdPaid size={20} /> Paid By
-              </div>
-              <div className={reimStyles.status}>
-                <CiBookmarkCheck size={20} />
-                Status
-              </div>
-            </div>
-          </div> */}
         </div>
 
         <div className={styles.tableContainer}>
@@ -270,6 +217,16 @@ export default function ReimbursementSection() {
               <ReimbursementForm />
             </div>
           </div>
+        )}
+
+        {showReimDropdown && (
+          <ReimbursementFilterDialog
+            onClose={() => setShowReimDropdown(false)}
+            onApplyFilter={(selectedOption) => {
+              console.log("Apply filter with:", selectedOption);
+              setShowReimDropdown(false);
+            }}
+          />
         )}
       </div>
     </div>
