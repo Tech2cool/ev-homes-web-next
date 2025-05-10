@@ -10,7 +10,14 @@ import Personalsection from "./Personalsection";
 import WeekOffSection from "./WeekOffSection";
 import Regularization from "./Regularizationsection";
 import Assets from "./Assetssection";
+
+
+import ShiftPlannerSection from "./ShiftPlannerSection";
+import ReimbursementSection from "./ReimbursementSection";
+import ApprovalSection from "../ApprovalSection/ApprovalSection";
+
 import { useRouter } from "next/navigation";
+
 
 const MainTab = () => {
   const router=useRouter();
@@ -39,6 +46,8 @@ const MainTab = () => {
         return <AttendanceSection />;
       case "Assets":
         return <Assets />;
+      case "Approval":
+        return <ApprovalSection />;
       default:
         return null;
     }
@@ -145,6 +154,14 @@ const MainTab = () => {
           >
             Assets
           </span>
+          <div className={styles.rightAligned}>
+            <span
+              onClick={() => setSelectedTab("Approval")}
+              className={selectedTab === "Approval" ? styles.activeTab : ""}
+            >
+              Approval Section
+            </span>
+          </div>
         </div>
       </div>
       <div className={styles.sectionContainer}>{renderSection()}</div>
