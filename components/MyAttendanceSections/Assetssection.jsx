@@ -1,9 +1,10 @@
-import React, { useState } from "react";
+import React, { useState ,useRef} from "react";
 import styles from "./leavesection.module.css";
 import { MdOutlineFeedback, MdOutlineCallToAction } from "react-icons/md";
 import { MdHolidayVillage } from "react-icons/md";
 import { FaCalendarCheck, FaCalendarDay, FaClock, FaTypo3 } from "react-icons/fa";
 import AsstsForm from "./Forms/AsstsForm";
+import { useClickOutside } from "../useClickOutside";
 
 const AssetData = [
     {
@@ -37,6 +38,7 @@ const AssetData = [
 ];
 
 function Assets() {
+     const modalRef = useRef(null);
     const [Asset, setAssetData] = useState(AssetData);
     const [filter, setFilter] = useState("All");
     const [isModalOpen, setIsModalOpen] = useState(false);
@@ -45,6 +47,12 @@ function Assets() {
         filter == "All"
             ? Asset
             : Asset.filter((asset) => asset.status === filter);
+
+     useClickOutside({
+        refs: [modalRef],
+        handler: () => setIsModalOpen(false),
+        active: isModalOpen,
+      });
 
     return (
         <div className={styles.maincontainer}>
@@ -143,7 +151,7 @@ function Assets() {
                 </div>
                 {isModalOpen && (
                     <div className={styles.modalOverlay}>
-                        <div className={styles.modalContent}>
+                        <div className={styles.modalContent} ref={modalRef}>
                             <button
                                 className={styles.closeButton}
                                 onClick={() => setIsModalOpen(false)}

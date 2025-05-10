@@ -8,9 +8,11 @@ import { DefinedRange } from "react-date-range";
 import { format } from "date-fns";
 import "react-date-range/dist/styles.css";
 import "react-date-range/dist/theme/default.css";
+import { useClickOutside } from "../useClickOutside";
 
 export default function ReimbursementFilterDialog({ onClose, onApplyFilter }) {
   const [showCalendar, setShowCalendar] = useState(false);
+  const dialogRef = useRef(null);
 
   const [dateRange, setDateRange] = useState([
     {
@@ -52,9 +54,15 @@ export default function ReimbursementFilterDialog({ onClose, onApplyFilter }) {
     };
   }, [showCalendar]);
 
+  useClickOutside({
+    refs: [dialogRef],
+    handler: onClose,
+    active: true,
+  });
+
   return (
     <div className={reimstyles.overlay}>
-      <div className={reimstyles.dialog}>
+      <div className={reimstyles.dialog} ref={dialogRef}>
         <button onClick={onClose} className={reimstyles.closeButton}>
           ×
         </button>

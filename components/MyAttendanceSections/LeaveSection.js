@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState ,useRef } from "react";
 import styles from "./leavesection.module.css";
 import { PiAirplaneTakeoffFill } from "react-icons/pi";
 import { LuAlarmClock } from "react-icons/lu";
@@ -7,6 +7,7 @@ import { MdOutlineFeedback, MdOutlineCallToAction } from "react-icons/md";
 import { FaCalendarCheck, FaCalendarDay, FaFileUpload } from "react-icons/fa";
 import { FaPersonWalkingLuggage } from "react-icons/fa6";
 import LeaveForm from "./Forms/LeaveForm";
+import { useClickOutside } from "../useClickOutside";
 
 const initialLeaveData = [
   {
@@ -52,9 +53,16 @@ const initialLeaveData = [
 ];
 
 export default function LeaveSection() {
+    const modalRef = useRef(null);
   const [leaveData, setLeaveData] = useState(initialLeaveData);
   const [filter, setFilter] = useState("All");
   const [isModalOpen, setIsModalOpen] = useState(false);
+
+   useClickOutside({
+      refs: [modalRef],
+      handler: () => setIsModalOpen(false),
+      active: isModalOpen,
+    });
 
   const filteredData =
     filter == "All"
@@ -232,7 +240,7 @@ export default function LeaveSection() {
         </div>
         {isModalOpen && (
           <div className={styles.modalOverlay}>
-            <div className={styles.modalContent}>
+            <div className={styles.modalContent} ref={modalRef}>
               <button
                 className={styles.closeButton}
                 onClick={() => setIsModalOpen(false)}

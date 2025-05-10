@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useRef, useState } from "react";
 import styles from "./leavesection.module.css";
 import { FaBagShopping } from "react-icons/fa6";
 import { MdOutlineFeedback, MdOutlineCallToAction } from "react-icons/md";
@@ -6,6 +6,7 @@ import { MdHolidayVillage } from "react-icons/md";
 import { FaCalendarCheck, FaCalendarDay, FaFileUpload } from "react-icons/fa";
 import { FaUserShield } from "react-icons/fa6";
 import ShiftPlannerForm from "./Forms/ShiftPlannerForm";
+import { useClickOutside } from "../useClickOutside";
 
 const shiftPlannerData = [
   {
@@ -39,9 +40,16 @@ const shiftPlannerData = [
 ];
 
 const ShiftPlannerSection = () => {
+  const modalRef = useRef(null);
   const [shiftData, setshiftData] = useState(shiftPlannerData);
   const [filter, setFilter] = useState("All");
   const [isModalOpen, setIsModalOpen] = useState(false);
+
+  useClickOutside({
+      refs: [modalRef],
+      handler: () => setIsModalOpen(false),
+      active: isModalOpen,
+    });
 
   const filteredData =
     filter == "All"
@@ -145,7 +153,7 @@ const ShiftPlannerSection = () => {
         </div>
         {isModalOpen && (
           <div className={styles.modalOverlay}>
-            <div className={styles.modalContent}>
+            <div className={styles.modalContent} ref={modalRef}>
               <button
                 className={styles.closeButton}
                 onClick={() => setIsModalOpen(false)}
